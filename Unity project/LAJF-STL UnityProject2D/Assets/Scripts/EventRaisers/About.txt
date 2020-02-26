@@ -1,0 +1,2 @@
+Classes and interfaces whose main purpose is to raise events under certain circumstances.
+Should not themselves alter gamestates, rather they should only raise events that are later handled by EventResponses.
