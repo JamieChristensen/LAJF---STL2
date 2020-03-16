@@ -13,6 +13,7 @@ public class CustomSceneManager : MonoBehaviour
     private int currentEnvironmentIndex = -1;
     [SerializeField]
     private bool isLoadingScene = false;
+    private float loadProgress = 0;
 
     public void Start()
     {
@@ -22,8 +23,14 @@ public class CustomSceneManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             RequestEnvironmentChange(currentEnvironmentIndex == 1 ? 2 : 1);
+        }
+
+        if (isLoadingScene)
+        {
+            //Do something with loadProgress.
         }
     }
 
@@ -39,11 +46,13 @@ public class CustomSceneManager : MonoBehaviour
     public void RequestEnvironmentChange(int environmentIndex)
     {
         //TODO: Check whether or not we can change environment:
-        if (isLoadingScene){
+        if (isLoadingScene)
+        {
             return;
         }
 
-        if(environmentIndex == -1){
+        if (environmentIndex == -1)
+        {
             isLoadingScene = true;
             StartCoroutine(ALoadEnvironment(environmentIndex));
             return;
@@ -58,7 +67,8 @@ public class CustomSceneManager : MonoBehaviour
     //ChangeEnvironment combines two other coroutines, to ensure that before loading the next environment, the previous one is always unloaded first.
     IEnumerator ChangeEnvironment(int currentEnvironment, int newEnvironment)
     {
-        if (currentEnvironment < 1){
+        if (currentEnvironment < 1)
+        {
             StartCoroutine(ALoadEnvironment(newEnvironment));
             yield break;
         }
@@ -84,14 +94,17 @@ public class CustomSceneManager : MonoBehaviour
         //Load in new one
         //Remove loading-screen (transition)
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
-        asyncLoad.completed += (AsyncOperation) => {
+        asyncLoad.completed += (AsyncOperation) =>
+        {
             currentEnvironmentIndex = sceneIndex;
             isLoadingScene = false;
+            loadProgress = 0;
             Debug.Log("Checking how many times this is called");
         };
         while (!asyncLoad.isDone)
         {
             Debug.Log("Loading progress: " + asyncLoad.progress);
+            loadProgress = asyncLoad.progress;
             yield return null;
         }
     }
@@ -102,12 +115,13 @@ public class CustomSceneManager : MonoBehaviour
         {
             yield break;
         }
-        
+
         AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(sceneIndex, UnloadSceneOptions.None);
 
         while (!asyncUnload.isDone)
         {
             Debug.Log("Unloading progress: " + asyncUnload.progress);
+            loadProgress = asyncUnload.progress;
             yield return null;
         }
     }
