@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using STL2.Events;
 
 //Responsible for sceneloading, both additive and non-additive.
 //"ALoad" refers to async loading something in. Remember to only load things in async once.
@@ -12,12 +13,16 @@ public class CustomSceneManager : MonoBehaviour
     [SerializeField]
     private int currentEnvironmentIndex = -1;
     [SerializeField]
-    private bool isLoadingScene = false;
+    public BoolVariable isLoadingScene;
+    //private bool isLoadingScene = false;
     private float loadProgress = 0;
+
+    public IntEvent loadProgressInt;
 
     public void Start()
     {
         GameObject.DontDestroyOnLoad(this);
+        isLoadingScene.setBool(false);
     }
 
 
@@ -28,9 +33,8 @@ public class CustomSceneManager : MonoBehaviour
             RequestEnvironmentChange(currentEnvironmentIndex == 1 ? 2 : 1);
         }
 
-        if (isLoadingScene)
-        {
-            //Do something with loadProgress.
+        if (Input.GetKeyDown(KeyCode.N)){
+            StartCoroutine(AUnloadEnvironment(currentEnvironmentIndex));
         }
     }
 
@@ -43,22 +47,26 @@ public class CustomSceneManager : MonoBehaviour
         throw new NotImplementedException();
     }
 
+    public void UpdateLoadProgress(float _loadProgress){
+        loadProgressInt.Raise((int)(_loadProgress*100));
+    }
+
     public void RequestEnvironmentChange(int environmentIndex)
     {
         //TODO: Check whether or not we can change environment:
-        if (isLoadingScene)
+        if (isLoadingScene.myBool)
         {
             return;
         }
 
         if (environmentIndex == -1)
         {
-            isLoadingScene = true;
+            isLoadingScene.setBool(true);
             StartCoroutine(ALoadEnvironment(environmentIndex));
             return;
         }
 
-        isLoadingScene = true;
+        isLoadingScene.setBool(true);
         StartCoroutine(ChangeEnvironment(currentEnvironmentIndex, environmentIndex));
     }
 
@@ -94,15 +102,20 @@ public class CustomSceneManager : MonoBehaviour
         //Load in new one
         //Remove loading-screen (transition)
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
+        
         asyncLoad.completed += (AsyncOperation) =>
         {
             currentEnvironmentIndex = sceneIndex;
-            isLoadingScene = false;
+            isLoadingScene.setBool(false);
             loadProgress = 0;
+            UpdateLoadProgress(1);
             Debug.Log("Checking how many times this is called");
         };
+
+
         while (!asyncLoad.isDone)
         {
+            UpdateLoadProgress(asyncLoad.progress);
             Debug.Log("Loading progress: " + asyncLoad.progress);
             loadProgress = asyncLoad.progress;
             yield return null;
@@ -117,6 +130,9 @@ public class CustomSceneManager : MonoBehaviour
         }
 
         AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(sceneIndex, UnloadSceneOptions.None);
+        asyncUnload.completed += (AsyncOperation) => {
+            currentEnvironmentIndex = -1;
+        };
 
         while (!asyncUnload.isDone)
         {

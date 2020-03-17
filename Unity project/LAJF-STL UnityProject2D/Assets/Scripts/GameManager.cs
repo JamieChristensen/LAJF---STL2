@@ -8,8 +8,10 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
     public IntTypeListener playerHPListener;
-
     public BoolVariable isGamePaused;
+
+    public BoolVariable isSceneLoading;
+    public IntVariable gameLoadProgress;
 
     public VoidTypeListener environmentAndHeroChoiceFinished;  //When the gods finished picking the environment.
     public VoidTypeListener godsPickedMonsterAndTrait;      //Should be raised when gods finish selecting both monster and traits.
@@ -49,6 +51,15 @@ public class GameManager : MonoBehaviour
 
     public void Start(){
         GameObject.DontDestroyOnLoad(this);
+    }
+
+    public void PlayerHealthResponse(int playerHP){
+        if (playerHP > 0){
+            return;
+        }
+
+        //End game by loading proper scene through game-manager - should happen after a delay, as to provide feedback during the delay.
+        throw new NotImplementedException();
     }
 
     public void RequestGameStateChange(GameStates requestedState)

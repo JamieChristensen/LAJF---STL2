@@ -1,1 +1,13 @@
-Empty for now
+Environment objects: Terrain, obstacles, background and the like - anything that is a prefab and can be seen in the scene (yet isn't part of the main moving objects)
+
+Enemies: Any threats to player1 that have agency
+
+Managers and utilities: Prefabs that facilitate flow between higher-level game-states.
+
+Gods: God-related prefabs (Players 2, 3 and 4)
+
+Player: Player prefab, and anything that doesn't fit other categories but are related to the player.
+
+UI: User interface prefabs, menus and the likes.
+
+(Add more categories as you see fit, try and keep them mutually exclusive)
