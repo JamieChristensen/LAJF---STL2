@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void GodsPickedMonsterAndTrait(){
-        throw new NotImplementedException();
+        ChangeGameState(GameStates.Encounter);
     }
 
     //This is a very brutish way of pausing, but it should work. 

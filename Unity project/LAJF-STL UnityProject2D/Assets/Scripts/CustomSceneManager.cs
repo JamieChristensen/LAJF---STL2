@@ -47,6 +47,16 @@ public class CustomSceneManager : MonoBehaviour
         throw new NotImplementedException();
     }
 
+    public void RequestSceneChange(int _sceneIndex){
+        //In case there is logic needed to prevent scenechanges in certain situations:
+        if (_sceneIndex > SceneManager.sceneCountInBuildSettings-1 && _sceneIndex < 0){
+            Debug.Log("Scene request denied, index out of range");
+            return;
+        }
+        
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings-1);
+    }
+
     public void UpdateLoadProgress(float _loadProgress){
         loadProgressInt.Raise((int)(_loadProgress*100));
     }
