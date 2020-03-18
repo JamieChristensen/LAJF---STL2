@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
         InitializingNextScene /*When the next encounter is being loaded and/or a transition is being made between screens (not scenes - we're additively loading stuff)*/
     }
 
-    
 
     //These comments are my todo-list for this script - Jamie
     //TODO: Behaviour when player1 dies.
@@ -51,6 +50,11 @@ public class GameManager : MonoBehaviour
 
     public void Start(){
         GameObject.DontDestroyOnLoad(this);
+
+        //Ensure all cross-scene reference scriptableObjects are initialized properly:
+        if (isGamePaused.myBool) {
+            isGamePaused.setBool(false);
+        }
     }
 
     public void PlayerHealthResponse(int playerHP){
@@ -86,18 +90,37 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    private void ChangeGameState(GameStates gameState)
+    private void ChangeGameState(GameStates _desiredState)
     {
-        throw new NotImplementedException();
+        if (isTransitionAllowed(gameState, _desiredState)){
+            gameState = _desiredState;
+            return;
+        }
+        Debug.Log("Gamestate transition denied");
     }
 
     public void EnvironmentAndHeroChoiceFinished(){
-
-
+        //Need to figure out which gamestate to go to - rather than none
         RequestGameStateChange(GameStates.None);
     }
 
     public void GodsPickedMonsterAndTrait(){
         throw new NotImplementedException();
     }
+
+    //This is a very brutish way of pausing, but it should work. 
+    public void OnPauseButtonClicked(){
+        isGamePaused.setBool(!isGamePaused.myBool);
+
+        if (isGamePaused.myBool){
+            Time.timeScale = 0;
+            return;
+        }
+
+        if (!isGamePaused.myBool){
+            Time.timeScale = 1;
+            return;
+        }
+    }
+
 }

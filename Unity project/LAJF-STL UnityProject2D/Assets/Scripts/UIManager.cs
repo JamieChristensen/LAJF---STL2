@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     //Should keep track of the current UI-state, and handle UI-transitions in general.
     public bool isLoadingScreenOn = false;
 
+    public BoolVariable isGamePaused;
+
     public IntTypeListener loadProgressUpdateEvent;
 
     public GameObject loadingScreen;
@@ -21,6 +23,7 @@ public class UIManager : MonoBehaviour
     private float maxTime;
     private float timer; //Used to prevent loadingscreen instantly disappearing/blinking.
 
+    public GameObject pauseCanvasGroup;
 
     public void Update()
     {
@@ -78,6 +81,10 @@ public class UIManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void OnPauseButtonClicked(){
+        pauseCanvasGroup.SetActive(isGamePaused.myBool);
     }
 
 }
