@@ -19,7 +19,7 @@ TagManager:
   - 
   - PlayerProjectile
   - Player
-  - 
+  - EnemyProjectile
   - Monsters
   - 
   - Walls

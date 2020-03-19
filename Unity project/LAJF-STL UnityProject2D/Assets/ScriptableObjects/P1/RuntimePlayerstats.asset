@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 10
   trait: 10
   moveSpeed: 8
-  jumpForce: 14
+  jumpForce: 18
   baseAttackDamage: 10
   attackRate: 10
   rangedAttacks: 1

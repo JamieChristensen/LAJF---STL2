@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 5892630455597672936}
   m_Layer: 9
   m_Name: Player1
-  m_TagString: P1
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   attackRanged: 106
   attackMelee: 104
   spriteRenderer: {fileID: 5892630455597672936}
-  currentHitPoints: 10
+  currentHitPoints: 100
   attackIsOnCooldown: 0
   isGrounded: 0
   projectile: {fileID: 7295350159965844522, guid: 63c4019aeaae245419319b5d8e5b922e,

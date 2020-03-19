@@ -17,7 +17,11 @@ public class Projectile : MonoBehaviour
         {
             if (collided.CompareTag("Monster")) {
                 //My best guess of what Luca would implement:
-                //collided.GetComponent<EnemyBehaviour>().TakeDamage(damage);
+                collided.GetComponent<EnemyBehaviour>().TakeDamage(damage);
+            }
+
+            if (collided.CompareTag("Player")){
+                collided.GetComponent<P1Controller>().TakeDamage(damage);
             }
 
             GameObject.Destroy(gameObject);

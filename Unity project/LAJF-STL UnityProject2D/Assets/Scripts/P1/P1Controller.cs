@@ -127,7 +127,8 @@ public class P1Controller : MonoBehaviour
     {
         GameObject instance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f), Quaternion.identity);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
-        rb.velocity = moveDirection * projectileSpeed;
+        //rb.velocity = moveDirection * projectileSpeed;
+        rb.AddForce(moveDirection*projectileSpeed, ForceMode2D.Impulse);
 
 
         Projectile projInstance = instance.GetComponent<Projectile>();
