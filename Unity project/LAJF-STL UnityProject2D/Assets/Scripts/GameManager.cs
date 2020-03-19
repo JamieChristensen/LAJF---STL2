@@ -62,8 +62,10 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        //Definitely need to implement a timer here.
+
         //End game by loading proper scene through game-manager - should happen after a delay, as to provide feedback during the delay.
-        throw new NotImplementedException();
+        FindObjectOfType<CustomSceneManager>().LoadCredits(); //
     }
 
     public void RequestGameStateChange(GameStates requestedState)

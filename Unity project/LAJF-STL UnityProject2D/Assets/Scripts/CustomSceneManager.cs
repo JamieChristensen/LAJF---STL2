@@ -33,7 +33,8 @@ public class CustomSceneManager : MonoBehaviour
             RequestEnvironmentChange(currentEnvironmentIndex == 1 ? 2 : 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.N)){
+        if (Input.GetKeyDown(KeyCode.N))
+        {
             StartCoroutine(AUnloadEnvironment(currentEnvironmentIndex));
         }
     }
@@ -44,21 +45,27 @@ public class CustomSceneManager : MonoBehaviour
     }
     public void LoadCredits()
     {
-        throw new NotImplementedException();
+        //Should probably not just load this scene, but this is a start.
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
     }
 
-    public void RequestSceneChange(int _sceneIndex){
+    public void RequestSceneChange(int _sceneIndex)
+    {
         //In case there is logic needed to prevent scenechanges in certain situations:
-        if (_sceneIndex > SceneManager.sceneCountInBuildSettings-1 && _sceneIndex < 0){
+        if (_sceneIndex > SceneManager.sceneCountInBuildSettings - 1 && _sceneIndex < 0)
+        {
             Debug.Log("Scene request denied, index out of range");
             return;
         }
-        
-        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings-1);
+
+        //Probably need some conditional to figure out how many environments there are, and not just load into those,
+        //but rather ensure that the sceneIndex corresponds to a proper scene (mainmenu, gameloop, credits/end).
+        SceneManager.LoadScene(_sceneIndex);
     }
 
-    public void UpdateLoadProgress(float _loadProgress){
-        loadProgressInt.Raise((int)(_loadProgress*100));
+    public void UpdateLoadProgress(float _loadProgress)
+    {
+        loadProgressInt.Raise((int)(_loadProgress * 100));
     }
 
     public void RequestEnvironmentChange(int environmentIndex)
@@ -112,7 +119,7 @@ public class CustomSceneManager : MonoBehaviour
         //Load in new one
         //Remove loading-screen (transition)
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
-        
+
         asyncLoad.completed += (AsyncOperation) =>
         {
             currentEnvironmentIndex = sceneIndex;
@@ -140,7 +147,8 @@ public class CustomSceneManager : MonoBehaviour
         }
 
         AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(sceneIndex, UnloadSceneOptions.None);
-        asyncUnload.completed += (AsyncOperation) => {
+        asyncUnload.completed += (AsyncOperation) =>
+        {
             currentEnvironmentIndex = -1;
         };
 
