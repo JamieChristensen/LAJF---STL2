@@ -7,18 +7,36 @@ public class Projectile : MonoBehaviour
     public int damage;
     public LayerMask layerMask; //Layers this object should interact with and damage.
 
+    public ParticleSystem particles;
+    private float timer = 0;
+    private float maxTime = 0.1f;
     public void OnCollisionEnter2D(Collision2D coll)
     {
-        
+        GameObject collided = coll.gameObject;
+        if (IsInLayerMask(collided.layer, layerMask))
+        {
+            if (collided.CompareTag("Monster")) {
+                //My best guess of what Luca would implement:
+                //collided.GetComponent<Enemy>().TakeDamage(damage);
+            }
 
-        if(IsInLayerMask(coll.gameObject.layer, layerMask)){
-            Debug.Log("HEY");
-            //Do stuff then destroy self.
             GameObject.Destroy(gameObject);
         }
     }
-
-
+    public void Start(){
+        particles.Stop();
+        particles.Clear();
+    }
+    public void Update()
+    {
+        if (timer >= maxTime){
+            return;
+        }
+        timer += Time.deltaTime;
+        if(timer >= maxTime){
+            particles.Play();
+        }
+    }
 
     public static bool IsInLayerMask(int layer, LayerMask _layermask)
     {
