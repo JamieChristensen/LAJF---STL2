@@ -14,12 +14,12 @@ TagManager:
   - UI
   - 
   - 
+  - PlayerProjectile
+  - Player
   - 
+  - Monsters
   - 
-  - 
-  - 
-  - 
-  - 
+  - Walls
   - 
   - 
   - 
