@@ -18,9 +18,8 @@ public class UIManager : MonoBehaviour
     public GameObject loadingScreen;
     public Slider progressBar;
 
-    private bool isWaitingForTimer;
     [SerializeField]
-    private float maxTime;
+    private float maxTime = 0.2f; //Assign in inspector
     private float timer; //Used to prevent loadingscreen instantly disappearing/blinking.
 
     public GameObject pauseCanvasGroup;
@@ -60,7 +59,6 @@ public class UIManager : MonoBehaviour
     {
         if (progress == 0)
         {
-            isWaitingForTimer = true;
             StartLoadingScreen();
             return;
         }
@@ -75,7 +73,6 @@ public class UIManager : MonoBehaviour
         {
             if (timer >= maxTime)
             {
-                isWaitingForTimer = false;
                 timer = 0;
                 CloseLoadingScreen();
                 return;

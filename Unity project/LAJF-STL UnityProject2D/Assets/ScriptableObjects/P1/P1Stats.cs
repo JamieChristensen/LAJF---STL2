@@ -6,7 +6,7 @@ using UnityEngine;
 public class P1Stats : ScriptableObject
 {
     [Header("General")]
-    public string name; // name of the character
+    public string myName; // name of the character
     public string description; // description of character
     public string trait; // the traits of choosing this character
 

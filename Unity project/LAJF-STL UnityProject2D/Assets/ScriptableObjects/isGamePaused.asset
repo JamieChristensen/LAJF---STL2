@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ce09de00a889c4e931acf1f4608985, type: 3}
   m_Name: isGamePaused
   m_EditorClassIdentifier: 
-  myBool: 0
+  myBool: 1
