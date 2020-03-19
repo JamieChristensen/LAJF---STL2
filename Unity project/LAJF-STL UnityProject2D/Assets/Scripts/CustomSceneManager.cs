@@ -22,7 +22,10 @@ public class CustomSceneManager : MonoBehaviour
     public void Start()
     {
         GameObject.DontDestroyOnLoad(this);
-        isLoadingScene.setBool(false);
+        if (isLoadingScene != null)
+        {
+            isLoadingScene.setBool(false);
+        }
     }
 
 
@@ -41,7 +44,7 @@ public class CustomSceneManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene(0); //Index of main-menu. 
     }
     public void LoadCredits()
     {
