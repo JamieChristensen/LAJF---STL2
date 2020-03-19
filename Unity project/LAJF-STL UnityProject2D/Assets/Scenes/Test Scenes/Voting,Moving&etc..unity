@@ -1035,20 +1035,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
-        type: 3}
-      propertyPath: obstacles.m_Bits
-      value: 8192
-      objectReference: {fileID: 0}
     - target: {fileID: 5892630455597672941, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
         type: 3}
       propertyPath: m_Name
       value: Player1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5892630455597672942, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfe933cbbf24e674ba6e231dcb3d50c6, type: 3}

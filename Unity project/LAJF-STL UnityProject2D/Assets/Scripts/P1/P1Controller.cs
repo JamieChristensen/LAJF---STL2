@@ -33,6 +33,9 @@ public class P1Controller : MonoBehaviour
     private bool justUsedRangedAttack = false;
 
     public LayerMask obstacles;
+
+    public float projectileSpeed;
+
     #endregion
 
     void Awake()
@@ -75,9 +78,10 @@ public class P1Controller : MonoBehaviour
         }
 
         //Check if there is a wall on the side the player is moving:
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, 3f, obstacles);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, 1.5f, obstacles);
         // If it hits something...
-        if (hit.collider != null){
+        if (hit.collider != null)
+        {
             Debug.Log(hit.transform.gameObject.name);
         }
         if (hit.collider != null && hit.transform.CompareTag("Wall"))
@@ -121,11 +125,11 @@ public class P1Controller : MonoBehaviour
 
     public void RangedAttack()
     {
-        GameObject instance = Instantiate(projectile, transform.position + (((Vector3)moveDirection)*0.2f), Quaternion.identity);
+        GameObject instance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f), Quaternion.identity);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
-        rb.velocity = moveDirection * 100;
+        rb.velocity = moveDirection * projectileSpeed;
 
-        
+
         Projectile projInstance = instance.GetComponent<Projectile>();
         projInstance.damage = 10;
 
@@ -134,15 +138,12 @@ public class P1Controller : MonoBehaviour
         justUsedRangedAttack = true;
     }
 
-    public void TakeDamage(int damage){
-        currentHitPoints -= damage;
-    }
-
-    public void WhenPlayerHPChanges()
+    public void TakeDamage(int damage)
     {
-        //Probably do more than just this.
+        currentHitPoints -= damage;
         playerHPEvent.Raise(currentHitPoints);
     }
+
 
 
 
