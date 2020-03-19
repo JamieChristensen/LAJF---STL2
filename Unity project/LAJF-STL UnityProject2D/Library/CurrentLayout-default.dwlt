@@ -71,8 +71,8 @@ MonoBehaviour:
     y: 0
     width: 632
     height: 947
-  m_MinSize: {x: 232, y: 471}
-  m_MaxSize: {x: 10002, y: 14021}
+  m_MinSize: {x: 232, y: 492}
+  m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
   controlID: 117
 --- !u!114 &4
@@ -162,10 +162,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 608, y: 471}
-  m_MaxSize: {x: 18003, y: 14021}
+  m_MinSize: {x: 609, y: 492}
+  m_MaxSize: {x: 18004, y: 14042}
   vertical: 1
-  controlID: 56
+  controlID: 115
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -188,10 +188,10 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 947
-  m_MinSize: {x: 608, y: 471}
-  m_MaxSize: {x: 18003, y: 14021}
+  m_MinSize: {x: 609, y: 492}
+  m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 57
+  controlID: 116
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -263,8 +263,8 @@ MonoBehaviour:
     y: 711
     width: 1012
     height: 236
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -289,8 +289,8 @@ MonoBehaviour:
     y: 0
     width: 632
     height: 596
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -612,23 +612,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 1e360000
       m_LastClickedID: 0
-      m_ExpandedIDs: f6f9ffffa6faffffea350000
+      m_ExpandedIDs: e8faffff62fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Text
-        m_OriginalName: Text
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -1558
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 12}
       m_SearchString: 
@@ -677,20 +677,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\GitHub Desktop\LAJF---STL2\Unity project\LAJF-STL UnityProject2D
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 240}
-    m_SelectedIDs: a8360000
-    m_LastClickedID: 13992
-    m_ExpandedIDs: 00000000a4360000a6360000a8360000aa360000ac360000ae360000b0360000b2360000b4360000b6360000b8360000ba360000bc360000be36000000ca9a3b
+    scrollPos: {x: 0, y: 186}
+    m_SelectedIDs: e0350000
+    m_LastClickedID: 13792
+    m_ExpandedIDs: 00000000de350000e0350000e2350000e4350000e6350000e8350000ea350000ec350000ee350000f0350000f2350000f4350000f6350000f835000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -718,7 +718,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a4360000a6360000a8360000aa360000ac360000ae360000b0360000b2360000b4360000b6360000b8360000ba360000bc360000be360000
+    m_ExpandedIDs: 00000000de350000e0350000e2350000e4350000e6350000e8350000ea350000ec350000ee350000f0350000f2350000f4350000f6350000f8350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -745,7 +745,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000c036000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -811,4 +811,4 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 274
+  m_LastVerticalScrollValue: 0
