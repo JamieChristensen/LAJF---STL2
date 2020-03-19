@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2538111601857523256}
   - component: {fileID: 2991526558272719843}
   - component: {fileID: 8923055375928089850}
-  - component: {fileID: 5906747748536021}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,12 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3c9365934e0274ab5e7811e3458095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHPListener: {fileID: 0}
+  playerHPListener: {fileID: 2991526558272719843}
   isGamePaused: {fileID: 11400000, guid: 713d98ef2e2ff9945a5eb7edfe2814c4, type: 2}
   isSceneLoading: {fileID: 11400000, guid: 857e776a5cfba834c9cfba54778abaf5, type: 2}
   gameLoadProgress: {fileID: 0}
   environmentAndHeroChoiceFinished: {fileID: 8923055375928089850}
-  godsPickedMonsterAndTrait: {fileID: 5906747748536021}
+  godsPickedMonsterAndTrait: {fileID: 0}
 --- !u!114 &2991526558272719843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,33 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameEvent: {fileID: 11400000, guid: 228bcd2449e92ab4caea40490134b6b8, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2538111601857523256}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5906747748536021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5702686960598596083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 9ada70056f44bf5419c2f5bb052095ca, type: 2}
   unityEventResponse:
     m_PersistentCalls:
       m_Calls:

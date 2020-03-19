@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
-  m_Name: 05 Book
+  m_Name: 02 Sheep
   m_EditorClassIdentifier: 
-  name: Book of Silence
-  description: SHHH! IT'S A LIBRARY...
-  trait: 'Trait: Librarian - Have access to the God Section of the library!'
+  myName: Oh mighty sheep
+  description: Beep, beep, it's a sheep...
+  trait: 'Trait: Vegan - Can eat grass like a maniac!'
   moveSpeed: 0
   jumpForce: 0
   baseAttackDamage: 1
   attackRate: 0
   rangedAttacks: 1
-  meleeAttacks: 1
+  meleeAttacks: 0
   maxHitPoints: 20
   startingHitPoints: 20
   baseDamageReduction: 0

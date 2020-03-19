@@ -10,18 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
-  m_Name: 04 Troll
+  m_Name: 01 Farmer
   m_EditorClassIdentifier: 
-  name: Internet Troll
-  description: He is always up for a fight...
-  trait: 'Trait: Fight Club - Takes a beating for a living, as long as he don''t
-    talk about it!'
-  moveSpeed: 0
-  jumpForce: 0
-  baseAttackDamage: 1
-  attackRate: 0
+  myName: 10
+  description: He likes his animals like a vergin...
+  trait: 'Trait: Ordinary - Nothing to see here!'
+  moveSpeed: 10
+  jumpForce: 10
+  baseAttackDamage: 10
+  attackRate: 10
   rangedAttacks: 0
   meleeAttacks: 1
   maxHitPoints: 30
-  startingHitPoints: 20
-  baseDamageReduction: 1
+  startingHitPoints: 30
+  baseDamageReduction: 0
