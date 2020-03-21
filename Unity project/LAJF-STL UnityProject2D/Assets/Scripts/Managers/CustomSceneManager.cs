@@ -31,6 +31,7 @@ public class CustomSceneManager : MonoBehaviour
 
     public void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             RequestEnvironmentChange(currentEnvironmentIndex == 1 ? 2 : 1);
@@ -40,6 +41,7 @@ public class CustomSceneManager : MonoBehaviour
         {
             StartCoroutine(AUnloadEnvironment(currentEnvironmentIndex));
         }
+        */
     }
 
     public void LoadMainMenu()

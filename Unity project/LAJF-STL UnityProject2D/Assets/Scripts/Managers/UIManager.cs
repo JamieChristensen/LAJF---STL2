@@ -15,8 +15,11 @@ public class UIManager : MonoBehaviour
 
     public IntTypeListener loadProgressUpdateEvent;
 
+    public IntTypeListener playerHPListener;
+
     public GameObject loadingScreen;
     public Slider progressBar;
+    public Slider playerHPSlider;
 
     [SerializeField]
     private float maxTime = 0.2f; //Assign in inspector
@@ -84,4 +87,7 @@ public class UIManager : MonoBehaviour
         pauseCanvasGroup.SetActive(isGamePaused.myBool);
     }
 
+    public void UpdateHPSlider(int hp){
+        playerHPSlider.value = hp;
+    }
 }

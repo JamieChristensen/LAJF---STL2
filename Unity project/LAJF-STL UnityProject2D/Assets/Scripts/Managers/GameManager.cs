@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public BoolVariable isGamePaused;
 
     public BoolVariable isSceneLoading;
-    public IntVariable gameLoadProgress;
 
     public VoidTypeListener environmentAndHeroChoiceFinished;  //When the gods finished picking the environment.
     public VoidTypeListener godsPickedMonsterAndTrait;      //Should be raised when gods finish selecting both monster and traits.
