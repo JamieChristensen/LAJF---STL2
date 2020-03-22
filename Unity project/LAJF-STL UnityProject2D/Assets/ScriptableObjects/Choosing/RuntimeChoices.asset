@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e1c97408e759245a0052f49e9815a5, type: 3}
+  m_Name: RuntimeChoices
+  m_EditorClassIdentifier: 
+  CategoryName: Runtime Choices
+  Options: []
+  runTimeLoopCount: 1
+  character: {fileID: 0}
+  theme: {fileID: 0}
+  firstOpponent:
+    minion: {fileID: 0}
+    modifier: {fileID: 0}
+  firstItem: {fileID: 0}
+  secondOpponent:
+    minion: {fileID: 0}
+    modifier: {fileID: 0}
+  secondItem: {fileID: 0}
+  thirdOpponent:
+    minion: {fileID: 0}
+    modifier: {fileID: 0}
+  thirdItem: {fileID: 0}
+  fourthOpponent:
+    minion: {fileID: 0}
+    modifier: {fileID: 0}
