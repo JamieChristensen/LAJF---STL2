@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
     public Button settingsButton;
     public Button creditsButton;
     public Button exitGameButton;
-
+    
     public string startGameSceneName;
 
     public GameObject settingsMenu;
