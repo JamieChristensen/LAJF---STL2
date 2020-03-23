@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e1c97408e759245a0052f49e9815a5, type: 3}
+  m_Name: Item
+  m_EditorClassIdentifier: 
+  CategoryName: Item
+  Options:
+  - {fileID: 4805518738470751890, guid: 19819d60ef550904487d9640c79f4884, type: 3}
+  - {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819, type: 3}
+  runTimeLoopCount: 0
+  character: {fileID: 0}
+  theme: {fileID: 0}
+  firstOpponent:
+    minion: {fileID: 0}
+    modifier: {fileID: 0}
+  firstItem: {fileID: 0}
+  secondOpponent:
+    minion: {fileID: 0}
+    modifier: {fileID: 0}
+  secondItem: {fileID: 0}
+  thirdOpponent:
+    minion: {fileID: 0}
+    modifier: {fileID: 0}
+  thirdItem: {fileID: 0}
+  fourthOpponent:
+    minion: {fileID: 0}
+    modifier: {fileID: 0}
