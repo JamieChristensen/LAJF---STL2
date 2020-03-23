@@ -1,11 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using STL2.Events;
 
 public class P1Controller : MonoBehaviour
 {
-
+    public enum Player1Input
+    {
+        Horizontal,
+        Jump,
+        Attack
+    };
     #region INSPECTOR
     public P1Stats playerStats;
     public IntEvent playerHPEvent;
@@ -128,7 +134,7 @@ public class P1Controller : MonoBehaviour
         GameObject instance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f), Quaternion.identity);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
         //rb.velocity = moveDirection * projectileSpeed;
-        rb.AddForce(moveDirection*projectileSpeed, ForceMode2D.Impulse);
+        rb.AddForce(moveDirection * projectileSpeed, ForceMode2D.Impulse);
 
 
         Projectile projInstance = instance.GetComponent<Projectile>();
@@ -145,6 +151,22 @@ public class P1Controller : MonoBehaviour
         playerHPEvent.Raise(currentHitPoints);
     }
 
+    public void ReceiveInput(Player1Input input, float value)
+    {
+        switch (input)
+        {
+            case Player1Input.Attack:
+                throw new NotImplementedException();
+                break;
+            case Player1Input.Horizontal:
+                throw new NotImplementedException();
+                break;
+            case Player1Input.Jump:
+                throw new NotImplementedException();
+                break;
+
+        }
+    }
 
 
 
