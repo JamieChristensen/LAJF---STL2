@@ -25,6 +25,11 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     #endregion // INSPECTOR
 
+    private void Awake()
+    {
+        choice = 4; // the choice is set back to the default value
+    }
+
 
     #region choosing
 
@@ -138,7 +143,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     void RaiseEvent(string choiceType)
     {
-        choice = 4; // the choice is set back to the default value
+        
         switch (choiceType)
         {
             case "Item":
@@ -241,7 +246,9 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 break;
         }
         Debug.Log("Hero has chosen the" + runtimeChoices.runTimeLoopCount + ". item! It is: " + finalChoice.name);
-        runtimeChoices.runTimeLoopCount++;
+
+       // runtimeChoices.runTimeLoopCount++;  
+
         heroHasChosenItem.Raise(); // Raising event for item chosen
     }
 
@@ -252,11 +259,14 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     void SwitchToThemeSelection() // from character selection
     {
         Debug.Log("switching to theme select!");
+
     }
 
     void SwitchToModifierSelection() // from minion selection
     {
         Debug.Log("switching to modifier select!");
+
+
     }
 
 
