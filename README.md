@@ -1,7 +1,7 @@
 # LucaAlexanderJamieFrederik---SocialTechnologyLab2
 
 #### Screenshot of first Prototype:
-![alt text](Screenshot - Prototype1.jpg "Digital Prototype Nr. 1")
+![alt text](Screenshot_Prototype1.png "Digital Prototype Nr. 1")
 
 #
 #### BlogPost on BB:
