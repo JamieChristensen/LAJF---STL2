@@ -45,3 +45,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background Back
+    uniqueID: 1557108141
+    locked: 0
+  - name: Background Middle
+    uniqueID: 3030008503
+    locked: 0
+  - name: Background Front / UI Back
+    uniqueID: 956909805
+    locked: 0
+  - name: Characters
+    uniqueID: 705965851
+    locked: 0
+  - name: Obstacles
+    uniqueID: 3402072461
+    locked: 0
+  - name: UI Middle
+    uniqueID: 2742975161
+    locked: 0
+  - name: UI Front
+    uniqueID: 810998721
+    locked: 0
