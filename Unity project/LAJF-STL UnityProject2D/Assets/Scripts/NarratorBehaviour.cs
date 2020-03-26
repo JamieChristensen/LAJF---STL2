@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -12,12 +13,16 @@ using UnityEngine;
     public int getInSpeed = 5;
     public Rigidbody2D rb2;
     public float readSpeed;
-    public GameObject uiText;
+    public TextMeshProUGUI uiText;
+    private float timer;
+    private bool hasFired = false; 
 
     public Vector2 previousPosition;
 
     void Start()
         {
+            uiText.text = "";
+        timer = 0;
         }
 
 
@@ -26,15 +31,15 @@ using UnityEngine;
     // Update is called once per frame
     void Update()
         {
-
-            if(Input.GetMouseButtonUp(0))
+        timer += Time.deltaTime;
+            Debug.Log(timer);
+        if (timer > 6 && !hasFired)
         {
-
+            hasFired = true;
             StartCoroutine(readText("din mor"));
-            }
-
-        
-            
+        }
+        if (Input.GetMouseButtonUp(2))
+            RandomizePosition();
         }
 
     private void exitScene()
@@ -70,11 +75,17 @@ using UnityEngine;
 
     IEnumerator readText(string text)
     {
+        // execute TTS service with text param and wait for respons 
+
+      //  RandomizePosition();
         EnterScene();
+        
         // show text on screen 
-        // 
+        uiText.text = text;
+        
         yield return new WaitForSeconds(4*readSpeed);
         exitScene();
+        uiText.text = "";
         // remove text 
     } 
 }
