@@ -17,7 +17,10 @@ public class HealthBar : MonoBehaviour
     {
 
         hitPointsText.SetText(currentHealth + " HP");
-        HealthBarScaleTransform.localScale.x = (maxHp / 100) * currentHealth;
+        HealthBarScaleTransform.localScale = new Vector3(((maxHp / 100) * currentHealth)/20, 1,1);
+
+        Debug.Log(currentHealth);
+       // Debug.Log(HealthBarScaleTransform.localScale);
 
     }
 
