@@ -129,6 +129,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
                 choice = Random.Range(1, indexMaximum + 1);
                 finalChoice = type.Options[choice - 1];
+                this.choice = choice;
                 break;
         }
 
@@ -276,6 +277,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         /* Local */
         type = null;
         finalChoice = null;
+        choice = 4;
 
         /* in scriptableObject */
         runtimeChoices.runTimeLoopCount = 1;
