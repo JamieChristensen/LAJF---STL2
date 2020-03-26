@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 [CreateAssetMenu (fileName = "New Choice Category", menuName = "ScriptableObject/ChoiceCategory")]
 public class ChoiceCategory : ScriptableObject
@@ -9,6 +10,7 @@ public class ChoiceCategory : ScriptableObject
     public string CategoryName;
     public GameObject[] Options;
 
+    public List<PlayerItems> playerItems;
 
     [Header("Runtime Only")]
     public int runTimeLoopCount = 1;

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CategoryName: Runtime Choices
   Options: []
+  playerItems: []
   runTimeLoopCount: 1
   character: {fileID: 0}
   theme: {fileID: 0}

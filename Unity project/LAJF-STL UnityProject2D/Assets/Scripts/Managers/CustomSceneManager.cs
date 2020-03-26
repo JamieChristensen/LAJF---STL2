@@ -19,6 +19,9 @@ public class CustomSceneManager : MonoBehaviour
 
     public IntEvent loadProgressInt;
 
+    [SerializeField]
+    public List<int> currentlyLoadedSceneIndices;
+
     public void Start()
     {
         GameObject.DontDestroyOnLoad(this);
@@ -31,17 +34,7 @@ public class CustomSceneManager : MonoBehaviour
 
     public void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RequestEnvironmentChange(currentEnvironmentIndex == 1 ? 2 : 1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            StartCoroutine(AUnloadEnvironment(currentEnvironmentIndex));
-        }
-        */
+        
     }
 
     public void LoadMainMenu()
@@ -92,6 +85,8 @@ public class CustomSceneManager : MonoBehaviour
         StartCoroutine(ChangeEnvironment(currentEnvironmentIndex, environmentIndex));
     }
 
+    
+
 
     #region AdditiveAsync
     //ChangeEnvironment combines two other coroutines, to ensure that before loading the next environment, the previous one is always unloaded first.
@@ -118,7 +113,7 @@ public class CustomSceneManager : MonoBehaviour
     }
 
     //Loads in new environments
-    IEnumerator ALoadEnvironment(int sceneIndex)
+    public IEnumerator ALoadEnvironment(int sceneIndex)
     {
         //Unload current environment (if one is present)
         //Load in new one
@@ -144,7 +139,7 @@ public class CustomSceneManager : MonoBehaviour
         }
     }
 
-    IEnumerator AUnloadEnvironment(int sceneIndex)
+    public IEnumerator AUnloadEnvironment(int sceneIndex)
     {
         if (sceneIndex == -1)
         {

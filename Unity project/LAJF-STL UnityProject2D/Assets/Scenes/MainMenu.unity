@@ -890,7 +890,7 @@ MonoBehaviour:
   settingsButton: {fileID: 435424271}
   creditsButton: {fileID: 1887345758}
   exitGameButton: {fileID: 2137302671}
-  startGameSceneName: Primary gameloop scene
+  startGameSceneName: Main gameloop scene
   settingsMenu: {fileID: 964106341}
   creditsMenu: {fileID: 2002994815}
 --- !u!4 &179123606
