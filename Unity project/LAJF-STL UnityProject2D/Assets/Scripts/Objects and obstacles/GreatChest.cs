@@ -8,6 +8,10 @@ public class GreatChest : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
 
+    [SerializeField]
+    private Sprite[] sprites = new Sprite[3];
+    private SpriteRenderer spriteRenderer;
+
     private Vector3 inactivePosition; //Position from which the box drops
 
     private bool finishedAnimation;
@@ -18,6 +22,7 @@ public class GreatChest : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         inactivePosition = transform.position;
     }
 
@@ -25,6 +30,7 @@ public class GreatChest : MonoBehaviour
     {
         if (playerOpenedBox)
         {
+            spriteRenderer.sprite = sprites[sprites.Length-1]; //Snap to opened sprite. (no animation yet)
             //animate and whathaveyounot, then raise event.
             finishedAnimation = true; //Obviously needs to animate first.
         }

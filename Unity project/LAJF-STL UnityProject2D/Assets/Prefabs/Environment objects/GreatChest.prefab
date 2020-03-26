@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4145219679262336936}
   - component: {fileID: 4145219679262336937}
   - component: {fileID: 4145219679262336938}
-  m_Layer: 0
+  - component: {fileID: 1022211713}
+  m_Layer: 11
   m_Name: GreatChest
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4145219679262336936}
+  sprites:
+  - {fileID: 21300000, guid: 4c70c8734df0cac478826de1972d39e1, type: 3}
+  - {fileID: 21300000, guid: 2d983e34d5c345043896e6d014205f7d, type: 3}
+  - {fileID: 21300000, guid: 0b7b27d21c20e82418aa4f0eed5eb7cd, type: 3}
   whenPlayerOpenedBox: {fileID: 11400000, guid: fdc919741dd2c414fabec7ffa3c1ea37,
     type: 2}
 --- !u!50 &4145219679262336936
@@ -61,10 +66,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
@@ -146,3 +151,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1022211713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4145219679262336939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 16e0900343a1b614891ebeb509469c81, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4145219679262336943}
+        m_MethodName: OnPlayerFinishChallenge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

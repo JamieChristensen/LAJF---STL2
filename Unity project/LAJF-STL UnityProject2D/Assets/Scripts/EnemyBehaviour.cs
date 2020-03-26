@@ -35,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
         // Am I alive?
         if (currentHealth <= 0)
         {
+            gameObject.layer = 15;
             rb2.AddForce(new Vector2(UnityEngine.Random.Range(-3f, 3f) * 10, UnityEngine.Random.Range(3, 9f) * 10), ForceMode2D.Impulse);
             rb2.AddTorque(50000, ForceMode2D.Impulse);
             rb2.gravityScale = 0f;

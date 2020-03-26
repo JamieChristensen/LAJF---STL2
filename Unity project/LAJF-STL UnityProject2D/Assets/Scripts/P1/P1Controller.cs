@@ -66,25 +66,7 @@ public class P1Controller : MonoBehaviour
 
 
 
-        //Move input-handling to input-manager later:
-        #region InputsAndMovement
 
-        //Check if there is a wall on the side the player is moving:
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, 1.5f, obstacles);
-        // If it hits something...
-        if (hit.collider != null)
-        {
-            Debug.Log(hit.transform.gameObject.name);
-        }
-        if (hit.collider != null && hit.transform.CompareTag("Wall"))
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
-
-
-
-
-        #endregion InputsAndMovement
 
         #region UpdateSprites
         spriteRenderer.flipX = moveDirection.x > 0;
@@ -153,10 +135,13 @@ public class P1Controller : MonoBehaviour
 
 
                 rb.velocity = new Vector2(playerStats.moveSpeed * value, rb.velocity.y); //if we press the key that corresponds with KeyCode left, then we want the rigidbody to move to the left
-                moveDirection = (value > 0.1f) ? Vector2.right : 
+                moveDirection = (value > 0.1f) ? Vector2.right :
                     (value < -0.1f) ? Vector2.left : moveDirection;
 
-
+                if (isPlayerCloseToWall(1.5f))
+                {
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                }
 
                 break;
             case Player1Input.Jump:
@@ -166,9 +151,24 @@ public class P1Controller : MonoBehaviour
                 }
                 break;
 
+
         }
+
+
     }
 
+    private bool isPlayerCloseToWall(float range)
+    {
+        //Has to collisioncheck for walls/ground after every round of movement-input.
+        //Check if there is a wall on the side the player is moving:
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, range, obstacles);
+        // If it hits something...
+        if (hit.collider != null && (hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Ground")))
+        {
+            return true;
+        }
 
+        return false;
+    }
 
 }
