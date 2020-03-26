@@ -1,11 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using STL2.Events;
 
 public class P1Controller : MonoBehaviour
 {
-
+    public enum Player1Input
+    {
+        Horizontal,
+        Jump,
+        Attack
+    };
     #region INSPECTOR
     public P1Stats playerStats;
     public IntEvent playerHPEvent;
@@ -60,55 +66,7 @@ public class P1Controller : MonoBehaviour
 
 
 
-        //Move input-handling to input-manager later:
-        #region InputsAndMovement
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.velocity = new Vector2(-playerStats.moveSpeed, rb.velocity.y); //if we press the key that corresponds with KeyCode left, then we want the rigidbody to move to the left
-            moveDirection = Vector2.left;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            rb.velocity = new Vector2(playerStats.moveSpeed, rb.velocity.y); //if we press the key that corresponds with KeyCode right, then we want the rigidbody to move to the right
-            moveDirection = Vector2.right;
-        }
-        else
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
 
-        //Check if there is a wall on the side the player is moving:
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, 1.5f, obstacles);
-        // If it hits something...
-        if (hit.collider != null)
-        {
-            Debug.Log(hit.transform.gameObject.name);
-        }
-        if (hit.collider != null && hit.transform.CompareTag("Wall"))
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
-
-
-        if (Input.GetKeyDown(jump) && isGrounded) //if the button is just pressed (and not held down), then force will be added, so the player jumps into the air if the player is on the ground when pressed
-        {
-            rb.AddForce(playerStats.jumpForce * Vector2.up, ForceMode2D.Impulse);
-
-        }
-        if (Input.GetKeyDown(attackMelee) && playerStats.meleeAttacks == true) // if pressed the keybinding for melee attack & the character can perform melee attacks
-        {
-            MeleeAttack();
-        }
-
-
-        if (Input.GetKeyDown(attackRanged) && playerStats.rangedAttacks == true) // if pressed the keybinding for ranged attack & the character can perform ranged attacks
-        {
-            if (!justUsedRangedAttack)
-            {
-                RangedAttack();
-            }
-        }
-        #endregion InputsAndMovement
 
         #region UpdateSprites
         spriteRenderer.flipX = moveDirection.x > 0;
@@ -128,13 +86,12 @@ public class P1Controller : MonoBehaviour
         GameObject instance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f), Quaternion.identity);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
         //rb.velocity = moveDirection * projectileSpeed;
-        rb.AddForce(moveDirection*projectileSpeed, ForceMode2D.Impulse);
+        rb.AddForce(moveDirection * projectileSpeed, ForceMode2D.Impulse);
 
 
         Projectile projInstance = instance.GetComponent<Projectile>();
         projInstance.damage = 10;
 
-        //Add velocity in movedirection and more.
 
         justUsedRangedAttack = true;
     }
@@ -145,7 +102,73 @@ public class P1Controller : MonoBehaviour
         playerHPEvent.Raise(currentHitPoints);
     }
 
+    private bool canPlayerAttack()
+    {
+        //Can have many more conditionals changing this in the future:
+        return !justUsedRangedAttack;
+    }
+
+    public void ReceiveInput(Player1Input input, float value)
+    {
+        switch (input)
+        {
+            case Player1Input.Attack:
+                if (!canPlayerAttack())
+                {
+                    return;
+                }
+
+                if (playerStats.rangedAttacks)
+                {
+                    RangedAttack();
+                    return;
+                }
+
+                if (playerStats.meleeAttacks)
+                {
+                    MeleeAttack();
+                    return;
+                }
+
+                break;
+            case Player1Input.Horizontal:
 
 
+                rb.velocity = new Vector2(playerStats.moveSpeed * value, rb.velocity.y); //if we press the key that corresponds with KeyCode left, then we want the rigidbody to move to the left
+                moveDirection = (value > 0.1f) ? Vector2.right :
+                    (value < -0.1f) ? Vector2.left : moveDirection;
+
+                if (isPlayerCloseToWall(1.5f))
+                {
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                }
+
+                break;
+            case Player1Input.Jump:
+                if (isGrounded)
+                {
+                    rb.AddForce(playerStats.jumpForce * Vector2.up, ForceMode2D.Impulse);
+                }
+                break;
+
+
+        }
+
+
+    }
+
+    private bool isPlayerCloseToWall(float range)
+    {
+        //Has to collisioncheck for walls/ground after every round of movement-input.
+        //Check if there is a wall on the side the player is moving:
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, range, obstacles);
+        // If it hits something...
+        if (hit.collider != null && (hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Ground")))
+        {
+            return true;
+        }
+
+        return false;
+    }
 
 }

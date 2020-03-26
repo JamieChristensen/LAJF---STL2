@@ -211,6 +211,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 112709285545815177, guid: dc187355022df9c4497e753069219dfe,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 115.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1017665803027246758, guid: dc187355022df9c4497e753069219dfe,
         type: 3}
       propertyPath: m_AnchorMin.y

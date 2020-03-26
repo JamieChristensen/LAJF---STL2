@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Unity project/LAJF-STL UnityProject2D/Assets/Sound/MainAudioMixer.mixer.meta
+guid: 447f9cb53dfaec54ba0fbe2a0a592f76
+NativeFormatImporter:
+=======
 guid: db4d54fbbb5327946ae0c8412913f055
 folderAsset: yes
 DefaultImporter:
+>>>>>>> master:Unity project/LAJF-STL UnityProject2D/Assets/Scenes/Choices.meta
   externalObjects: {}
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
