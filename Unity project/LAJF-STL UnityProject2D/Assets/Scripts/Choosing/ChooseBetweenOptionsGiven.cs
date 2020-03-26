@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using STL2.Events;
+using UnityEngine.UI;
+using TMPro;
 
 public class ChooseBetweenOptionsGiven : MonoBehaviour
 {
@@ -14,7 +16,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public ChoiceCategory theme;
     public ChoiceCategory minion;
     public ChoiceCategory modifier;
-    public ChoiceCategory item;
+    public PlayerItems item;
 
     public ChoiceCategory type;
     public ChoiceCategory runtimeChoices;
@@ -23,11 +25,35 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     private int choice = 4; // this is 4 by default as there never will be 4 choices to choose from. The forth choice is blindpick.
 
+    [Header("Item choice variables")]
+    private PlayerItems[] playerItemChoices = new PlayerItems[2];
+    public PlayerItems[] playerItemPool;
+    public TextMeshProUGUI[] choiceNameText;
+    public Image[] itemImageTargets;
+
     #endregion // INSPECTOR
 
     private void Awake()
     {
         choice = 4; // the choice is set back to the default value
+
+        #region InitializeItemSelection
+        int random = Random.Range(0, playerItemPool.Length);
+        int random2 = random;
+        while (random2 == random)
+        {
+            Debug.Log("random2 was the same as random, rerolling");
+            random2 = Random.Range(0, playerItemPool.Length);
+        }
+        playerItemChoices[0] = playerItemPool[random];
+        playerItemChoices[1] = playerItemPool[random2];
+        choiceNameText[0].text = playerItemChoices[0].name;
+        choiceNameText[1].text = playerItemChoices[1].name;
+        itemImageTargets[0].sprite = playerItemChoices[0].itemSprite;
+        itemImageTargets[1].sprite = playerItemChoices[1].itemSprite;
+
+        #endregion InitializeItemSelection
+
     }
 
 
@@ -35,27 +61,27 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     public void ChooseCharacter(int characterIndex)
     {
-        choice = characterIndex ;
+        choice = characterIndex;
     }
 
-   public void ChooseTheme(int themeIndex)
+    public void ChooseTheme(int themeIndex)
     {
-        choice = themeIndex ;
+        choice = themeIndex;
     }
 
     public void ChooseMinion(int minionIndex)
     {
-        choice = minionIndex ;
+        choice = minionIndex;
     }
 
     public void ChooseModifier(int modifierIndex)
     {
-        choice = modifierIndex ;
+        choice = modifierIndex;
     }
 
     public void ChooseItem(int itemIndex)
     {
-        choice = itemIndex ;
+        choice = itemIndex;
     }
     #endregion // choosing
 
@@ -63,7 +89,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     #region LockingChoice
     public void LockSelectedChoice(string choiceType)
     {
-        
+
         ConvertChoiceToGameObject(choice, choiceType);
 
         //  RaiseEvent(choiceType);
@@ -76,7 +102,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         switch (choiceType)
         {
             case "Item":
-                type = item;
+                //type = item;
                 indexMaximum = 2;
                 break;
 
@@ -97,7 +123,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 goto default;
 
             default: // Character, Minion, Modifier, Theme
-                
+
                 indexMaximum = 3;
                 break;
         }
@@ -114,7 +140,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
             case 3:
 
-                if (indexMaximum == 3) 
+                if (indexMaximum == 3)
                 {
                     finalChoice = type.Options[choice - 1];
                 }
@@ -144,7 +170,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     void RaiseEvent(string choiceType)
     {
-        
+
         switch (choiceType)
         {
             case "Item":
@@ -167,15 +193,15 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 GodsHaveChosenTheme();
                 break;
 
-            default: 
-                
+            default:
+
                 break;
         }
 
     }
-    
 
-    void HeroHasChosenCharacter ()
+
+    void HeroHasChosenCharacter()
     {
         runtimeChoices.character = finalChoice;
         Debug.Log("Hero has chosen a character! It is: " + finalChoice.name);
@@ -228,35 +254,36 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 runtimeChoices.runTimeLoopCount = 1;
                 break;
         }
-        Debug.Log("Gods have chosen the "+ runtimeChoices.runTimeLoopCount + ". modifier! It is: " + finalChoice.name);
+        Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". modifier! It is: " + finalChoice.name);
         godshaveChosenOpponent.Raise(); // Raising event for opponent chosen
     }
 
     void HeroHasChosenItem()
     {
-        switch(runtimeChoices.runTimeLoopCount)
+        switch (runtimeChoices.runTimeLoopCount)
         {
             case 1:
-            runtimeChoices.firstItem = finalChoice;
+                runtimeChoices.firstItem = finalChoice;
                 break;
             case 2:
-            runtimeChoices.secondItem = finalChoice;
+                runtimeChoices.secondItem = finalChoice;
                 break;
             case 3:
-            runtimeChoices.thirdItem = finalChoice;
+                runtimeChoices.thirdItem = finalChoice;
                 break;
         }
         Debug.Log("Hero has chosen the" + runtimeChoices.runTimeLoopCount + ". item! It is: " + finalChoice.name);
 
-       // runtimeChoices.runTimeLoopCount++;  
-
+        // runtimeChoices.runTimeLoopCount++;  
+        runtimeChoices.playerItems.Add(playerItemChoices[choice-1]);
         heroHasChosenItem.Raise(); // Raising event for item chosen
+        Destroy(gameObject);
     }
 
 
     #endregion // RaisingEvents
 
-   
+
     void SwitchToThemeSelection() // from character selection
     {
         Debug.Log("switching to theme select!");
