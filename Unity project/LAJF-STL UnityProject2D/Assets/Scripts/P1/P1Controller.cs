@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using STL2.Events;
 
 public class P1Controller : MonoBehaviour
@@ -42,7 +43,10 @@ public class P1Controller : MonoBehaviour
 
     public float projectileSpeed;
 
+
     public ChoiceCategory runtimeChoices;
+
+    public List<PlayerItems> playerItems = new List<PlayerItems>();
 
     #endregion
 
@@ -173,9 +177,27 @@ public class P1Controller : MonoBehaviour
         return false;
     }
 
-    public void AddItemToCharacter()
+    public void UpdatePlayerStats()
     {
+        List<PlayerItems> chosenItems = runtimeChoices.playerItems;
 
+        foreach (PlayerItems playerItem in chosenItems)
+        {
+            //Skip the item if it's already in the players possession:
+            if (playerItems.Contains(playerItem))
+            {
+                continue;
+            }
+            playerStats.maxHitPoints += playerItem.healthModifier;
+            currentHitPoints += playerItem.healthModifier;
+
+            playerStats.moveSpeed += playerItem.speedModifier;
+
+            playerStats.baseAttackDamage += playerItem.damageModifier;
+        }
+
+        playerItems.AddRange(chosenItems.Except(playerItems)); //Add new items to playeritems
+        Debug.Log("Updated runtime playerstats with new item!");
     }
 
 }

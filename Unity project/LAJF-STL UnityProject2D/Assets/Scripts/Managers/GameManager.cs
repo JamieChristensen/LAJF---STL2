@@ -158,4 +158,12 @@ public class GameManager : MonoBehaviour
         canPlayerMove = false;
         StartCoroutine(sceneManager.ALoadEnvironment(indexOfItemChoiceScene)); //6 is the index of item-choice scene.
     }
+
+    public void OnPickedItem()
+    {
+        //change environment to next one in line.
+        RequestGameStateChange(GameStates.InitializingNextScene);
+        canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
+        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
+    }
 }

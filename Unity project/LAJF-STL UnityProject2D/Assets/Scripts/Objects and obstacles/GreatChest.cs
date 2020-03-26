@@ -20,8 +20,6 @@ public class GreatChest : MonoBehaviour
     [SerializeField]
     private VoidEvent whenPlayerOpenedBox;
 
-    [SerializeField]
-    private PlayerItems[] playerItems;
 
     void Start()
     {

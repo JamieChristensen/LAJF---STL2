@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerItems : MonoBehaviour
+[CreateAssetMenu (fileName = "PlayerItem", menuName = "ScriptableObject/Player1/Item")]
+public class PlayerItems : ScriptableObject
 {
     public string itemName;
     public string description;
+    public Sprite itemSprite;
 
-    public float healthModifier, speedModifier, damageModifier;
+    public int healthModifier;
+    public float speedModifier;
     
+    public float damageModifier;
+
 }
