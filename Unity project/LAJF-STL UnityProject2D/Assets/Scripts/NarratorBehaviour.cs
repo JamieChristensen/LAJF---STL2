@@ -32,7 +32,7 @@ using UnityEngine;
     void Update()
         {
         timer += Time.deltaTime;
-            Debug.Log(timer);
+//            Debug.Log(timer);
         if (timer > 6 && !hasFired)
         {
             hasFired = true;
