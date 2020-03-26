@@ -156,6 +156,7 @@ public class GameManager : MonoBehaviour
     public void OnOpenedChest()
     {
         canPlayerMove = false;
+        Time.timeScale=0f;
         StartCoroutine(sceneManager.ALoadEnvironment(indexOfItemChoiceScene)); //6 is the index of item-choice scene.
     }
 
@@ -163,6 +164,7 @@ public class GameManager : MonoBehaviour
     {
         //change environment to next one in line.
         RequestGameStateChange(GameStates.InitializingNextScene);
+        Time.timeScale = 1f;
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
         StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
     }
