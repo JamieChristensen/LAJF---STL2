@@ -65,7 +65,7 @@ public class InputManager : MonoBehaviour
 
     private void SendInputs()
     {
-        if (player1 != null)
+        if (player1 != null && GameManager.canPlayerMove) 
         {
             if (player1Attack)
             {
@@ -76,7 +76,7 @@ public class InputManager : MonoBehaviour
             {
                 player1.ReceiveInput(P1Controller.Player1Input.Jump, 0); //Float doesn't matter for jump
             }
-
+            
             player1.ReceiveInput(P1Controller.Player1Input.Horizontal, player1Hori);
         }
 

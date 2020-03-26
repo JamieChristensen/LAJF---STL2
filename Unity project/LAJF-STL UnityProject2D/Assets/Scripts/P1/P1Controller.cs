@@ -42,6 +42,8 @@ public class P1Controller : MonoBehaviour
 
     public float projectileSpeed;
 
+    public ChoiceCategory runtimeChoices;
+
     #endregion
 
     void Awake()
@@ -169,6 +171,11 @@ public class P1Controller : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void AddItemToCharacter()
+    {
+
     }
 
 }
