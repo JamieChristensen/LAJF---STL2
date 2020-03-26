@@ -38,7 +38,7 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Fire1
+    m_Name: P1Shoot
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 

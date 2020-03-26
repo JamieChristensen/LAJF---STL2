@@ -68,20 +68,6 @@ public class P1Controller : MonoBehaviour
 
         //Move input-handling to input-manager later:
         #region InputsAndMovement
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.velocity = new Vector2(-playerStats.moveSpeed, rb.velocity.y); //if we press the key that corresponds with KeyCode left, then we want the rigidbody to move to the left
-            moveDirection = Vector2.left;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            rb.velocity = new Vector2(playerStats.moveSpeed, rb.velocity.y); //if we press the key that corresponds with KeyCode right, then we want the rigidbody to move to the right
-            moveDirection = Vector2.right;
-        }
-        else
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
 
         //Check if there is a wall on the side the player is moving:
         RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, 1.5f, obstacles);
@@ -96,24 +82,8 @@ public class P1Controller : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(jump) && isGrounded) //if the button is just pressed (and not held down), then force will be added, so the player jumps into the air if the player is on the ground when pressed
-        {
-            rb.AddForce(playerStats.jumpForce * Vector2.up, ForceMode2D.Impulse);
-
-        }
-        if (Input.GetKeyDown(attackMelee) && playerStats.meleeAttacks == true) // if pressed the keybinding for melee attack & the character can perform melee attacks
-        {
-            MeleeAttack();
-        }
 
 
-        if (Input.GetKeyDown(attackRanged) && playerStats.rangedAttacks == true) // if pressed the keybinding for ranged attack & the character can perform ranged attacks
-        {
-            if (!justUsedRangedAttack)
-            {
-                RangedAttack();
-            }
-        }
         #endregion InputsAndMovement
 
         #region UpdateSprites
@@ -140,7 +110,6 @@ public class P1Controller : MonoBehaviour
         Projectile projInstance = instance.GetComponent<Projectile>();
         projInstance.damage = 10;
 
-        //Add velocity in movedirection and more.
 
         justUsedRangedAttack = true;
     }
@@ -151,18 +120,50 @@ public class P1Controller : MonoBehaviour
         playerHPEvent.Raise(currentHitPoints);
     }
 
+    private bool canPlayerAttack()
+    {
+        //Can have many more conditionals changing this in the future:
+        return !justUsedRangedAttack;
+    }
+
     public void ReceiveInput(Player1Input input, float value)
     {
         switch (input)
         {
             case Player1Input.Attack:
-                throw new NotImplementedException();
+                if (!canPlayerAttack())
+                {
+                    return;
+                }
+
+                if (playerStats.rangedAttacks)
+                {
+                    RangedAttack();
+                    return;
+                }
+
+                if (playerStats.meleeAttacks)
+                {
+                    MeleeAttack();
+                    return;
+                }
+
                 break;
             case Player1Input.Horizontal:
-                throw new NotImplementedException();
+
+
+                rb.velocity = new Vector2(playerStats.moveSpeed * value, rb.velocity.y); //if we press the key that corresponds with KeyCode left, then we want the rigidbody to move to the left
+                moveDirection = (value > 0.1f) ? Vector2.right : 
+                    (value < -0.1f) ? Vector2.left : moveDirection;
+
+
+
                 break;
             case Player1Input.Jump:
-                throw new NotImplementedException();
+                if (isGrounded)
+                {
+                    rb.AddForce(playerStats.jumpForce * Vector2.up, ForceMode2D.Impulse);
+                }
                 break;
 
         }
