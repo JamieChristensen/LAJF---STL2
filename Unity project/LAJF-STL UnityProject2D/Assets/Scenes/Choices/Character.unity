@@ -311,7 +311,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 945436494507955721}
-        m_MethodName: ChooseTheme
+        m_MethodName: ChooseCharacter
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -405,7 +405,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 945436494507955721}
-        m_MethodName: ChooseTheme
+        m_MethodName: ChooseCharacter
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1180,7 +1180,7 @@ MonoBehaviour:
     Choose  Your Identity!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f408b068ea2fa604b8c316b3209e6cf1, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 306478a93c9975a4cb3d3cc0d816d14d, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: de1cd15a31cb57a48bbd7bbe44373d65, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1341,7 +1341,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Theme
+          m_StringArgument: Character
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &5309723433349324315
@@ -1392,7 +1392,7 @@ MonoBehaviour:
   m_text: Character Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f408b068ea2fa604b8c316b3209e6cf1, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: fbb0b008934d47c469e917d8c120abee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: de1cd15a31cb57a48bbd7bbe44373d65, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_text: Character Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f408b068ea2fa604b8c316b3209e6cf1, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: fbb0b008934d47c469e917d8c120abee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: de1cd15a31cb57a48bbd7bbe44373d65, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1824,7 +1824,7 @@ MonoBehaviour:
   m_text: Character Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f408b068ea2fa604b8c316b3209e6cf1, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: fbb0b008934d47c469e917d8c120abee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: de1cd15a31cb57a48bbd7bbe44373d65, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2139,7 +2139,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 945436494507955721}
-        m_MethodName: ChooseTheme
+        m_MethodName: ChooseCharacter
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
