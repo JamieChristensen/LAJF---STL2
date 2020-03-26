@@ -52,6 +52,7 @@ MonoBehaviour:
   bulletObj: {fileID: 3604006451443815256, guid: 781e18538fd716748ab0e6afc2f43f66,
     type: 3}
   projectileSpeed: 30.22
+  monsterDied: {fileID: 11400000, guid: 16e0900343a1b614891ebeb509469c81, type: 2}
 --- !u!50 &2409340943091751095
 Rigidbody2D:
   serializedVersion: 4

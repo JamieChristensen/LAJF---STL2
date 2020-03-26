@@ -47,3 +47,5 @@ MonoBehaviour:
   God1: {fileID: 0}
   God2: {fileID: 0}
   God3: {fileID: 0}
+  player1JumpKey: 32
+  player1AttackKey: 106

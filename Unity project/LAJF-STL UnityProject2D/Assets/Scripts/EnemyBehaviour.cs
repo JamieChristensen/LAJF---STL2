@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using STL2.Events;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField]
     private float projectileSpeed = 1;
 
+    [SerializeField]
+    private VoidEvent monsterDied;
 
 
     // Start is called before the first frame update
@@ -28,14 +31,16 @@ public class EnemyBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
+        #region OnDeath
         // Am I alive?
         if (currentHealth <= 0)
         {
+            gameObject.layer = 15;
             rb2.AddForce(new Vector2(UnityEngine.Random.Range(-3f, 3f) * 10, UnityEngine.Random.Range(3, 9f) * 10), ForceMode2D.Impulse);
             rb2.AddTorque(50000, ForceMode2D.Impulse);
             rb2.gravityScale = 0f;
 
-            FindObjectOfType<EnemySpawner>().SpawnEnemy();
+            monsterDied.Raise();
 
             if (UnityEngine.Random.Range(0, 10f) > 6)
             {
@@ -44,6 +49,8 @@ public class EnemyBehaviour : MonoBehaviour
             GameObject.Destroy(this);
             return;
         }
+        #endregion OnDeath
+
         float distance = (target.transform.position - gameObject.transform.position).magnitude;
         // start of behavior tree here
 
