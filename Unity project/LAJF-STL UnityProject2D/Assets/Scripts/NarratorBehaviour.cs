@@ -11,12 +11,12 @@ using UnityEngine;
     public Camera mainCam;
     public int getInSpeed = 5;
     public Rigidbody2D rb2;
+    public float readSpeed;
+    public GameObject uiText;
 
     public Vector2 previousPosition;
-    
 
-
-        void Start()
+    void Start()
         {
         }
 
@@ -27,22 +27,13 @@ using UnityEngine;
     void Update()
         {
 
-            if(Input.GetMouseButtonUp(0)){
+            if(Input.GetMouseButtonUp(0))
+        {
 
-                EnterScene();
-                
+            StartCoroutine(readText("din mor"));
             }
 
-            if (Input.GetMouseButtonUp(1))
-            {
-                exitScene();
-            }
-
-            if (Input.GetMouseButtonUp(2))
-            {
-            Debug.Log("PRESSEd");
-                RandomizePosition();
-            }
+        
             
         }
 
@@ -66,7 +57,7 @@ using UnityEngine;
         //determine which side to use / width or height
         if (UnityEngine.Random.Range(0,1) >= 0.5f)
         {
-            y = UnityEngine.Random.Range(0, mainCam.scaledPixelHeight);
+            y = UnityEngine.Random.Range(0, mainCam.scaledPixelWidth);
             x = 0;
         }
         else{
@@ -77,8 +68,14 @@ using UnityEngine;
         transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * 100);
     }
 
-           
-       
-
-    }
-
+    IEnumerator readText(string text)
+    {
+        EnterScene();
+        // show text on screen 
+        // 
+        yield return new WaitForSeconds(4*readSpeed);
+        exitScene();
+        // remove text 
+    } 
+}
+     

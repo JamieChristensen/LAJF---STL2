@@ -711,8 +711,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio: {fileID: 486919760}
   mainCam: {fileID: 2005818874}
-  getInSpeed: 5
+  getInSpeed: 8
   rb2: {fileID: 1848532739}
+  readSpeed: 1
   previousPosition: {x: 0, y: 0}
 --- !u!1001 &1882003535
 PrefabInstance:
