@@ -1020,10 +1020,14 @@ MonoBehaviour:
   theme: {fileID: 11400000, guid: 39b03a01b19324b4cbae1684e1476b01, type: 2}
   minion: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   modifier: {fileID: 11400000, guid: c1eb906e953b7f44f8038e1308e1e8ed, type: 2}
-  item: {fileID: 11400000, guid: b52ee4ce1ca1f5942a3e6afd80951572, type: 2}
+  item: {fileID: 0}
+  choiceType: Minion
   type: {fileID: 0}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   finalChoice: {fileID: 0}
+  playerItemPool: []
+  choiceNameText: []
+  itemImageTargets: []
 --- !u!114 &4486751433332076678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,7 +1406,7 @@ MonoBehaviour:
   m_text: Minion Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f408b068ea2fa604b8c316b3209e6cf1, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: fbb0b008934d47c469e917d8c120abee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 306478a93c9975a4cb3d3cc0d816d14d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1603,7 +1607,7 @@ MonoBehaviour:
   m_text: Minion Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f408b068ea2fa604b8c316b3209e6cf1, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: fbb0b008934d47c469e917d8c120abee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 306478a93c9975a4cb3d3cc0d816d14d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2100,7 +2104,7 @@ MonoBehaviour:
   m_text: Minion Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f408b068ea2fa604b8c316b3209e6cf1, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: fbb0b008934d47c469e917d8c120abee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 306478a93c9975a4cb3d3cc0d816d14d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
