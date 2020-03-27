@@ -15,16 +15,15 @@ MonoBehaviour:
   CategoryName: Runtime Choices
   Options: []
   playerItems:
-  - {fileID: 11400000, guid: 5966a2f15e04c4a4997eec965b58ecc2, type: 2}
-  - {fileID: 11400000, guid: 5966a2f15e04c4a4997eec965b58ecc2, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   runTimeLoopCount: 1
   character: {fileID: 0}
   theme: {fileID: 0}
   firstOpponent:
     minion: {fileID: 0}
     modifier: {fileID: 0}
-  firstItem: {fileID: 4805518738470751890, guid: 19819d60ef550904487d9640c79f4884,
-    type: 3}
+  firstItem: {fileID: 0}
   secondOpponent:
     minion: {fileID: 0}
     modifier: {fileID: 0}
