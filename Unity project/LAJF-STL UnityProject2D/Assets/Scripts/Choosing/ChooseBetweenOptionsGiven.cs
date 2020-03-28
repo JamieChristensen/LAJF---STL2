@@ -314,7 +314,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     void SwitchToModifierSelection() // from minion selection
     {
         Debug.Log("switching to modifier select!");
-
+        
     }
 
 
