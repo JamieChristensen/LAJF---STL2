@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CategoryName: Character
   Options:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6353891775846845246, guid: 6a73202dfb2e631458e1df17522ab86b, type: 3}
+  - {fileID: 2946138317705448204, guid: 24863b3731e5045438a710bdf0559522, type: 3}
+  - {fileID: 1825637178822851072, guid: b5d4f79e2f4797445a3689d33ea25932, type: 3}
   playerItems: []
   runTimeLoopCount: 1
   character: {fileID: 0}

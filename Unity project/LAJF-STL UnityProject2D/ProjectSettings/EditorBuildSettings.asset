@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: bc660fbee1c16d740aa925be960f2baa
   - enabled: 1
-    path: Assets/Scenes/Main gameloop scene.unity
-    guid: 5f472be7a9158634c95401f3730412b3
-  - enabled: 1
     path: Assets/Scenes/Choices/Character.unity
     guid: afe1db01502c2994b9420c6acbe41137
   - enabled: 1
     path: Assets/Scenes/Choices/Theme.unity
     guid: aa598b18813dee74bbc57c0680928efd
+  - enabled: 1
+    path: Assets/Scenes/Main gameloop scene.unity
+    guid: 5f472be7a9158634c95401f3730412b3
   - enabled: 1
     path: Assets/Scenes/Choices/Minion.unity
     guid: b3274cf4f3c126a4f99b4ceb7e049383

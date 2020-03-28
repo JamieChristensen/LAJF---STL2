@@ -4,6 +4,7 @@ using UnityEngine;
 using STL2.Events;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ChooseBetweenOptionsGiven : MonoBehaviour
 {
@@ -231,7 +232,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     {
         runtimeChoices.theme = finalChoice;
         Debug.Log("Gods have chosen a theme! It is: " + finalChoice.name);
-        godshaveChosenTheme.Raise(); // Raising event for theme chosen
+       // godshaveChosenTheme.Raise(); // Raising event for theme chosen
+        SceneManager.LoadScene("Main gameloop scene");
     }
 
     void GodsHaveChosenMinion()
@@ -306,13 +308,12 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     void SwitchToThemeSelection() // from character selection
     {
         Debug.Log("switching to theme select!");
-
+        SceneManager.LoadScene("Theme");
     }
 
     void SwitchToModifierSelection() // from minion selection
     {
         Debug.Log("switching to modifier select!");
-
 
     }
 
