@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4145219679262336937}
   - component: {fileID: 4145219679262336938}
   - component: {fileID: 1022211713}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: GreatChest
   m_TagString: Ground
   m_Icon: {fileID: 0}
