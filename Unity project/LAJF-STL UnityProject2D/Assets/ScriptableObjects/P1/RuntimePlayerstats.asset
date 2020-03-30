@@ -15,7 +15,7 @@ MonoBehaviour:
   myName: 10
   description: 10
   trait: 10
-  moveSpeed: 8
+  moveSpeed: 10
   jumpForce: 18
   baseAttackDamage: 10
   attackRate: 10
