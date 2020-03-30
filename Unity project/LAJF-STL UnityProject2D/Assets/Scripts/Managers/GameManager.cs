@@ -8,7 +8,7 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private int indexOfItemChoiceScene;
+    private int indexOfCharacterChoiceScene, indexOfThemeChoiceScene, indexOfGodChoiceScene, indexOfMinionChoiceScene, indexOfModifierChoiceScene, indexOfItemChoiceScene;
     public IntTypeListener playerHPListener;
     public BoolVariable isGamePaused;
 
@@ -58,17 +58,23 @@ public class GameManager : MonoBehaviour
         canPlayerMove = true; //This should be depending on gamestate, but for now it isn't.
         gameState = initialGamestate;
         GameObject.DontDestroyOnLoad(this);
+       
         if (sceneManager == null)
         {
             sceneManager = FindObjectOfType<CustomSceneManager>();
         }
-
+        
 
         //Ensure all cross-scene reference scriptableObjects are initialized properly:
         if (isGamePaused.myBool)
         {
             isGamePaused.setBool(false);
         }
+
+
+        canPlayerMove = false;
+        Time.timeScale = 0f;
+        StartCoroutine(sceneManager.ALoadEnvironment(indexOfCharacterChoiceScene));
     }
 
     public void PlayerHealthResponse(int playerHP)
@@ -122,12 +128,26 @@ public class GameManager : MonoBehaviour
     public void EnvironmentAndHeroChoiceFinished()
     {
         //Need to figure out which gamestate to go to - rather than none
+
+        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfThemeChoiceScene));
         RequestGameStateChange(GameStates.None);
+        StartCoroutine(sceneManager.ALoadEnvironment(indexOfMinionChoiceScene));
+
+    }
+
+    public void GodsPickedMonster()
+    {
+        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfMinionChoiceScene));
+        StartCoroutine(sceneManager.ALoadEnvironment(indexOfModifierChoiceScene));
     }
 
     public void GodsPickedMonsterAndTrait()
     {
+        Time.timeScale = 1f;
+        canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
         ChangeGameState(GameStates.Encounter);
+        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfModifierChoiceScene));
+
     }
 
     //This is a very brutish way of pausing, but it should work. 
@@ -167,5 +187,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
         StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
+    }
+
+    public void OnPickedCharacter()
+    {
+        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfCharacterChoiceScene));
+        StartCoroutine(sceneManager.ALoadEnvironment(indexOfThemeChoiceScene));
+
     }
 }

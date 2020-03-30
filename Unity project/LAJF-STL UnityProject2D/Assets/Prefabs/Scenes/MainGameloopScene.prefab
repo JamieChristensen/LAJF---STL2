@@ -50,6 +50,87 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &562586951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3540888889702043259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 43054195bef3cdf4c9712414b75f8fda, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6719070688644798896}
+        m_MethodName: OnPickedCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &562586952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3540888889702043259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: db3d5cc5b0e40b043a77d5cc4a0c2d14, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6719070688644798896}
+        m_MethodName: GodsPickedMonster
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &562586953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3540888889702043259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 9ada70056f44bf5419c2f5bb052095ca, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6719070688644798896}
+        m_MethodName: GodsPickedMonsterAndTrait
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6283824802865158753
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,12 +840,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9081438539701816683}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3441053654792283270 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5892630455597672941, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9081438539701816683}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3441053654792283264 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
@@ -777,6 +852,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aca076a848adaa4f898eede48bbd14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3441053654792283270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5892630455597672941, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 9081438539701816683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9081438539747856861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1227,10 +1308,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
+        type: 3}
+      propertyPath: indexOfCharacterChoiceScene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
+        type: 3}
+      propertyPath: indexOfThemeChoiceScene
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
+        type: 3}
+      propertyPath: indexOfMinionChoiceScene
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
+        type: 3}
+      propertyPath: indexOfModifierChoiceScene
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5702686960598596083, guid: 21520e1c83698d4488117d89451521b6,
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8923055375928089850, guid: 21520e1c83698d4488117d89451521b6,
+        type: 3}
+      propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnvironmentAndHeroChoiceFinished
+      objectReference: {fileID: 0}
+    - target: {fileID: 8923055375928089850, guid: 21520e1c83698d4488117d89451521b6,
+        type: 3}
+      propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21520e1c83698d4488117d89451521b6, type: 3}
@@ -1240,7 +1351,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 9081438541244430216}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3540888889702043259}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe3c9365934e0274ab5e7811e3458095, type: 3}
@@ -1249,6 +1360,12 @@ MonoBehaviour:
 --- !u!4 &7551834069043307008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1642196687679034760, guid: 21520e1c83698d4488117d89451521b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 9081438541244430216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3540888889702043259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5702686960598596083, guid: 21520e1c83698d4488117d89451521b6,
     type: 3}
   m_PrefabInstance: {fileID: 9081438541244430216}
   m_PrefabAsset: {fileID: 0}

@@ -50,7 +50,7 @@ public class CustomSceneManager : MonoBehaviour
     public void RequestSceneChange(int _sceneIndex)
     {
         //In case there is logic needed to prevent scenechanges in certain situations:
-        if (_sceneIndex > SceneManager.sceneCountInBuildSettings - 1 && _sceneIndex < 0)
+        if (_sceneIndex > SceneManager.sceneCountInBuildSettings - 1 || _sceneIndex < 0)
         {
             Debug.Log("Scene request denied, index out of range");
             return;

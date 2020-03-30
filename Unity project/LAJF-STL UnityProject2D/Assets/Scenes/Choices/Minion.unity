@@ -1632,9 +1632,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f84dcc52e430544b54820c7a56d82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godshaveChosenTheme: {fileID: 11400000, guid: 228bcd2449e92ab4caea40490134b6b8,
+  heroHasChosenCharacter: {fileID: 11400000, guid: 43054195bef3cdf4c9712414b75f8fda,
     type: 2}
-  godshaveChosenOpponent: {fileID: 11400000, guid: 9ada70056f44bf5419c2f5bb052095ca,
+  godsHaveChosenTheme: {fileID: 11400000, guid: 228bcd2449e92ab4caea40490134b6b8,
+    type: 2}
+  godsHaveChosenMinion: {fileID: 11400000, guid: db3d5cc5b0e40b043a77d5cc4a0c2d14,
+    type: 2}
+  godsHaveChosenOpponent: {fileID: 11400000, guid: 9ada70056f44bf5419c2f5bb052095ca,
     type: 2}
   heroHasChosenItem: {fileID: 11400000, guid: 1cade647f7014d543829d17d91acb9c9, type: 2}
   character: {fileID: 11400000, guid: 91fdf18fd46cb1c40ad78f5321d54cea, type: 2}

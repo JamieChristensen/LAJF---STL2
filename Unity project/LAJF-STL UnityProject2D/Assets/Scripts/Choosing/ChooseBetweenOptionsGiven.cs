@@ -9,8 +9,12 @@ using UnityEngine.SceneManagement;
 public class ChooseBetweenOptionsGiven : MonoBehaviour
 {
     #region INSPECTOR
-    public VoidEvent godshaveChosenTheme;
-    public VoidEvent godshaveChosenOpponent;
+    CustomSceneManager customSceneManager;
+
+    public VoidEvent heroHasChosenCharacter;
+    public VoidEvent godsHaveChosenTheme;
+    public VoidEvent godsHaveChosenMinion;
+    public VoidEvent godsHaveChosenOpponent;
     public VoidEvent heroHasChosenItem;
 
     public ChoiceCategory character;
@@ -39,7 +43,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     private void Awake()
     {
         choice = 4; // the choice is set back to the default value
-
+        customSceneManager = GameObject.Find("SceneManager").GetComponent<CustomSceneManager>();
 
        
         if (choiceType == "Item")
@@ -232,8 +236,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     {
         runtimeChoices.theme = finalChoice;
         Debug.Log("Gods have chosen a theme! It is: " + finalChoice.name);
-       // godshaveChosenTheme.Raise(); // Raising event for theme chosen
-        SceneManager.LoadScene("Main gameloop scene");
+        // godshaveChosenTheme.Raise(); // Raising event for theme chosen
+        godsHaveChosenTheme.Raise();
     }
 
     void GodsHaveChosenMinion()
@@ -276,7 +280,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 break;
         }
         Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". modifier! It is: " + finalChoice.name);
-        godshaveChosenOpponent.Raise(); // Raising event for opponent chosen
+        godsHaveChosenOpponent.Raise(); // Raising event for opponent chosen
     }
 
     void HeroHasChosenItem()
@@ -305,16 +309,18 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     #endregion // RaisingEvents
 
 
-    void SwitchToThemeSelection() // from character selection
+    public void SwitchToThemeSelection() // from character selection
     {
         Debug.Log("switching to theme select!");
-        SceneManager.LoadScene("Theme");
+        heroHasChosenCharacter.Raise();
+        
     }
 
-    void SwitchToModifierSelection() // from minion selection
+    public void SwitchToModifierSelection() // from minion selection
     {
         Debug.Log("switching to modifier select!");
-        
+        godsHaveChosenMinion.Raise();
+
     }
 
 
