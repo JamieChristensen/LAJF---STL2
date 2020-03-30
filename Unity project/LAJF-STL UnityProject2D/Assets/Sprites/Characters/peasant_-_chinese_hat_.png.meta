@@ -1,7 +1,148 @@
 fileFormatVersion: 2
 guid: 4689567f5d6a5a846b7016a2ff8574e8
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7856292400910986295
+    second: peasant_-_chinese_hat__0
+  - first:
+      213: 8504305874624505467
+    second: peasant_-_chinese_hat__1
+  - first:
+      213: 6674002949442902910
+    second: peasant_-_chinese_hat__2
+  - first:
+      213: -6305675611913334513
+    second: peasant_-_chinese_hat__3
+  - first:
+      213: 1531272311334800124
+    second: peasant_-_chinese_hat__4
+  - first:
+      213: -5682754746727520092
+    second: peasant_-_chinese_hat__5
+  - first:
+      213: -5024729447513645044
+    second: peasant_-_chinese_hat__6
+  - first:
+      213: -1555161683670349463
+    second: peasant_-_chinese_hat__7
+  - first:
+      213: -8326602641293035051
+    second: peasant_-_chinese_hat__8
+  - first:
+      213: -5136355760604801167
+    second: peasant_-_chinese_hat__9
+  - first:
+      213: 1421622346623368216
+    second: peasant_-_chinese_hat__10
+  - first:
+      213: 3472669318423209935
+    second: peasant_-_chinese_hat__11
+  - first:
+      213: -1831782334174977270
+    second: peasant_-_chinese_hat__12
+  - first:
+      213: -4999771127695446647
+    second: peasant_-_chinese_hat__13
+  - first:
+      213: -1740513258538726330
+    second: peasant_-_chinese_hat__14
+  - first:
+      213: -3159213899630454526
+    second: peasant_-_chinese_hat__15
+  - first:
+      213: 7897542176156018641
+    second: peasant_-_chinese_hat__16
+  - first:
+      213: 2589461603265048480
+    second: peasant_-_chinese_hat__17
+  - first:
+      213: 4470714499524510688
+    second: peasant_-_chinese_hat__18
+  - first:
+      213: 6028771198731203600
+    second: peasant_-_chinese_hat__19
+  - first:
+      213: -6306761511005898931
+    second: peasant_-_chinese_hat__20
+  - first:
+      213: 5966982705914521074
+    second: peasant_-_chinese_hat__21
+  - first:
+      213: -3828741485180706924
+    second: peasant_-_chinese_hat__22
+  - first:
+      213: -5114478769332845358
+    second: peasant_-_chinese_hat__23
+  - first:
+      213: -3676496165514382014
+    second: peasant_-_chinese_hat__24
+  - first:
+      213: -1575732247395675710
+    second: peasant_-_chinese_hat__25
+  - first:
+      213: -8301090969585827406
+    second: peasant_-_chinese_hat__26
+  - first:
+      213: 2373510194474154890
+    second: peasant_-_chinese_hat__27
+  - first:
+      213: 8015200358442169202
+    second: peasant_-_chinese_hat__28
+  - first:
+      213: -3222594064128588449
+    second: peasant_-_chinese_hat__29
+  - first:
+      213: 387644239629078066
+    second: peasant_-_chinese_hat__30
+  - first:
+      213: -5267719915722811671
+    second: peasant_-_chinese_hat__31
+  - first:
+      213: -7703535166630017595
+    second: peasant_-_chinese_hat__32
+  - first:
+      213: -1789413538377398454
+    second: peasant_-_chinese_hat__33
+  - first:
+      213: -7336688340849653846
+    second: peasant_-_chinese_hat__34
+  - first:
+      213: -5448336941711172205
+    second: peasant_-_chinese_hat__35
+  - first:
+      213: -936642951158288031
+    second: peasant_-_chinese_hat__36
+  - first:
+      213: -361666732806304205
+    second: peasant_-_chinese_hat__37
+  - first:
+      213: -4228194541353957176
+    second: peasant_-_chinese_hat__38
+  - first:
+      213: -1512218150721950698
+    second: peasant_-_chinese_hat__39
+  - first:
+      213: 2805582015205225248
+    second: peasant_-_chinese_hat__40
+  - first:
+      213: 7994119905818620092
+    second: peasant_-_chinese_hat__41
+  - first:
+      213: -8669710675741445447
+    second: peasant_-_chinese_hat__42
+  - first:
+      213: 8702488334448008920
+    second: peasant_-_chinese_hat__43
+  - first:
+      213: 3089252093716954669
+    second: peasant_-_chinese_hat__44
+  - first:
+      213: -8942350820071637824
+    second: peasant_-_chinese_hat__45
+  - first:
+      213: -6324376986552732168
+    second: peasant_-_chinese_hat__46
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +181,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +211,63 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: peasant_-_chinese_hat__0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 340
+        width: 677
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73c66ef6058270d60800000000000000
+      internalID: 7856292400910986295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peasant_-_chinese_hat__1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 677
+        height: 677
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b76e24e922d550670800000000000000
+      internalID: 8504305874624505467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
