@@ -4,6 +4,7 @@ using UnityEngine;
 using STL2.Events;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ChooseBetweenOptionsGiven : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public ChoiceCategory minion;
     public ChoiceCategory modifier;
     public PlayerItems item;
+    public string choiceType;
+
 
     public ChoiceCategory type;
     public ChoiceCategory runtimeChoices;
@@ -37,22 +40,39 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     {
         choice = 4; // the choice is set back to the default value
 
-        #region InitializeItemSelection
-        int random = Random.Range(0, playerItemPool.Length);
-        int random2 = random;
-        while (random2 == random)
-        {
-            Debug.Log("random2 was the same as random, rerolling");
-            random2 = Random.Range(0, playerItemPool.Length);
-        }
-        playerItemChoices[0] = playerItemPool[random];
-        playerItemChoices[1] = playerItemPool[random2];
-        choiceNameText[0].text = playerItemChoices[0].name;
-        choiceNameText[1].text = playerItemChoices[1].name;
-        itemImageTargets[0].sprite = playerItemChoices[0].itemSprite;
-        itemImageTargets[1].sprite = playerItemChoices[1].itemSprite;
 
-        #endregion InitializeItemSelection
+       
+        if (choiceType == "Item")
+        {
+            #region InitializeItemSelection
+            int random = Random.Range(0, playerItemPool.Length);
+            int random2 = random;
+            if (playerItemPool.Length <= 1)
+            {
+                random2 = 3;
+            }
+
+
+            while (random2 == random)
+            {
+                Debug.Log("random2 was the same as random, rerolling");
+                random2 = Random.Range(0, playerItemPool.Length);
+            }
+            if (runtimeChoices.playerItems.Count != 2)
+            {
+                runtimeChoices.playerItems.Capacity = 2;
+            }
+
+            playerItemChoices[0] = playerItemPool[random];
+            playerItemChoices[1] = playerItemPool[random2];
+            choiceNameText[0].text = playerItemChoices[0].name;
+            choiceNameText[1].text = playerItemChoices[1].name;
+            itemImageTargets[0].sprite = playerItemChoices[0].itemSprite;
+            itemImageTargets[1].sprite = playerItemChoices[1].itemSprite;
+            #endregion InitializeItemSelection
+        }
+
+
 
     }
 
@@ -212,7 +232,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     {
         runtimeChoices.theme = finalChoice;
         Debug.Log("Gods have chosen a theme! It is: " + finalChoice.name);
-        godshaveChosenTheme.Raise(); // Raising event for theme chosen
+       // godshaveChosenTheme.Raise(); // Raising event for theme chosen
+        SceneManager.LoadScene("Main gameloop scene");
     }
 
     void GodsHaveChosenMinion()
@@ -287,14 +308,13 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     void SwitchToThemeSelection() // from character selection
     {
         Debug.Log("switching to theme select!");
-
+        SceneManager.LoadScene("Theme");
     }
 
     void SwitchToModifierSelection() // from minion selection
     {
         Debug.Log("switching to modifier select!");
-
-
+        
     }
 
 
@@ -321,6 +341,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         runtimeChoices.firstItem = null;
         runtimeChoices.secondItem = null;
         runtimeChoices.thirdItem = null;
+        runtimeChoices.playerItems = new List<PlayerItems>();
     }
 
 }
