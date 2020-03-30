@@ -14,7 +14,7 @@ public class HealthBar : MonoBehaviour
 
     bool freezeVisibleDamage = false;
     float freezeTime = 0.5f, timer = 0;
-    public int maxHp;
+    public int maxHp = 30;
 
     float damageScaleX = 5, currentHealthScaleX = 5;
 
@@ -24,15 +24,17 @@ public class HealthBar : MonoBehaviour
         freezeVisibleDamage = true;
         timer = 0;
         hitPointsText.SetText(currentHealth + " HP");
-        currentHealthScaleX = ((maxHp / 100) * currentHealth) / 20;
+        currentHealthScaleX = (5*currentHealth / maxHp );
+        Debug.Log(currentHealth.ToString());
+        Debug.Log(currentHealthScaleX.ToString());
         CurrentHealthFillTransform.localScale = new Vector3(currentHealthScaleX, 1,1);
-        
 
 
 
 
 
-        Debug.Log(currentHealth);
+
+       
        // Debug.Log(HealthBarScaleTransform.localScale);
 
     }

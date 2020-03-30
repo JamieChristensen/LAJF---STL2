@@ -11,8 +11,9 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject target;
     public Enemy agent;
     public GameObject bulletObj;
+    public HealthBar healthBar;
 
-    private float currentHealth;
+    private int currentHealth;
     private float cooldownTimer;
     [SerializeField]
     private float projectileSpeed = 1;
@@ -100,5 +101,6 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        healthBar.VisualiseHealthChange(currentHealth);
     }
 }
