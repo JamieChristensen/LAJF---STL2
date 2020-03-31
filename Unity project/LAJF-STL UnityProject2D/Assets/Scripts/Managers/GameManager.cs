@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public BoolVariable isSceneLoading;
 
     public static bool canPlayerMove { get; private set; }
+    [SerializeField] private bool[] _canMonsterMove; 
+    public bool[] canMonsterMove { get { return _canMonsterMove; }}
 
     public VoidTypeListener environmentAndHeroChoiceFinished;  //When the gods finished picking the environment.
     public VoidTypeListener godsPickedMonsterAndTrait;      //Should be raised when gods finish selecting both monster and traits.
@@ -33,6 +35,9 @@ public class GameManager : MonoBehaviour
 
         new KeyValuePair<GameStates, GameStates[]>(GameStates.InitializingNextScene, new GameStates[] {GameStates.SelectingMonster})
     };
+
+    [SerializeField] private float _timeBetweenPlayerDeathAndEndScreen = 5;
+
 
     [SerializeField]
     private GameStates initialGamestate = GameStates.Encounter;
@@ -55,15 +60,20 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        for (int i = 0; i < canMonsterMove.Length; i++)
+        {
+            canMonsterMove[i] = true; //This should be depending on gamestate, but for now it isn't.
+        }
+        
         canPlayerMove = true; //This should be depending on gamestate, but for now it isn't.
         gameState = initialGamestate;
-       // GameObject.DontDestroyOnLoad(this);
-       
+        // GameObject.DontDestroyOnLoad(this);
+
         if (sceneManager == null)
         {
             sceneManager = FindObjectOfType<CustomSceneManager>();
         }
-        
+
 
         //Ensure all cross-scene reference scriptableObjects are initialized properly:
         if (isGamePaused.myBool)
@@ -71,7 +81,7 @@ public class GameManager : MonoBehaviour
             isGamePaused.setBool(false);
         }
 
-
+        _canMonsterMove[0] = false;
         canPlayerMove = false;
         Time.timeScale = 0f;
         //  StartCoroutine(sceneManager.ALoadEnvironment(indexOfCharacterChoiceScene));
@@ -85,10 +95,8 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        //Definitely need to implement a timer here.
+        StartCoroutine(PlayerDeath());
 
-        //End game by loading proper scene through game-manager - should happen after a delay, as to provide feedback during the delay.
-        FindObjectOfType<CustomSceneManager>().LoadCredits(); //
     }
 
     public void RequestGameStateChange(GameStates requestedState)
@@ -145,6 +153,7 @@ public class GameManager : MonoBehaviour
     public void GodsPickedMonsterAndTrait()
     {
         Time.timeScale = 1f;
+        _canMonsterMove[0] = true; //probably shouldn't be here, but just for testing it is for now.
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
         ChangeGameState(GameStates.Encounter);
         StartCoroutine(sceneManager.AUnloadEnvironment(indexOfModifierChoiceScene));
@@ -177,7 +186,7 @@ public class GameManager : MonoBehaviour
     public void OnOpenedChest()
     {
         canPlayerMove = false;
-        Time.timeScale=0f;
+        Time.timeScale = 0f;
         StartCoroutine(sceneManager.ALoadEnvironment(indexOfItemChoiceScene)); //6 is the index of item-choice scene.
     }
 
@@ -195,5 +204,29 @@ public class GameManager : MonoBehaviour
         StartCoroutine(sceneManager.AUnloadEnvironment(indexOfCharacterChoiceScene));
         StartCoroutine(sceneManager.ALoadEnvironment(indexOfThemeChoiceScene));
 
+    }
+
+    IEnumerator PlayerDeath()
+    {
+        for (int i = 0; i < canMonsterMove.Length; i++)
+        {
+            canMonsterMove[i] = false;
+        }
+        
+        canPlayerMove = false;
+        bool dying = true;
+        float timer = 0;
+        while (dying)
+        {
+            timer += Time.deltaTime;
+            if (timer > _timeBetweenPlayerDeathAndEndScreen)
+            {
+                FindObjectOfType<CustomSceneManager>().LoadCredits(); //End game by loading proper scene through game-manager - should happen after a delay, as to provide feedback during the delay.
+            }
+            yield return null;
+        }
+
+        
+     
     }
 }

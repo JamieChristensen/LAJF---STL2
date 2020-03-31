@@ -6,7 +6,7 @@ using STL2.Events;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-
+    private GameManager gameManager;
     public Rigidbody2D rb2;
     public GameObject target;
     public Enemy agent;
@@ -17,6 +17,7 @@ public class EnemyBehaviour : MonoBehaviour
     private float cooldownTimer;
     [SerializeField]
     private float projectileSpeed = 1;
+    [SerializeField] private int monsterNumber = 1;
 
     [SerializeField]
     private VoidEvent monsterDied;
@@ -25,6 +26,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         target = GameObject.FindGameObjectWithTag("Player");
         currentHealth = agent.health;
         cooldownTimer = 0;
@@ -51,8 +53,14 @@ public class EnemyBehaviour : MonoBehaviour
             return;
         }
         #endregion OnDeath
-
-        float distance = (target.transform.position - gameObject.transform.position).magnitude;
+        float distance;
+        if (target.gameObject != null)
+        {
+            distance = (target.transform.position - gameObject.transform.position).magnitude;
+        }
+        else
+        { distance = 0; }
+        
         // start of behavior tree here
 
         if (agent.range >= distance)
@@ -65,22 +73,33 @@ public class EnemyBehaviour : MonoBehaviour
                 return;
             }
         }
-        MoveTowards(target.transform);
+        if (target.gameObject != null)
+        {
+            MoveTowards(target.transform);
+        }
+        
         cooldownTimer -= Time.deltaTime;
     }
 
     private void Attack(string attackType)
     {
-        if (attackType == "melee")
-            MeleeAttack();
-        if (attackType == "range")
-            RangedAttack();
+        if (gameManager.canMonsterMove[monsterNumber - 1])
+        {
+            if (attackType == "melee")
+                MeleeAttack();
+            if (attackType == "range")
+                RangedAttack();
+        }
     }
 
     private void MoveTowards(Transform tf)
     {
-        Vector2 direction = (tf.position - transform.position).normalized;
-        rb2.velocity = new Vector2(direction.x * agent.speed, rb2.velocity.y);
+        if (gameManager.canMonsterMove[monsterNumber - 1])
+        {
+            Vector2 direction = (tf.position - transform.position).normalized;
+            rb2.velocity = new Vector2(direction.x * agent.speed, rb2.velocity.y);
+        }
+        
     }
 
     void MeleeAttack()
@@ -103,4 +122,13 @@ public class EnemyBehaviour : MonoBehaviour
         currentHealth -= damage;
         healthBar.VisualiseHealthChange(currentHealth);
     }
+
+    public void OnPlayerDamaged(int PlayerHealth)
+    {
+        if (PlayerHealth<=0)
+        {
+
+        }
+    }
+
 }

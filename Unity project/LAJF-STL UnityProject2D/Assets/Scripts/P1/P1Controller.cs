@@ -24,6 +24,14 @@ public class P1Controller : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    
+    //White and default materials
+    private Material matDefault; 
+    public Material matWhite;
+
+    public ParticleSystem deathLeadUp, deathExplosion;
+    public HealthBar healthBar;
+    public Transform particlePoint;
 
 
     /* Player Status */
@@ -55,6 +63,12 @@ public class P1Controller : MonoBehaviour
         moveDirection = Vector2.right;
     }
 
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        matDefault = spriteRenderer.material;
+        
+    }
 
     private void Update()
     {
@@ -106,6 +120,14 @@ public class P1Controller : MonoBehaviour
     {
         currentHitPoints -= damage;
         playerHPEvent.Raise(currentHitPoints);
+        if (currentHitPoints > 0) // Show damage effect
+        {
+            DamageAnimation();
+        }
+        else // Trigger death effect
+        {
+            DeathAnimation();
+        }
     }
 
     private bool canPlayerAttack()
@@ -201,6 +223,33 @@ public class P1Controller : MonoBehaviour
         
         //Strictly speaking only necessary if playerHP actually changed here, but for good measure:
         playerHPEvent.Raise(currentHitPoints);
+    }
+
+    public void DamageAnimation()
+    {
+        // Add white flash
+        spriteRenderer.material = matWhite;
+        Invoke("ResetMaterial", 0.1f);
+    }
+
+    void ResetMaterial()
+    {
+        spriteRenderer.material = matDefault;
+    }
+
+    public void DeathAnimation() // Add Particle Burst
+    {
+        Destroy(rb);
+        Instantiate(deathLeadUp, particlePoint.position, particlePoint.rotation);
+        healthBar.transform.parent = null;
+        Invoke("DeathExplode", 1);
+    }
+
+    public void DeathExplode() // Add Particle Burst
+    {
+        Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
+        Destroy(gameObject);
+
     }
 
 }
