@@ -18,9 +18,10 @@ public class UIManager : MonoBehaviour
 
     public IntTypeListener playerHPListener;
 
-    public GameObject loadingScreen;
+    public GameObject loadingScreen, FadingScreen;
     public Slider progressBar;
     public Slider playerHPSlider;
+    bool fade = true;
 
     [SerializeField]
     private float maxTime = 0.2f; //Assign in inspector
@@ -57,31 +58,40 @@ public class UIManager : MonoBehaviour
         isLoadingScreenOn = true;
     }
 
+    public void StartFading()
+    {
+        loadingScreen.SetActive(true);
+        isLoadingScreenOn = true;
+    }
+
 
     //Called by an event on the UIManager object.
     public void UpdateLoadingScreen(int progress)
     {
-        if (progress == 0)
-        {
-            StartLoadingScreen();
-            return;
-        }
-
-        if (!isLoadingScreenOn)
-        {
-            return;
-        }
-        progressBar.value = progress;
-
-        if (progress == 100)
-        {
-            if (timer >= maxTime)
+        
+            if (progress == 0)
             {
-                timer = 0;
-                CloseLoadingScreen();
+                StartLoadingScreen();
                 return;
             }
-        }
+
+            if (!isLoadingScreenOn)
+            {
+                return;
+            }
+            progressBar.value = progress;
+
+            if (progress == 100)
+            {
+                if (timer >= maxTime)
+                {
+                    timer = 0;
+                    CloseLoadingScreen();
+                    return;
+                }
+            }
+        
+       
     }
 
     public void OnPauseButtonClicked(){

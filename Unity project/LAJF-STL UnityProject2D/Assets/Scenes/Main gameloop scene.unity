@@ -128,6 +128,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 145831735978909844, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 145831735978909844, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 145831735978909844, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 145831735978909844, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 145831735978909844, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2546329379993402352, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
         type: 3}
       propertyPath: mainCam
@@ -188,6 +213,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2729455925793198712, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2776854799929278230, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4878232384716175453, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -202,6 +237,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainGameloopScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6555764517798994683, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 845ae715fbc8a2246a77e9e7bacaa9fe, type: 3}

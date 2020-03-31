@@ -22,9 +22,10 @@ public class CustomSceneManager : MonoBehaviour
     [SerializeField]
     public List<int> currentlyLoadedSceneIndices;
 
+    bool firstFade = true;
     public void Start()
     {
-        GameObject.DontDestroyOnLoad(this);
+      //  GameObject.DontDestroyOnLoad(this);
         if (isLoadingScene != null)
         {
             isLoadingScene.setBool(false);
@@ -63,7 +64,8 @@ public class CustomSceneManager : MonoBehaviour
 
     public void UpdateLoadProgress(float _loadProgress)
     {
-        loadProgressInt.Raise((int)(_loadProgress * 100));
+
+      //  loadProgressInt.Raise((int)(_loadProgress * 100));
     }
 
     public void RequestEnvironmentChange(int environmentIndex)
@@ -111,6 +113,11 @@ public class CustomSceneManager : MonoBehaviour
 
         yield return null;
     }
+
+
+ 
+
+
 
     //Loads in new environments
     public IEnumerator ALoadEnvironment(int sceneIndex)
@@ -160,4 +167,35 @@ public class CustomSceneManager : MonoBehaviour
         }
     }
     #endregion AdditiveAsync
+
+
+    #region Fading
+    public void StartFade(int sceneIndex)
+    {
+        Debug.Log("Fading");
+        StartCoroutine(Fade(sceneIndex));
+    }
+
+    public IEnumerator Fade(int sceneIndex)
+    {
+        if (firstFade)
+        {
+            firstFade = false;
+        }
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
+
+        while (asyncLoad.progress < 0.9f)
+        {
+            asyncLoad.allowSceneActivation = false;
+            yield return null;
+        }
+        while (asyncLoad.allowSceneActivation == false)
+        {
+            asyncLoad.allowSceneActivation = true;
+            yield return null;
+        }
+
+       
+    }
+    #endregion
 }

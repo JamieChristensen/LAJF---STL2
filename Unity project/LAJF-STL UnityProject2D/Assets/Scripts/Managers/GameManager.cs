@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     {
         canPlayerMove = true; //This should be depending on gamestate, but for now it isn't.
         gameState = initialGamestate;
-        GameObject.DontDestroyOnLoad(this);
+       // GameObject.DontDestroyOnLoad(this);
        
         if (sceneManager == null)
         {
@@ -74,7 +74,8 @@ public class GameManager : MonoBehaviour
 
         canPlayerMove = false;
         Time.timeScale = 0f;
-        StartCoroutine(sceneManager.ALoadEnvironment(indexOfCharacterChoiceScene));
+        //  StartCoroutine(sceneManager.ALoadEnvironment(indexOfCharacterChoiceScene));
+        sceneManager.StartFade(indexOfCharacterChoiceScene);
     }
 
     public void PlayerHealthResponse(int playerHP)
