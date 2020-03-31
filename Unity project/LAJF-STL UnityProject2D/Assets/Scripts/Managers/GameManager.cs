@@ -152,12 +152,16 @@ public class GameManager : MonoBehaviour
 
     public void GodsPickedMonsterAndTrait()
     {
-        Time.timeScale = 1f;
-        _canMonsterMove[0] = true; //probably shouldn't be here, but just for testing it is for now.
-        canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
-        ChangeGameState(GameStates.Encounter);
         StartCoroutine(sceneManager.AUnloadEnvironment(indexOfModifierChoiceScene));
+        Time.timeScale = 1f;
+        canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
+        Invoke("SpawnTheMonster", 3);
+    }
 
+    public void SpawnTheMonster()
+    {
+        _canMonsterMove[0] = true; //probably shouldn't be here, but just for testing it is for now.
+        ChangeGameState(GameStates.Encounter);
     }
 
     //This is a very brutish way of pausing, but it should work. 
