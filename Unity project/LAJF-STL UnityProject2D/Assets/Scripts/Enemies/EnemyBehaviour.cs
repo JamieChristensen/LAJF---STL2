@@ -3,24 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using STL2.Events;
+using TMPro;
 
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour, IPausable
 {
 
     public Rigidbody2D rb2;
     public GameObject target;
     public Enemy agent;
+    public List<Modifier> modifiers;
     public GameObject bulletObj;
     public HealthBar healthBar;
+    public new string name;
+    public TextMeshProUGUI nameUI;
 
     private int currentHealth;
-    private float cooldownTimer;
     [SerializeField]
     private float projectileSpeed = 1;
+    private float cooldownTimer;
 
     [SerializeField]
     private VoidEvent monsterDied;
 
+    public bool isPaused;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +33,19 @@ public class EnemyBehaviour : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
         currentHealth = agent.health;
         cooldownTimer = 0;
+
+        #region combing modifiers and enemy
+        name = agent.generateName(modifiers);
+        nameUI.SetText(name);
+        #endregion combing modifiers and enemy
+
     }
 
     void FixedUpdate()
     {
+        
+        if (isPaused)
+            return;
         #region OnDeath
         // Am I alive?
         if (currentHealth <= 0)
@@ -103,4 +117,19 @@ public class EnemyBehaviour : MonoBehaviour
         currentHealth -= damage;
         healthBar.VisualiseHealthChange(currentHealth);
     }
+
+    public bool IsPaused()
+    {
+        return isPaused;
+    }
+    public void Pause()
+    {
+        isPaused = true;
+    }
+
+    public void UnPause()
+    {
+        isPaused = false;
+    }
+
 }

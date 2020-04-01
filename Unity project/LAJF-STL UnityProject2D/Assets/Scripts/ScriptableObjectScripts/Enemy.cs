@@ -19,10 +19,30 @@ public class Enemy : ScriptableObject
     public string attackType;
     public int range;
     public float attackSpeed;
-    
-    // can be called traits that is made
-    public object[] traits; 
+    // just for testing
 
+    public string generateName(List<Modifier> modifiers)
+    {
+            string modifiedName = name;
+
+        if(modifiers.Count > 0)
+        {
+            foreach(Modifier m in modifiers)
+            {
+                // look for _ 
+                string extraText = m.text.Trim();
+
+                if (m.text.IndexOf('_') == 0)
+                    modifiedName += m.text.Split('_')[1];
+                else
+                {
+                    modifiedName = m.text.Split('_')[0] + " " + modifiedName;
+                }
+
+            }
+        }
+        return modifiedName;
+    } 
 
 
     //public Trait trait;

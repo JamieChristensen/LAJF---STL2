@@ -34,6 +34,16 @@ using UnityEngine;
     void Update()
     {
         //StartCoroutine(readText("din mor"));
+        if (Input.GetMouseButtonUp(1))
+        {
+            IPausable enemy = FindObjectOfType<EnemyBehaviour>();
+            if (enemy.IsPaused())
+                enemy.UnPause();
+            else
+                enemy.Pause();
+
+            Debug.Log("from Narrator behaviour/ should pause? " + enemy.IsPaused());
+        }
     }
       
 
