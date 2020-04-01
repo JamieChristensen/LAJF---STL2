@@ -20,6 +20,7 @@ public class GreatChest : MonoBehaviour
     [SerializeField]
     private VoidEvent whenPlayerOpenedBox;
 
+    public ParticleSystem wealthGlow;
 
     void Start()
     {
@@ -77,4 +78,10 @@ public class GreatChest : MonoBehaviour
         //Reset used sprite
         spriteRenderer.sprite = sprites[0];
     }
+
+    public void RemoveGlow()
+    {
+        Destroy(wealthGlow.gameObject);
+    }
+
 }
