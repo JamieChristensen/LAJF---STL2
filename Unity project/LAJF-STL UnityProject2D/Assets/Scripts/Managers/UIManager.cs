@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
 
     public IntTypeListener playerHPListener;
 
+    public IntEvent nextTransition;
+
     public GameObject loadingScreen, FadingScreen;
     public Slider progressBar;
     public Slider playerHPSlider;
@@ -28,6 +30,11 @@ public class UIManager : MonoBehaviour
     private float timer; //Used to prevent loadingscreen instantly disappearing/blinking.
 
     public GameObject pauseCanvasGroup;
+
+    private void Start()
+    {
+        nextTransition.Raise(5);  
+    }
 
     public void Update()
     {
@@ -101,4 +108,14 @@ public class UIManager : MonoBehaviour
     public void UpdateHPSlider(int hp){
         playerHPSlider.value = hp;
     }
+
+
+    public void OnNextTransition()
+    {
+        /*
+        if ()
+        transitionToMinionScene.Raise(6);
+    */
+    }
+
 }

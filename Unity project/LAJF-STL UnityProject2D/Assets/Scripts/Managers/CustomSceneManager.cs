@@ -17,7 +17,7 @@ public class CustomSceneManager : MonoBehaviour
     //private bool isLoadingScene = false;
     private float loadProgress = 0;
 
-    public IntEvent loadProgressInt;
+    public IntEvent loadProgressInt, transitionFromSceneIndex, transitionToSceneIndex;
 
     [SerializeField]
     public List<int> currentlyLoadedSceneIndices;
@@ -30,6 +30,7 @@ public class CustomSceneManager : MonoBehaviour
         {
             isLoadingScene.setBool(false);
         }
+
     }
 
 
@@ -86,8 +87,6 @@ public class CustomSceneManager : MonoBehaviour
         isLoadingScene.setBool(true);
         StartCoroutine(ChangeEnvironment(currentEnvironmentIndex, environmentIndex));
     }
-
-    
 
 
     #region AdditiveAsync
@@ -168,34 +167,13 @@ public class CustomSceneManager : MonoBehaviour
     }
     #endregion AdditiveAsync
 
-
-    #region Fading
-    public void StartFade(int sceneIndex)
+    #region SceneTransitions
+    
+    public void CheckWhichSceneToLoad()
     {
-        Debug.Log("Fading");
-        StartCoroutine(Fade(sceneIndex));
+
     }
-
-    public IEnumerator Fade(int sceneIndex)
-    {
-        if (firstFade)
-        {
-            firstFade = false;
-        }
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
-
-        while (asyncLoad.progress < 0.9f)
-        {
-            asyncLoad.allowSceneActivation = false;
-            yield return null;
-        }
-        while (asyncLoad.allowSceneActivation == false)
-        {
-            asyncLoad.allowSceneActivation = true;
-            yield return null;
-        }
-
-       
-    }
+    
     #endregion
+
 }

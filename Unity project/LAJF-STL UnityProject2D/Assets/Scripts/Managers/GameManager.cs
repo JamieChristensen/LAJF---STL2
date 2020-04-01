@@ -8,7 +8,7 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private int indexOfCharacterChoiceScene, indexOfThemeChoiceScene, indexOfGodChoiceScene, indexOfMinionChoiceScene, indexOfModifierChoiceScene, indexOfItemChoiceScene;
+    private int indexOfGameLoopScene, indexOfMinionChoiceScene, indexOfModifierChoiceScene, indexOfItemChoiceScene;
     public IntTypeListener playerHPListener;
     public BoolVariable isGamePaused;
 
@@ -60,12 +60,15 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        /*
         for (int i = 0; i < canMonsterMove.Length; i++)
         {
             canMonsterMove[i] = true; //This should be depending on gamestate, but for now it isn't.
         }
-        
-        canPlayerMove = true; //This should be depending on gamestate, but for now it isn't.
+        */
+        _canMonsterMove[0] = false;
+        canPlayerMove = false;
+
         gameState = initialGamestate;
         // GameObject.DontDestroyOnLoad(this);
 
@@ -80,12 +83,16 @@ public class GameManager : MonoBehaviour
         {
             isGamePaused.setBool(false);
         }
+       
+          
+    //  StartCoroutine(sceneManager.ALoadEnvironment(indexOfCharacterChoiceScene));
+       
+        
 
-        _canMonsterMove[0] = false;
-        canPlayerMove = false;
-        Time.timeScale = 0f;
-        //  StartCoroutine(sceneManager.ALoadEnvironment(indexOfCharacterChoiceScene));
-        sceneManager.StartFade(indexOfCharacterChoiceScene);
+        // ***Insert Things to do before Transition Fade ***
+
+     //   sceneManager.TransitionToScene(indexOfGameLoopScene); // start the Transition to CharacterScreen
+    
     }
 
     public void PlayerHealthResponse(int playerHP)
@@ -95,7 +102,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        StartCoroutine(PlayerDeath());
+        StartCoroutine(PlayerDeath()); // if Hero dies
 
     }
 
@@ -134,15 +141,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("Gamestate transition denied");
     }
 
+    
     public void EnvironmentAndHeroChoiceFinished()
     {
         //Need to figure out which gamestate to go to - rather than none
 
-        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfThemeChoiceScene));
         RequestGameStateChange(GameStates.None);
         StartCoroutine(sceneManager.ALoadEnvironment(indexOfMinionChoiceScene));
 
     }
+    
 
     public void GodsPickedMonster()
     {
@@ -203,13 +211,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
     }
 
-    public void OnPickedCharacter()
-    {
-        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfCharacterChoiceScene));
-        StartCoroutine(sceneManager.ALoadEnvironment(indexOfThemeChoiceScene));
-
-    }
-
     IEnumerator PlayerDeath()
     {
         for (int i = 0; i < canMonsterMove.Length; i++)
@@ -230,7 +231,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        
-     
     }
+
 }
