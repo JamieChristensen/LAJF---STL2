@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &694132592322637169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4391143539083365406}
+  m_Layer: 0
+  m_Name: EnemyParticlePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4391143539083365406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694132592322637169}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -32.89, y: 7.26, z: -0.9674413}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2409340943091751088}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2409340943091751089
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,6 +63,7 @@ Transform:
   m_Children:
   - {fileID: 2409340943155953352}
   - {fileID: 5027903304600822876}
+  - {fileID: 4391143539083365406}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -55,7 +86,15 @@ MonoBehaviour:
     type: 3}
   healthBar: {fileID: 8087521088913329261}
   projectileSpeed: 30.22
+  monsterNumber: 1
   monsterDied: {fileID: 11400000, guid: 16e0900343a1b614891ebeb509469c81, type: 2}
+  particlePoint: {fileID: 4391143539083365406}
+  deathLeadUp: {fileID: 6230110633612993981, guid: 732429f1d1fe58c49a5207514a308df5,
+    type: 3}
+  deathExplosion: {fileID: 4583915110500010106, guid: 98c81f08eace3574bb15275b8ffe8d48,
+    type: 3}
+  spriteRenderer: {fileID: 2409340943155953359}
+  matWhite: {fileID: 2100000, guid: da2c11b1a32a0e748b87c0907cbfc44d, type: 2}
 --- !u!50 &2409340943091751095
 Rigidbody2D:
   serializedVersion: 4

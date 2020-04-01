@@ -22,10 +22,21 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField]
     private VoidEvent monsterDied;
 
+    public Transform particlePoint;
+    public ParticleSystem deathLeadUp, deathExplosion;
+    public SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+    //White and default materials
+    private Material matDefault;
+    public Material matWhite;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        matDefault = spriteRenderer.material;
         gameManager = FindObjectOfType<GameManager>();
         target = GameObject.FindGameObjectWithTag("Player");
         currentHealth = agent.health;
@@ -43,7 +54,10 @@ public class EnemyBehaviour : MonoBehaviour
             rb2.AddTorque(50000, ForceMode2D.Impulse);
             rb2.gravityScale = 0f;
 
+           // Invoke("DeathAnimation", 0.2f);
             monsterDied.Raise();
+
+
 
             if (UnityEngine.Random.Range(0, 10f) > 6)
             {
@@ -121,6 +135,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.VisualiseHealthChange(currentHealth);
+        DamageAnimation();
     }
 
     public void OnPlayerDamaged(int PlayerHealth)
@@ -131,4 +146,31 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
+    public void DamageAnimation()
+    {
+        // Add white flash
+        spriteRenderer.material = matWhite;
+        Invoke("ResetMaterial", 0.1f);
+    }
+
+    void ResetMaterial()
+    {
+        spriteRenderer.material = matDefault;
+    }
+    /*
+    public void DeathAnimation() // Add Particle Burst
+    {
+        Destroy(rb);
+        Instantiate(deathLeadUp, particlePoint.position, particlePoint.rotation);
+        healthBar.transform.parent = null;
+        Invoke("DeathExplode", 1);
+    }
+
+    public void DeathExplode() // Add Particle Burst
+    {
+        Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
+        Destroy(gameObject);
+
+    }
+    */
 }
