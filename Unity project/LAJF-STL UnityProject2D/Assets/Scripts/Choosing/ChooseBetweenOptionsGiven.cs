@@ -11,8 +11,6 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     #region INSPECTOR
     CustomSceneManager customSceneManager;
 
-    public VoidEvent heroHasChosenCharacter;
-    public VoidEvent godsHaveChosenTheme;
     public VoidEvent godsHaveChosenMinion;
     public VoidEvent godsHaveChosenOpponent;
     public VoidEvent heroHasChosenItem;
@@ -256,7 +254,6 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     {
         runtimeChoices.theme = finalChoice;
         Debug.Log("Gods have chosen a theme! It is: " + finalChoice.name);
-        // godshaveChosenTheme.Raise(); // Raising event for theme chosen
         preGameTransitionIndex.Raise(4);
     }
 

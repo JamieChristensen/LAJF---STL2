@@ -17,10 +17,14 @@ public class CustomSceneManager : MonoBehaviour
     //private bool isLoadingScene = false;
     private float loadProgress = 0;
 
+    private int buildIndexToLoad;
+
     public IntEvent loadProgressInt, transitionFromSceneIndex, transitionToSceneIndex;
 
     [SerializeField]
     public List<int> currentlyLoadedSceneIndices;
+
+    public TransitionScreen transitionScreen;
 
     bool firstFade = true;
     public void Start()
@@ -169,9 +173,18 @@ public class CustomSceneManager : MonoBehaviour
 
     #region SceneTransitions
     
-    public void CheckWhichSceneToLoad()
+    public void ChooseSceneToLoad(int buildIndex)
     {
+        buildIndexToLoad = buildIndex;
+    }
 
+    public void LoadChosenScene()
+    {
+        if (SceneManager.sceneCount == 1)
+        {
+            transitionScreen.gameObject.SetActive(false);
+        }
+        StartCoroutine(ALoadEnvironment(buildIndexToLoad));
     }
     
     #endregion

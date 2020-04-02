@@ -6,13 +6,15 @@ using STL2.Events;
 public class CageControl : MonoBehaviour
 {
     public Transform highTransform;
-    private Vector3 _spawnPoint;
+    private Transform _playerTransform;
+    private Vector3 _spawnPoint, _currentPosition;
+ 
     private int timer = 3;
     public TextMeshProUGUI countDown;
     Coroutine co;
     bool runningCoroutine = false;
-    public IntEvent transitionToMinionScene;
-
+    
+    public VoidEvent heroHasBeenCaptured;
 
     public void OnStartCountDown()
     {
@@ -22,6 +24,7 @@ public class CageControl : MonoBehaviour
 
     private void Awake()
     {
+        _playerTransform = GameObject.Find("Player1").GetComponent<Transform>();
         _spawnPoint = transform.position;
         transform.position = highTransform.position;
     }
@@ -44,19 +47,36 @@ public class CageControl : MonoBehaviour
 
     IEnumerator CaptureHeroRoutine()
     {
-        
+        _currentPosition = new Vector3 (transform.position.x, transform.position.y, transform.position.z );
+        yield return new WaitForSeconds(2f);
         runningCoroutine = true;
         Vector3 targetPosition = _spawnPoint;
         float timer = 0;
-        while (transform.position != targetPosition && timer < 2)
-        {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, 0.025f);
-            timer += Time.deltaTime;
+        while (transform.position != targetPosition && timer < 4)
+        {  
+            targetPosition = new Vector3 (_playerTransform.position.x,_spawnPoint.y,_spawnPoint.z); 
+            transform.position = Vector3.Lerp(transform.position, targetPosition, timer/ 600f);
+            _currentPosition = new Vector3 (_playerTransform.position.x,transform.position.y,transform.position.z);
+            transform.position = _currentPosition;
+            timer += Time.fixedDeltaTime;
             yield return new WaitForSeconds(0.01f);
         }
+        timer = 0;
+        while (transform.position != targetPosition && timer < 1)
+        {
+            targetPosition = new Vector3(_playerTransform.position.x, _spawnPoint.y, _spawnPoint.z);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, timer / 2f);
+            _currentPosition = new Vector3(_playerTransform.position.x, transform.position.y, transform.position.z);
+            transform.position = _currentPosition;
+            timer += Time.fixedDeltaTime;
+            yield return new WaitForSeconds(0.01f);
+        }
+        yield return new WaitForSeconds(2f);
         runningCoroutine = false;
-        
+        heroHasBeenCaptured.Raise(); // Telling the game that the Hero has been captured
     }
+
+
 
 
     public void StartCountDown()
@@ -88,10 +108,10 @@ public class CageControl : MonoBehaviour
         runningCoroutine = true;
         Vector3 targetPosition = highTransform.position;
 
-        while (transform.position != targetPosition && timer < 2)
+        while (transform.position != targetPosition && timer < 5)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPosition,0.025f);
-            timer += Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, timer / 100f);
+            timer += Time.fixedDeltaTime;
             yield return new WaitForSeconds(0.01f);
         }
         runningCoroutine = false;

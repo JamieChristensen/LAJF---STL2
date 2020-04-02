@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
     public IntTypeListener playerHPListener;
     public BoolVariable isGamePaused;
 
+    public IntEvent nextTransition;
+
     public BoolVariable isSceneLoading;
+
 
     public static bool canPlayerMove { get; private set; }
     [SerializeField] private bool[] _canMonsterMove; 
@@ -67,7 +70,8 @@ public class GameManager : MonoBehaviour
         }
         */
         _canMonsterMove[0] = false;
-        canPlayerMove = false;
+       
+         canPlayerMove = true;
 
         gameState = initialGamestate;
         // GameObject.DontDestroyOnLoad(this);
@@ -142,12 +146,12 @@ public class GameManager : MonoBehaviour
     }
 
     
-    public void EnvironmentAndHeroChoiceFinished()
+    public void HeroHasBeenCaptured()
     {
         //Need to figure out which gamestate to go to - rather than none
 
         RequestGameStateChange(GameStates.None);
-        StartCoroutine(sceneManager.ALoadEnvironment(indexOfMinionChoiceScene));
+        sceneManager.ChooseSceneToLoad(4); // get the 4th (minion) scene ready
 
     }
     

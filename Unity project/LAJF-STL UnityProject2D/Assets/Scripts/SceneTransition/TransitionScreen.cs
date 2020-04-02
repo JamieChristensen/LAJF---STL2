@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using STL2.Events;
+using UnityEngine.SceneManagement;
 
 public class TransitionScreen : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class TransitionScreen : MonoBehaviour
     public TextMeshProUGUI middleInfo;
     public TransitionElements[] transitionElements;
     private TransitionElements _nextTransitionElements;
-    public VoidEvent readyToLoadScene;
+    public VoidEvent readyToLoadScene, loadedAdditiveScene;
 
     bool transitioning = false;
     Coroutine co;
@@ -31,6 +32,31 @@ public class TransitionScreen : MonoBehaviour
     {
         _TransitionCanvasGroup = GetComponent<CanvasGroup>();
         
+    }
+
+    private void Start()
+    {
+        if (SceneManager.sceneCount != 1)
+        {
+            if (gameObject.GetComponent<Canvas>().worldCamera == null)
+            {
+                try
+                {
+                    gameObject.GetComponent<Canvas>().worldCamera = Camera.main;
+                }
+                catch
+                {
+                    Debug.Log("Camera could not be located in the scene!");
+                }
+
+            }
+        }
+        if (SceneManager.sceneCount > 1)
+        {
+          //  loadedAdditiveScene.Raise();
+            Debug.Log("Additive Scene has been loaded");
+        }
+
     }
 
     public void MainMenuException()

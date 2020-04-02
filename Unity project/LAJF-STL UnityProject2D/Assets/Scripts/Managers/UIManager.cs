@@ -23,7 +23,8 @@ public class UIManager : MonoBehaviour
     public GameObject loadingScreen, FadingScreen;
     public Slider progressBar;
     public Slider playerHPSlider;
-    bool fade = true;
+
+    private int nextTransitionIndex;
 
     [SerializeField]
     private float maxTime = 0.2f; //Assign in inspector
@@ -109,13 +110,26 @@ public class UIManager : MonoBehaviour
         playerHPSlider.value = hp;
     }
 
-
-    public void OnNextTransition()
+    public void OnLoadedAdditiveScene()
     {
-        /*
-        if ()
-        transitionToMinionScene.Raise(6);
-    */
+        ChooseNextTransition(nextTransitionIndex);
+      //  NextTransition();
+    }
+
+
+    public void ChooseNextTransition(int previousTransitionIndex)
+    {
+        nextTransitionIndex = previousTransitionIndex + 1;
+        if (nextTransitionIndex == 15)
+        {
+            nextTransitionIndex = 5;
+        }
+    }
+
+
+    public void NextTransition()
+    {
+        nextTransition.Raise(nextTransitionIndex);
     }
 
 }
