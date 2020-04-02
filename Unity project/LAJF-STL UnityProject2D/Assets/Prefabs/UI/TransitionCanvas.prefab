@@ -72,8 +72,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -280,7 +280,7 @@ Canvas:
   m_GameObject: {fileID: 9049779018472308980}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -290,7 +290,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 810998721
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &9049779018472308978
 MonoBehaviour:
@@ -339,7 +339,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9049779018472308980}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -374,6 +374,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0312153b8df11494cb4fff16dd24a5f9, type: 2}
   - {fileID: 11400000, guid: e3afdf2d5592b90498ee6beee1e3bef3, type: 2}
   readyToLoadScene: {fileID: 11400000, guid: ea5b1edbeb90fc549ab2dabb13a1c0ca, type: 2}
+  loadedAdditiveScene: {fileID: 11400000, guid: 40ecd4b92adb06c4ba6484eebaa5fcb2,
+    type: 2}
   _fadeOnDuration: 2
   _fadeOffDuration: 2
   atTransitionDestinationScene: 1

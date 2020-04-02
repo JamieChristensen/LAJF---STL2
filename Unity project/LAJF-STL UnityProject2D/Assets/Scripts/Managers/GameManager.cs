@@ -88,15 +88,6 @@ public class GameManager : MonoBehaviour
             isGamePaused.setBool(false);
         }
        
-          
-    //  StartCoroutine(sceneManager.ALoadEnvironment(indexOfCharacterChoiceScene));
-       
-        
-
-        // ***Insert Things to do before Transition Fade ***
-
-     //   sceneManager.TransitionToScene(indexOfGameLoopScene); // start the Transition to CharacterScreen
-    
     }
 
     public void PlayerHealthResponse(int playerHP)
@@ -145,29 +136,33 @@ public class GameManager : MonoBehaviour
         Debug.Log("Gamestate transition denied");
     }
 
-    
+    #region EventsListenedTo
     public void HeroHasBeenCaptured()
     {
         //Need to figure out which gamestate to go to - rather than none
 
         RequestGameStateChange(GameStates.None);
         sceneManager.ChooseSceneToLoad(4); // get the 4th (minion) scene ready
-
     }
-    
 
     public void GodsPickedMonster()
     {
-        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfMinionChoiceScene));
-        StartCoroutine(sceneManager.ALoadEnvironment(indexOfModifierChoiceScene));
+        sceneManager.ChooseSceneToLoad(indexOfModifierChoiceScene);
+        nextTransition.Raise(8);
+    }
+
+    public void GodsHavePickedMonsterAndTrait()
+    {
+        
     }
 
     public void GodsPickedMonsterAndTrait()
     {
-        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfModifierChoiceScene));
+        sceneManager.ChooseSceneToLoad(indexOfGameLoopScene);
+        nextTransition.Raise(10);
         Time.timeScale = 1f;
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
-        Invoke("SpawnTheMonster", 3);
+        Invoke("SpawnTheMonster", 8);
     }
 
     public void SpawnTheMonster()
@@ -176,23 +171,6 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameStates.Encounter);
     }
 
-    //This is a very brutish way of pausing, but it should work. 
-    public void OnPauseButtonClicked()
-    {
-        isGamePaused.setBool(!isGamePaused.myBool);
-
-        if (isGamePaused.myBool)
-        {
-            Time.timeScale = 0;
-            return;
-        }
-
-        if (!isGamePaused.myBool)
-        {
-            Time.timeScale = 1;
-            return;
-        }
-    }
 
     public void OnMonsterDied()
     {
@@ -214,6 +192,28 @@ public class GameManager : MonoBehaviour
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
         StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
     }
+
+
+    #endregion
+
+    //This is a very brutish way of pausing, but it should work. 
+    public void OnPauseButtonClicked()
+    {
+        isGamePaused.setBool(!isGamePaused.myBool);
+
+        if (isGamePaused.myBool)
+        {
+            Time.timeScale = 0;
+            return;
+        }
+
+        if (!isGamePaused.myBool)
+        {
+            Time.timeScale = 1;
+            return;
+        }
+    }
+
 
     IEnumerator PlayerDeath()
     {

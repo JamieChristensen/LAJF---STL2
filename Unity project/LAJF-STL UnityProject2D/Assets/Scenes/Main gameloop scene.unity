@@ -127,6 +127,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2073894512}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &446907306 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 959162681688895668, guid: dbbb37c9bb70bee488540616023c104d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2073894512}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446907305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038e3e53692c2f0449efc6b3ac1d2413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &446907307 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
@@ -145,33 +157,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 562586948}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &486583823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486583822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 038e3e53692c2f0449efc6b3ac1d2413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: b54142ad4de4c27439e4165cc31b2606, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 486583828}
-        m_MethodName: ChooseNextTransition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &486583825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,20 +226,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1571081558221728260, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
         type: 3}
-      propertyPath: gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 40ecd4b92adb06c4ba6484eebaa5fcb2,
-        type: 2}
-    - target: {fileID: 1571081558221728260, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
-        type: 3}
       propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnLoadedAdditiveScene
+      value: NextTransition
       objectReference: {fileID: 0}
     - target: {fileID: 2260010521001924921, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
         type: 3}
       propertyPath: transitionScreen
       value: 
       objectReference: {fileID: 446907307}
+    - target: {fileID: 2260010521001924921, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
+        type: 3}
+      propertyPath: transitionScreenIntListener
+      value: 
+      objectReference: {fileID: 446907306}
     - target: {fileID: 2546329379993402352, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
         type: 3}
       propertyPath: mainCam
@@ -346,6 +330,12 @@ PrefabInstance:
       propertyPath: FadingScreen
       value: 
       objectReference: {fileID: 446907305}
+    - target: {fileID: 9165108017312137361, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
+        type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ada70056f44bf5419c2f5bb052095ca,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 486583823, guid: 845ae715fbc8a2246a77e9e7bacaa9fe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 845ae715fbc8a2246a77e9e7bacaa9fe, type: 3}
@@ -400,6 +390,33 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 562586948}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1987001174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987001173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 40ecd4b92adb06c4ba6484eebaa5fcb2, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1987001175}
+        m_MethodName: OnLoadedAdditiveScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1987001175 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2260010521001924921, guid: 845ae715fbc8a2246a77e9e7bacaa9fe,
@@ -659,16 +676,49 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9049779018472308977, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9049779018472308980, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: m_Name
       value: TransitionCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049779018472308988, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: transitionElements.Array.size
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: loadedAdditiveScene
       value: 
       objectReference: {fileID: 11400000, guid: 40ecd4b92adb06c4ba6484eebaa5fcb2,
+        type: 2}
+    - target: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: transitionElements.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: e3afdf2d5592b90498ee6beee1e3bef3,
+        type: 2}
+    - target: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: transitionElements.Array.data[17]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1bdb62a49352a3044aafa3a348781b9b,
+        type: 2}
+    - target: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: transitionElements.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: 59c2d973e2056824db604817b7ef12fb,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbbb37c9bb70bee488540616023c104d, type: 3}

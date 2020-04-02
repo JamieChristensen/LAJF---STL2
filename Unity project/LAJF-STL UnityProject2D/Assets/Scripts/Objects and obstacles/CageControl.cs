@@ -16,11 +16,7 @@ public class CageControl : MonoBehaviour
     
     public VoidEvent heroHasBeenCaptured;
 
-    public void OnStartCountDown()
-    {
-        InvokeRepeating("StartCountDown", 1, 1); // 
-        countDown.text = "Ready?";
-    }
+   
 
     private void Awake()
     {
@@ -77,7 +73,11 @@ public class CageControl : MonoBehaviour
     }
 
 
-
+    public void OnStartCountDown()
+    {
+        InvokeRepeating("StartCountDown", 5, 1); // 
+        countDown.text = "Ready?";
+    }
 
     public void StartCountDown()
     {

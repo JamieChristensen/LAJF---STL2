@@ -334,6 +334,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     public void SwitchToModifierSelection() // from minion selection
     {
+
         godsHaveChosenMinion.Raise();
 
     }

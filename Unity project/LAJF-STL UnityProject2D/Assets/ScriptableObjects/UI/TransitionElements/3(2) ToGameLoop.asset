@@ -15,4 +15,6 @@ MonoBehaviour:
   sceneIndex: 3
   details: To GameLoop Scene (3) from Theme Screen (2)
   startTransparent: 0
-  textElement: []
+  textElement:
+  - textInput: 
+    timeOfTextDisplayed: 1

@@ -16,5 +16,5 @@ MonoBehaviour:
   details: From Character Screen (1)To Theme Screen (2)
   startTransparent: 1
   textElement:
-  - textInput: 
-    timeOfTextDisplayed: 0
+  - textInput: He wandered in a world...
+    timeOfTextDisplayed: 5

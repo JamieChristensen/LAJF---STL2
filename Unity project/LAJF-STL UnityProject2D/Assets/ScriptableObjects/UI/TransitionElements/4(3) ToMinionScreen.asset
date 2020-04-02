@@ -15,4 +15,6 @@ MonoBehaviour:
   sceneIndex: 4
   details: To Minion Screen (4) from GameLoop Scene (3)
   startTransparent: 0
-  textElement: []
+  textElement:
+  - textInput: 
+    timeOfTextDisplayed: 1

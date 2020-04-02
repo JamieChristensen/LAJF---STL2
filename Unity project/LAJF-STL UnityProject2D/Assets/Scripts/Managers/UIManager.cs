@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     public Slider progressBar;
     public Slider playerHPSlider;
 
-    private int nextTransitionIndex;
+    private int nextTransitionIndex = 6;
 
     [SerializeField]
     private float maxTime = 0.2f; //Assign in inspector
@@ -112,15 +112,15 @@ public class UIManager : MonoBehaviour
 
     public void OnLoadedAdditiveScene()
     {
-        ChooseNextTransition(nextTransitionIndex);
-      //  NextTransition();
+        ChooseNextTransition();
+        Debug.Log("Next Transition Index: " + nextTransitionIndex);
     }
 
 
-    public void ChooseNextTransition(int previousTransitionIndex)
+    public void ChooseNextTransition()
     {
-        nextTransitionIndex = previousTransitionIndex + 1;
-        if (nextTransitionIndex == 15)
+        nextTransitionIndex++;
+        if (nextTransitionIndex == 16)
         {
             nextTransitionIndex = 5;
         }

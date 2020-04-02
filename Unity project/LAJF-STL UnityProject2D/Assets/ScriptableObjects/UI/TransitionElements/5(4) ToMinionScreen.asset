@@ -15,4 +15,6 @@ MonoBehaviour:
   sceneIndex: 5
   details: To Modifier Screen (5) from Minion Screen (4)
   startTransparent: 0
-  textElement: []
+  textElement:
+  - textInput: 
+    timeOfTextDisplayed: 1

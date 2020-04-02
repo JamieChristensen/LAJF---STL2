@@ -15,4 +15,6 @@ MonoBehaviour:
   sceneIndex: 3
   details: From GameLoop Scene (3) to End Scene (7)
   startTransparent: 1
-  textElement: []
+  textElement:
+  - textInput: 
+    timeOfTextDisplayed: 1

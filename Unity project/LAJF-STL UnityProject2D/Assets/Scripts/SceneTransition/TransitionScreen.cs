@@ -28,16 +28,40 @@ public class TransitionScreen : MonoBehaviour
 
     public bool atTransitionDestinationScene = true;
 
+    int outOfThreeScenarios = 1; 
+
     private void Awake()
     {
         _TransitionCanvasGroup = GetComponent<CanvasGroup>();
         
     }
 
+    private void OnDisable()
+    {
+        outOfThreeScenarios++;
+        if(outOfThreeScenarios > 3)
+        {
+            outOfThreeScenarios = 1;
+        }
+    }
+    private void OnEnable()
+    {
+        if (outOfThreeScenarios == 2)
+        {
+            DoNextTransition(11);
+        }
+        else if (outOfThreeScenarios == 3)
+        {
+            DoNextTransition(15);
+        }
+    }
+
     private void Start()
     {
+        
         if (SceneManager.sceneCount != 1)
         {
+            
             if (gameObject.GetComponent<Canvas>().worldCamera == null)
             {
                 try
@@ -51,12 +75,35 @@ public class TransitionScreen : MonoBehaviour
 
             }
         }
+        
         if (SceneManager.sceneCount > 1)
         {
-          //  loadedAdditiveScene.Raise();
-            Debug.Log("Additive Scene has been loaded");
-        }
+            List<int> sceneIndices = new List<int>();
+            for (int i = 0; i < SceneManager.GetAllScenes().Length; i++)
+            {
+                sceneIndices.Add(SceneManager.GetAllScenes()[i].buildIndex);
+                if (sceneIndices[i] == 4)
+                {
+                    DoNextTransition(7);
 
+                    break;
+                }
+                else if (sceneIndices[i] == 5)
+                {
+                    DoNextTransition(9);
+
+                    break;
+                }
+                else if (sceneIndices[i] == 6)
+                {
+                    DoNextTransition(13);
+
+                    break;
+                }
+            }
+                loadedAdditiveScene.Raise();
+           // Debug.Log("Additive Scene has been loaded");
+        }
     }
 
     public void MainMenuException()
@@ -83,6 +130,7 @@ public class TransitionScreen : MonoBehaviour
     IEnumerator Transition(int transitionIndex)
     {
         transitioning = true;
+        middleInfo.text = transitionElements[transitionIndex].textElement[0].textInput;
         _nextTransitionElements = transitionElements[transitionIndex];
 
         Debug.Log("Doing Transition - " + _nextTransitionElements.details);

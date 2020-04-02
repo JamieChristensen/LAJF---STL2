@@ -17,14 +17,16 @@ public class CustomSceneManager : MonoBehaviour
     //private bool isLoadingScene = false;
     private float loadProgress = 0;
 
-    private int buildIndexToLoad;
+    private int buildIndexToLoad, previousBuildIndex;
 
-    public IntEvent loadProgressInt, transitionFromSceneIndex, transitionToSceneIndex;
+
+    public IntEvent loadProgressInt;
 
     [SerializeField]
     public List<int> currentlyLoadedSceneIndices;
 
     public TransitionScreen transitionScreen;
+    public IntTypeListener transitionScreenIntListener;
 
     bool firstFade = true;
     public void Start()
@@ -180,13 +182,35 @@ public class CustomSceneManager : MonoBehaviour
 
     public void LoadChosenScene()
     {
+
         if (SceneManager.sceneCount == 1)
         {
-            transitionScreen.gameObject.SetActive(false);
+            // transitionScreen.StopAllCoroutines();
+            transitionScreen.enabled = false;
+            transitionScreenIntListener.enabled = false;
         }
-        StartCoroutine(ALoadEnvironment(buildIndexToLoad));
+        else if (SceneManager.sceneCount > 1)
+        {
+            StartCoroutine(AUnloadEnvironment(previousBuildIndex));
+        }
+        if(buildIndexToLoad != 3)
+        {
+            StartCoroutine(ALoadEnvironment(buildIndexToLoad));
+            previousBuildIndex = buildIndexToLoad;
+        }
+        else
+        {
+            transitionScreen.enabled = true;
+            transitionScreenIntListener.enabled = true;
+        }
+        
     }
-    
+
+
+    public void OnLoadedAdditiveScene()
+    {
+        transitionScreen.GetComponent<CanvasGroup>().alpha = 0;
+    }
     #endregion
 
 }
