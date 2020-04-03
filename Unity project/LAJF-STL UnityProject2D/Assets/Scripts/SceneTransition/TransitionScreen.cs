@@ -16,7 +16,7 @@ public class TransitionScreen : MonoBehaviour
     bool transitioning = false;
     Coroutine co;
 
-// time to fade on
+    // time to fade on
     [SerializeField]
     private float _fadeOnDuration = 2f;
     public float FadeOnDuration { get { return _fadeOnDuration; } }
@@ -28,18 +28,18 @@ public class TransitionScreen : MonoBehaviour
 
     public bool atTransitionDestinationScene = true;
 
-    int outOfThreeScenarios = 1; 
+    int outOfThreeScenarios = 1;
 
     private void Awake()
     {
         _TransitionCanvasGroup = GetComponent<CanvasGroup>();
-        
+
     }
 
     private void OnDisable()
     {
         outOfThreeScenarios++;
-        if(outOfThreeScenarios > 3)
+        if (outOfThreeScenarios > 3)
         {
             outOfThreeScenarios = 1;
         }
@@ -58,10 +58,10 @@ public class TransitionScreen : MonoBehaviour
 
     private void Start()
     {
-        
+
         if (SceneManager.sceneCount != 1)
         {
-            
+
             if (gameObject.GetComponent<Canvas>().worldCamera == null)
             {
                 try
@@ -75,34 +75,28 @@ public class TransitionScreen : MonoBehaviour
 
             }
         }
-        
+
         if (SceneManager.sceneCount > 1)
         {
             List<int> sceneIndices = new List<int>();
-            for (int i = 0; i < SceneManager.GetAllScenes().Length; i++)
+            for (int i = 0; i < SceneManager.sceneCount; i++)
             {
-                sceneIndices.Add(SceneManager.GetAllScenes()[i].buildIndex);
-                if (sceneIndices[i] == 4)
+                sceneIndices.Add(SceneManager.GetSceneAt(i).buildIndex);
+                switch (sceneIndices[i])
                 {
+                    case 4:
                     DoNextTransition(7);
-
                     break;
-                }
-                else if (sceneIndices[i] == 5)
-                {
+                    case 5:
                     DoNextTransition(9);
-
                     break;
-                }
-                else if (sceneIndices[i] == 6)
-                {
+                    case 6:
                     DoNextTransition(13);
-
                     break;
                 }
             }
-                loadedAdditiveScene.Raise();
-           // Debug.Log("Additive Scene has been loaded");
+            loadedAdditiveScene.Raise();
+            // Debug.Log("Additive Scene has been loaded");
         }
     }
 
@@ -120,13 +114,13 @@ public class TransitionScreen : MonoBehaviour
             atTransitionDestinationScene = false;
             transitioning = false;
         }
-        
-        
-       co = StartCoroutine(Transition(transitionIndex));
+
+
+        co = StartCoroutine(Transition(transitionIndex));
     }
 
 
-     #region Transition
+    #region Transition
     IEnumerator Transition(int transitionIndex)
     {
         transitioning = true;
@@ -142,7 +136,7 @@ public class TransitionScreen : MonoBehaviour
             {
                 _TransitionCanvasGroup.alpha = 0;
             }
-            
+
             oppositeAlpha = 1;
         }
         else
@@ -154,7 +148,7 @@ public class TransitionScreen : MonoBehaviour
             oppositeAlpha = 0;
         }
 
-        
+
 
         while (transitioning)
         {
@@ -169,13 +163,13 @@ public class TransitionScreen : MonoBehaviour
             {
                 _TransitionCanvasGroup.alpha = 0;
                 transitioning = false;
-                
+
             }
 
             yield return new WaitForSeconds(0.02f);
         }
 
-        if(atTransitionDestinationScene)
+        if (atTransitionDestinationScene)
         {
             atTransitionDestinationScene = false;
         }
@@ -185,13 +179,13 @@ public class TransitionScreen : MonoBehaviour
             readyToLoadScene.Raise();
 
         }
-        
+
         Debug.Log("Done with Transition");
 
     }
-    
-  
+
+
     #endregion
 
-    
+
 }
