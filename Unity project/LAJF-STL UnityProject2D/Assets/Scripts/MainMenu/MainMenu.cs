@@ -11,14 +11,19 @@ public class MainMenu : MonoBehaviour
     public Button creditsButton;
     public Button exitGameButton;
     
-    public string startGameSceneName;
-
     public GameObject settingsMenu;
     public GameObject creditsMenu;
 
+    public TransitionScreen introTransition;
+
+
+    public void StartFading()
+    {
+        introTransition.DoNextTransition(0);
+    }
     public void StartGame()
     {
-        SceneManager.LoadScene(startGameSceneName);
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void OpenCredits()

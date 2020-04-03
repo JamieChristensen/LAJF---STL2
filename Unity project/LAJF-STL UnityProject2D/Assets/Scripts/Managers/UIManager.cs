@@ -18,15 +18,24 @@ public class UIManager : MonoBehaviour
 
     public IntTypeListener playerHPListener;
 
-    public GameObject loadingScreen;
+    public IntEvent nextTransition;
+
+    public GameObject loadingScreen, FadingScreen;
     public Slider progressBar;
     public Slider playerHPSlider;
+
+    private int nextTransitionIndex = 6;
 
     [SerializeField]
     private float maxTime = 0.2f; //Assign in inspector
     private float timer; //Used to prevent loadingscreen instantly disappearing/blinking.
 
     public GameObject pauseCanvasGroup;
+
+    private void Start()
+    {
+        nextTransition.Raise(5);  
+    }
 
     public void Update()
     {
@@ -57,31 +66,40 @@ public class UIManager : MonoBehaviour
         isLoadingScreenOn = true;
     }
 
+    public void StartFading()
+    {
+        loadingScreen.SetActive(true);
+        isLoadingScreenOn = true;
+    }
+
 
     //Called by an event on the UIManager object.
     public void UpdateLoadingScreen(int progress)
     {
-        if (progress == 0)
-        {
-            StartLoadingScreen();
-            return;
-        }
-
-        if (!isLoadingScreenOn)
-        {
-            return;
-        }
-        progressBar.value = progress;
-
-        if (progress == 100)
-        {
-            if (timer >= maxTime)
+        
+            if (progress == 0)
             {
-                timer = 0;
-                CloseLoadingScreen();
+                StartLoadingScreen();
                 return;
             }
-        }
+
+            if (!isLoadingScreenOn)
+            {
+                return;
+            }
+            progressBar.value = progress;
+
+            if (progress == 100)
+            {
+                if (timer >= maxTime)
+                {
+                    timer = 0;
+                    CloseLoadingScreen();
+                    return;
+                }
+            }
+        
+       
     }
 
     public void OnPauseButtonClicked(){
@@ -91,4 +109,27 @@ public class UIManager : MonoBehaviour
     public void UpdateHPSlider(int hp){
         playerHPSlider.value = hp;
     }
+
+    public void OnLoadedAdditiveScene()
+    {
+        ChooseNextTransition();
+        Debug.Log("Next Transition Index: " + nextTransitionIndex);
+    }
+
+
+    public void ChooseNextTransition()
+    {
+        nextTransitionIndex++;
+        if (nextTransitionIndex == 16)
+        {
+            nextTransitionIndex = 5;
+        }
+    }
+
+
+    public void NextTransition()
+    {
+        nextTransition.Raise(nextTransitionIndex);
+    }
+
 }

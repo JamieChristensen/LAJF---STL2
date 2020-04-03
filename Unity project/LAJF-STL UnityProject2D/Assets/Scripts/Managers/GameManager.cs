@@ -8,13 +8,18 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private int indexOfCharacterChoiceScene, indexOfThemeChoiceScene, indexOfGodChoiceScene, indexOfMinionChoiceScene, indexOfModifierChoiceScene, indexOfItemChoiceScene;
+    private int indexOfGameLoopScene, indexOfMinionChoiceScene, indexOfModifierChoiceScene, indexOfItemChoiceScene;
     public IntTypeListener playerHPListener;
     public BoolVariable isGamePaused;
 
+    public IntEvent nextTransition;
+
     public BoolVariable isSceneLoading;
 
+
     public static bool canPlayerMove { get; private set; }
+    [SerializeField] private bool[] _canMonsterMove; 
+    public bool[] canMonsterMove { get { return _canMonsterMove; }}
 
     public VoidTypeListener environmentAndHeroChoiceFinished;  //When the gods finished picking the environment.
     public VoidTypeListener godsPickedMonsterAndTrait;      //Should be raised when gods finish selecting both monster and traits.
@@ -33,6 +38,9 @@ public class GameManager : MonoBehaviour
 
         new KeyValuePair<GameStates, GameStates[]>(GameStates.InitializingNextScene, new GameStates[] {GameStates.SelectingMonster})
     };
+
+    [SerializeField] private float _timeBetweenPlayerDeathAndEndScreen = 5;
+
 
     [SerializeField]
     private GameStates initialGamestate = GameStates.Encounter;
@@ -55,26 +63,31 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        canPlayerMove = true; //This should be depending on gamestate, but for now it isn't.
-        gameState = initialGamestate;
-        GameObject.DontDestroyOnLoad(this);
+        /*
+        for (int i = 0; i < canMonsterMove.Length; i++)
+        {
+            canMonsterMove[i] = true; //This should be depending on gamestate, but for now it isn't.
+        }
+        */
+        _canMonsterMove[0] = false;
        
+         canPlayerMove = true;
+
+        gameState = initialGamestate;
+        // GameObject.DontDestroyOnLoad(this);
+
         if (sceneManager == null)
         {
             sceneManager = FindObjectOfType<CustomSceneManager>();
         }
-        
+
 
         //Ensure all cross-scene reference scriptableObjects are initialized properly:
         if (isGamePaused.myBool)
         {
             isGamePaused.setBool(false);
         }
-
-
-        canPlayerMove = false;
-        Time.timeScale = 0f;
-        StartCoroutine(sceneManager.ALoadEnvironment(indexOfCharacterChoiceScene));
+       
     }
 
     public void PlayerHealthResponse(int playerHP)
@@ -84,10 +97,8 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        //Definitely need to implement a timer here.
+        StartCoroutine(PlayerDeath()); // if Hero dies
 
-        //End game by loading proper scene through game-manager - should happen after a delay, as to provide feedback during the delay.
-        FindObjectOfType<CustomSceneManager>().LoadCredits(); //
     }
 
     public void RequestGameStateChange(GameStates requestedState)
@@ -125,30 +136,65 @@ public class GameManager : MonoBehaviour
         Debug.Log("Gamestate transition denied");
     }
 
-    public void EnvironmentAndHeroChoiceFinished()
+    #region EventsListenedTo
+    public void HeroHasBeenCaptured()
     {
         //Need to figure out which gamestate to go to - rather than none
 
-        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfThemeChoiceScene));
         RequestGameStateChange(GameStates.None);
-        StartCoroutine(sceneManager.ALoadEnvironment(indexOfMinionChoiceScene));
-
+        sceneManager.ChooseSceneToLoad(4); // get the 4th (minion) scene ready
     }
 
     public void GodsPickedMonster()
     {
-        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfMinionChoiceScene));
-        StartCoroutine(sceneManager.ALoadEnvironment(indexOfModifierChoiceScene));
+        sceneManager.ChooseSceneToLoad(indexOfModifierChoiceScene);
+        nextTransition.Raise(8);
+    }
+
+    public void GodsHavePickedMonsterAndTrait()
+    {
+        
     }
 
     public void GodsPickedMonsterAndTrait()
     {
+        sceneManager.ChooseSceneToLoad(indexOfGameLoopScene);
+        nextTransition.Raise(10);
         Time.timeScale = 1f;
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
-        ChangeGameState(GameStates.Encounter);
-        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfModifierChoiceScene));
-
+        Invoke("SpawnTheMonster", 8);
     }
+
+    public void SpawnTheMonster()
+    {
+        _canMonsterMove[0] = true; //probably shouldn't be here, but just for testing it is for now.
+        ChangeGameState(GameStates.Encounter);
+    }
+
+
+    public void OnMonsterDied()
+    {
+        RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music   
+    }
+
+    public void OnOpenedChest()
+    {
+        canPlayerMove = false;
+        Time.timeScale = 0f;
+        StartCoroutine(sceneManager.ALoadEnvironment(indexOfItemChoiceScene)); //6 is the index of item-choice scene.
+    }
+
+    public void OnPickedItem()
+    {
+        //change environment to next one in line.
+        RequestGameStateChange(GameStates.InitializingNextScene);
+        Time.timeScale = 1f;
+        canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
+        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
+    }
+
+
+    #endregion
 
     //This is a very brutish way of pausing, but it should work. 
     public void OnPauseButtonClicked()
@@ -168,31 +214,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnMonsterDied()
-    {
-        RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music   
-    }
 
-    public void OnOpenedChest()
+    IEnumerator PlayerDeath()
     {
+        for (int i = 0; i < canMonsterMove.Length; i++)
+        {
+            canMonsterMove[i] = false;
+        }
+        
         canPlayerMove = false;
-        Time.timeScale=0f;
-        StartCoroutine(sceneManager.ALoadEnvironment(indexOfItemChoiceScene)); //6 is the index of item-choice scene.
-    }
-
-    public void OnPickedItem()
-    {
-        //change environment to next one in line.
-        RequestGameStateChange(GameStates.InitializingNextScene);
-        Time.timeScale = 1f;
-        canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
-        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
-    }
-
-    public void OnPickedCharacter()
-    {
-        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfCharacterChoiceScene));
-        StartCoroutine(sceneManager.ALoadEnvironment(indexOfThemeChoiceScene));
+        bool dying = true;
+        float timer = 0;
+        while (dying)
+        {
+            timer += Time.deltaTime;
+            if (timer > _timeBetweenPlayerDeathAndEndScreen)
+            {
+                FindObjectOfType<CustomSceneManager>().LoadCredits(); //End game by loading proper scene through game-manager - should happen after a delay, as to provide feedback during the delay.
+            }
+            yield return null;
+        }
 
     }
+
 }

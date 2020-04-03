@@ -17,18 +17,26 @@ public class CustomSceneManager : MonoBehaviour
     //private bool isLoadingScene = false;
     private float loadProgress = 0;
 
+    private int buildIndexToLoad, previousBuildIndex;
+
+
     public IntEvent loadProgressInt;
 
     [SerializeField]
     public List<int> currentlyLoadedSceneIndices;
 
+    public TransitionScreen transitionScreen;
+    public IntTypeListener transitionScreenIntListener;
+
+    bool firstFade = true;
     public void Start()
     {
-        GameObject.DontDestroyOnLoad(this);
+      //  GameObject.DontDestroyOnLoad(this);
         if (isLoadingScene != null)
         {
             isLoadingScene.setBool(false);
         }
+
     }
 
 
@@ -63,7 +71,8 @@ public class CustomSceneManager : MonoBehaviour
 
     public void UpdateLoadProgress(float _loadProgress)
     {
-        loadProgressInt.Raise((int)(_loadProgress * 100));
+
+      //  loadProgressInt.Raise((int)(_loadProgress * 100));
     }
 
     public void RequestEnvironmentChange(int environmentIndex)
@@ -84,8 +93,6 @@ public class CustomSceneManager : MonoBehaviour
         isLoadingScene.setBool(true);
         StartCoroutine(ChangeEnvironment(currentEnvironmentIndex, environmentIndex));
     }
-
-    
 
 
     #region AdditiveAsync
@@ -111,6 +118,11 @@ public class CustomSceneManager : MonoBehaviour
 
         yield return null;
     }
+
+
+ 
+
+
 
     //Loads in new environments
     public IEnumerator ALoadEnvironment(int sceneIndex)
@@ -160,4 +172,45 @@ public class CustomSceneManager : MonoBehaviour
         }
     }
     #endregion AdditiveAsync
+
+    #region SceneTransitions
+    
+    public void ChooseSceneToLoad(int buildIndex)
+    {
+        buildIndexToLoad = buildIndex;
+    }
+
+    public void LoadChosenScene()
+    {
+
+        if (SceneManager.sceneCount == 1)
+        {
+            // transitionScreen.StopAllCoroutines();
+            transitionScreen.enabled = false;
+            transitionScreenIntListener.enabled = false;
+        }
+        else if (SceneManager.sceneCount > 1)
+        {
+            StartCoroutine(AUnloadEnvironment(previousBuildIndex));
+        }
+        if(buildIndexToLoad != 3)
+        {
+            StartCoroutine(ALoadEnvironment(buildIndexToLoad));
+            previousBuildIndex = buildIndexToLoad;
+        }
+        else
+        {
+            transitionScreen.enabled = true;
+            transitionScreenIntListener.enabled = true;
+        }
+        
+    }
+
+
+    public void OnLoadedAdditiveScene()
+    {
+        transitionScreen.GetComponent<CanvasGroup>().alpha = 0;
+    }
+    #endregion
+
 }

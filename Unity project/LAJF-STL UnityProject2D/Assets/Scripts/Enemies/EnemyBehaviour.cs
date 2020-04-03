@@ -7,7 +7,7 @@ using TMPro;
 
 public class EnemyBehaviour : MonoBehaviour, IPausable
 {
-
+    private GameManager gameManager;
     public Rigidbody2D rb2;
     public GameObject target;
     public Enemy agent;
@@ -21,15 +21,27 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     [SerializeField]
     private float projectileSpeed = 1;
     private float cooldownTimer;
+    [SerializeField]
+    private int monsterNumber = 1;
 
     [SerializeField]
     private VoidEvent monsterDied;
 
     public bool isPaused;
+    public Transform particlePoint;
+    public ParticleSystem deathLeadUp, deathExplosion;
+    public SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+    //White and default materials
+    private Material matDefault;
+    public Material matWhite;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        matDefault = spriteRenderer.material;
+        gameManager = FindObjectOfType<GameManager>();
         target = GameObject.FindGameObjectWithTag("Player");
         currentHealth = agent.health;
         cooldownTimer = 0;
@@ -55,7 +67,10 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
             rb2.AddTorque(50000, ForceMode2D.Impulse);
             rb2.gravityScale = 0f;
 
+           // Invoke("DeathAnimation", 0.2f);
             monsterDied.Raise();
+
+
 
             if (UnityEngine.Random.Range(0, 10f) > 6)
             {
@@ -65,8 +80,14 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
             return;
         }
         #endregion OnDeath
-
-        float distance = (target.transform.position - gameObject.transform.position).magnitude;
+        float distance;
+        if (target.gameObject != null)
+        {
+            distance = (target.transform.position - gameObject.transform.position).magnitude;
+        }
+        else
+        { distance = 0; }
+        
         // start of behavior tree here
 
         if (agent.range >= distance)
@@ -79,22 +100,33 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
                 return;
             }
         }
-        MoveTowards(target.transform);
+        if (target.gameObject != null)
+        {
+            MoveTowards(target.transform);
+        }
+        
         cooldownTimer -= Time.deltaTime;
     }
 
     private void Attack(string attackType)
     {
-        if (attackType == "melee")
-            MeleeAttack();
-        if (attackType == "range")
-            RangedAttack();
+        if (gameManager.canMonsterMove[monsterNumber - 1])
+        {
+            if (attackType == "melee")
+                MeleeAttack();
+            if (attackType == "range")
+                RangedAttack();
+        }
     }
 
     private void MoveTowards(Transform tf)
     {
-        Vector2 direction = (tf.position - transform.position).normalized;
-        rb2.velocity = new Vector2(direction.x * agent.speed, rb2.velocity.y);
+        if (gameManager.canMonsterMove[monsterNumber - 1])
+        {
+            Vector2 direction = (tf.position - transform.position).normalized;
+            rb2.velocity = new Vector2(direction.x * agent.speed, rb2.velocity.y);
+        }
+        
     }
 
     void MeleeAttack()
@@ -116,8 +148,44 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     {
         currentHealth -= damage;
         healthBar.VisualiseHealthChange(currentHealth);
+        DamageAnimation();
     }
 
+    public void OnPlayerDamaged(int PlayerHealth)
+    {
+        if (PlayerHealth<=0)
+        {
+
+        }
+    }
+
+    public void DamageAnimation()
+    {
+        // Add white flash
+        spriteRenderer.material = matWhite;
+        Invoke("ResetMaterial", 0.1f);
+    }
+
+    void ResetMaterial()
+    {
+        spriteRenderer.material = matDefault;
+    }
+    /*
+    public void DeathAnimation() // Add Particle Burst
+    {
+        Destroy(rb);
+        Instantiate(deathLeadUp, particlePoint.position, particlePoint.rotation);
+        healthBar.transform.parent = null;
+        Invoke("DeathExplode", 1);
+    }
+
+    public void DeathExplode() // Add Particle Burst
+    {
+        Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
+        Destroy(gameObject);
+
+    }
+    */
     public bool IsPaused()
     {
         return isPaused;
@@ -132,4 +200,6 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         isPaused = false;
     }
 
+
+   
 }
