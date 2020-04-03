@@ -203,7 +203,6 @@ public class CustomSceneManager : MonoBehaviour
             transitionScreen.enabled = true;
             transitionScreenIntListener.enabled = true;
         }
-        
     }
 
 
