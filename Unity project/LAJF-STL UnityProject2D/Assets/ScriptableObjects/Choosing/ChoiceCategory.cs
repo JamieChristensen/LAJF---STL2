@@ -10,6 +10,7 @@ public class ChoiceCategory : ScriptableObject
     public string CategoryName;
     public GameObject[] Options;
 
+    public GodInformation[] chosenGods = new GodInformation[3];
     public List<PlayerItems> playerItems;
 
     [Header("Runtime Only")]
