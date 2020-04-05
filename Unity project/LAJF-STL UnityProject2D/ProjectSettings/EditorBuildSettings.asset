@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Choices/Character.unity
     guid: afe1db01502c2994b9420c6acbe41137
   - enabled: 1
+    path: Assets/Scenes/Choices/Gods.unity
+    guid: b7bc7c3f909f322468f62cc59d9294ed
+  - enabled: 1
     path: Assets/Scenes/Choices/Theme.unity
     guid: aa598b18813dee74bbc57c0680928efd
   - enabled: 1
