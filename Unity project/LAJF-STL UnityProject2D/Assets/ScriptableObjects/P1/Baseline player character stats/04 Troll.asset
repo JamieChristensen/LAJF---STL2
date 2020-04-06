@@ -16,8 +16,8 @@ MonoBehaviour:
   description: He is always up for a fight...
   trait: 'Trait: Fight Club - Takes a beating for a living, as long as he don''t
     talk about it!'
-  moveSpeed: 0
-  jumpForce: 0
+  moveSpeed: 10
+  jumpForce: 10
   baseAttackDamage: 1
   attackRate: 0
   rangedAttacks: 0

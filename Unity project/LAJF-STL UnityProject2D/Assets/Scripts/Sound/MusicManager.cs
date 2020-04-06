@@ -56,7 +56,7 @@ public class MusicManager : MonoBehaviour
             {
                 if (name != musicThemes[i].name) // if the requested music theme is not this one
                 {
-                    Debug.Log("name: " + name + " - musicThemes[i].name: " + musicThemes[i].name);
+                  //  Debug.Log("name: " + name + " - musicThemes[i].name: " + musicThemes[i].name);
                     StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name+"Vol", 6, -80)); // turn down the volume in a fade
                     StartCoroutine(StopAfterDelay(musicThemes[i].source)); // stop the music theme
                 }

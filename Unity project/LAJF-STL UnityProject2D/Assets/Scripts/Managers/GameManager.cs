@@ -142,13 +142,13 @@ public class GameManager : MonoBehaviour
         //Need to figure out which gamestate to go to - rather than none
 
         RequestGameStateChange(GameStates.None);
-        sceneManager.ChooseSceneToLoad(4); // get the 4th (minion) scene ready
+        sceneManager.ChooseSceneToLoad(indexOfMinionChoiceScene); // get the minion scene ready
     }
 
     public void GodsPickedMonster()
     {
         sceneManager.ChooseSceneToLoad(indexOfModifierChoiceScene);
-        nextTransition.Raise(8);
+        nextTransition.Raise(10);
     }
 
     public void GodsHavePickedMonsterAndTrait()
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
     public void GodsPickedMonsterAndTrait()
     {
         sceneManager.ChooseSceneToLoad(indexOfGameLoopScene);
-        nextTransition.Raise(10);
+        nextTransition.Raise(12);
         Time.timeScale = 1f;
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
         Invoke("SpawnTheMonster", 8);
@@ -187,10 +187,12 @@ public class GameManager : MonoBehaviour
     public void OnPickedItem()
     {
         //change environment to next one in line.
+        sceneManager.ChooseSceneToLoad(indexOfGameLoopScene);
+        nextTransition.Raise(14);
         RequestGameStateChange(GameStates.InitializingNextScene);
         Time.timeScale = 1f;
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
-        StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
+       // StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
     }
 
 

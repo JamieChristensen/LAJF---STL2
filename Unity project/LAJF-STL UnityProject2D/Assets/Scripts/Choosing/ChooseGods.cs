@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using STL2.Events;
 
 
 public class ChooseGods : MonoBehaviour
@@ -13,6 +14,8 @@ public class ChooseGods : MonoBehaviour
 
     public TextMeshProUGUI[] choiceTMProText;
     public const int amountOfChoices = 5;
+
+    public IntEvent nextTransition;
 
     [SerializeField]
     private int[] choices = new int[3]; //player2 choice in 0, player3 choice in 1, player4 choice in 2. Range 1-5. 0 if nothing has been chosen.
@@ -47,6 +50,8 @@ public class ChooseGods : MonoBehaviour
         {
             choiceTMProText[choices[i]].text += "Player " + (i + 1) + "\n";
         }
+
+        nextTransition.Raise(3);
     }
 
     public void Update()
@@ -129,6 +134,7 @@ public class ChooseGods : MonoBehaviour
         Debug.Log("Going to next scene!");
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadSceneAsync(buildIndex + 1); // go to next scene
+        
     }
 
     public void ChangeAndDisplaySelection(int godNumber, int newSelection)

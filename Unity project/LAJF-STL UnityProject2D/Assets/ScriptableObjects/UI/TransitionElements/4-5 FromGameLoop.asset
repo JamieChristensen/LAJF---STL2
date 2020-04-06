@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e60fcdfd9bc7f2c43bdfcbee6989b79b, type: 3}
-  m_Name: 2-3 FromThemeScreen 1
+  m_Name: 4-5 FromGameLoop
   m_EditorClassIdentifier: 
-  sceneIndex: 2
-  details: From Theme Screen (2) to GameLoop Scene (3)
+  sceneIndex: 4
+  details: From GameLoop Scene (4) to Minion Screen (5)
   startTransparent: 1
   textElement:
-  - textInput: 
-    timeOfTextDisplayed: 1
+  - textInput: A terrible creature came...
+    timeOfTextDisplayed: 5

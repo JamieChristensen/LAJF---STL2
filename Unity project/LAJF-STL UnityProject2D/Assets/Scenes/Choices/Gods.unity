@@ -819,6 +819,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488359909}
   m_CullTransparentMesh: 0
+--- !u!114 &891662492 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1154734008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34495b4af3339ef4fa6093f70e0fc93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &916500834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1146,7 @@ PrefabInstance:
     - target: {fileID: 9049779018472308980, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
@@ -2857,6 +2869,7 @@ MonoBehaviour:
   - {fileID: 1767271781}
   - {fileID: 162494623}
   - {fileID: 1738724594}
+  nextTransition: {fileID: 11400000, guid: b54142ad4de4c27439e4165cc31b2606, type: 2}
   choices: 000000000000000000000000
   p2left: 122
   p2right: 120
@@ -4152,15 +4165,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2867410946190812734}
-        m_MethodName: 
-        m_Mode: 5
+      - m_Target: {fileID: 891662492}
+        m_MethodName: DoNextTransition
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
-          m_StringArgument: Character
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!224 &7962828963707807880

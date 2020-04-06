@@ -84,15 +84,15 @@ public class TransitionScreen : MonoBehaviour
                 sceneIndices.Add(SceneManager.GetSceneAt(i).buildIndex);
                 switch (sceneIndices[i])
                 {
-                    case 4:
-                    DoNextTransition(7);
-                    break;
                     case 5:
-                    DoNextTransition(9);
-                    break;
+                        DoNextTransition(9);
+                        break;
                     case 6:
-                    DoNextTransition(13);
-                    break;
+                        DoNextTransition(11);
+                        break;
+                    case 7:
+                        DoNextTransition(15);
+                        break;
                 }
             }
             loadedAdditiveScene.Raise();
@@ -123,9 +123,14 @@ public class TransitionScreen : MonoBehaviour
     #region Transition
     IEnumerator Transition(int transitionIndex)
     {
+
         transitioning = true;
         middleInfo.text = transitionElements[transitionIndex].textElement[0].textInput;
+
         _nextTransitionElements = transitionElements[transitionIndex];
+
+        float timeToLerp = transitionElements[transitionIndex].textElement[0].timeOfTextDisplayed;
+        float timeLerped = 0;
 
         Debug.Log("Doing Transition - " + _nextTransitionElements.details);
 
@@ -149,17 +154,17 @@ public class TransitionScreen : MonoBehaviour
         }
 
 
-
         while (transitioning)
         {
-            _TransitionCanvasGroup.alpha = Mathf.Lerp(_TransitionCanvasGroup.alpha, oppositeAlpha, 0.05f);
+            timeLerped += Time.fixedDeltaTime;
+            _TransitionCanvasGroup.alpha = Mathf.Lerp(_TransitionCanvasGroup.alpha, oppositeAlpha, timeLerped / timeToLerp);
 
-            if (oppositeAlpha == 1 && _TransitionCanvasGroup.alpha > 0.99f)
+            if (oppositeAlpha == 1 && timeLerped > timeToLerp)
             {
                 _TransitionCanvasGroup.alpha = 1;
                 transitioning = false;
             }
-            else if (oppositeAlpha == 0 && _TransitionCanvasGroup.alpha < 0.01)
+            else if (oppositeAlpha == 0 && timeLerped > timeToLerp)
             {
                 _TransitionCanvasGroup.alpha = 0;
                 transitioning = false;
@@ -180,7 +185,7 @@ public class TransitionScreen : MonoBehaviour
 
         }
 
-        Debug.Log("Done with Transition");
+     //   Debug.Log("Done with Transition");
 
     }
 

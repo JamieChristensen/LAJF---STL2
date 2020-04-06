@@ -193,7 +193,7 @@ public class CustomSceneManager : MonoBehaviour
         {
             StartCoroutine(AUnloadEnvironment(previousBuildIndex));
         }
-        if(buildIndexToLoad != 3)
+        if(buildIndexToLoad != 4)
         {
             StartCoroutine(ALoadEnvironment(buildIndexToLoad));
             previousBuildIndex = buildIndexToLoad;

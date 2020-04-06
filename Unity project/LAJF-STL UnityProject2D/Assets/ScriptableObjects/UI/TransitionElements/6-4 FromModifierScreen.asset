@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e60fcdfd9bc7f2c43bdfcbee6989b79b, type: 3}
-  m_Name: 3(5) ToGameLoop
+  m_Name: 6-4 FromModifierScreen
   m_EditorClassIdentifier: 
-  sceneIndex: 3
-  details: To GameLoop Scene (3) from Modifier Screen (5)
-  startTransparent: 0
+  sceneIndex: 6
+  details: From Modifier Screen (6) to GameLoop Scene (4)
+  startTransparent: 1
   textElement:
-  - textInput: 
-    timeOfTextDisplayed: 1
+  - textInput: Hero, Prepare yourself!
+    timeOfTextDisplayed: 3
