@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 1-2 FromChacterScreen
   m_EditorClassIdentifier: 
   sceneIndex: 1
-  details: From Character Screen (1)To Theme Screen (2)
+  details: From Character Screen (1)To God Screen (2)
   startTransparent: 1
   textElement:
-  - textInput: He wandered in a world...
+  - textInput: And also some Deities...
     timeOfTextDisplayed: 5

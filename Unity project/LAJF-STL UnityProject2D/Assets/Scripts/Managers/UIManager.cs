@@ -120,9 +120,9 @@ public class UIManager : MonoBehaviour
     public void ChooseNextTransition()
     {
         nextTransitionIndex++;
-        if (nextTransitionIndex == 16)
+        if (nextTransitionIndex == 18)
         {
-            nextTransitionIndex = 5;
+            nextTransitionIndex = 7;
         }
     }
 

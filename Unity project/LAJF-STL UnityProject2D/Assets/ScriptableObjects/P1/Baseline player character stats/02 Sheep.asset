@@ -15,8 +15,8 @@ MonoBehaviour:
   myName: Oh mighty sheep
   description: Beep, beep, it's a sheep...
   trait: 'Trait: Vegan - Can eat grass like a maniac!'
-  moveSpeed: 0
-  jumpForce: 0
+  moveSpeed: 10
+  jumpForce: 10
   baseAttackDamage: 1
   attackRate: 0
   rangedAttacks: 1

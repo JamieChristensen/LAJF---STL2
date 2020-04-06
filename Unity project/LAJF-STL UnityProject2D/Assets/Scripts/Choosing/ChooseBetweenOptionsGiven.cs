@@ -38,10 +38,14 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public TextMeshProUGUI[] choiceNameText;
     public Image[] itemImageTargets;
 
+    private MusicManager _musicManager;
+
+
     #endregion // INSPECTOR
 
     private void Awake()
     {
+        _musicManager = FindObjectOfType<MusicManager>();
 
         choice = 4; // the choice is set back to the default value
         try
@@ -91,7 +95,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     private void Start()
     {
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
-        if (buildIndex == 1|| buildIndex == 2)
+        if (buildIndex == 1|| buildIndex == 2 || buildIndex == 3)
         {
             preGameTransitionIndex.Raise(2* buildIndex -1);
         }
@@ -247,14 +251,14 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     {
         runtimeChoices.character = finalChoice;
         Debug.Log("Hero has chosen a character! It is: " + finalChoice.name);
-        SwitchToThemeSelection(); // switching from character select to theme select
+        SwitchToGodSelection(); // switching from character select to theme select
     }
 
     void GodsHaveChosenTheme()
     {
         runtimeChoices.theme = finalChoice;
         Debug.Log("Gods have chosen a theme! It is: " + finalChoice.name);
-        preGameTransitionIndex.Raise(4);
+        preGameTransitionIndex.Raise(6);
     }
 
     void GodsHaveChosenMinion()
@@ -297,6 +301,10 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 break;
         }
         Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". modifier! It is: " + finalChoice.name);
+        if (_musicManager != null)
+        {
+            _musicManager.PlayMusic("Battle");
+        }
         godsHaveChosenOpponent.Raise(); // Raising event for opponent chosen
     }
 
@@ -326,7 +334,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     #endregion // RaisingEvents
 
 
-    public void SwitchToThemeSelection() // from character selection
+    public void SwitchToGodSelection() // from character selection
     {
         preGameTransitionIndex.Raise(2);
         
@@ -372,7 +380,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     public void OnPreGameLoadNextScene() // Character & Theme Screen
     {
-        Debug.Log("Going to next scene!");
+      //  Debug.Log("Going to next scene!");
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadSceneAsync(buildIndex + 1); // go to next scene
     }

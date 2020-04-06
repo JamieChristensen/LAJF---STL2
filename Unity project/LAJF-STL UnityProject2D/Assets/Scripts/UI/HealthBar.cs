@@ -25,8 +25,6 @@ public class HealthBar : MonoBehaviour
         timer = 0;
         hitPointsText.SetText(currentHealth + " HP");
         currentHealthScaleX = (5*currentHealth / maxHp );
-        Debug.Log(currentHealth.ToString());
-        Debug.Log(currentHealthScaleX.ToString());
         CurrentHealthFillTransform.localScale = new Vector3(currentHealthScaleX, 1,1);
 
 

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e60fcdfd9bc7f2c43bdfcbee6989b79b, type: 3}
-  m_Name: 3(6) ToGameLoop
+  m_Name: 5-6 FromMinionScreen
   m_EditorClassIdentifier: 
-  sceneIndex: 3
-  details: To GameLoop Scene (3) from Item Screen (6)
-  startTransparent: 0
+  sceneIndex: 5
+  details: From Minion Screen (5) to Modifier Screen (6)
+  startTransparent: 1
   textElement:
-  - textInput: 
-    timeOfTextDisplayed: 1
+  - textInput: It had some mad traits...
+    timeOfTextDisplayed: 3

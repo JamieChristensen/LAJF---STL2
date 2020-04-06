@@ -15,8 +15,8 @@ MonoBehaviour:
   myName: 
   description: SHHH! IT'S A LIBRARY...
   trait: 'Trait: Librarian - Have access to the God Section of the library!'
-  moveSpeed: 0
-  jumpForce: 0
+  moveSpeed: 10
+  jumpForce: 10
   baseAttackDamage: 1
   attackRate: 0
   rangedAttacks: 1

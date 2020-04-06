@@ -339,7 +339,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9049779018472308980}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -363,16 +363,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35cfd0c368d4e01418ccfc74f2e85efb, type: 2}
   - {fileID: 11400000, guid: cd648cfb8389a8b4c9a97707e6c70a31, type: 2}
   - {fileID: 11400000, guid: 4a0d86c62b8b02d459f61b5565e9dffc, type: 2}
+  - {fileID: 11400000, guid: a15ca9c989af25c41987d359ab7b223e, type: 2}
+  - {fileID: 11400000, guid: 2a87fc061749635419444286bcaaf2f2, type: 2}
   - {fileID: 11400000, guid: 44e68bcc0d9870f42bc44c92aefdb8f6, type: 2}
   - {fileID: 11400000, guid: a1bf5e849c8f6a84ab06c16cd9070075, type: 2}
   - {fileID: 11400000, guid: b2906b9c3adbe19438a5a9e85abc0dea, type: 2}
   - {fileID: 11400000, guid: 00cf080717dfd4d438f62a657b199dd3, type: 2}
   - {fileID: 11400000, guid: feefcea456ba1664ca48a5caab81cdc2, type: 2}
-  - {fileID: 11400000, guid: f7a4fdc964086c74dbb4eff31a06442d, type: 2}
   - {fileID: 11400000, guid: 07ab6172db2f3b445af28cbf9af54b01, type: 2}
   - {fileID: 11400000, guid: c92f55526e833e6459761904033d650b, type: 2}
   - {fileID: 11400000, guid: 0312153b8df11494cb4fff16dd24a5f9, type: 2}
+  - {fileID: 11400000, guid: 59c2d973e2056824db604817b7ef12fb, type: 2}
   - {fileID: 11400000, guid: e3afdf2d5592b90498ee6beee1e3bef3, type: 2}
+  - {fileID: 11400000, guid: 1bdb62a49352a3044aafa3a348781b9b, type: 2}
   readyToLoadScene: {fileID: 11400000, guid: ea5b1edbeb90fc549ab2dabb13a1c0ca, type: 2}
   loadedAdditiveScene: {fileID: 11400000, guid: 40ecd4b92adb06c4ba6484eebaa5fcb2,
     type: 2}

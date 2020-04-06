@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e60fcdfd9bc7f2c43bdfcbee6989b79b, type: 3}
-  m_Name: 0(7)  ToMainMenu
+  m_Name: 4(7) ToGameLoop
   m_EditorClassIdentifier: 
-  sceneIndex: 0
-  details: To Main Menu (0)
+  sceneIndex: 4
+  details: To GameLoop Scene (4) from Item Screen (7)
   startTransparent: 0
   textElement:
   - textInput: 
