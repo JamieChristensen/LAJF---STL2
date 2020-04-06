@@ -56,6 +56,8 @@ public class P1Controller : MonoBehaviour
 
     public List<PlayerItems> playerItems = new List<PlayerItems>();
 
+    private AudioList _audioList;
+    public AudioList audioList { get { return _audioList; } }
     #endregion
 
     void Awake()
@@ -65,6 +67,7 @@ public class P1Controller : MonoBehaviour
 
     private void Start()
     {
+        _audioList = FindObjectOfType<AudioList>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         matDefault = spriteRenderer.material;
         
@@ -123,10 +126,12 @@ public class P1Controller : MonoBehaviour
         if (currentHitPoints > 0) // Show damage effect
         {
             DamageAnimation();
+            audioList.PlayWithVariablePitch(audioList.hurt);
         }
         else // Trigger death effect
         {
             DeathAnimation();
+            audioList.PlayWithVariablePitch(audioList.deathHero);
         }
     }
 
@@ -176,6 +181,7 @@ public class P1Controller : MonoBehaviour
                 if (isGrounded)
                 {
                     rb.AddForce(playerStats.jumpForce * Vector2.up, ForceMode2D.Impulse);
+                    audioList.PlayWithVariablePitch(audioList.jump);
                 }
                 break;
 

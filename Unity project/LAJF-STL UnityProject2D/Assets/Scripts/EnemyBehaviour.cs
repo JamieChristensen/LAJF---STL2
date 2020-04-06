@@ -30,11 +30,13 @@ public class EnemyBehaviour : MonoBehaviour
     private Material matDefault;
     public Material matWhite;
 
-
+    private AudioList _audioList;
+    public AudioList audioList { get { return _audioList; } }
 
     // Start is called before the first frame update
     void Start()
     {
+        _audioList = FindObjectOfType<AudioList>();
         rb = GetComponent<Rigidbody2D>();
         matDefault = spriteRenderer.material;
         gameManager = FindObjectOfType<GameManager>();
@@ -56,6 +58,7 @@ public class EnemyBehaviour : MonoBehaviour
 
            // Invoke("DeathAnimation", 0.2f);
             monsterDied.Raise();
+            audioList.PlayWithVariablePitch(audioList.deathEnemy);
 
 
 
@@ -136,6 +139,7 @@ public class EnemyBehaviour : MonoBehaviour
         currentHealth -= damage;
         healthBar.VisualiseHealthChange(currentHealth);
         DamageAnimation();
+        audioList.PlayWithVariablePitch(audioList.hurt);
     }
 
     public void OnPlayerDamaged(int PlayerHealth)

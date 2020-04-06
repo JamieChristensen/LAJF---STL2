@@ -16,6 +16,7 @@ public class GroundChecker : MonoBehaviour
         Debug.Log("triggered");
         if (coll.CompareTag("Ground")){
             player.isGrounded = true;
+            player.audioList.PlayWithVariablePitch(player.audioList.land);
         }
     }
 
