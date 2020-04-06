@@ -39,18 +39,16 @@ public class MusicManager : MonoBehaviour
             mt.source.pitch = mt.pitch;
             mt.source.loop = mt.loop;
             mt.source.outputAudioMixerGroup = mt.audioMixerGroup;
+
+            if (mt.name == "MainMenu")
+            {
+                mt.source.Play();
+            }
         }
 
     }
 
-    void Start()
-    {
-        PlayMusic("MainMenu", 0);
-    }
-
-
-
-    public void PlayMusic(string name, float delay) // play a music theme (by name) after a specified delay (in float seconds)
+    public void PlayMusic(string name) // play a music theme (by name) after a specified delay (in float seconds)
     {
         for (int i = 0; i< musicThemes.Length;i++) // checks all Audio Sources (music themes)
         {
@@ -59,8 +57,8 @@ public class MusicManager : MonoBehaviour
                 if (name != musicThemes[i].name) // if the requested music theme is not this one
                 {
                     Debug.Log("name: " + name + " - musicThemes[i].name: " + musicThemes[i].name);
-                    StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name+"Vol", 5, -80)); // turn down the volume in a fade
-                    StartCoroutine(StopAfterDelay(musicThemes[i].source, 5)); // stop the music theme
+                    StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name+"Vol", 6, -80)); // turn down the volume in a fade
+                    StartCoroutine(StopAfterDelay(musicThemes[i].source)); // stop the music theme
                 }
             }
             else
@@ -77,19 +75,22 @@ public class MusicManager : MonoBehaviour
             return;
         }
 
-        StartCoroutine(PlayAfterDelay(mt.source, delay));
+            StartCoroutine(PlayAfterDelay(mt.source));
+        
+
+
 
     }
 
-    IEnumerator PlayAfterDelay(AudioSource musicThemeAudioSource, float delay)
+    IEnumerator PlayAfterDelay(AudioSource musicThemeAudioSource)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(5);
         musicThemeAudioSource.Play();
     }
 
-    IEnumerator StopAfterDelay(AudioSource musicThemeAudioSource, float delay)
+    IEnumerator StopAfterDelay(AudioSource musicThemeAudioSource)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(6);
         musicThemeAudioSource.Stop();
     }
 
