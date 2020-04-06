@@ -14,7 +14,7 @@ public class P1Controller : MonoBehaviour
         Attack
     };
     #region INSPECTOR
-    public P1Stats playerStats;
+    public P1Stats runtimePlayerStats;
     public IntEvent playerHPEvent;
 
     public Rigidbody2D rb;//declares variable to give the player gravity and the ability to interact with physics
@@ -24,9 +24,9 @@ public class P1Controller : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
-    
+
     //White and default materials
-    private Material matDefault; 
+    private Material matDefault;
     public Material matWhite;
 
     public ParticleSystem deathLeadUp, deathExplosion;
@@ -51,18 +51,18 @@ public class P1Controller : MonoBehaviour
 
     public float projectileSpeed;
 
-
     public ChoiceCategory runtimeChoices;
 
     public List<PlayerItems> playerItems = new List<PlayerItems>();
 
     private AudioList _audioList;
     public AudioList audioList { get { return _audioList; } }
-    #endregion
+    #endregion INSPECTOR
 
     void Awake()
     {
         moveDirection = Vector2.right;
+        InitializePlayerStats(runtimeChoices.chosenHero); //Use the chosen stats to set baseline of this run.
     }
 
     private void Start()
@@ -70,7 +70,7 @@ public class P1Controller : MonoBehaviour
         _audioList = FindObjectOfType<AudioList>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         matDefault = spriteRenderer.material;
-        
+
     }
 
     private void Update()
@@ -95,8 +95,6 @@ public class P1Controller : MonoBehaviour
         spriteRenderer.flipX = moveDirection.x > 0;
         #endregion UpdateSprites
     }
-
-
 
 
     public void MeleeAttack()
@@ -151,13 +149,13 @@ public class P1Controller : MonoBehaviour
                     return;
                 }
 
-                if (playerStats.rangedAttacks)
+                if (runtimePlayerStats.rangedAttacks)
                 {
                     RangedAttack();
                     return;
                 }
 
-                if (playerStats.meleeAttacks)
+                if (runtimePlayerStats.meleeAttacks)
                 {
                     MeleeAttack();
                     return;
@@ -167,11 +165,11 @@ public class P1Controller : MonoBehaviour
             case Player1Input.Horizontal:
 
 
-                rb.velocity = new Vector2(playerStats.moveSpeed * value, rb.velocity.y); //if we press the key that corresponds with KeyCode left, then we want the rigidbody to move to the left
+                rb.velocity = new Vector2(runtimePlayerStats.moveSpeed * value, rb.velocity.y); //if we press the key that corresponds with KeyCode left, then we want the rigidbody to move to the left
                 moveDirection = (value > 0.1f) ? Vector2.right :
                     (value < -0.1f) ? Vector2.left : moveDirection;
 
-                if (isPlayerCloseToWall(1.5f))
+                if (IsPlayerCloseToWall(1.5f))
                 {
                     rb.velocity = new Vector2(0, rb.velocity.y);
                 }
@@ -180,8 +178,8 @@ public class P1Controller : MonoBehaviour
             case Player1Input.Jump:
                 if (isGrounded)
                 {
-                    rb.AddForce(playerStats.jumpForce * Vector2.up, ForceMode2D.Impulse);
                     audioList.PlayWithVariablePitch(audioList.jump);
+                    rb.AddForce(runtimePlayerStats.jumpForce * Vector2.up, ForceMode2D.Impulse);
                 }
                 break;
 
@@ -191,7 +189,7 @@ public class P1Controller : MonoBehaviour
 
     }
 
-    private bool isPlayerCloseToWall(float range)
+    private bool IsPlayerCloseToWall(float range)
     {
         //Has to collisioncheck for walls/ground after every round of movement-input.
         //Check if there is a wall on the side the player is moving:
@@ -216,18 +214,33 @@ public class P1Controller : MonoBehaviour
             {
                 continue;
             }
-            playerStats.maxHitPoints += playerItem.healthModifier;
+            runtimePlayerStats.maxHitPoints += playerItem.healthModifier;
             currentHitPoints += playerItem.healthModifier;
 
-            playerStats.moveSpeed += playerItem.speedModifier;
+            runtimePlayerStats.moveSpeed += playerItem.speedModifier;
 
-            playerStats.baseAttackDamage += playerItem.damageModifier;
+            runtimePlayerStats.baseAttackDamage += playerItem.damageModifier;
         }
 
         playerItems.AddRange(chosenItems.Except(playerItems)); //Add new items to playeritems
         Debug.Log("Updated runtime playerstats with new item!");
-        
+
         //Strictly speaking only necessary if playerHP actually changed here, but for good measure:
+        playerHPEvent.Raise(currentHitPoints);
+    }
+
+    public void InitializePlayerStats(P1Stats baselineStats)
+    {
+        runtimePlayerStats.baseAttackDamage = baselineStats.baseAttackDamage;
+        runtimePlayerStats.maxHitPoints = baselineStats.maxHitPoints;
+        runtimePlayerStats.moveSpeed = baselineStats.moveSpeed;
+        rangedCooldownMaxTime = baselineStats.attackRate;
+        runtimePlayerStats.jumpForce = baselineStats.jumpForce;
+        runtimePlayerStats.rangedAttacks = baselineStats.rangedAttacks;
+        runtimePlayerStats.meleeAttacks = baselineStats.meleeAttacks;
+        
+
+        currentHitPoints = baselineStats.maxHitPoints;
         playerHPEvent.Raise(currentHitPoints);
     }
 

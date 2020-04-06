@@ -16,6 +16,8 @@ public class ChoiceCategory : ScriptableObject
     [Header("Runtime Only")]
     public int runTimeLoopCount = 1;
     [Header("Pre-phase")]
+
+    public P1Stats chosenHero; //Using this instead of character game-object.
     public GameObject character;
     public GameObject theme;
     [Header("First Loop")]
