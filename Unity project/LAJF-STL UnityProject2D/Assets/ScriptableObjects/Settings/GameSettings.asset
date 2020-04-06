@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0097102ce57ee1478707665900d640d, type: 3}
-  m_Name: Element Fire
+  m_Script: {fileID: 11500000, guid: 01e6657d2f8176d49be3a73082efbb09, type: 3}
+  m_Name: GameSettings
   m_EditorClassIdentifier: 
-  godName: Inferno
-  selectionIcon: {fileID: 21300000, guid: 2074f38839dd073408208c121731cdd1, type: 3}
-  topBarIcon: {fileID: 21300000, guid: 2074f38839dd073408208c121731cdd1, type: 3}
+  amountOfPlayers: 2

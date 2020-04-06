@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GreekGod
   m_EditorClassIdentifier: 
   godName: Zeus
-  selectionIcon: {fileID: 0}
-  topBarIcon: {fileID: 0}
+  selectionIcon: {fileID: 21300000, guid: 0f5da9aa43ca8854c922d4ecc3d01b72, type: 3}
+  topBarIcon: {fileID: 21300000, guid: 0f5da9aa43ca8854c922d4ecc3d01b72, type: 3}
