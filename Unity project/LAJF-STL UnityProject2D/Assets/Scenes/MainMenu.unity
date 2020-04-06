@@ -2723,17 +2723,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1708946514}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &435424272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6648,19 +6637,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680130854}
   m_CullTransparentMesh: 0
---- !u!1 &1708946514 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3533239637080075378, guid: 2d82e934a2c9b5641b8ac1dffb955a81,
-    type: 3}
-  m_PrefabInstance: {fileID: 3533239635555686432}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1708946517 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3533239637080075381, guid: 2d82e934a2c9b5641b8ac1dffb955a81,
     type: 3}
   m_PrefabInstance: {fileID: 3533239635555686432}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708946514}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2e3f0ed42a6b1d4cbb4baed20b61f98, type: 3}
@@ -7086,17 +7069,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1708946517}
-        m_MethodName: PlayMusic
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Choosing
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1887345759

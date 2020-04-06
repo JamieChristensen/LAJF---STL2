@@ -46,14 +46,15 @@ public class TransitionScreen : MonoBehaviour
     }
     private void OnEnable()
     {
-        if (outOfThreeScenarios == 2)
-        {
-            DoNextTransition(11);
-        }
-        else if (outOfThreeScenarios == 3)
+        if (outOfThreeScenarios == 3)
         {
             DoNextTransition(15);
         }
+        else if (outOfThreeScenarios == 2)
+        {
+            DoNextTransition(11);
+        }
+        
     }
 
     private void Start()
