@@ -95,7 +95,33 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             #endregion InitializeItemSelection
         }
 
+        if (choiceType == "Modifier")
+        {
+            #region InitializeModifierSelection
+            ShuffleList(modifierPool);
+            for (int i = 0; i < enemyModifierChoices.Length; i++)
+            {
+                EnemyModifier modifier = modifierPool[i];
+                Sprites[i].sprite = modifier.sprite;
+                names[i].text = modifier.name;
+                enemyModifierChoices[i] = modifier; 
+            }
+            #endregion InitializeModifierSelection
 
+        }
+
+        if (choiceType == "Minion")
+        {
+            #region InitializeMinionSelection
+           /* ShuffleList(modifierPool);
+            for (int i = 0; i < enemyModifierChoices.Length; i++)
+            {
+                EnemyModifier modifier = modifierPool[i];
+                Sprites[i].sprite = modifier.sprite;
+                names[i].text = modifier.name;
+            }*/
+            #endregion InitializeMinionSelection
+        }
 
     }
 
@@ -107,17 +133,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             preGameTransitionIndex.Raise(2* buildIndex -1);
         }
 
-        if (choiceType == "Modifier")
-        {
-            ShuffleList(modifierPool);
-            for (int i = 0; i < enemyModifierChoices.Length; i++)
-            {
-                EnemyModifier modifier = modifierPool[i];
-                Sprites[i].sprite = modifier.sprite;
-                names[i].text = modifier.name;
-                // smid dem ind i type.options af choicecategory for modifiers.
-            }
-        }
+        
         
 
     }
@@ -302,7 +318,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         SwitchToModifierSelection(); // switching from minion select to modifier select
     }
 
-    void GodsHaveChosenOpponent()
+        
+    void GodsHaveChosenOpponent() // this is raised in the choose modifier scene
     {
         switch (runtimeChoices.runTimeLoopCount)
         {
@@ -320,7 +337,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 runtimeChoices.runTimeLoopCount = 1;
                 break;
         }
-        Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". modifier! It is: " + finalChoice.name);
+      //  Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". modifier! It is: " + finalChoice.name);
         if (_musicManager != null)
         {
             _musicManager.PlayMusic("Battle");
@@ -348,7 +365,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         // runtimeChoices.runTimeLoopCount++;  
         runtimeChoices.playerItems.Add(playerItemChoices[choice-1]);
         heroHasChosenItem.Raise(); // Raising event for item chosen
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
 
@@ -394,6 +411,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         runtimeChoices.secondItem = null;
         runtimeChoices.thirdItem = null;
         runtimeChoices.playerItems = new List<PlayerItems>();
+        runtimeChoices.enemyModifiers = new List<EnemyModifier>();
     }
 
 
@@ -416,6 +434,17 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         for (int i = 0; i < ts.Length; i++)
         {
             EnemyModifier temp = ts[i];
+            int randomIndex = Random.Range(i, ts.Length);
+            ts[i] = ts[randomIndex];
+            ts[randomIndex] = temp;
+        }
+    }
+
+    private void ShuffleList(Enemy[] ts)
+    {
+        for (int i = 0; i < ts.Length; i++)
+        {
+            Enemy temp = ts[i];
             int randomIndex = Random.Range(i, ts.Length);
             ts[i] = ts[randomIndex];
             ts[randomIndex] = temp;
