@@ -26,6 +26,7 @@ public class HandleModifiers : MonoBehaviour
             EnemyModifier modifier = ModifierPool[i];
             Sprites[i].sprite = modifier.sprite;
             names[i].text = modifier.name;
+            // smid dem ind i type.options af choicecategory for modifiers.
         }
     }
 

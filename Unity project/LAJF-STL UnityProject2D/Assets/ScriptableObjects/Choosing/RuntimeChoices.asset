@@ -20,10 +20,8 @@ MonoBehaviour:
     type: 3}
   theme: {fileID: 6643102211857282949, guid: f45c201a628279b4cb39da83f49de33e, type: 3}
   firstOpponent:
-    minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
-      type: 3}
-    modifier: {fileID: 1143511520268014283, guid: c2f4f0a1607210b4290c1faaf687946a,
-      type: 3}
+    minion: {fileID: 0}
+    modifier: {fileID: 0}
   firstItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
     type: 3}
   secondOpponent:

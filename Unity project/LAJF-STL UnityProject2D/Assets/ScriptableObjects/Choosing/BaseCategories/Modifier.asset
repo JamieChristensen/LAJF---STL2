@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CategoryName: Modifier
   Options:
-  - {fileID: 5594139856597686897, guid: 10291372bcecc6e4dae30eca805eac40, type: 3}
-  - {fileID: 1143511520268014283, guid: c2f4f0a1607210b4290c1faaf687946a, type: 3}
-  - {fileID: 8768507907454088886, guid: 33cdd8e3b3b0c954591ab0071c438f60, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerItems: []
   runTimeLoopCount: 0
   character: {fileID: 0}
   theme: {fileID: 0}
