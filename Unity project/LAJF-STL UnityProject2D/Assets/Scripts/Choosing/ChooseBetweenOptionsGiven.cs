@@ -22,6 +22,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public ChoiceCategory minion;
     public ChoiceCategory modifier;
     public PlayerItems item;
+    public EnemyModifier enemyModifier;
     public string choiceType;
 
 
@@ -37,6 +38,12 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public PlayerItems[] playerItemPool;
     public TextMeshProUGUI[] choiceNameText;
     public Image[] itemImageTargets;
+
+    [Header("Modifier choice variables")]
+    private EnemyModifier[] enemyModifierChoices = new EnemyModifier[3];
+    public EnemyModifier[] modifierPool;
+    public List<Image> Sprites;
+    public List<TextMeshProUGUI> names;
 
     private MusicManager _musicManager;
 
@@ -99,6 +106,19 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         {
             preGameTransitionIndex.Raise(2* buildIndex -1);
         }
+
+        if (choiceType == "Modifier")
+        {
+            ShuffleList(modifierPool);
+            for (int i = 0; i < enemyModifierChoices.Length; i++)
+            {
+                EnemyModifier modifier = modifierPool[i];
+                Sprites[i].sprite = modifier.sprite;
+                names[i].text = modifier.name;
+                // smid dem ind i type.options af choicecategory for modifiers.
+            }
+        }
+        
 
     }
 
@@ -305,6 +325,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         {
             _musicManager.PlayMusic("Battle");
         }
+        runtimeChoices.enemyModifiers.Add(enemyModifierChoices[choice - 1]);
         godsHaveChosenOpponent.Raise(); // Raising event for opponent chosen
     }
 
@@ -389,6 +410,17 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     #endregion
 
 
+
+    private void ShuffleList(EnemyModifier[] ts)
+    {
+        for (int i = 0; i < ts.Length; i++)
+        {
+            EnemyModifier temp = ts[i];
+            int randomIndex = Random.Range(i, ts.Length);
+            ts[i] = ts[randomIndex];
+            ts[randomIndex] = temp;
+        }
+    }
 
 
 }

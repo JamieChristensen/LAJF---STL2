@@ -1046,6 +1046,7 @@ MonoBehaviour:
   minion: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   modifier: {fileID: 11400000, guid: c1eb906e953b7f44f8038e1308e1e8ed, type: 2}
   item: {fileID: 0}
+  enemyModifier: {fileID: 0}
   choiceType: Item
   type: {fileID: 11400000, guid: b52ee4ce1ca1f5942a3e6afd80951572, type: 2}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
@@ -1054,6 +1055,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e908707d1505a324085395952b68f7c3, type: 2}
   - {fileID: 11400000, guid: 0449e37f5ac35744bb01ef93d8177982, type: 2}
   - {fileID: 11400000, guid: 5966a2f15e04c4a4997eec965b58ecc2, type: 2}
+  modifierPool: []
   choiceNameText:
   - {fileID: 5296677654474021518}
   - {fileID: 8522395318281844260}
