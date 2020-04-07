@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c1f0de924389ac4bbd7807bee9dc1e6, type: 3}
-  m_Name: Default Enemy
+  m_Name: ItchyFrog
   m_EditorClassIdentifier: 
-  name: E
+  name: ItchyFrog
   health: 30
   speed: 2
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f5053905e24192d40b1860615113c38a, type: 3}
   scaleFactor: 1
   damage: 20
   attackType: range
-  range: 32
-  attackSpeed: 1.25
+  range: 40
+  attackSpeed: 1.5

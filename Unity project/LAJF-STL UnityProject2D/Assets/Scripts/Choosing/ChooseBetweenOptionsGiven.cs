@@ -340,7 +340,6 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     }
 
 
-
     public void ResetAllChoices()
     {
         /* Local */
@@ -349,6 +348,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         choice = 4;
 
         /* in scriptableObject */
+
+        // TODO: MOVE LOGIC TO SCRIPTABLE OBJECT
         runtimeChoices.runTimeLoopCount = 1;
         runtimeChoices.character = null;
         runtimeChoices.theme = null;

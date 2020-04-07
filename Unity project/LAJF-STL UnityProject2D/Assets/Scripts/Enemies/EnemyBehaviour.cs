@@ -10,8 +10,6 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     private GameManager gameManager;
     public Rigidbody2D rb2;
     public GameObject target;
-    public Enemy agent;
-    public List<Modifier> modifiers;
     public GameObject bulletObj;
     public HealthBar healthBar;
     public new string name;
@@ -36,9 +34,16 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     private Material matDefault;
     public Material matWhite;
 
+    // NB TODO these should be provided elsewhere and are now just for developing 1/2
+    public Enemy agent;
+    public List<EnemyModifier> modifiers;
     // Start is called before the first frame update
     void Start()
     {
+        // give me da objects mon 
+        
+        
+
         rb = GetComponent<Rigidbody2D>();
         matDefault = spriteRenderer.material;
         gameManager = FindObjectOfType<GameManager>();
@@ -46,10 +51,9 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         currentHealth = agent.health;
         cooldownTimer = 0;
 
-        #region combing modifiers and enemy
-        name = agent.generateName(modifiers);
-        nameUI.SetText(name);
-        #endregion combing modifiers and enemy
+        // NB TODO these should be provided elsewhere and are now just for developing 1/2
+        // this function is to be called before init of this script
+        InitalizeEnemy(agent, modifiers);
 
     }
 
@@ -121,7 +125,6 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     private void MoveTowards(Transform tf)
     {
-        if (gameManager.canMonsterMove[monsterNumber - 1])
         {
             Vector2 direction = (tf.position - transform.position).normalized;
             rb2.velocity = new Vector2(direction.x * agent.speed, rb2.velocity.y);
@@ -200,6 +203,17 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         isPaused = false;
     }
 
+    public void InitalizeEnemy(Enemy enemy, List<EnemyModifier> enemyModifiers)
+    {
+        // get info from runtime stats from somewhere 
+        // modifier = runtimeStats.whatever.modifer
+        // enemy = runtimeStats.whatever.enemy
+        // NB right now everything is manually assinged through the inspector
+        spriteRenderer.sprite = enemy.sprite;
 
-   
+        name = agent.GenerateName(modifiers);
+        nameUI.SetText(name);
+    }
+
+
 }

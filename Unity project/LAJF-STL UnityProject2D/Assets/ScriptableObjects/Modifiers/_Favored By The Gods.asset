@@ -10,6 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 033f754c40819854ab98e7640afd6e79, type: 3}
-  m_Name: Default Modifier 1
+  m_Name: _Favored By The Gods
   m_EditorClassIdentifier: 
-  text: Clever_
+  name: _Favored By The Gods
+  description: Is this the chosen one
+  sprite: {fileID: 21300000, guid: cc8001befab5fc14f8b141cfcf32aeaa, type: 3}

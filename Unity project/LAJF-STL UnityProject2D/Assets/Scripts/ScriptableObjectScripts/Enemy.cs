@@ -21,22 +21,22 @@ public class Enemy : ScriptableObject
     public float attackSpeed;
     // just for testing
 
-    public string generateName(List<Modifier> modifiers)
+    public string GenerateName(List<EnemyModifier> modifiers)
     {
-            string modifiedName = name;
+        string modifiedName = name;
 
         if(modifiers.Count > 0)
         {
-            foreach(Modifier m in modifiers)
+            foreach(EnemyModifier m in modifiers)
             {
                 // look for _ 
-                string extraText = m.text.Trim();
+                string extraText = m.name.Trim();
 
-                if (m.text.IndexOf('_') == 0)
-                    modifiedName += m.text.Split('_')[1];
+                if (extraText.IndexOf('_') == 0)
+                    modifiedName += extraText.Split('_')[1];
                 else
                 {
-                    modifiedName = m.text.Split('_')[0] + " " + modifiedName;
+                    modifiedName = extraText.Split('_')[0] + " " + modifiedName;
                 }
 
             }

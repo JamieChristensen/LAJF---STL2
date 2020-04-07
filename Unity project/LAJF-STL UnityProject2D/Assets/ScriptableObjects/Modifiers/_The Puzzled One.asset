@@ -9,15 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1f0de924389ac4bbd7807bee9dc1e6, type: 3}
-  m_Name: Default Enemy
+  m_Script: {fileID: 11500000, guid: 033f754c40819854ab98e7640afd6e79, type: 3}
+  m_Name: _The Puzzled One
   m_EditorClassIdentifier: 
-  name: E
-  health: 30
-  speed: 2
-  sprite: {fileID: 0}
-  scaleFactor: 1
-  damage: 20
-  attackType: range
-  range: 32
-  attackSpeed: 1.25
+  name: _The Puzzled One
+  description: Similar to a Psyduck but with higher IQ
+  sprite: {fileID: 21300000, guid: 4c2baa5296d67004b920c7e2fc8df7bf, type: 3}

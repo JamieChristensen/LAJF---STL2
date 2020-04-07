@@ -70,7 +70,11 @@ public class GameManager : MonoBehaviour
         }
         */
         _canMonsterMove[0] = false;
-       
+
+
+        IPausable pausable = FindObjectOfType<EnemyBehaviour>();
+        pausable.Pause();
+
          canPlayerMove = true;
 
         gameState = initialGamestate;
