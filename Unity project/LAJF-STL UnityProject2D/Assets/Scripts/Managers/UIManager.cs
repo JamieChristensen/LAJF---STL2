@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        nextTransition.Raise(5);  
+        nextTransition.Raise(7);  
     }
 
     public void Update()
@@ -120,10 +120,15 @@ public class UIManager : MonoBehaviour
     public void ChooseNextTransition()
     {
         nextTransitionIndex++;
-        if (nextTransitionIndex == 16)
+        if (nextTransitionIndex == 18)
         {
-            nextTransitionIndex = 5;
+            nextTransitionIndex = 7;
         }
+    }
+
+    public void OnNextTransition(int transitionIndex)
+    {
+        nextTransitionIndex = transitionIndex + 1;
     }
 
 

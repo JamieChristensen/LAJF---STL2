@@ -33,17 +33,15 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     //White and default materials
     private Material matDefault;
     public Material matWhite;
-
-    // NB TODO these should be provided elsewhere and are now just for developing 1/2
     public Enemy agent;
     public List<EnemyModifier> modifiers;
+    private AudioList _audioList;
+    public AudioList audioList { get { return _audioList; } }
+
     // Start is called before the first frame update
     void Start()
     {
-        // give me da objects mon 
-        
-        
-
+        _audioList = FindObjectOfType<AudioList>();
         rb = GetComponent<Rigidbody2D>();
         matDefault = spriteRenderer.material;
         gameManager = FindObjectOfType<GameManager>();
@@ -73,6 +71,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
            // Invoke("DeathAnimation", 0.2f);
             monsterDied.Raise();
+            audioList.PlayWithVariablePitch(audioList.deathEnemy);
 
 
 
@@ -152,6 +151,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         currentHealth -= damage;
         healthBar.VisualiseHealthChange(currentHealth);
         DamageAnimation();
+        audioList.PlayWithVariablePitch(audioList.hurt);
     }
 
     public void OnPlayerDamaged(int PlayerHealth)

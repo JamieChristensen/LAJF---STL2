@@ -15,8 +15,8 @@ MonoBehaviour:
   myName: The gr8 sauce mage
   description: Don't get hit by the sausage or drop the soap...
   trait: 'Trait: Long: Enemies SHALL NOT PASS!'
-  moveSpeed: 0
-  jumpForce: 0
+  moveSpeed: 10
+  jumpForce: 10
   baseAttackDamage: 1
   attackRate: 0
   rangedAttacks: 1

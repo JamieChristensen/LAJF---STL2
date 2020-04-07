@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 5(4) ToMinionScreen
   m_EditorClassIdentifier: 
   sceneIndex: 5
-  details: To Modifier Screen (5) from Minion Screen (4)
+  details: To Minion Screen (5) from GameLoop Scene (4)
   startTransparent: 0
   textElement:
   - textInput: 

@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aca076a848adaa4f898eede48bbd14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 761871b870a16774fafc7fbe839f1f10, type: 2}
+  runtimePlayerStats: {fileID: 11400000, guid: 761871b870a16774fafc7fbe839f1f10, type: 2}
   playerHPEvent: {fileID: 11400000, guid: 68ceaca7cb81c1246a5d78560f4295cb, type: 2}
   rb: {fileID: 5892630455597672942}
   left: 97
