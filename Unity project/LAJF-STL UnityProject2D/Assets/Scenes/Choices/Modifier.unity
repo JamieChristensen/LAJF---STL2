@@ -2256,6 +2256,17 @@ MonoBehaviour:
           m_StringArgument: Modifier
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4485380358645833531}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5583358222067899269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2615,7 +2626,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8266298950897643313}
-  - component: {fileID: 6209871419250389505}
   m_Layer: 0
   m_Name: ModifierScene
   m_TagString: Untagged
@@ -2623,31 +2633,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6209871419250389505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6209871419250389504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253587e605fcc7844b3b46b099934698, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sprites:
-  - {fileID: 2846839169836485320}
-  - {fileID: 2657137300775896228}
-  - {fileID: 1811799788623837363}
-  names:
-  - {fileID: 6099507915623241105}
-  - {fileID: 7737741617022400827}
-  - {fileID: 4707644828000951904}
-  ModifierPool:
-  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
-  - {fileID: 11400000, guid: 82d84c797c4bb9949b13a7b7b0526361, type: 2}
-  - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
-  - {fileID: 11400000, guid: 43928b0c3460d764d9dbeb910483ea71, type: 2}
 --- !u!222 &6212225028383402829
 CanvasRenderer:
   m_ObjectHideFlags: 0
