@@ -162,6 +162,7 @@ MonoBehaviour:
   minion: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   modifier: {fileID: 11400000, guid: c1eb906e953b7f44f8038e1308e1e8ed, type: 2}
   item: {fileID: 0}
+  enemyModifier: {fileID: 0}
   choiceType: Theme
   type: {fileID: 0}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
@@ -169,6 +170,19 @@ MonoBehaviour:
   playerItemPool: []
   choiceNameText: []
   itemImageTargets: []
+  modifierPool: []
+  Sprites: []
+  names: []
+  environmentThemePool: {fileID: 11400000, guid: 347a4d27b9ee7374284d715b1e02686b,
+    type: 2}
+  themeSprites:
+  - {fileID: 2846839169836485320}
+  - {fileID: 2657137300775896228}
+  - {fileID: 1811799788623837363}
+  themeNames:
+  - {fileID: 6099507915623241105}
+  - {fileID: 7737741617022400827}
+  - {fileID: 4707644828000951904}
 --- !u!4 &83067746
 Transform:
   m_ObjectHideFlags: 0
@@ -1318,7 +1332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a14b5c3e6b31f764b8708c37d1c367e7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1677,7 +1691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e1dfe5235fec45c478f69d4d706e9ee5, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1724,7 +1738,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aeca1de892612d947936f6078ccc1acb, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

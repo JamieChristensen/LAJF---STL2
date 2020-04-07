@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public BoolVariable isSceneLoading;
 
+    public ChoiceCategory runTimeChoises;
 
     public static bool canPlayerMove { get; private set; }
     [SerializeField] private bool[] _canMonsterMove; 
@@ -71,6 +72,10 @@ public class GameManager : MonoBehaviour
         */
         _canMonsterMove[0] = false;
 
+       // Debug.Log("Index to Load: " + runTimeChoises.chosenEnvironments[0].environmentIndex.ToString());
+        
+        
+
 
         IPausable pausable = FindObjectOfType<EnemyBehaviour>();
         pausable.Pause();
@@ -91,7 +96,8 @@ public class GameManager : MonoBehaviour
         {
             isGamePaused.setBool(false);
         }
-       
+
+        sceneManager.RequestEnvironmentChange(runTimeChoises.chosenEnvironments[0].environmentIndex);
     }
 
     public void PlayerHealthResponse(int playerHP)
@@ -184,7 +190,7 @@ public class GameManager : MonoBehaviour
     public void OnOpenedChest()
     {
         canPlayerMove = false;
-        Time.timeScale = 0f;
+       // Time.timeScale = 0f;
         sceneManager.ChooseSceneToLoad(indexOfItemChoiceScene);
         nextTransition.Raise(14);
         // StartCoroutine(sceneManager.ALoadEnvironment(indexOfItemChoiceScene)); //6 is the index of item-choice scene.

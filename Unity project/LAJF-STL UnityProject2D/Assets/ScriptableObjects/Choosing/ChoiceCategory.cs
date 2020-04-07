@@ -13,6 +13,7 @@ public class ChoiceCategory : ScriptableObject
     public GodInformation[] chosenGods = new GodInformation[3];
     public List<PlayerItems> playerItems;
     public List<EnemyModifier> enemyModifiers;
+    public Environment[] chosenEnvironments;
 
     [Header("Runtime Only")]
     public int runTimeLoopCount = 1;

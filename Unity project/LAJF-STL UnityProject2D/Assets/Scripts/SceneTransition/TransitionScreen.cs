@@ -77,7 +77,7 @@ public class TransitionScreen : MonoBehaviour
             }
         }
 
-        if (SceneManager.sceneCount > 1)
+        if (SceneManager.sceneCount > 2)
         {
             List<int> sceneIndices = new List<int>();
             for (int i = 0; i < SceneManager.sceneCount; i++)
@@ -86,13 +86,13 @@ public class TransitionScreen : MonoBehaviour
                 switch (sceneIndices[i])
                 {
                     case 5:
-                        DoNextTransition(9);
+                        DoNextTransition(9); // transition to Minion scene
                         break;
                     case 6:
-                        DoNextTransition(11);
+                        DoNextTransition(11); // transition to Modifier scene
                         break;
                     case 7:
-                        DoNextTransition(15);
+                        DoNextTransition(15); // transition to Item scene
                         break;
                 }
             }

@@ -183,13 +183,13 @@ public class CustomSceneManager : MonoBehaviour
     public void LoadChosenScene()
     {
 
-        if (SceneManager.sceneCount == 1)
+        if (SceneManager.sceneCount == 2)
         {
             // transitionScreen.StopAllCoroutines();
             transitionScreen.enabled = false;
             transitionScreenIntListener.enabled = false;
         }
-        else if (SceneManager.sceneCount > 1)
+        else if (SceneManager.sceneCount > 2)
         {
             StartCoroutine(AUnloadEnvironment(previousBuildIndex));
         }

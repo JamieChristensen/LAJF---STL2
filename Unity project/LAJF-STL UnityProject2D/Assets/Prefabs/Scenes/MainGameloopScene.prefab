@@ -1734,6 +1734,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 82071857}
     m_Modifications:
+    - target: {fileID: 260555498907723516, guid: 4678dde67238f284898e2ba57a247f8d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4263097262462576639, guid: 4678dde67238f284898e2ba57a247f8d,
         type: 3}
       propertyPath: _itemFrameNumber
@@ -1763,6 +1768,32 @@ PrefabInstance:
         type: 3}
       propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479294199534633512, guid: 4678dde67238f284898e2ba57a247f8d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9abe691fbb217234fbc9a30e23db043b,
+        type: 3}
+    - target: {fileID: 5479294199534633512, guid: 4678dde67238f284898e2ba57a247f8d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 6.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479294199534633512, guid: 4678dde67238f284898e2ba57a247f8d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 6.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479294199534633512, guid: 4678dde67238f284898e2ba57a247f8d,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265841945693636686, guid: 4678dde67238f284898e2ba57a247f8d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7431670647072598700, guid: 4678dde67238f284898e2ba57a247f8d,
         type: 3}

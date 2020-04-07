@@ -34,16 +34,27 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     private int choice = 4; // this is 4 by default as there never will be 4 choices to choose from. The forth choice is blindpick.
 
     [Header("Item choice variables")]
-    private PlayerItems[] playerItemChoices = new PlayerItems[2];
     public PlayerItems[] playerItemPool;
     public TextMeshProUGUI[] choiceNameText;
     public Image[] itemImageTargets;
+    private PlayerItems[] playerItemChoices = new PlayerItems[2];
 
     [Header("Modifier choice variables")]
-    private EnemyModifier[] enemyModifierChoices = new EnemyModifier[3];
     public EnemyModifier[] modifierPool;
     public List<Image> Sprites;
     public List<TextMeshProUGUI> names;
+    private EnemyModifier[] enemyModifierChoices = new EnemyModifier[3];
+
+    [Header("Theme choice variables")]
+    public EnvironmentPool environmentThemePool;
+    public List<Image> themeSprites;
+    public List<TextMeshProUGUI> themeNames;
+    public Environment[] environmentThemeChoices = new Environment[3];
+    public List<Environment> EnvironmentsChosen; // the individual environments chosen
+
+
+
+
 
     private MusicManager _musicManager;
 
@@ -64,7 +75,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
         }
 
-       
+
         if (choiceType == "Item")
         {
             #region InitializeItemSelection
@@ -104,7 +115,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 EnemyModifier modifier = modifierPool[i];
                 Sprites[i].sprite = modifier.sprite;
                 names[i].text = modifier.name;
-                enemyModifierChoices[i] = modifier; 
+                enemyModifierChoices[i] = modifier;
             }
             #endregion InitializeModifierSelection
 
@@ -113,14 +124,30 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         if (choiceType == "Minion")
         {
             #region InitializeMinionSelection
-           /* ShuffleList(modifierPool);
-            for (int i = 0; i < enemyModifierChoices.Length; i++)
-            {
-                EnemyModifier modifier = modifierPool[i];
-                Sprites[i].sprite = modifier.sprite;
-                names[i].text = modifier.name;
-            }*/
+            /* ShuffleList(modifierPool);
+             for (int i = 0; i < enemyModifierChoices.Length; i++)
+             {
+                 EnemyModifier modifier = modifierPool[i];
+                 Sprites[i].sprite = modifier.sprite;
+                 names[i].text = modifier.name;
+             }*/
             #endregion InitializeMinionSelection
+        }
+
+        if (choiceType == "Theme")
+        {
+            #region InitializeThemeSelection
+
+            ShuffleList(environmentThemePool.environmentPool);
+            for (int i = 0; i < environmentThemeChoices.Length; i++)
+            {
+                Environments environmentsTheme = environmentThemePool.environmentPool[i];
+                themeSprites[i].sprite = environmentsTheme.environments[0].environmentSprite;
+                themeNames[i].text = environmentsTheme.environments[0].environmentName;
+                environmentThemeChoices[i] = environmentsTheme.environments[0];
+            }
+
+            #endregion InitializeThemeSelection
         }
 
     }
@@ -128,13 +155,13 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     private void Start()
     {
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
-        if (buildIndex == 1|| buildIndex == 2 || buildIndex == 3)
+        if (buildIndex == 1 || buildIndex == 2 || buildIndex == 3)
         {
-            preGameTransitionIndex.Raise(2* buildIndex -1);
+            preGameTransitionIndex.Raise(2 * buildIndex - 1);
         }
 
-        
-        
+
+
 
     }
 
@@ -292,7 +319,27 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     void GodsHaveChosenTheme()
     {
-        runtimeChoices.theme = finalChoice;
+       EnvironmentsChosen.Add(environmentThemeChoices[choice - 1]); // the chosen Environment theme is the initilized
+
+        for (int i = 0; i < environmentThemePool.environmentPool.Count; i++) // the Environment Theme Pool is checked
+        {
+            if (EnvironmentsChosen[0].theme == environmentThemePool.environmentPool[i].theme) // if the chosen theme matches with a theme in the Environment Theme Pool
+            {
+                EnvironmentsChosen = new List<Environment>();
+
+                for (int ii = 1; ii < environmentThemePool.environmentPool[i].environments.Length;ii++)
+                {
+                    EnvironmentsChosen.Add(environmentThemePool.environmentPool[i].environments[ii]); // locates all the possible Environments in the chosen theme
+                }
+            }
+        }
+
+        ShuffleList(EnvironmentsChosen); // randomise the order
+        /* choose 4 environments */
+        for (int i = 0; i < 4; i++) 
+        {
+            runtimeChoices.chosenEnvironments[i] = EnvironmentsChosen[i];
+        }
         Debug.Log("Gods have chosen a theme! It is: " + finalChoice.name);
         preGameTransitionIndex.Raise(6);
     }
@@ -318,7 +365,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         SwitchToModifierSelection(); // switching from minion select to modifier select
     }
 
-        
+
     void GodsHaveChosenOpponent() // this is raised in the choose modifier scene
     {
         switch (runtimeChoices.runTimeLoopCount)
@@ -337,7 +384,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 runtimeChoices.runTimeLoopCount = 1;
                 break;
         }
-      //  Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". modifier! It is: " + finalChoice.name);
+        //  Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". modifier! It is: " + finalChoice.name);
         if (_musicManager != null)
         {
             _musicManager.PlayMusic("Battle");
@@ -363,7 +410,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         Debug.Log("Hero has chosen the" + runtimeChoices.runTimeLoopCount + ". item! It is: " + finalChoice.name);
 
         // runtimeChoices.runTimeLoopCount++;  
-        runtimeChoices.playerItems.Add(playerItemChoices[choice-1]);
+        runtimeChoices.playerItems.Add(playerItemChoices[choice - 1]);
         heroHasChosenItem.Raise(); // Raising event for item chosen
         //Destroy(gameObject);
     }
@@ -375,7 +422,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public void SwitchToGodSelection() // from character selection
     {
         preGameTransitionIndex.Raise(2);
-        
+
     }
 
     public void SwitchToModifierSelection() // from minion selection
@@ -420,7 +467,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     public void OnPreGameLoadNextScene() // Character & Theme Screen
     {
-      //  Debug.Log("Going to next scene!");
+        //  Debug.Log("Going to next scene!");
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadSceneAsync(buildIndex + 1); // go to next scene
     }
@@ -451,5 +498,26 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         }
     }
 
+    private void ShuffleList(List<Environments> ts)
+    {
+        for (int i = 0; i < ts.Count; i++)
+        {
+            Environments temp = ts[i];
+            int randomIndex = Random.Range(i, ts.Count);
+            ts[i] = ts[randomIndex];
+            ts[randomIndex] = temp;
+        }
+    }
+
+    private void ShuffleList(List<Environment> ts)
+    {
+        for (int i = 0; i < ts.Count; i++)
+        {
+            Environment temp = ts[i];
+            int randomIndex = Random.Range(i, ts.Count);
+            ts[i] = ts[randomIndex];
+            ts[randomIndex] = temp;
+        }
+    }
 
 }

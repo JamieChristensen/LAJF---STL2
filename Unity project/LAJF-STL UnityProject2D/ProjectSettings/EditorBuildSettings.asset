@@ -32,4 +32,58 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndScene.unity
     guid: dc651c6211910384099c35db6c94283c
+  - enabled: 1
+    path: Assets/Scenes/Environments/Nature/Nature1.unity
+    guid: 996a7826069af3d49a418e4d40996d0d
+  - enabled: 1
+    path: Assets/Scenes/Environments/Nature/Nature2.unity
+    guid: bd822bdb141b6b04880c2beba2fc7150
+  - enabled: 1
+    path: Assets/Scenes/Environments/Nature/Nature3.unity
+    guid: 562dba875c4f21d4aba06e5cd9b6b9c6
+  - enabled: 1
+    path: Assets/Scenes/Environments/Nature/Nature4.unity
+    guid: e396702d393ae534c95bb48aab340c04
+  - enabled: 1
+    path: Assets/Scenes/Environments/Space/Space1.unity
+    guid: 2ce30a701f5f71647a6a908a7e65b436
+  - enabled: 1
+    path: Assets/Scenes/Environments/Space/Space2.unity
+    guid: f15a7a6295d85054cb38af8f25ad327d
+  - enabled: 1
+    path: Assets/Scenes/Environments/Space/Space3.unity
+    guid: 9709326d26022b749a034955deb11282
+  - enabled: 1
+    path: Assets/Scenes/Environments/Space/Space4.unity
+    guid: 161b872a37f66ed4f92d6ebdd4b4f96d
+  - enabled: 1
+    path: Assets/Scenes/Environments/Space/Space5.unity
+    guid: ac55ec54a80d0e04f9073e4b970a2362
+  - enabled: 1
+    path: Assets/Scenes/Environments/Castle/Castle1.unity
+    guid: 2ba2af4dffff9904686c24ba6ea40c06
+  - enabled: 1
+    path: Assets/Scenes/Environments/Castle/Castle2.unity
+    guid: 299a8b70f0d10504b81ccf0a98193820
+  - enabled: 1
+    path: Assets/Scenes/Environments/Castle/Castle3.unity
+    guid: 2923b48c173128745997e7f1b7e2a6e7
+  - enabled: 1
+    path: Assets/Scenes/Environments/Castle/Castle4.unity
+    guid: e779877e034788b4291328b8b5bfc12a
+  - enabled: 1
+    path: Assets/Scenes/Environments/Castle/Castle5.unity
+    guid: e62bb455af46e6246b5e2e9338dc36d7
+  - enabled: 1
+    path: Assets/Scenes/Environments/Empire/Empire1.unity
+    guid: 75734d2865271c348adf05cdc7344f00
+  - enabled: 1
+    path: Assets/Scenes/Environments/Empire/Empire2.unity
+    guid: b2bb25d8d90fa4643b36192b2acbfa4e
+  - enabled: 1
+    path: Assets/Scenes/Environments/Empire/Empire3.unity
+    guid: 26328e9bd177e494dbb69e68b14a0fe8
+  - enabled: 1
+    path: Assets/Scenes/Environments/Empire/Empire4.unity
+    guid: 1337cf46faa41a04485e1070afc09b43
   m_configObjects: {}
