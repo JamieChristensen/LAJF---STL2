@@ -16,5 +16,5 @@ MonoBehaviour:
   details: From Item Screen (7) to GameLoop Scene (4)
   startTransparent: 1
   textElement:
-  - textInput: 
-    timeOfTextDisplayed: 1
+  - textInput: The Hero Plunged into Wealth And Gold...
+    timeOfTextDisplayed: 3

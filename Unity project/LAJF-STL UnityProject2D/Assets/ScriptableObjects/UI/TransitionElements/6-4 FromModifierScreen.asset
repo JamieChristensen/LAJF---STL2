@@ -16,5 +16,5 @@ MonoBehaviour:
   details: From Modifier Screen (6) to GameLoop Scene (4)
   startTransparent: 1
   textElement:
-  - textInput: Hero, Prepare yourself!
+  - textInput: So Ready Up... Prepare For War!
     timeOfTextDisplayed: 3

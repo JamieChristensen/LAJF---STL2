@@ -16,5 +16,5 @@ MonoBehaviour:
   details: From GameLoop Scene (4) to Minion Screen (5)
   startTransparent: 1
   textElement:
-  - textInput: A terrible creature came...
-    timeOfTextDisplayed: 5
+  - textInput: By their Power, A Minion Was Called For...
+    timeOfTextDisplayed: 3.5

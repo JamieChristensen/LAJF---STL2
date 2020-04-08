@@ -128,6 +128,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 554963477601737872, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: uiText
+      value: 
+      objectReference: {fileID: 104020994}
     - target: {fileID: 9049779017664538650, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -265,6 +270,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbbb37c9bb70bee488540616023c104d, type: 3}
+--- !u!114 &104020994 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9049779017664538650, guid: dbbb37c9bb70bee488540616023c104d,
+    type: 3}
+  m_PrefabInstance: {fileID: 104020993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &104020995 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 554963477601737872, guid: dbbb37c9bb70bee488540616023c104d,
+    type: 3}
+  m_PrefabInstance: {fileID: 104020993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f6e84f55406754d8a9ff4933bb6bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &229613169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,8 +1074,6 @@ MonoBehaviour:
   theme: {fileID: 11400000, guid: 39b03a01b19324b4cbae1684e1476b01, type: 2}
   minion: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   modifier: {fileID: 11400000, guid: c1eb906e953b7f44f8038e1308e1e8ed, type: 2}
-  item: {fileID: 0}
-  enemyModifier: {fileID: 0}
   choiceType: Item
   type: {fileID: 11400000, guid: b52ee4ce1ca1f5942a3e6afd80951572, type: 2}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
@@ -1062,8 +1089,11 @@ MonoBehaviour:
   - {fileID: 4226165657496045015}
   - {fileID: 4162546713178164155}
   modifierPool: []
-  Sprites: []
-  names: []
+  modifierSprites: []
+  modifierNames: []
+  enemyPool: []
+  enemySprites: []
+  enemyNames: []
   environmentThemePool: {fileID: 0}
   themeSprites: []
   themeNames: []
@@ -2113,6 +2143,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2099902705214934144}
         m_MethodName: OnChoiceMade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 104020995}
+        m_MethodName: DoNarration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

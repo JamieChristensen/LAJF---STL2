@@ -16,5 +16,5 @@ MonoBehaviour:
   details: From Minion Screen (5) to Modifier Screen (6)
   startTransparent: 1
   textElement:
-  - textInput: It had some mad traits...
-    timeOfTextDisplayed: 3
+  - textInput: It Had Mad Traits And Even More...
+    timeOfTextDisplayed: 4

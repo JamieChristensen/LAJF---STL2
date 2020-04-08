@@ -16,5 +16,5 @@ MonoBehaviour:
   details: From GameLoop Scene (4) to Item Screen (7)
   startTransparent: 1
   textElement:
-  - textInput: The Hero took what truly was his...
+  - textInput: The Monster Fell, Truth Be Told...
     timeOfTextDisplayed: 5

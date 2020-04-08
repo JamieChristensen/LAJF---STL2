@@ -17,6 +17,7 @@ public class AudioList : MonoBehaviour
          jump,
          land,
          loseFx,
+         narratorRead,
          narratorHit,
          select,
          winFx;
