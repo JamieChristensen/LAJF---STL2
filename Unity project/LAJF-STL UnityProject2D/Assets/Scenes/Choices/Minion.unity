@@ -1779,18 +1779,29 @@ MonoBehaviour:
   theme: {fileID: 11400000, guid: 39b03a01b19324b4cbae1684e1476b01, type: 2}
   minion: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   modifier: {fileID: 11400000, guid: c1eb906e953b7f44f8038e1308e1e8ed, type: 2}
-  item: {fileID: 0}
-  enemyModifier: {fileID: 0}
   choiceType: Minion
-  type: {fileID: 0}
+  type: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   finalChoice: {fileID: 0}
   playerItemPool: []
   choiceNameText: []
   itemImageTargets: []
   modifierPool: []
-  Sprites: []
-  names: []
+  modifierSprites: []
+  modifierNames: []
+  enemyPool:
+  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
+  - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
+  - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
+  enemySprites:
+  - {fileID: 1969982587352721118}
+  - {fileID: 1744236459321764018}
+  - {fileID: 2733693578564179109}
+  enemyNames:
+  - {fileID: 7525804958251268487}
+  - {fileID: 6320013300238701869}
+  - {fileID: 9043267199911539318}
   environmentThemePool: {fileID: 0}
   themeSprites: []
   themeNames: []
@@ -2726,7 +2737,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5648361127259177767}
-  - component: {fileID: 7708241414787538455}
   m_Layer: 0
   m_Name: MinionScene
   m_TagString: Untagged
@@ -2734,31 +2744,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7708241414787538455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7708241414787538454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4862e08c2f55ad438deb32a44a806f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sprites:
-  - {fileID: 1969982587352721118}
-  - {fileID: 1744236459321764018}
-  - {fileID: 2733693578564179109}
-  names:
-  - {fileID: 7525804958251268487}
-  - {fileID: 6320013300238701869}
-  - {fileID: 9043267199911539318}
-  EnemyPool:
-  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
-  - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
-  - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
-  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
 --- !u!224 &7834548574709966430
 RectTransform:
   m_ObjectHideFlags: 0

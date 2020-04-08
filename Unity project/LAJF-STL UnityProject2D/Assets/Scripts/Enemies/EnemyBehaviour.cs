@@ -29,6 +29,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     public Transform particlePoint;
     public ParticleSystem deathLeadUp, deathExplosion;
     public SpriteRenderer spriteRenderer;
+    public ChoiceCategory runtimeChoices;
     private Rigidbody2D rb;
     //White and default materials
     private Material matDefault;
@@ -43,18 +44,13 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     // Start is called before the first frame update
     void Start()
     {
+       // InitalizeEnemy();
         _audioList = FindObjectOfType<AudioList>();
         rb = GetComponent<Rigidbody2D>();
         matDefault = spriteRenderer.material;
         gameManager = FindObjectOfType<GameManager>();
         target = GameObject.FindGameObjectWithTag("Player");
-        currentHealth = agent.health;
         cooldownTimer = 0;
-
-        // NB TODO these should be provided elsewhere and are now just for developing 1/2
-        // this function is to be called before init of this script
-        InitalizeEnemy(agent, modifiers);
-
     }
 
     void FixedUpdate()
@@ -209,16 +205,21 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         isPaused = false;
     }
 
-    public void InitalizeEnemy(Enemy enemy, List<EnemyModifier> enemyModifiers)
+    // previous params for this function (Enemy enemy, List<EnemyModifier> enemyModifiers)
+    public void InitalizeEnemy()
     {
+       List<EnemyModifier> enemyModifiers = new List<EnemyModifier>();
+       agent = runtimeChoices.enemies[runtimeChoices.enemies.Count - 1];
+       modifiers.Add(runtimeChoices.enemyModifiers[runtimeChoices.enemyModifiers.Count - 1]);
         // get info from runtime stats from somewhere 
-        // modifier = runtimeStats.whatever.modifer
         // enemy = runtimeStats.whatever.enemy
-        // NB right now everything is manually assinged through the inspector
-        spriteRenderer.sprite = enemy.sprite;
-
+        // EnemyModifiers = runtimeStats.whatever.modifer
+        // NB right now everything is assigned by hardcode through this function
+        spriteRenderer.sprite = agent.sprite;
         name = agent.GenerateName(modifiers);
         nameUI.SetText(name);
+        currentHealth = agent.health;
+
     }
 
     IEnumerator DelayDeathAnnouncement(float delay)

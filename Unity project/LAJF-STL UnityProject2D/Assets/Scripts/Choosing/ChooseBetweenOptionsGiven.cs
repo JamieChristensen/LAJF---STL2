@@ -21,8 +21,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public ChoiceCategory theme;
     public ChoiceCategory minion;
     public ChoiceCategory modifier;
-    public PlayerItems item;
-    public EnemyModifier enemyModifier;
+  //  public PlayerItems item;
+   // public EnemyModifier enemyModifier;
     public string choiceType;
 
 
@@ -41,9 +41,15 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     [Header("Modifier choice variables")]
     public EnemyModifier[] modifierPool;
-    public List<Image> Sprites;
-    public List<TextMeshProUGUI> names;
+    public List<Image>  modifierSprites;
+    public List<TextMeshProUGUI> modifierNames;
     private EnemyModifier[] enemyModifierChoices = new EnemyModifier[3];
+
+    [Header("Minion choice variables")]
+    public Enemy[] enemyPool;
+    public List<Image> enemySprites;
+    public List<TextMeshProUGUI> enemyNames;
+    private Enemy[] enemyChoices = new Enemy[3];
 
     [Header("Theme choice variables")]
     public EnvironmentPool environmentThemePool;
@@ -106,6 +112,20 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             #endregion InitializeItemSelection
         }
 
+        if (choiceType == "Minion") // naming inconsistency between Minion and Enemy
+        {
+            #region InitializeMinionSelection
+            ShuffleList(enemyPool);
+             for (int i = 0; i < enemyModifierChoices.Length; i++)
+             {
+                 Enemy enemy = enemyPool[i];
+                 enemySprites[i].sprite = enemy.sprite;
+                 enemyNames[i].text = enemy.name;
+                 enemyChoices[i] = enemy;
+             }
+            #endregion InitializeMinionSelection
+        }
+
         if (choiceType == "Modifier")
         {
             #region InitializeModifierSelection
@@ -113,25 +133,12 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             for (int i = 0; i < enemyModifierChoices.Length; i++)
             {
                 EnemyModifier modifier = modifierPool[i];
-                Sprites[i].sprite = modifier.sprite;
-                names[i].text = modifier.name;
+                modifierSprites[i].sprite = modifier.sprite;
+                modifierNames[i].text = modifier.name;
                 enemyModifierChoices[i] = modifier;
             }
             #endregion InitializeModifierSelection
 
-        }
-
-        if (choiceType == "Minion")
-        {
-            #region InitializeMinionSelection
-            /* ShuffleList(modifierPool);
-             for (int i = 0; i < enemyModifierChoices.Length; i++)
-             {
-                 EnemyModifier modifier = modifierPool[i];
-                 Sprites[i].sprite = modifier.sprite;
-                 names[i].text = modifier.name;
-             }*/
-            #endregion InitializeMinionSelection
         }
 
         if (choiceType == "Theme")
@@ -361,8 +368,10 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 runtimeChoices.fourthOpponent.minion = finalChoice;
                 break;
         }
-        Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". minion! It is: " + finalChoice.name);
+        // Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". minion! It is: " + finalChoice.name);
+        runtimeChoices.enemies.Add(enemyChoices[choice - 1]);
         SwitchToModifierSelection(); // switching from minion select to modifier select
+
     }
 
 
@@ -475,7 +484,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     #endregion
 
 
-
+    #region ShuffleFunctionOverloads
     private void ShuffleList(EnemyModifier[] ts)
     {
         for (int i = 0; i < ts.Length; i++)
@@ -519,5 +528,5 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             ts[randomIndex] = temp;
         }
     }
-
+    #endregion ShuffleFunctionOverloads
 }
