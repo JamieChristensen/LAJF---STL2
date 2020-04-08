@@ -43,7 +43,7 @@ using UnityEngine;
                 enemy.Pause();
 
             Debug.Log("from Narrator behaviour/ should pause? " + enemy.IsPaused());
-            FindObjectOfType<EnemyBehaviour>().healthBar.VisualiseHealthChange(FindObjectOfType<EnemyBehaviour>().agent.health);
+            
         }
     }
       
