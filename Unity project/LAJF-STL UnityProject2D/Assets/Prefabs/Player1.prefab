@@ -360,6 +360,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 8229671286208422270, guid: 1588f57e18b14f74f91af4bdff6b2d15,
+        type: 3}
+      propertyPath: m_TagString
+      value: P1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1588f57e18b14f74f91af4bdff6b2d15, type: 3}
 --- !u!4 &2128121829787186494 stripped

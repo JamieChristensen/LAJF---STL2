@@ -386,6 +386,8 @@ MonoBehaviour:
   CurrentHealthFillTransform: {fileID: 8058547319426973593}
   DamageHealthFillTransform: {fileID: 6900213891975442422}
   maxHp: 100
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  playerRuntimeStats: {fileID: 11400000, guid: 761871b870a16774fafc7fbe839f1f10, type: 2}
 --- !u!1 &9041242397464580737
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,6 @@ MonoBehaviour:
   attackRate: 0
   rangedAttacks: 1
   meleeAttacks: 0
-  maxHitPoints: 100
-  startingHitPoints: 100
+  maxHitPoints: 70
+  startingHitPoints: 70
   baseDamageReduction: 0
