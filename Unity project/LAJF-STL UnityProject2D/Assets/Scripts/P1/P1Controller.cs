@@ -68,10 +68,12 @@ public class P1Controller : MonoBehaviour
     private void Start()
     {
         _audioList = FindObjectOfType<AudioList>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         matDefault = spriteRenderer.material;
-
     }
+
+
 
     private void Update()
     {
@@ -113,6 +115,7 @@ public class P1Controller : MonoBehaviour
         Projectile projInstance = instance.GetComponent<Projectile>();
         projInstance.damage = 10;
 
+        audioList.PlayWithVariablePitch(audioList.attack1);
 
         justUsedRangedAttack = true;
     }
@@ -238,7 +241,7 @@ public class P1Controller : MonoBehaviour
         runtimePlayerStats.jumpForce = baselineStats.jumpForce;
         runtimePlayerStats.rangedAttacks = baselineStats.rangedAttacks;
         runtimePlayerStats.meleeAttacks = baselineStats.meleeAttacks;
-        
+
 
         currentHitPoints = baselineStats.maxHitPoints;
         playerHPEvent.Raise(currentHitPoints);
@@ -270,5 +273,6 @@ public class P1Controller : MonoBehaviour
         Destroy(gameObject);
 
     }
+
 
 }

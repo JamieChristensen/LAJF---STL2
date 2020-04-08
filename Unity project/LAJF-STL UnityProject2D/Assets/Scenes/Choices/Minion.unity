@@ -618,7 +618,7 @@ PrefabInstance:
         type: 3}
       propertyPath: transitionElements.Array.data[9]
       value: 
-      objectReference: {fileID: 11400000, guid: a1bf5e849c8f6a84ab06c16cd9070075,
+      objectReference: {fileID: 11400000, guid: 00cf080717dfd4d438f62a657b199dd3,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbbb37c9bb70bee488540616023c104d, type: 3}
@@ -1832,6 +1832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4383350015681834868}
   - component: {fileID: 4383350015681834871}
+  - component: {fileID: 4383350015681834872}
   m_Layer: 0
   m_Name: ChoiceManager
   m_TagString: Untagged
@@ -1862,6 +1863,7 @@ MonoBehaviour:
   minion: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   modifier: {fileID: 11400000, guid: c1eb906e953b7f44f8038e1308e1e8ed, type: 2}
   item: {fileID: 0}
+  enemyModifier: {fileID: 0}
   choiceType: Minion
   type: {fileID: 0}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
@@ -1869,6 +1871,39 @@ MonoBehaviour:
   playerItemPool: []
   choiceNameText: []
   itemImageTargets: []
+  modifierPool: []
+  Sprites: []
+  names: []
+  environmentThemePool: {fileID: 0}
+  themeSprites: []
+  themeNames: []
+  environmentThemeChoices:
+  - environmentName: 
+    theme: 
+    environmentSprite: {fileID: 0}
+    environmentIndex: 0
+  - environmentName: 
+    theme: 
+    environmentSprite: {fileID: 0}
+    environmentIndex: 0
+  - environmentName: 
+    theme: 
+    environmentSprite: {fileID: 0}
+    environmentIndex: 0
+  EnvironmentsChosen: []
+--- !u!114 &4383350015681834872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4383350015681834870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64222ef1cd9e604a8c43e1cd76ba9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choiceMadeSound: {fileID: 11400000, guid: fee963915c08f7041a03394e6c1678e9, type: 2}
 --- !u!114 &4486751433332076678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3099,6 +3134,28 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Minion
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4383350015681834872}
+        m_MethodName: OnChoiceMade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 210415972929106733}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!224 &8475343822322196928

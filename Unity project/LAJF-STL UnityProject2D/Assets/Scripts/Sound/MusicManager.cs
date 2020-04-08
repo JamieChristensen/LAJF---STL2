@@ -45,7 +45,6 @@ public class MusicManager : MonoBehaviour
                 mt.source.Play();
             }
         }
-
     }
 
     public void PlayMusic(string name) // play a music theme (by name) after a specified delay (in float seconds)

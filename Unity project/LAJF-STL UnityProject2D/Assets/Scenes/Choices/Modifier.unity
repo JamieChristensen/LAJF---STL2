@@ -204,6 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 83067746}
   - component: {fileID: 83067745}
+  - component: {fileID: 83067747}
   m_Layer: 0
   m_Name: ChoiceManager
   m_TagString: Untagged
@@ -256,6 +257,23 @@ MonoBehaviour:
   - {fileID: 6099507915623241105}
   - {fileID: 7737741617022400827}
   - {fileID: 4707644828000951904}
+  environmentThemePool: {fileID: 0}
+  themeSprites: []
+  themeNames: []
+  environmentThemeChoices:
+  - environmentName: 
+    theme: 
+    environmentSprite: {fileID: 0}
+    environmentIndex: 0
+  - environmentName: 
+    theme: 
+    environmentSprite: {fileID: 0}
+    environmentIndex: 0
+  - environmentName: 
+    theme: 
+    environmentSprite: {fileID: 0}
+    environmentIndex: 0
+  EnvironmentsChosen: []
 --- !u!4 &83067746
 Transform:
   m_ObjectHideFlags: 0
@@ -270,6 +288,19 @@ Transform:
   m_Father: {fileID: 8266298950897643313}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &83067747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83067744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64222ef1cd9e604a8c43e1cd76ba9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choiceMadeSound: {fileID: 11400000, guid: fee963915c08f7041a03394e6c1678e9, type: 2}
 --- !u!1 &155747843
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,6 +2290,17 @@ MonoBehaviour:
       - m_Target: {fileID: 4485380358645833531}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 83067747}
+        m_MethodName: OnChoiceMade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

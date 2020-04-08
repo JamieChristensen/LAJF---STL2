@@ -1055,13 +1055,32 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e908707d1505a324085395952b68f7c3, type: 2}
   - {fileID: 11400000, guid: 0449e37f5ac35744bb01ef93d8177982, type: 2}
   - {fileID: 11400000, guid: 5966a2f15e04c4a4997eec965b58ecc2, type: 2}
-  modifierPool: []
   choiceNameText:
   - {fileID: 5296677654474021518}
   - {fileID: 8522395318281844260}
   itemImageTargets:
   - {fileID: 4226165657496045015}
   - {fileID: 4162546713178164155}
+  modifierPool: []
+  Sprites: []
+  names: []
+  environmentThemePool: {fileID: 0}
+  themeSprites: []
+  themeNames: []
+  environmentThemeChoices:
+  - environmentName: 
+    theme: 
+    environmentSprite: {fileID: 0}
+    environmentIndex: 0
+  - environmentName: 
+    theme: 
+    environmentSprite: {fileID: 0}
+    environmentIndex: 0
+  - environmentName: 
+    theme: 
+    environmentSprite: {fileID: 0}
+    environmentIndex: 0
+  EnvironmentsChosen: []
 --- !u!1 &2099902705214934143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1091,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2099902705214934141}
   - component: {fileID: 2099902705214934142}
+  - component: {fileID: 2099902705214934144}
   m_Layer: 0
   m_Name: ChoiceManager
   m_TagString: Untagged
@@ -1079,6 +1099,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2099902705214934144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099902705214934143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64222ef1cd9e604a8c43e1cd76ba9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choiceMadeSound: {fileID: 11400000, guid: fee963915c08f7041a03394e6c1678e9, type: 2}
 --- !u!1 &2228596600336018488
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,6 +2103,17 @@ MonoBehaviour:
       - m_Target: {fileID: 2529650566470897700}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2099902705214934144}
+        m_MethodName: OnChoiceMade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -57,7 +57,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     void FixedUpdate()
     {
-        
+
         if (isPaused)
             return;
         #region OnDeath
@@ -69,7 +69,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
             rb2.AddTorque(50000, ForceMode2D.Impulse);
             rb2.gravityScale = 0f;
 
-           // Invoke("DeathAnimation", 0.2f);
+            // Invoke("DeathAnimation", 0.2f);
             monsterDied.Raise();
             audioList.PlayWithVariablePitch(audioList.deathEnemy);
 
@@ -90,7 +90,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         }
         else
         { distance = 0; }
-        
+
         // start of behavior tree here
 
         if (agent.range >= distance)
@@ -107,7 +107,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         {
             MoveTowards(target.transform);
         }
-        
+
         cooldownTimer -= Time.deltaTime;
     }
 
@@ -128,7 +128,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
             Vector2 direction = (tf.position - transform.position).normalized;
             rb2.velocity = new Vector2(direction.x * agent.speed, rb2.velocity.y);
         }
-        
+
     }
 
     void MeleeAttack()
@@ -156,7 +156,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public void OnPlayerDamaged(int PlayerHealth)
     {
-        if (PlayerHealth<=0)
+        if (PlayerHealth <= 0)
         {
 
         }
