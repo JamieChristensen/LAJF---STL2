@@ -91,10 +91,11 @@ using UnityEngine;
         transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * 100);
     }
 
-    public void Narrate()
+    public void Narrate(string text)
     {
         // TODO make set text string from somewhere else
-        string text = "The hero has slain the foul beast and is rewarded with a treasure!";
+       // string text = "The hero has slain the foul beast and is rewarded with a treasure!";
+
        StartCoroutine(ReadText(text));
     } 
 

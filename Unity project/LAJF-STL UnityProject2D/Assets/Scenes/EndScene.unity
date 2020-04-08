@@ -566,6 +566,9 @@ MonoBehaviour:
   currentEnvironmentIndex: -1
   isLoadingScene: {fileID: 0}
   loadProgressInt: {fileID: 0}
+  currentlyLoadedSceneIndices: 
+  transitionScreen: {fileID: 0}
+  transitionScreenIntListener: {fileID: 0}
 --- !u!1 &979005212
 GameObject:
   m_ObjectHideFlags: 0

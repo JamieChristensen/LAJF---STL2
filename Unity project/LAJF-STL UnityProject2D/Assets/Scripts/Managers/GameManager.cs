@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     public MusicManager musicManager;
 
+    public NarratorBehaviour narrator;
+
     public static bool canPlayerMove { get; private set; }
     [SerializeField] private bool[] _canMonsterMove; 
     public bool[] canMonsterMove { get { return _canMonsterMove; }}
@@ -187,13 +189,32 @@ public class GameManager : MonoBehaviour
 
     public void OnMonsterDied()
     {
-        musicManager.StopCurrentPlaying();
-        RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music   
+        try
+        {
+            musicManager.StopCurrentPlaying();
+        }
+        catch
+        {
+            Debug.Log("there is no music manager");
+        }
+        
+        narrator.Narrate(runTimeChoises.enemyModifiers[runTimeChoises.enemyModifiers.Count - 1] + " is a modifier on the dead monster");
+        RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music
+        
     }
 
     public void OnOpenedChest()
     {
-        musicManager.PlayMusic("Peace");
+        try
+        {
+            musicManager.PlayMusic("Peace");
+        }
+        catch
+        {
+            Debug.Log("there is no music manager");
+        }
+        
+        
         canPlayerMove = false;
        // Time.timeScale = 0f;
         sceneManager.ChooseSceneToLoad(indexOfItemChoiceScene);
@@ -240,7 +261,16 @@ public class GameManager : MonoBehaviour
         {
             canMonsterMove[i] = false;
         }
-        
+
+        try
+        {
+            musicManager.PlayMusic("Ending");
+        }
+        catch
+        {
+            Debug.Log("there is no music manager");
+        }
+
         canPlayerMove = false;
         bool dying = true;
         float timer = 0;
@@ -249,7 +279,7 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > _timeBetweenPlayerDeathAndEndScreen)
             {
-                musicManager.PlayMusic("Ending");
+
                 FindObjectOfType<CustomSceneManager>().LoadCredits(); //End game by loading proper scene through game-manager - should happen after a delay, as to provide feedback during the delay.
             }
             yield return null;
