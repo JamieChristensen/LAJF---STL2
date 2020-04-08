@@ -54,11 +54,7 @@ public class InputManager : MonoBehaviour
         amountOfPlayers = gameSettings.GetAmountOfPlayers();
         amountOfGods = amountOfPlayers - 1;
 
-        foreach (GodController god in FindObjectsOfType<GodController>().ToList())
-        {
-            gods.Insert(god.GetGodNumber(), god);
-        }
-        Debug.Log(amountOfGods + " amountOfGods");
+        
     }
 
     private void Update()
@@ -115,5 +111,10 @@ public class InputManager : MonoBehaviour
     private void SendGodInputs(GodController god)
     {
         //Implement input-actions in godcontroller.cs, then call that here. 
+
+        if (currentGodSelectInput)
+        {
+            god.Emote();
+        }
     }
 }

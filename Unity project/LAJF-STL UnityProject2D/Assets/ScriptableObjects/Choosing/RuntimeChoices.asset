@@ -17,8 +17,9 @@ MonoBehaviour:
   chosenGods:
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
   - {fileID: 11400000, guid: 517b2ecde8cfef14ba0b67d4f2fbc910, type: 2}
-  - {fileID: 11400000, guid: ca9744e18ae804945b42937f56406872, type: 2}
+  - {fileID: 11400000, guid: 6b41d67d60dd8614b8222a4ac0c782e2, type: 2}
   playerItems: []
+  enemies: []
   enemyModifiers:
   - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
   - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
