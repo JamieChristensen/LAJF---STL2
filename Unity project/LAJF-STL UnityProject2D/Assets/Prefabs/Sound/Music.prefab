@@ -54,15 +54,29 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Choosing
     clip: {fileID: 8300000, guid: f329a33534f94c34b8d22de83b9c6ba0, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 1
     audioMixerGroup: {fileID: 24300002, guid: 47faf9415f1ed414ca4a7a2712435e20, type: 2}
     source: {fileID: 0}
   - name: Battle
     clip: {fileID: 8300000, guid: cd5324ca4ded1f948a16093bb4918b8e, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 1
     audioMixerGroup: {fileID: 24300002, guid: c90a3c11863e33f45a9cf8743f7d660e, type: 2}
+    source: {fileID: 0}
+  - name: Peace
+    clip: {fileID: 8300000, guid: afbe72c3210be4149a42d7e44f7e464b, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 1
+    audioMixerGroup: {fileID: 24300002, guid: ec7f53c93b5b9aa419ebf8c04573a67a, type: 2}
+    source: {fileID: 0}
+  - name: Ending
+    clip: {fileID: 8300000, guid: fb5b95e43e96e294b8b28e3b825c6723, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 1
+    audioMixerGroup: {fileID: 24300002, guid: 0a1a1b5c65fd0ae448bd3fa9db38a37b, type: 2}
     source: {fileID: 0}

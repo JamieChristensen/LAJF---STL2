@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public ChoiceCategory runTimeChoises;
 
+    public MusicManager musicManager;
+
     public static bool canPlayerMove { get; private set; }
     [SerializeField] private bool[] _canMonsterMove; 
     public bool[] canMonsterMove { get { return _canMonsterMove; }}
@@ -64,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        musicManager = FindObjectOfType<MusicManager>();
         /*
         for (int i = 0; i < canMonsterMove.Length; i++)
         {
@@ -184,11 +187,13 @@ public class GameManager : MonoBehaviour
 
     public void OnMonsterDied()
     {
+        musicManager.StopCurrentPlaying();
         RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music   
     }
 
     public void OnOpenedChest()
     {
+        musicManager.PlayMusic("Peace");
         canPlayerMove = false;
        // Time.timeScale = 0f;
         sceneManager.ChooseSceneToLoad(indexOfItemChoiceScene);
@@ -244,6 +249,7 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > _timeBetweenPlayerDeathAndEndScreen)
             {
+                musicManager.PlayMusic("Ending");
                 FindObjectOfType<CustomSceneManager>().LoadCredits(); //End game by loading proper scene through game-manager - should happen after a delay, as to provide feedback during the delay.
             }
             yield return null;

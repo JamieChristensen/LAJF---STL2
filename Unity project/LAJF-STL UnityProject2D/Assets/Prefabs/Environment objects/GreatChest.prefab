@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0b7b27d21c20e82418aa4f0eed5eb7cd, type: 3}
   whenPlayerOpenedBox: {fileID: 11400000, guid: fdc919741dd2c414fabec7ffa3c1ea37,
     type: 2}
+  narratorHit: {fileID: 11400000, guid: 30910f96baa51e441b5df10a66f9012c, type: 2}
   wealthGlow: {fileID: 4689117986878281702}
 --- !u!50 &4145219679262336936
 Rigidbody2D:

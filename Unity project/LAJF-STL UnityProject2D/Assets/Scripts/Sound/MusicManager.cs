@@ -13,6 +13,7 @@ public class MusicManager : MonoBehaviour
 
     public MusicTheme[] musicThemes;
 
+    private AudioSource pausedAudioSource;
 
     private void Awake()
     {
@@ -49,14 +50,14 @@ public class MusicManager : MonoBehaviour
 
     public void PlayMusic(string name) // play a music theme (by name) after a specified delay (in float seconds)
     {
-        for (int i = 0; i< musicThemes.Length;i++) // checks all Audio Sources (music themes)
+        for (int i = 0; i < musicThemes.Length; i++) // checks all Audio Sources (music themes)
         {
             if (musicThemes[i].source.isPlaying) // If the music theme is already playing
             {
                 if (name != musicThemes[i].name) // if the requested music theme is not this one
                 {
-                  //  Debug.Log("name: " + name + " - musicThemes[i].name: " + musicThemes[i].name);
-                    StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name+"Vol", 6, -80)); // turn down the volume in a fade
+                    //  Debug.Log("name: " + name + " - musicThemes[i].name: " + musicThemes[i].name);
+                    StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 6, -80)); // turn down the volume in a fade
                     StartCoroutine(StopAfterDelay(musicThemes[i].source)); // stop the music theme
                 }
             }
@@ -64,7 +65,7 @@ public class MusicManager : MonoBehaviour
             {
                 StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 5, 1)); // turn up the volume in a fade
             }
-            
+
         }
 
         MusicTheme mt = Array.Find(musicThemes, musicTheme => musicTheme.name == name);
@@ -74,11 +75,36 @@ public class MusicManager : MonoBehaviour
             return;
         }
 
-            StartCoroutine(PlayAfterDelay(mt.source));
-        
+        StartCoroutine(PlayAfterDelay(mt.source));
+    }
 
+    public void PauseCurrentPlaying()
+    {
+        for (int i = 0; i < musicThemes.Length; i++) // checks all Audio Sources (music themes)
+        {
+            if (musicThemes[i].source.isPlaying) // If the music theme is playing
+            {
+                musicThemes[i].source.Pause();
+                pausedAudioSource = musicThemes[i].source;
+            }
+        }
+    }
 
+    public void UnpauseCurrentPlaying()
+    {
+        pausedAudioSource.Play();
+    }
 
+    public void StopCurrentPlaying()
+    {
+        for (int i = 0; i < musicThemes.Length; i++) // checks all Audio Sources (music themes)
+        {
+            if (musicThemes[i].source.isPlaying) // If the music theme is playing
+            {
+                StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 6, -80)); // turn down the volume in a fade
+                StartCoroutine(StopAfterDelay(musicThemes[i].source)); // stop the music theme
+            }
+        }
     }
 
     IEnumerator PlayAfterDelay(AudioSource musicThemeAudioSource)
@@ -93,7 +119,9 @@ public class MusicManager : MonoBehaviour
         musicThemeAudioSource.Stop();
     }
 
-   
+
+
+
 
 }
 

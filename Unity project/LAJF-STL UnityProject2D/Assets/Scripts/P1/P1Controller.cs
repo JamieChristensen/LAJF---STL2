@@ -269,6 +269,7 @@ public class P1Controller : MonoBehaviour
 
     public void DeathExplode() // Add Particle Burst
     {
+        audioList.explosion.Play();
         Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
         Destroy(gameObject);
 

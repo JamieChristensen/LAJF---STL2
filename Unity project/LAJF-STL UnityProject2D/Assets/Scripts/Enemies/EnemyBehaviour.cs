@@ -38,6 +38,8 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     private AudioList _audioList;
     public AudioList audioList { get { return _audioList; } }
 
+    bool alreadyDied = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,22 +66,25 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         // Am I alive?
         if (currentHealth <= 0)
         {
-            gameObject.layer = 15;
-            rb2.AddForce(new Vector2(UnityEngine.Random.Range(-3f, 3f) * 10, UnityEngine.Random.Range(3, 9f) * 10), ForceMode2D.Impulse);
-            rb2.AddTorque(50000, ForceMode2D.Impulse);
-            rb2.gravityScale = 0f;
-
-            // Invoke("DeathAnimation", 0.2f);
-            monsterDied.Raise();
-            audioList.PlayWithVariablePitch(audioList.deathEnemy);
-
-
-
-            if (UnityEngine.Random.Range(0, 10f) > 6)
+            if (!alreadyDied)
             {
-                GameObject.Destroy(gameObject.GetComponent<Collider2D>());
+                gameObject.layer = 15;
+                 rb2.AddForce(new Vector2(UnityEngine.Random.Range(-3f, 3f) * 10, UnityEngine.Random.Range(3, 9f) * 10), ForceMode2D.Impulse);
+                 rb2.AddTorque(50, ForceMode2D.Impulse);
+                 rb2.gravityScale = 0f;
+
+                Invoke("DeathAnimation", 0.2f);
+                audioList.PlayWithVariablePitch(audioList.deathEnemy);
+                StartCoroutine(DelayDeathAnnouncement(1.1f));
+
+                if (UnityEngine.Random.Range(0, 10f) > 6)
+                {
+                    GameObject.Destroy(gameObject.GetComponent<Collider2D>());
+                }
+                // GameObject.Destroy(this);
+                alreadyDied = true;
             }
-            GameObject.Destroy(this);
+
             return;
         }
         #endregion OnDeath
@@ -173,7 +178,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     {
         spriteRenderer.material = matDefault;
     }
-    /*
+    
     public void DeathAnimation() // Add Particle Burst
     {
         Destroy(rb);
@@ -184,11 +189,12 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public void DeathExplode() // Add Particle Burst
     {
+        audioList.explosion.Play();
         Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
         Destroy(gameObject);
 
     }
-    */
+    
     public bool IsPaused()
     {
         return isPaused;
@@ -213,6 +219,12 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
         name = agent.GenerateName(modifiers);
         nameUI.SetText(name);
+    }
+
+    IEnumerator DelayDeathAnnouncement(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        monsterDied.Raise();
     }
 
 

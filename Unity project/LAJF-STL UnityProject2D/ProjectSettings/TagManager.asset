@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Wall
   - Monster
+  - Narrator
   layers:
   - Default
   - TransparentFX

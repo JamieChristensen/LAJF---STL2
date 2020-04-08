@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 105565988}
   - component: {fileID: 105565992}
   - component: {fileID: 105565993}
+  - component: {fileID: 12}
+  - component: {fileID: 13}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -48,12 +50,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3c9365934e0274ab5e7811e3458095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexOfItemChoiceScene: 6
+  indexOfGameLoopScene: 4
+  indexOfMinionChoiceScene: 5
+  indexOfModifierChoiceScene: 6
+  indexOfItemChoiceScene: 7
   playerHPListener: {fileID: 2991526558272719843}
   isGamePaused: {fileID: 11400000, guid: 713d98ef2e2ff9945a5eb7edfe2814c4, type: 2}
+  nextTransition: {fileID: 11400000, guid: b54142ad4de4c27439e4165cc31b2606, type: 2}
   isSceneLoading: {fileID: 11400000, guid: 857e776a5cfba834c9cfba54778abaf5, type: 2}
+  runTimeChoises: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  _canMonsterMove: 00
   environmentAndHeroChoiceFinished: {fileID: 8923055375928089850}
-  godsPickedMonsterAndTrait: {fileID: 105565993}
+  godsPickedMonsterAndTrait: {fileID: 13}
+  _timeBetweenPlayerDeathAndEndScreen: 5
   initialGamestate: 4
 --- !u!114 &2991526558272719843
 MonoBehaviour:
@@ -99,11 +108,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2538111601857523256}
-        m_MethodName: 
+        m_MethodName: HeroHasBeenCaptured
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -181,6 +190,60 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2538111601857523256}
         m_MethodName: OnPickedItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &12
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702686960598596083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: db3d5cc5b0e40b043a77d5cc4a0c2d14, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2538111601857523256}
+        m_MethodName: GodsPickedMonster
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &13
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702686960598596083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 9ada70056f44bf5419c2f5bb052095ca, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2538111601857523256}
+        m_MethodName: GodsPickedMonsterAndTrait
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

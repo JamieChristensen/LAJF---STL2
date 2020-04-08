@@ -19,6 +19,7 @@ public class GreatChest : MonoBehaviour
     private bool raisedEvent = false;
     [SerializeField]
     private VoidEvent whenPlayerOpenedBox;
+    public VoidEvent narratorHit;
 
     public ParticleSystem wealthGlow;
 
@@ -56,6 +57,11 @@ public class GreatChest : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerOpenedBox = true;
+        }
+
+        if (collision.gameObject.CompareTag("Narrator"))
+        {
+            narratorHit.Raise();
         }
     }
 

@@ -121,78 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &12
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17597224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: db3d5cc5b0e40b043a77d5cc4a0c2d14, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 17597225}
-        m_MethodName: GodsPickedMonster
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &13
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17597224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 9ada70056f44bf5419c2f5bb052095ca, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 17597225}
-        m_MethodName: GodsPickedMonsterAndTrait
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!1 &17597224 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5702686960598596083, guid: 21520e1c83698d4488117d89451521b6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9081438541805916876}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &17597225 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9081438541805916876}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17597224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe3c9365934e0274ab5e7811e3458095, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &17597231 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1642196687679034760, guid: 21520e1c83698d4488117d89451521b6,
@@ -339,19 +267,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 635765124, guid: 0ff3f7e4ef487844bbb7bc52578b6e69, type: 3}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 635765125, guid: 0ff3f7e4ef487844bbb7bc52578b6e69, type: 3}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1797703046, guid: 0ff3f7e4ef487844bbb7bc52578b6e69, type: 3}
-      propertyPath: gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: fdc919741dd2c414fabec7ffa3c1ea37,
-        type: 2}
     - target: {fileID: 5056255463373047657, guid: 0ff3f7e4ef487844bbb7bc52578b6e69,
         type: 3}
       propertyPath: m_Name
@@ -1738,20 +1653,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4145219679262336936, guid: 7854046e1f622b34fbd1caaf9f4bbe3b,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4145219679262336939, guid: 7854046e1f622b34fbd1caaf9f4bbe3b,
         type: 3}
       propertyPath: m_Name
       value: GreatChest
-      objectReference: {fileID: 0}
-    - target: {fileID: 4145219679262336939, guid: 7854046e1f622b34fbd1caaf9f4bbe3b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4145219679262336942, guid: 7854046e1f622b34fbd1caaf9f4bbe3b,
         type: 3}
@@ -1807,11 +1712,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4145219679262336943, guid: 7854046e1f622b34fbd1caaf9f4bbe3b,
-        type: 3}
-      propertyPath: playerItems.Array.size
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7854046e1f622b34fbd1caaf9f4bbe3b, type: 3}
@@ -2465,6 +2365,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Narrator
       objectReference: {fileID: 0}
+    - target: {fileID: 6724332915006774433, guid: 6fbb98cd3a684ce41b1022b56e45a74a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Narrator
+      objectReference: {fileID: 0}
     - target: {fileID: 6724332915006774437, guid: 6fbb98cd3a684ce41b1022b56e45a74a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2826,72 +2731,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: _canMonsterMove.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: nextTransition
-      value: 
-      objectReference: {fileID: 11400000, guid: b54142ad4de4c27439e4165cc31b2606,
-        type: 2}
-    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: indexOfCharacterChoiceScene
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: indexOfThemeChoiceScene
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: indexOfMinionChoiceScene
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: indexOfModifierChoiceScene
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: indexOfGameLoopScene
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: godsPickedMonsterAndTrait
-      value: 
-      objectReference: {fileID: 13}
-    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: indexOfItemChoiceScene
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: runTimeChoises
-      value: 
-      objectReference: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391,
-        type: 2}
     - target: {fileID: 5702686960598596083, guid: 21520e1c83698d4488117d89451521b6,
         type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8923055375928089850, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HeroHasBeenCaptured
-      objectReference: {fileID: 0}
-    - target: {fileID: 8923055375928089850, guid: 21520e1c83698d4488117d89451521b6,
-        type: 3}
-      propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21520e1c83698d4488117d89451521b6, type: 3}

@@ -12,6 +12,7 @@ public class AudioList : MonoBehaviour
          choiceHasBeenMade,
          deathEnemy,
          deathHero,
+         explosion,
          hurt,
          jump,
          land,
@@ -53,6 +54,10 @@ public class AudioList : MonoBehaviour
         choiceHasBeenMade.Play();
     }
 
+    public void OnNarratorHit()
+    {
+        narratorHit.Play();
+    }
 }
 
 
