@@ -197,8 +197,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("there is no music manager");
         }
-        
-        narrator.Narrate(runTimeChoises.enemyModifiers[runTimeChoises.enemyModifiers.Count - 1] + " is a modifier on the dead monster");
+
+        narrator.Narrate("The Hero has Eliminated " + FindObjectOfType<EnemyBehaviour>().nameUI.text);
         RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music
         
     }

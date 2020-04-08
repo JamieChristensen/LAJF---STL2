@@ -623,7 +623,7 @@ PrefabInstance:
         type: 3}
       propertyPath: transitionElements.Array.data[9]
       value: 
-      objectReference: {fileID: 11400000, guid: 00cf080717dfd4d438f62a657b199dd3,
+      objectReference: {fileID: 11400000, guid: a1bf5e849c8f6a84ab06c16cd9070075,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbbb37c9bb70bee488540616023c104d, type: 3}

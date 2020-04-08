@@ -16,5 +16,5 @@ MonoBehaviour:
   details: From Main Menu (0) to Character screen (1)
   startTransparent: 1
   textElement:
-  - textInput: Once Upon A Time, There Was A Hero, You!
+  - textInput: Once upon a time, there was a hero, You!
     timeOfTextDisplayed: 4.5
