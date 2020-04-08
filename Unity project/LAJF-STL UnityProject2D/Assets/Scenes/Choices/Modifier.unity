@@ -235,8 +235,6 @@ MonoBehaviour:
   theme: {fileID: 11400000, guid: 39b03a01b19324b4cbae1684e1476b01, type: 2}
   minion: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   modifier: {fileID: 11400000, guid: c1eb906e953b7f44f8038e1308e1e8ed, type: 2}
-  item: {fileID: 0}
-  enemyModifier: {fileID: 0}
   choiceType: Modifier
   type: {fileID: 0}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
@@ -249,14 +247,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 82d84c797c4bb9949b13a7b7b0526361, type: 2}
   - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
   - {fileID: 11400000, guid: 43928b0c3460d764d9dbeb910483ea71, type: 2}
-  Sprites:
+  modifierSprites:
   - {fileID: 2846839169836485320}
   - {fileID: 2657137300775896228}
   - {fileID: 1811799788623837363}
-  names:
+  modifierNames:
   - {fileID: 6099507915623241105}
   - {fileID: 7737741617022400827}
   - {fileID: 4707644828000951904}
+  enemyPool: []
+  enemySprites: []
+  enemyNames: []
   environmentThemePool: {fileID: 0}
   themeSprites: []
   themeNames: []

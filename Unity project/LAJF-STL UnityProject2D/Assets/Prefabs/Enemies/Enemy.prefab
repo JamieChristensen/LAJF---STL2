@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 2409340943091751095}
   - component: {fileID: 2409340943091751093}
   - component: {fileID: 7631182817961203149}
+  - component: {fileID: 2717900748001315877}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Monster
@@ -237,8 +238,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2: {fileID: 2409340943091751095}
   target: {fileID: 0}
-  agent: {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
-  modifiers: []
   bulletObj: {fileID: 3604006451443815256, guid: 781e18538fd716748ab0e6afc2f43f66,
     type: 3}
   healthBar: {fileID: 8087521088913329261}
@@ -254,7 +253,10 @@ MonoBehaviour:
   deathExplosion: {fileID: 4583915110500010106, guid: 98c81f08eace3574bb15275b8ffe8d48,
     type: 3}
   spriteRenderer: {fileID: 2409340943155953359}
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   matWhite: {fileID: 2100000, guid: da2c11b1a32a0e748b87c0907cbfc44d, type: 2}
+  agent: {fileID: 0}
+  modifiers: []
 --- !u!50 &2409340943091751095
 Rigidbody2D:
   serializedVersion: 4
@@ -314,6 +316,33 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2717900748001315877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2409340943091751089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 9ada70056f44bf5419c2f5bb052095ca, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2409340943091751094}
+        m_MethodName: InitalizeEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

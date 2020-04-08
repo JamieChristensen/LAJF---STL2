@@ -768,89 +768,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101076463}
   m_CullTransparentMesh: 0
---- !u!1 &2112890070
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2112890073}
-  - component: {fileID: 2112890072}
-  - component: {fileID: 2112890071}
-  m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &2112890071
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112890070}
-  m_Enabled: 1
---- !u!20 &2112890072
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112890070}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &2112890073
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112890070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 233.8089, y: 213.72647, z: -230.27875}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &16434907757106413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1862,18 +1779,29 @@ MonoBehaviour:
   theme: {fileID: 11400000, guid: 39b03a01b19324b4cbae1684e1476b01, type: 2}
   minion: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   modifier: {fileID: 11400000, guid: c1eb906e953b7f44f8038e1308e1e8ed, type: 2}
-  item: {fileID: 0}
-  enemyModifier: {fileID: 0}
   choiceType: Minion
-  type: {fileID: 0}
+  type: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   finalChoice: {fileID: 0}
   playerItemPool: []
   choiceNameText: []
   itemImageTargets: []
   modifierPool: []
-  Sprites: []
-  names: []
+  modifierSprites: []
+  modifierNames: []
+  enemyPool:
+  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
+  - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
+  - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
+  enemySprites:
+  - {fileID: 1969982587352721118}
+  - {fileID: 1744236459321764018}
+  - {fileID: 2733693578564179109}
+  enemyNames:
+  - {fileID: 7525804958251268487}
+  - {fileID: 6320013300238701869}
+  - {fileID: 9043267199911539318}
   environmentThemePool: {fileID: 0}
   themeSprites: []
   themeNames: []
@@ -2809,7 +2737,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5648361127259177767}
-  - component: {fileID: 7708241414787538455}
   m_Layer: 0
   m_Name: MinionScene
   m_TagString: Untagged
@@ -2817,31 +2744,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7708241414787538455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7708241414787538454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4862e08c2f55ad438deb32a44a806f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sprites:
-  - {fileID: 1969982587352721118}
-  - {fileID: 1744236459321764018}
-  - {fileID: 2733693578564179109}
-  names:
-  - {fileID: 7525804958251268487}
-  - {fileID: 6320013300238701869}
-  - {fileID: 9043267199911539318}
-  EnemyPool:
-  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
-  - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
-  - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
-  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
 --- !u!224 &7834548574709966430
 RectTransform:
   m_ObjectHideFlags: 0
