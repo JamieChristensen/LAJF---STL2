@@ -2972,6 +2972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runTimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  gamesettings: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af, type: 2}
   chooseableGods:
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
   - {fileID: 11400000, guid: 517b2ecde8cfef14ba0b67d4f2fbc910, type: 2}
