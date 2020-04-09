@@ -8,7 +8,7 @@ public class TransitionNarrator : MonoBehaviour
    // public AudioSource audioSource;
     public Camera mainCam;
     private AudioList _audioList;
-    public AudioList audioList { get { return audioList; } }
+    public AudioList audioList { get { return _audioList; } }
 
     public int getInSpeed = 5;
    // public Rigidbody2D rb2;

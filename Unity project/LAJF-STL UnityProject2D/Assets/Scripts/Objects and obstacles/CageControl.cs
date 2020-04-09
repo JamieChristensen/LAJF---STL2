@@ -16,7 +16,8 @@ public class CageControl : MonoBehaviour
     
     public VoidEvent heroHasBeenCaptured;
 
-   
+    private MusicManager _musicManager;
+    public MusicManager musicManager { get { return _musicManager; } }
 
     private void Awake()
     {
@@ -27,12 +28,22 @@ public class CageControl : MonoBehaviour
 
     private void Start()
     {
+        _musicManager = FindObjectOfType<MusicManager>();
         CaptureHero();
     }
 
 
     public void CaptureHero()
     {
+        try
+        {
+            musicManager.adjustCurrentPlayingVolume(0.4f);
+        }
+        catch
+        {
+           // Debug.Log("there is no music manager");
+        }
+        
         if (runningCoroutine)
         {
             StopCoroutine(co);
@@ -70,6 +81,15 @@ public class CageControl : MonoBehaviour
         yield return new WaitForSeconds(2f);
         runningCoroutine = false;
         heroHasBeenCaptured.Raise(); // Telling the game that the Hero has been captured
+        yield return new WaitForSeconds(1f);
+        try
+        {
+            musicManager.adjustCurrentPlayingVolume(1);
+        }
+        catch
+        {
+           // Debug.Log("there is no music manager");
+        }
     }
 
 

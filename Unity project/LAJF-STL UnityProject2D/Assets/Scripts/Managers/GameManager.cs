@@ -191,7 +191,7 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            musicManager.StopCurrentPlaying();
+            musicManager.adjustCurrentPlayingVolume(0.4f);
         }
         catch
         {

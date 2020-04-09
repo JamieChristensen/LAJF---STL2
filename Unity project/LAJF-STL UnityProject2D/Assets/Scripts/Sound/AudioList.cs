@@ -22,11 +22,9 @@ public class AudioList : MonoBehaviour
          select,
          winFx;
 
-    
-
     public void PlayWithVariablePitch(AudioSource audioSource)
     {
-        audioSource.pitch = Random.Range(0.80f, 1.11f);
+        audioSource.pitch = Random.Range(0.92f, 1.08f);
         audioSource.Play();
     }
 
