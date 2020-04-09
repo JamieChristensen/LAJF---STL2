@@ -167,6 +167,15 @@ public class ChooseGods : MonoBehaviour
     public void ChangeAndDisplaySelection(int newSelection)
     {
         choices[0] = newSelection;
-        choiceTMProText[newSelection].text = "Player1";
+        choiceTMProText[newSelection].text = "Player2";
+
+        foreach (TextMeshProUGUI choiceText in choiceTMProText)
+        {
+            choiceText.text = "";
+        }
+        for (int i = 0; i < gamesettings.GetAmountOfPlayers()-1; i++)
+        {
+            choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
+        }
     }
 }
