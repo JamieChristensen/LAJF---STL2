@@ -143,7 +143,7 @@ public class P1Controller : MonoBehaviour
 
 
         Projectile projInstance = instance.GetComponent<Projectile>();
-        projInstance.damage = 10;
+        projInstance.damage = (int)runtimePlayerStats.baseAttackDamage;
 
         audioList.PlayWithVariablePitch(audioList.attack1);
 
