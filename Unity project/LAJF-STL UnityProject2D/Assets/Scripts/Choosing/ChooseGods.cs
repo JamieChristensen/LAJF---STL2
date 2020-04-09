@@ -9,6 +9,8 @@ using STL2.Events;
 public class ChooseGods : MonoBehaviour
 {
     public ChoiceCategory runTimeChoices;
+    [SerializeField]
+    private SettingsScrObj gamesettings;
 
     public GodInformation[] chooseableGods;
 
@@ -35,6 +37,8 @@ public class ChooseGods : MonoBehaviour
     public KeyCode p4right, p4select;
 
 
+
+
     public void Start()
     {
         choices = new int[3];
@@ -48,7 +52,11 @@ public class ChooseGods : MonoBehaviour
         }
         for (int i = 0; i < choices.Length; i++)
         {
-            choiceTMProText[choices[i]].text += "Player " + (i + 1) + "\n";
+            if (gamesettings.GetAmountOfPlayers() - 2 < i)
+            {
+                return;
+            }
+            choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
 
         nextTransition.Raise(3);
@@ -58,7 +66,6 @@ public class ChooseGods : MonoBehaviour
     {
         if (p2LockedIn && p3LockedIn && p4LockedIn)
         {
-            //TODO: For each player, record their choice to Runtimeplayerchoices (ChoiceCategory scriptableObject).
             for (int i = 0; i < choices.Length; i++)
             {
                 runTimeChoices.chosenGods[i] = chooseableGods[choices[i]];
@@ -88,6 +95,7 @@ public class ChooseGods : MonoBehaviour
                 p2LockedIn = true;
             }
         }
+
 
         currentPlayerIndex = p3Index;
         if (!p3LockedIn)
@@ -134,20 +142,24 @@ public class ChooseGods : MonoBehaviour
         Debug.Log("Going to next scene!");
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadSceneAsync(buildIndex + 1); // go to next scene
-        
+
     }
 
     public void ChangeAndDisplaySelection(int godNumber, int newSelection)
     {
+        if (godNumber + 2 > gamesettings.GetAmountOfPlayers())
+        {
+            return;
+        }
         choices[godNumber] = newSelection;
         //Reset text on each element:
         foreach (TextMeshProUGUI choiceText in choiceTMProText)
         {
             choiceText.text = "";
         }
-        for (int i = 0; i < choices.Length; i++)
+        for (int i = 0; i < gamesettings.GetAmountOfPlayers()-1; i++)
         {
-            choiceTMProText[choices[i]].text += "Player " + (i + 1) + "\n";
+            choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
     }
 
