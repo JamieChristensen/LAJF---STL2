@@ -241,6 +241,9 @@ MonoBehaviour:
   type: {fileID: 0}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   finalChoice: {fileID: 0}
+  characterpool: {fileID: 0}
+  characterSprites: []
+  characterNames: []
   playerItemPool: []
   choiceNameText: []
   itemImageTargets: []
@@ -600,6 +603,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483654232148004046, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 554963477601737872, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: uiText
@@ -615,6 +623,41 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 51354484}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -951
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 670
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.6087605
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.79335415
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 9049779017664538650, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: m_textInfo.characterCount

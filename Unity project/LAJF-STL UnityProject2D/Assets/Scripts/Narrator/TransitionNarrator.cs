@@ -14,6 +14,7 @@ public class TransitionNarrator : MonoBehaviour
    // public Rigidbody2D rb2;
     public float readSpeed;
     public TextMeshProUGUI uiText; // the text to read
+    public GameObject visibleNarratorGameobject;
 
     public Vector2 previousPosition;
 
@@ -36,6 +37,7 @@ public class TransitionNarrator : MonoBehaviour
     public void DoNarration()
     {
         Narrate(uiText.text);
+        visibleNarratorGameobject.SetActive(true);
     }
 
     public void Narrate(string text) // call this with uiText as parameter

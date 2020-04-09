@@ -493,11 +493,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483654232148004046, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 554963477601737872, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: uiText
       value: 
       objectReference: {fileID: 1440416282}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 312
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 627
+      objectReference: {fileID: 0}
     - target: {fileID: 9049779018472308976, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -623,7 +638,7 @@ PrefabInstance:
         type: 3}
       propertyPath: transitionElements.Array.data[9]
       value: 
-      objectReference: {fileID: 11400000, guid: 00cf080717dfd4d438f62a657b199dd3,
+      objectReference: {fileID: 11400000, guid: a1bf5e849c8f6a84ab06c16cd9070075,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbbb37c9bb70bee488540616023c104d, type: 3}
@@ -1812,6 +1827,9 @@ MonoBehaviour:
   type: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   finalChoice: {fileID: 0}
+  characterpool: {fileID: 0}
+  characterSprites: []
+  characterNames: []
   playerItemPool: []
   choiceNameText: []
   itemImageTargets: []

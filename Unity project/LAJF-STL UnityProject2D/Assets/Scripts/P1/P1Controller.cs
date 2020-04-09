@@ -303,10 +303,11 @@ public class P1Controller : MonoBehaviour
         runtimePlayerStats.jumpForce = baselineStats.jumpForce;
         runtimePlayerStats.rangedAttacks = baselineStats.rangedAttacks;
         runtimePlayerStats.meleeAttacks = baselineStats.meleeAttacks;
+        GetComponent<SpriteRenderer>().sprite = runtimeChoices.chosenHero.characterSprite;
 
-
-        currentHitPoints = baselineStats.maxHitPoints;
+        currentHitPoints = baselineStats.startingHitPoints;
         playerHPEvent.Raise(currentHitPoints);
+        //healthBar.VisualiseHealthChange(baselineStats.startingHitPoints);
     }
 
     public void DamageAnimation()
