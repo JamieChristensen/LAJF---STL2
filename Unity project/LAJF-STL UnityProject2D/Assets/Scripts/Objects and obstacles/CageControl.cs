@@ -48,10 +48,10 @@ public class CageControl : MonoBehaviour
         runningCoroutine = true;
         Vector3 targetPosition = _spawnPoint;
         float timer = 0;
-        while (transform.position != targetPosition && timer < 4)
+        while (transform.position != targetPosition && timer < 10)
         {  
             targetPosition = new Vector3 (_playerTransform.position.x,_spawnPoint.y,_spawnPoint.z); 
-            transform.position = Vector3.Lerp(transform.position, targetPosition, timer/ 600f);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, timer/ 2000f);
             _currentPosition = new Vector3 (_playerTransform.position.x,transform.position.y,transform.position.z);
             transform.position = _currentPosition;
             timer += Time.fixedDeltaTime;

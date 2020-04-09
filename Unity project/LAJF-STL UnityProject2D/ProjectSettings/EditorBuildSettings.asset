@@ -86,4 +86,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Environments/Empire/Empire4.unity
     guid: 1337cf46faa41a04485e1070afc09b43
+  - enabled: 1
+    path: Assets/Scenes/Environments/Mythical/Mythical1.unity
+    guid: 30ea1f8e454d43a4ebb19c099b1e87b5
+  - enabled: 1
+    path: Assets/Scenes/Environments/Mythical/Mythical2.unity
+    guid: fd569a3b3416bed419b88c4356741834
+  - enabled: 1
+    path: Assets/Scenes/Environments/Mythical/Mythical3.unity
+    guid: 9d2937d554bb13549aedac6c4d06f507
+  - enabled: 1
+    path: Assets/Scenes/Environments/Mythical/Mythical4.unity
+    guid: dba47edd4c31f5247a428a071cf96bc5
   m_configObjects: {}
