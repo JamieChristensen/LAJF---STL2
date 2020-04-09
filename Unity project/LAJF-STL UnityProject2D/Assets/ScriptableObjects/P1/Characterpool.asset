@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887c02b3e4cf2f94da9bbed63eda3d3a, type: 3}
+  m_Name: Characterpool
+  m_EditorClassIdentifier: 
+  characterStats:
+  - {fileID: 11400000, guid: 7f7febd433328a94a94af68dd70f11b0, type: 2}
+  - {fileID: 11400000, guid: 773b4d324289d78408402733c242829c, type: 2}
+  - {fileID: 11400000, guid: a22363f69a855974e9844ae770f88311, type: 2}

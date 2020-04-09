@@ -239,6 +239,9 @@ MonoBehaviour:
   type: {fileID: 0}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   finalChoice: {fileID: 0}
+  characterpool: {fileID: 0}
+  characterSprites: []
+  characterNames: []
   playerItemPool: []
   choiceNameText: []
   itemImageTargets: []
@@ -747,11 +750,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483654232148004046, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 554963477601737872, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: uiText
       value: 
       objectReference: {fileID: 1923030876}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 279
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1263.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1263.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9049779017664538650, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: m_textInfo.characterCount

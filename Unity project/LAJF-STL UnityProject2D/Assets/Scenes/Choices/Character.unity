@@ -578,6 +578,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483654232148004046, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 554963477601737872, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: uiText
@@ -593,6 +598,26 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 236684095}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 380
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425506897034304780, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -730
+      objectReference: {fileID: 0}
     - target: {fileID: 9049779018472308976, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1709,6 +1734,15 @@ MonoBehaviour:
   type: {fileID: 0}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   finalChoice: {fileID: 0}
+  characterpool: {fileID: 11400000, guid: 4c047599fbb61ce469677ffffc63885a, type: 2}
+  characterSprites:
+  - {fileID: 20572087889637270}
+  - {fileID: 228306289003241978}
+  - {fileID: 4535082350911659501}
+  characterNames:
+  - {fileID: 8317824369688490191}
+  - {fileID: 5524487451258051685}
+  - {fileID: 7394907389893622590}
   playerItemPool: []
   choiceNameText: []
   itemImageTargets: []

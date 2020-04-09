@@ -33,6 +33,12 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     private int choice = 4; // this is 4 by default as there never will be 4 choices to choose from. The forth choice is blindpick.
 
+    [Header("Character choice variables")]
+    public CharacterPool characterpool;
+    public List<Image> characterSprites;
+    public List<TextMeshProUGUI> characterNames;
+    private P1Stats[] characterChoices = new P1Stats[3];
+
     [Header("Item choice variables")]
     public PlayerItems[] playerItemPool;
     public TextMeshProUGUI[] choiceNameText;
@@ -81,6 +87,19 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
         }
 
+        if (choiceType == "Character")
+        {
+            #region InitializeCharacterSelection
+            ShuffleList(characterpool.characterStats);
+            for (int i = 0; i < characterChoices.Length; i++)
+            {
+                P1Stats characterStats = characterpool.characterStats[i];
+                characterSprites[i].sprite = characterStats.characterSprite;
+                characterNames[i].text = characterStats.myName;
+                characterChoices[i] = characterStats;
+            }
+            #endregion InitializeCharacterSelection
+        }
 
         if (choiceType == "Item")
         {
@@ -319,8 +338,9 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     void HeroHasChosenCharacter()
     {
-        runtimeChoices.character = finalChoice;
-        Debug.Log("Hero has chosen a character! It is: " + finalChoice.name);
+       // runtimeChoices.character = finalChoice;
+        runtimeChoices.chosenHero = characterChoices[choice - 1];
+        Debug.Log("Hero has chosen a character! It is: " + characterChoices[choice - 1].myName);
         SwitchToGodSelection(); // switching from character select to theme select
     }
 
@@ -523,6 +543,17 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         for (int i = 0; i < ts.Count; i++)
         {
             Environment temp = ts[i];
+            int randomIndex = Random.Range(i, ts.Count);
+            ts[i] = ts[randomIndex];
+            ts[randomIndex] = temp;
+        }
+    }
+
+    private void ShuffleList(List<P1Stats> ts)
+    {
+        for (int i = 0; i < ts.Count; i++)
+        {
+            P1Stats temp = ts[i];
             int randomIndex = Random.Range(i, ts.Count);
             ts[i] = ts[randomIndex];
             ts[randomIndex] = temp;

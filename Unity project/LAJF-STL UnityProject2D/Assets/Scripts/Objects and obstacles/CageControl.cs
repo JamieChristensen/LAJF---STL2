@@ -37,7 +37,7 @@ public class CageControl : MonoBehaviour
     {
         try
         {
-            musicManager.adjustCurrentPlayingVolume(0.4f);
+            musicManager.adjustCurrentPlayingVolume(0.5f);
         }
         catch
         {

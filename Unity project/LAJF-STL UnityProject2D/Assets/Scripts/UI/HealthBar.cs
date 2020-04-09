@@ -15,16 +15,19 @@ public class HealthBar : MonoBehaviour
     bool freezeVisibleDamage = false;
     float freezeTime = 0.5f, timer = 0;
     public int maxHp = 0;
+    public int currentHp = 0;
 
     float damageScaleX = 5, currentHealthScaleX = 5;
     
     public ChoiceCategory runtimeChoices;
     public P1Stats playerRuntimeStats;
 
-    public void Start()
+
+    public void GetCurrentHP(int currentHealth)
     {
         GetMaxHP();
-        VisualiseHealthChange(maxHp);
+        currentHp = currentHealth;
+        VisualiseHealthChange(currentHp);
     }
 
     public void GetMaxHP ()
@@ -49,8 +52,6 @@ public class HealthBar : MonoBehaviour
 
     public void VisualiseHealthChange(int currentHealth)
     {
-        GetMaxHP();
-
         if (currentHealth > 0)
         {
             freezeVisibleDamage = true;

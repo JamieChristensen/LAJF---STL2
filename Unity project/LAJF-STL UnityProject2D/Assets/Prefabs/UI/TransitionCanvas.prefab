@@ -132,11 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f6e84f55406754d8a9ff4933bb6bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
   mainCam: {fileID: 0}
   getInSpeed: 5
   readSpeed: 0
   uiText: {fileID: 9049779017664538650}
+  visibleNarratorGameobject: {fileID: 483654232148004046}
   previousPosition: {x: 0, y: 0}
 --- !u!114 &1989718898
 MonoBehaviour:
