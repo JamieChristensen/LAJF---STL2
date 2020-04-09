@@ -25,8 +25,18 @@ public class InputManager : MonoBehaviour
     public KeyCode player1JumpKey;
     public KeyCode player1AttackKey;
     private float player1Hori;
+    public KeyCode player1Left, player1Right;
     private bool player1Jump;
+    private bool player1JumpHold;
     private bool player1Attack;
+
+    private float doubleTapMaxTime = 0.5f;
+    private float tapTimerLeft, tapTimerRight;
+    private bool tapTimingLeft, tapTimingRight;
+    private float tapCooldownMaxTime = 0.5f;
+    private float tapCooldownTimer;
+    private bool tapCoolingDown;
+    private bool justTapped;
 
     [Header("Player 2, 3 and 4 controls")]
     public KeyCode[] godLeftInput;
@@ -53,24 +63,81 @@ public class InputManager : MonoBehaviour
         //Alternatively, assign gods in inspector and figure out a way to disable superfluous gods.
         amountOfPlayers = gameSettings.GetAmountOfPlayers();
         amountOfGods = amountOfPlayers - 1;
-
-        
     }
 
     private void Update()
     {
         GetInputs();
         SendHeroInputs();
+
+        tapTimerLeft = tapTimingLeft ? tapTimerLeft + Time.deltaTime : 0;
+        tapTimerRight = tapTimingRight ? tapTimerRight + Time.deltaTime : 0;
+        tapCooldownTimer = tapCoolingDown ? tapCooldownTimer + Time.deltaTime : 0;
+
+        if (tapTimerLeft > doubleTapMaxTime)
+        {
+            tapTimerLeft = 0;
+            tapTimingLeft = false;
+        }
+        if (tapTimerRight > doubleTapMaxTime)
+        {
+            tapTimerRight = 0;
+            tapTimingRight = false;
+        }
+        if (tapCooldownTimer > tapCooldownMaxTime)
+        {
+            tapCoolingDown = false;
+            tapCooldownTimer = 0;
+        }
     }
 
     private void GetInputs()
     {
         if (player1 != null)
         {
-            player1Hori = Input.GetAxis("P1Horizontal");
+
+            float left = Input.GetKey(player1Left) ? 1 : 0;
+            float right = Input.GetKey(player1Right) ? 1 : 0;
+            player1Hori = right - left;
+
             player1Jump = Input.GetKeyDown(player1JumpKey);
+            player1JumpHold = Input.GetKey(player1JumpKey);
             player1Attack = Input.GetKeyDown(player1AttackKey);
+
+
+            if (Input.GetKeyDown(player1Left))
+            {
+                if (tapTimingRight)
+                {
+                    tapTimingRight = false;
+                }
+                if (tapTimerLeft < doubleTapMaxTime && tapTimingLeft)
+                {
+                    justTapped = true;
+                    return;
+                }
+                tapTimingLeft = true;
+
+            }
+            if (Input.GetKeyDown(player1Right))
+            {
+                if (tapTimingLeft)
+                {
+                    tapTimingLeft = false;
+                }
+                if (tapTimerRight < doubleTapMaxTime && tapTimingRight)
+                {
+                    justTapped = true;
+                    return;
+                }
+                tapTimingRight = true;
+
+            }
         }
+
+
+
+
 
 
         for (int i = 0; i < amountOfGods; i++)
@@ -102,7 +169,37 @@ public class InputManager : MonoBehaviour
                 player1.ReceiveInput(P1Controller.Player1Input.Jump, 0); //Float doesn't matter for jump
             }
 
+            if (player1JumpHold)
+            {
+                player1.ReceiveInput(P1Controller.Player1Input.JumpHold, 1);
+            }
+            else
+            {
+                player1.ReceiveInput(P1Controller.Player1Input.JumpHold, 0);
+            }
+
             player1.ReceiveInput(P1Controller.Player1Input.Horizontal, player1Hori);
+
+            if (justTapped && tapTimingLeft)
+            {
+                justTapped = false;
+                tapTimingLeft = false;
+                tapTimerLeft = 0;
+                tapCoolingDown = true;
+                player1.ReceiveInput(P1Controller.Player1Input.DoubleTapLeft, 0);
+            }
+
+            if (justTapped && tapTimingRight)
+            {
+                justTapped = false;
+                tapTimingRight = false;
+                tapTimerRight = 0;
+                tapCoolingDown = true;
+
+                player1.ReceiveInput(P1Controller.Player1Input.DoubleTapRight, 0);
+            }
+
+
         }
 
         //Implement gods
