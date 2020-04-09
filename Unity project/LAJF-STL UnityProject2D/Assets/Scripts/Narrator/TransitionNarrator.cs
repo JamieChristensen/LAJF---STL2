@@ -5,8 +5,10 @@ using TMPro;
 
 public class TransitionNarrator : MonoBehaviour
 {
-    public AudioSource audioSource;
+   // public AudioSource audioSource;
     public Camera mainCam;
+    private AudioList _audioList;
+    public AudioList audioList { get { return audioList; } }
 
     public int getInSpeed = 5;
    // public Rigidbody2D rb2;
@@ -16,16 +18,19 @@ public class TransitionNarrator : MonoBehaviour
     public Vector2 previousPosition;
 
 
-    public void Start()
+    private void Start()
     {
+        if (_audioList == null)
+        {
+            _audioList = FindObjectOfType<AudioList>();
+        }
+        
+
         if (mainCam == null)
         {
             mainCam = FindObjectOfType<Camera>();
         }
-        if (audioSource == null)
-        {
-            audioSource = FindObjectOfType<AudioList>().narratorRead;
-        }
+        
     }
 
     public void DoNarration()
@@ -41,7 +46,7 @@ public class TransitionNarrator : MonoBehaviour
         StartCoroutine(ReadText(text));
     }
 
-
+    
     IEnumerator ReadText(string text)
     {
         // execute TTS service with text param and wait for respons 
@@ -53,11 +58,23 @@ public class TransitionNarrator : MonoBehaviour
         // play audio file 
 
         yield return new WaitForSeconds(4 * readSpeed);
-        ExitScene();
+      //  ExitScene();
         // remove text 
     }
 
 
+    
+    
+
+    void EnterScene()
+    {
+       // RandomizePosition();
+
+       //  Vector2 direction = (mainCam.transform.position - transform.position).normalized;
+        //rb2.velocity = direction * getInSpeed;
+        audioList.PlayWithVariablePitch(audioList.narratorRead);
+    }
+    /*
 
     private void ExitScene()
     {
@@ -65,14 +82,6 @@ public class TransitionNarrator : MonoBehaviour
         // rb2.velocity = direction * (getInSpeed + 5);
     }
 
-    void EnterScene()
-    {
-        RandomizePosition();
-
-         Vector2 direction = (mainCam.transform.position - transform.position).normalized;
-        //rb2.velocity = direction * getInSpeed;
-        audioSource.Play();
-    }
 
     void RandomizePosition()
     {
@@ -105,4 +114,5 @@ public class TransitionNarrator : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * 100);
     }
 
+    */
 }

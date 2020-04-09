@@ -121,7 +121,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &976586492
+--- !u!1001 &5753100037138468261
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -186,13 +186,13 @@ PrefabInstance:
     - target: {fileID: 2291699210000381485, guid: 20087ae3c9d60d04baf036293db75867,
         type: 3}
       propertyPath: m_Name
-      value: EnvironmentPrefab
+      value: Level
       objectReference: {fileID: 0}
     - target: {fileID: 4911482575353227402, guid: 20087ae3c9d60d04baf036293db75867,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cc2c9b2cb856aa542a0e9cf7ed1404b7, type: 2}
+      objectReference: {fileID: 2100000, guid: eea34411b784909479848cea22bf7030, type: 2}
     - target: {fileID: 7410636199154860311, guid: 20087ae3c9d60d04baf036293db75867,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -222,21 +222,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 7410636199154860311, guid: 20087ae3c9d60d04baf036293db75867,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7.1724443
-      objectReference: {fileID: 0}
-    - target: {fileID: 7410636199154860311, guid: 20087ae3c9d60d04baf036293db75867,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.16739
-      objectReference: {fileID: 0}
-    - target: {fileID: 7410636199154860311, guid: 20087ae3c9d60d04baf036293db75867,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4.0345
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20087ae3c9d60d04baf036293db75867, type: 3}

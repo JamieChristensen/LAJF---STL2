@@ -4369,7 +4369,7 @@ GameObject:
   - component: {fileID: 6160040323214379631}
   - component: {fileID: 8207513691943573343}
   m_Layer: 0
-  m_Name: CharacterScene
+  m_Name: GodsrScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
