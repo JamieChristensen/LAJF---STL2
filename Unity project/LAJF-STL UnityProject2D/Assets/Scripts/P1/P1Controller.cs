@@ -11,7 +11,10 @@ public class P1Controller : MonoBehaviour
     {
         Horizontal,
         Jump,
-        Attack
+        Attack,
+        JumpHold,
+        DoubleTapLeft,
+        DoubleTapRight
     };
     #region INSPECTOR
     public P1Stats runtimePlayerStats;
@@ -57,6 +60,18 @@ public class P1Controller : MonoBehaviour
 
     private AudioList _audioList;
     public AudioList audioList { get { return _audioList; } }
+
+    [SerializeField]
+    private float dropGravityModifier, baseGravity;
+    [SerializeField]
+    private bool isHoldingJump;
+
+    private bool dashingLeft, dashingRight;
+    private float dashTimer;
+    [SerializeField]
+    private float dashMaxTime = 0.3f;
+    [SerializeField]
+    private float dashSpeed;
     #endregion INSPECTOR
 
     void Awake()
@@ -68,7 +83,7 @@ public class P1Controller : MonoBehaviour
 
     private void Start()
     {
-        
+
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         matDefault = spriteRenderer.material;
@@ -88,9 +103,23 @@ public class P1Controller : MonoBehaviour
                 rangedAttackCooldownTimer = 0;
             }
         }
+
+        if (dashingLeft || dashingRight)
+        {
+            dashTimer += Time.deltaTime;
+            if (dashTimer > dashMaxTime)
+            {
+                dashingLeft = false;
+                dashingRight = false;
+                dashTimer = 0;
+            }
+        }
         #endregion UpdateCooldowns
 
 
+        #region MovementModifying
+        rb.gravityScale = isHoldingJump ? baseGravity : dropGravityModifier;
+        #endregion MovementModifying
 
 
 
@@ -178,15 +207,47 @@ public class P1Controller : MonoBehaviour
                     rb.velocity = new Vector2(0, rb.velocity.y);
                 }
 
+                if (dashingLeft || dashingRight)
+                {
+                    float leftD, rightD;
+                    leftD = dashingLeft ? 1 : 0;
+                    rightD = dashingRight ? 1 : 0;
+                    float dashDirection = rightD - leftD;
+                    Debug.Log("DASH DIRECTION: " + dashDirection);
+                    rb.velocity = new Vector2(dashDirection * dashSpeed, 0);
+                }
+
+
                 break;
             case Player1Input.Jump:
+
                 if (isGrounded)
                 {
                     audioList.PlayWithVariablePitch(audioList.jump);
                     rb.AddForce(runtimePlayerStats.jumpForce * Vector2.up, ForceMode2D.Impulse);
                 }
                 break;
+            case Player1Input.JumpHold:
+                if (value == 1)
+                {
+                    isHoldingJump = true;
+                }
+                else
+                {
+                    isHoldingJump = false;
+                }
+                break;
 
+            case Player1Input.DoubleTapLeft:
+                Debug.Log("HEYO LEFT");
+                dashingLeft = true;
+                dashTimer = 0;
+                break;
+            case Player1Input.DoubleTapRight:
+                Debug.Log("HEYO RIGHT");
+                dashingRight = true;
+                dashTimer = 0;
+                break;
 
         }
 
@@ -274,7 +335,6 @@ public class P1Controller : MonoBehaviour
         audioList.explosion.Play();
         Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
         Destroy(gameObject);
-
     }
 
 
