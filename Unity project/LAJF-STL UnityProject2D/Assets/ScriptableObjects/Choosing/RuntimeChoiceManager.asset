@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e60fcdfd9bc7f2c43bdfcbee6989b79b, type: 3}
-  m_Name: 2-3 FromGodScreen
+  m_Script: {fileID: 11500000, guid: 13e84497a62247c4fa3fdea3a2cb5dce, type: 3}
+  m_Name: RuntimeChoiceManager
   m_EditorClassIdentifier: 
-  sceneIndex: 2
-  details: From God Screen (2) to Theme Screen (3)
-  startTransparent: 1
-  textElement:
-  - textInput: A long way from home the scene was set...
-    timeOfTextDisplayed: 4
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}

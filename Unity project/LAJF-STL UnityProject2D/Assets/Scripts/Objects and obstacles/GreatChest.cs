@@ -83,6 +83,8 @@ public class GreatChest : MonoBehaviour
 
         //Reset used sprite
         spriteRenderer.sprite = sprites[0];
+
+        GetGlow();
     }
 
     public void SetInactivePosition(Vector3 newPosition)
@@ -92,7 +94,12 @@ public class GreatChest : MonoBehaviour
 
     public void RemoveGlow()
     {
-        Destroy(wealthGlow.gameObject);
+        wealthGlow.gameObject.SetActive(false);
+    }
+
+    public void GetGlow()
+    {
+        wealthGlow.gameObject.SetActive(true);
     }
 
 }

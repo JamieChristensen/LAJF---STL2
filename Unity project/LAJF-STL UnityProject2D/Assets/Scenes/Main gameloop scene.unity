@@ -805,6 +805,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2114617311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9005650612711449379, guid: 4c8b91af623fccc449d8351369779d7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 215539154918158727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2114617312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114617311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 1cade647f7014d543829d17d91acb9c9, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2114617314}
+        m_MethodName: ResetChestState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2114617314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9005650612711449376, guid: 4c8b91af623fccc449d8351369779d7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 215539154918158727}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114617311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eea8e3fd9a24a54bb2564e257cdfffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &215539154918158727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -870,7 +915,7 @@ PrefabInstance:
     - target: {fileID: 9005650612711449379, guid: 4c8b91af623fccc449d8351369779d7f,
         type: 3}
       propertyPath: m_Name
-      value: EnemySpawner
+      value: Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c8b91af623fccc449d8351369779d7f, type: 3}
@@ -1260,6 +1305,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5955416143951696280}
     m_Modifications:
+    - target: {fileID: 1015597899, guid: c4c9c715e81ecba44a8a0e30483d8f18, type: 3}
+      propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4878232384735398760}
     - target: {fileID: 1846368446, guid: c4c9c715e81ecba44a8a0e30483d8f18, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 1.789917
@@ -1411,6 +1460,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4c9c715e81ecba44a8a0e30483d8f18, type: 3}
+--- !u!114 &4878232384735398760 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4446520399008539023, guid: c4c9c715e81ecba44a8a0e30483d8f18,
+    type: 3}
+  m_PrefabInstance: {fileID: 4878232384735398759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d355e88c578b246bc5248f05d8c917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5023256397130445044
 Transform:
   m_ObjectHideFlags: 0
@@ -1771,7 +1832,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9081438539983091340}
-        m_MethodName: LoadChosenScene
+        m_MethodName: LoadChosenChoiceScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2356,6 +2417,12 @@ PrefabInstance:
       propertyPath: narrator
       value: 
       objectReference: {fileID: 898704785}
+    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
+        type: 3}
+      propertyPath: musicManagerPrefab
+      value: 
+      objectReference: {fileID: 3533239637080075378, guid: 2d82e934a2c9b5641b8ac1dffb955a81,
+        type: 3}
     - target: {fileID: 5702686960598596083, guid: 21520e1c83698d4488117d89451521b6,
         type: 3}
       propertyPath: m_Name
@@ -2363,6 +2430,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21520e1c83698d4488117d89451521b6, type: 3}
+--- !u!1 &9081438541805916877 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5702686960598596083, guid: 21520e1c83698d4488117d89451521b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 9081438541805916876}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9081438541805916878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9081438541805916877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 35bcbd147fd58dc44a1934431f4af646, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9081438541805916879}
+        m_MethodName: OnHeroWonRound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9081438541805916879 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 9081438541805916876}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9081438541805916877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe3c9365934e0274ab5e7811e3458095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &9128450345718727557
 MeshFilter:
   m_ObjectHideFlags: 0

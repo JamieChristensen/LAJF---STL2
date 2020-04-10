@@ -36,7 +36,7 @@ public class ChooseGods : MonoBehaviour
     public KeyCode p4left;
     public KeyCode p4right, p4select;
 
-
+    bool lockedIn = false;
 
 
     public void Start()
@@ -58,20 +58,19 @@ public class ChooseGods : MonoBehaviour
             }
             choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
-
-        nextTransition.Raise(3);
     }
 
     public void Update()
     {
-        if (p2LockedIn && p3LockedIn && p4LockedIn)
+        if (p2LockedIn && p3LockedIn && p4LockedIn && lockedIn == false)
         {
             for (int i = 0; i < choices.Length; i++)
             {
                 runTimeChoices.chosenGods[i] = chooseableGods[choices[i]];
             }
 
-            LoadNextScene();
+            LoadTransition();
+            lockedIn = true;
             return;
         }
 
@@ -135,6 +134,11 @@ public class ChooseGods : MonoBehaviour
             }
         }
         #endregion Inputs
+    }
+
+    public void LoadTransition()
+    {
+        nextTransition.Raise(4);
     }
 
     public void LoadNextScene() // Character & Theme Screen

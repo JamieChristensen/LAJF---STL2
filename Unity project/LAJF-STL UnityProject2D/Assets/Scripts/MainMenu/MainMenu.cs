@@ -15,14 +15,17 @@ public class MainMenu : MonoBehaviour
     public GameObject creditsMenu;
 
     public TransitionScreen introTransition;
+    public RuntimeChoiceManager runtimeChoiceManager;
 
 
     public void StartFading()
     {
+        
         introTransition.DoNextTransition(0);
     }
     public void StartGame()
     {
+        runtimeChoiceManager.ResetRun();
         SceneManager.LoadSceneAsync(1);
     }
 
