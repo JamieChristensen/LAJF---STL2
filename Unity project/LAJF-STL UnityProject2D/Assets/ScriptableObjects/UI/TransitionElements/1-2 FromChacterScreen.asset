@@ -16,5 +16,5 @@ MonoBehaviour:
   details: From Character Screen (1)To God Screen (2)
   startTransparent: 1
   textElement:
-  - textInput: And also some Deities...
-    timeOfTextDisplayed: 5
+  - textInput: Ohh... And also some Deities passed through!
+    timeOfTextDisplayed: 3.5

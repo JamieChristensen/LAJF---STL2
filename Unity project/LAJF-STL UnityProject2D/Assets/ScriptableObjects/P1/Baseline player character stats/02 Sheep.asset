@@ -18,9 +18,9 @@ MonoBehaviour:
   moveSpeed: 12
   jumpForce: 16
   baseAttackDamage: 1
-  attackRate: 0
+  attackRate: 0.25
   rangedAttacks: 1
   meleeAttacks: 0
-  maxHitPoints: 100
-  startingHitPoints: 100
+  maxHitPoints: 70
+  startingHitPoints: 70
   baseDamageReduction: 0

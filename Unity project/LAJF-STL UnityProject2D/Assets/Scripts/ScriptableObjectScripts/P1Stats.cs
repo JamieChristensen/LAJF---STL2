@@ -9,6 +9,7 @@ public class P1Stats : ScriptableObject
     public string myName; // name of the character
     public string description; // description of character
     public string trait; // the traits of choosing this character
+    public Sprite characterSprite;
 
     [Header("Movement")]
     public float moveSpeed; //the speed the player is able to move with

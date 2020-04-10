@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c1f0de924389ac4bbd7807bee9dc1e6, type: 3}
-  m_Name: Demon twin
+  m_Name: DemonTwin
   m_EditorClassIdentifier: 
-  name: Demon twin
+  name: Demon Twin
   health: 30
   speed: 2
   sprite: {fileID: 21300000, guid: 8222dcf447d0b744d998e2477de34e79, type: 3}

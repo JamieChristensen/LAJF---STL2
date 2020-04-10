@@ -47,12 +47,21 @@ public class CustomSceneManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        try
+        {
+            Destroy(FindObjectOfType<MusicManager>().gameObject);
+        }
+        catch
+        {
+            Debug.Log("there is no music manager");
+        }
         SceneManager.LoadScene(0); //Index of main-menu. 
     }
     public void LoadCredits()
     {
         //Should probably not just load this scene, but this is a start.
-        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
+        //SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
+        SceneManager.LoadScene(8);
     }
 
     public void RequestSceneChange(int _sceneIndex)
@@ -138,14 +147,14 @@ public class CustomSceneManager : MonoBehaviour
             isLoadingScene.setBool(false);
             loadProgress = 0;
             UpdateLoadProgress(1);
-            Debug.Log("Checking how many times this is called");
+           // Debug.Log("Checking how many times this is called");
         };
 
 
         while (!asyncLoad.isDone)
         {
             UpdateLoadProgress(asyncLoad.progress);
-            Debug.Log("Loading progress: " + asyncLoad.progress);
+         //   Debug.Log("Loading progress: " + asyncLoad.progress);
             loadProgress = asyncLoad.progress;
             yield return null;
         }

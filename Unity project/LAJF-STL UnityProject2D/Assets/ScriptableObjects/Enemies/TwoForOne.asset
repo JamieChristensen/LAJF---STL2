@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1f0de924389ac4bbd7807bee9dc1e6, type: 3}
   m_Name: TwoForOne
   m_EditorClassIdentifier: 
-  name: TwoForOne
+  name: Two For One
   health: 50
   speed: 2
   sprite: {fileID: 21300000, guid: f0bd9c5b2d33e754586a06c1304e0cd4, type: 3}

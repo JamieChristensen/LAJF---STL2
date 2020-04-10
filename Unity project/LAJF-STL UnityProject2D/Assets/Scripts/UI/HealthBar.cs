@@ -14,25 +14,62 @@ public class HealthBar : MonoBehaviour
 
     bool freezeVisibleDamage = false;
     float freezeTime = 0.5f, timer = 0;
-    public int maxHp = 30;
+    public int maxHp = 0;
+    public int currentHp = 0;
 
     float damageScaleX = 5, currentHealthScaleX = 5;
+    
+    public ChoiceCategory runtimeChoices;
+    public P1Stats playerRuntimeStats;
 
+
+    public void GetCurrentHP(int currentHealth)
+    {
+        GetMaxHP();
+        currentHp = currentHealth;
+        VisualiseHealthChange(currentHp);
+    }
+
+    public void GetMaxHP ()
+    {
+        if (this.CompareTag("Monster"))
+        {
+            try
+            {
+                maxHp = GetComponentInParent<EnemyBehaviour>().agent.health;
+            }
+            catch
+            {
+                Debug.Log("Could not find the MaxHp of the Minion. Have you chosen one yet?");
+            }           
+        }
+        else if (this.CompareTag("P1"))
+        {
+            maxHp = playerRuntimeStats.maxHitPoints;
+        }
+    }
+    
 
     public void VisualiseHealthChange(int currentHealth)
     {
-        freezeVisibleDamage = true;
-        timer = 0;
-        hitPointsText.SetText(currentHealth + " HP");
-        currentHealthScaleX = (5*currentHealth / maxHp );
-        CurrentHealthFillTransform.localScale = new Vector3(currentHealthScaleX, 1,1);
+        if (currentHealth > 0)
+        {
+            freezeVisibleDamage = true;
+            timer = 0;
+            hitPointsText.SetText(currentHealth + " HP");
+            currentHealthScaleX = (5 * currentHealth / maxHp);
+            CurrentHealthFillTransform.localScale = new Vector3(currentHealthScaleX, 1, 1);
+        }
+        else
+        {
+            freezeVisibleDamage = true;
+            timer = 0;
+            hitPointsText.SetText(0 + " HP");
+            currentHealthScaleX = 0;
+            CurrentHealthFillTransform.localScale = new Vector3(currentHealthScaleX, 1, 1);
+        }
+        
 
-
-
-
-
-
-       
        // Debug.Log(HealthBarScaleTransform.localScale);
 
     }

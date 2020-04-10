@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "Environmentpool", menuName = "ScriptableObject/Environmentpool")]
+[CreateAssetMenu(fileName = "Environmentpool", menuName = "ScriptableObject/Pool/Environmentpool")]
 public class EnvironmentPool : ScriptableObject
 {
     [Header("Environment Pool")]

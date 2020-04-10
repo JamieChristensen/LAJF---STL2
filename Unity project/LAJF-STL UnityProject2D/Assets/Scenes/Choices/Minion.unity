@@ -603,25 +603,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransitionCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 9049779018472308988, guid: dbbb37c9bb70bee488540616023c104d,
-        type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
-        type: 3}
-      propertyPath: transitionElements.Array.data[11]
-      value: 
-      objectReference: {fileID: 11400000, guid: e68e350c76e9d0444abca4dbf593e91d,
-        type: 2}
     - target: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: transitionElements.Array.data[9]
       value: 
-      objectReference: {fileID: 11400000, guid: 00cf080717dfd4d438f62a657b199dd3,
+      objectReference: {fileID: 11400000, guid: a1bf5e849c8f6a84ab06c16cd9070075,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbbb37c9bb70bee488540616023c104d, type: 3}
+--- !u!114 &1440416283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 554963477601737872, guid: dbbb37c9bb70bee488540616023c104d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1440416281}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f6e84f55406754d8a9ff4933bb6bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2083530419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,6 +1784,9 @@ MonoBehaviour:
   type: {fileID: 11400000, guid: 88c69be616b3127468bf593c7c6b33de, type: 2}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   finalChoice: {fileID: 0}
+  characterpool: {fileID: 0}
+  characterSprites: []
+  characterNames: []
   playerItemPool: []
   choiceNameText: []
   itemImageTargets: []
@@ -3052,6 +3056,17 @@ MonoBehaviour:
       - m_Target: {fileID: 210415972929106733}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1440416283}
+        m_MethodName: DoNarration
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

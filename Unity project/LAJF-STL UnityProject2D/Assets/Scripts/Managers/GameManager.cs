@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     public MusicManager musicManager;
 
+    public NarratorBehaviour narrator;
+
     public static bool canPlayerMove { get; private set; }
     [SerializeField] private bool[] _canMonsterMove; 
     public bool[] canMonsterMove { get { return _canMonsterMove; }}
@@ -99,8 +101,13 @@ public class GameManager : MonoBehaviour
         {
             isGamePaused.setBool(false);
         }
+        runTimeChoises.runTimeLoopCount = 1; // this is the first loop
+        NextEnvironment();
+    }
 
-        sceneManager.RequestEnvironmentChange(runTimeChoises.chosenEnvironments[0].environmentIndex);
+    public void NextEnvironment()
+    {
+        sceneManager.RequestEnvironmentChange(runTimeChoises.chosenEnvironments[runTimeChoises.runTimeLoopCount - 1].environmentIndex); // Changing environment to the requested environment in the array (depending on runtime loop count)
     }
 
     public void PlayerHealthResponse(int playerHP)
@@ -187,13 +194,32 @@ public class GameManager : MonoBehaviour
 
     public void OnMonsterDied()
     {
-        musicManager.StopCurrentPlaying();
-        RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music   
+        try
+        {
+            musicManager.adjustCurrentPlayingVolume(0.4f);
+        }
+        catch
+        {
+            Debug.Log("there is no music manager");
+        }
+
+        narrator.Narrate("The Hero has Eliminated " + FindObjectOfType<EnemyBehaviour>().nameUI.text);
+        RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music
+        
     }
 
     public void OnOpenedChest()
     {
-        musicManager.PlayMusic("Peace");
+        try
+        {
+            musicManager.PlayMusic("Peace");
+        }
+        catch
+        {
+            Debug.Log("there is no music manager");
+        }
+        
+        
         canPlayerMove = false;
        // Time.timeScale = 0f;
         sceneManager.ChooseSceneToLoad(indexOfItemChoiceScene);
@@ -203,6 +229,16 @@ public class GameManager : MonoBehaviour
 
     public void OnPickedItem()
     {
+        if (runTimeChoises.runTimeLoopCount<5)
+        {
+            runTimeChoises.runTimeLoopCount++;
+        }
+        else
+        {
+            runTimeChoises.runTimeLoopCount = 1;
+        }
+
+        NextEnvironment();
         //change environment to next one in line.
         sceneManager.ChooseSceneToLoad(indexOfGameLoopScene);
         nextTransition.Raise(16);
@@ -240,7 +276,16 @@ public class GameManager : MonoBehaviour
         {
             canMonsterMove[i] = false;
         }
-        
+
+        try
+        {
+            musicManager.PlayMusic("Ending");
+        }
+        catch
+        {
+            Debug.Log("there is no music manager");
+        }
+
         canPlayerMove = false;
         bool dying = true;
         float timer = 0;
@@ -249,7 +294,7 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > _timeBetweenPlayerDeathAndEndScreen)
             {
-                musicManager.PlayMusic("Ending");
+
                 FindObjectOfType<CustomSceneManager>().LoadCredits(); //End game by loading proper scene through game-manager - should happen after a delay, as to provide feedback during the delay.
             }
             yield return null;

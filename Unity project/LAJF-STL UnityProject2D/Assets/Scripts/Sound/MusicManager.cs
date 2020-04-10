@@ -57,7 +57,7 @@ public class MusicManager : MonoBehaviour
                 if (name != musicThemes[i].name) // if the requested music theme is not this one
                 {
                     //  Debug.Log("name: " + name + " - musicThemes[i].name: " + musicThemes[i].name);
-                    StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 6, -80)); // turn down the volume in a fade
+                    StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 5.5f, 0)); // turn down the volume in a fade
                     StartCoroutine(StopAfterDelay(musicThemes[i].source)); // stop the music theme
                 }
             }
@@ -95,13 +95,24 @@ public class MusicManager : MonoBehaviour
         pausedAudioSource.Play();
     }
 
+    public void adjustCurrentPlayingVolume(float targetVolume)
+    {
+        for (int i = 0; i < musicThemes.Length; i++) // checks all Audio Sources (music themes)
+        {
+            if (musicThemes[i].source.isPlaying) // If the music theme is playing
+            {
+                StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 2, targetVolume)); // adjusts the volume in a fade
+            }
+        }
+    }
+
     public void StopCurrentPlaying()
     {
         for (int i = 0; i < musicThemes.Length; i++) // checks all Audio Sources (music themes)
         {
             if (musicThemes[i].source.isPlaying) // If the music theme is playing
             {
-                StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 6, -80)); // turn down the volume in a fade
+                StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 5.5f, 0)); // turn down the volume in a fade
                 StartCoroutine(StopAfterDelay(musicThemes[i].source)); // stop the music theme
             }
         }
@@ -118,11 +129,6 @@ public class MusicManager : MonoBehaviour
         yield return new WaitForSeconds(6);
         musicThemeAudioSource.Stop();
     }
-
-
-
-
-
 }
 
 

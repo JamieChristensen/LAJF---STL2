@@ -33,7 +33,7 @@ public class Enemy : ScriptableObject
                 string extraText = m.name.Trim();
 
                 if (extraText.IndexOf('_') == 0)
-                    modifiedName += extraText.Split('_')[1];
+                    modifiedName += " " + extraText.Split('_')[1];
                 else
                 {
                     modifiedName = extraText.Split('_')[0] + " " + modifiedName;

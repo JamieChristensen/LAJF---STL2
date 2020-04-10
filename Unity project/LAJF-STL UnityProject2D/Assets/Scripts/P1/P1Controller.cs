@@ -11,7 +11,10 @@ public class P1Controller : MonoBehaviour
     {
         Horizontal,
         Jump,
-        Attack
+        Attack,
+        JumpHold,
+        DoubleTapLeft,
+        DoubleTapRight
     };
     #region INSPECTOR
     public P1Stats runtimePlayerStats;
@@ -23,6 +26,7 @@ public class P1Controller : MonoBehaviour
     public KeyCode left, right, jump, attackRanged, attackMelee;
 
     [SerializeField]
+    public Sprite defaultSprite, playerSprite;
     private SpriteRenderer spriteRenderer;
 
     //White and default materials
@@ -57,17 +61,30 @@ public class P1Controller : MonoBehaviour
 
     private AudioList _audioList;
     public AudioList audioList { get { return _audioList; } }
+
+    [SerializeField]
+    private float dropGravityModifier, baseGravity;
+    [SerializeField]
+    private bool isHoldingJump;
+
+    private bool dashingLeft, dashingRight;
+    private float dashTimer;
+    [SerializeField]
+    private float dashMaxTime = 0.3f;
+    [SerializeField]
+    private float dashSpeed;
     #endregion INSPECTOR
 
     void Awake()
     {
+        _audioList = FindObjectOfType<AudioList>();
         moveDirection = Vector2.right;
         InitializePlayerStats(runtimeChoices.chosenHero); //Use the chosen stats to set baseline of this run.
     }
 
     private void Start()
     {
-        _audioList = FindObjectOfType<AudioList>();
+
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         matDefault = spriteRenderer.material;
@@ -87,9 +104,23 @@ public class P1Controller : MonoBehaviour
                 rangedAttackCooldownTimer = 0;
             }
         }
+
+        if (dashingLeft || dashingRight)
+        {
+            dashTimer += Time.deltaTime;
+            if (dashTimer > dashMaxTime)
+            {
+                dashingLeft = false;
+                dashingRight = false;
+                dashTimer = 0;
+            }
+        }
         #endregion UpdateCooldowns
 
 
+        #region MovementModifying
+        rb.gravityScale = isHoldingJump ? baseGravity : dropGravityModifier;
+        #endregion MovementModifying
 
 
 
@@ -113,7 +144,7 @@ public class P1Controller : MonoBehaviour
 
 
         Projectile projInstance = instance.GetComponent<Projectile>();
-        projInstance.damage = 10;
+        projInstance.damage = (int)runtimePlayerStats.baseAttackDamage;
 
         audioList.PlayWithVariablePitch(audioList.attack1);
 
@@ -177,15 +208,47 @@ public class P1Controller : MonoBehaviour
                     rb.velocity = new Vector2(0, rb.velocity.y);
                 }
 
+                if (dashingLeft || dashingRight)
+                {
+                    float leftD, rightD;
+                    leftD = dashingLeft ? 1 : 0;
+                    rightD = dashingRight ? 1 : 0;
+                    float dashDirection = rightD - leftD;
+                    Debug.Log("DASH DIRECTION: " + dashDirection);
+                    rb.velocity = new Vector2(dashDirection * dashSpeed, 0);
+                }
+
+
                 break;
             case Player1Input.Jump:
+
                 if (isGrounded)
                 {
                     audioList.PlayWithVariablePitch(audioList.jump);
                     rb.AddForce(runtimePlayerStats.jumpForce * Vector2.up, ForceMode2D.Impulse);
                 }
                 break;
+            case Player1Input.JumpHold:
+                if (value == 1)
+                {
+                    isHoldingJump = true;
+                }
+                else
+                {
+                    isHoldingJump = false;
+                }
+                break;
 
+            case Player1Input.DoubleTapLeft:
+                Debug.Log("HEYO LEFT");
+                dashingLeft = true;
+                dashTimer = 0;
+                break;
+            case Player1Input.DoubleTapRight:
+                Debug.Log("HEYO RIGHT");
+                dashingRight = true;
+                dashTimer = 0;
+                break;
 
         }
 
@@ -241,10 +304,21 @@ public class P1Controller : MonoBehaviour
         runtimePlayerStats.jumpForce = baselineStats.jumpForce;
         runtimePlayerStats.rangedAttacks = baselineStats.rangedAttacks;
         runtimePlayerStats.meleeAttacks = baselineStats.meleeAttacks;
+        if (runtimeChoices.chosenHero.characterSprite != null)
+        {
+            playerSprite = runtimeChoices.chosenHero.characterSprite;
+        }
+        else
+        {
+            playerSprite = defaultSprite;
+        }
+        GetComponent<SpriteRenderer>().sprite = playerSprite;
 
 
-        currentHitPoints = baselineStats.maxHitPoints;
+
+        currentHitPoints = baselineStats.startingHitPoints;
         playerHPEvent.Raise(currentHitPoints);
+        //healthBar.VisualiseHealthChange(baselineStats.startingHitPoints);
     }
 
     public void DamageAnimation()
@@ -272,7 +346,6 @@ public class P1Controller : MonoBehaviour
         audioList.explosion.Play();
         Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
         Destroy(gameObject);
-
     }
 
 

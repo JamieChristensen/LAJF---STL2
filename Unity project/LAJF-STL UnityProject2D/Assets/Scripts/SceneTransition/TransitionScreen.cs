@@ -124,9 +124,10 @@ public class TransitionScreen : MonoBehaviour
     #region Transition
     IEnumerator Transition(int transitionIndex)
     {
-
+       
         transitioning = true;
         middleInfo.text = transitionElements[transitionIndex].textElement[0].textInput;
+
 
         _nextTransitionElements = transitionElements[transitionIndex];
 

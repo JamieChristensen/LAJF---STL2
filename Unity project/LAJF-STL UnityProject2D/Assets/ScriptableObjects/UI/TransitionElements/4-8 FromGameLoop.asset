@@ -16,5 +16,5 @@ MonoBehaviour:
   details: From GameLoop Scene (4) to End Scene (8)
   startTransparent: 1
   textElement:
-  - textInput: 
-    timeOfTextDisplayed: 1
+  - textInput: The End Is Neigh...
+    timeOfTextDisplayed: 2

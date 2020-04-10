@@ -16,5 +16,5 @@ MonoBehaviour:
   details: To GameLoop Scene (4) from Modifier Screen (6)
   startTransparent: 0
   textElement:
-  - textInput: 
-    timeOfTextDisplayed: 1
+  - textInput: On the dance floor!
+    timeOfTextDisplayed: 1.5

@@ -149,6 +149,11 @@ MonoBehaviour:
   projectileSpeed: 40
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   playerItems: []
+  dropGravityModifier: 6
+  baseGravity: 2
+  isHoldingJump: 0
+  dashMaxTime: 0.3
+  dashSpeed: 50
 --- !u!70 &5892630455597672943
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -359,6 +364,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229671286208422270, guid: 1588f57e18b14f74f91af4bdff6b2d15,
+        type: 3}
+      propertyPath: m_TagString
+      value: P1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1588f57e18b14f74f91af4bdff6b2d15, type: 3}

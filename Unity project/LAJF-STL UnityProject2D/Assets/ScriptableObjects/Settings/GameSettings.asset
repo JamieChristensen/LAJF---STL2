@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e6657d2f8176d49be3a73082efbb09, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  amountOfPlayers: 2
+  amountOfPlayers: 3

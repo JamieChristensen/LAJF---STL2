@@ -16,5 +16,5 @@ MonoBehaviour:
   details: From Theme Screen (3) to GameLoop Scene (4)
   startTransparent: 1
   textElement:
-  - textInput: Hero, Watch out!
-    timeOfTextDisplayed: 3
+  - textInput: Then came Gods, a mighty threat!
+    timeOfTextDisplayed: 5

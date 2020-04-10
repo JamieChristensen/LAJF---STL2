@@ -229,4 +229,9 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     }
 
 
+    public void SetupHealthBar()
+    {
+      healthBar.VisualiseHealthChange(agent.health); 
+    }
+
 }

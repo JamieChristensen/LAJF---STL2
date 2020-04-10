@@ -51,7 +51,9 @@ MonoBehaviour:
   gameSettings: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af, type: 2}
   player1JumpKey: 32
   player1AttackKey: 106
+  player1Left: 97
+  player1Right: 100
   godLeftInput: 000000000000000000000000
   godRightInput: 000000000000000000000000
-  godSelectInput: 000000000000000000000000
-  godShootInput: 000000000000000000000000
+  godSelectInput: 680000006a0000006b000000
+  godShootInput: 790000007500000069000000

@@ -16,5 +16,5 @@ MonoBehaviour:
   details: From God Screen (2) to Theme Screen (3)
   startTransparent: 1
   textElement:
-  - textInput: It all happened in a world...
+  - textInput: A long way from home the scene was set...
     timeOfTextDisplayed: 5
