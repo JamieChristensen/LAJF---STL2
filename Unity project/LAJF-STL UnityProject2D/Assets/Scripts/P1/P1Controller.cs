@@ -26,6 +26,7 @@ public class P1Controller : MonoBehaviour
     public KeyCode left, right, jump, attackRanged, attackMelee;
 
     [SerializeField]
+    public Sprite defaultSprite, playerSprite;
     private SpriteRenderer spriteRenderer;
 
     //White and default materials
@@ -303,7 +304,17 @@ public class P1Controller : MonoBehaviour
         runtimePlayerStats.jumpForce = baselineStats.jumpForce;
         runtimePlayerStats.rangedAttacks = baselineStats.rangedAttacks;
         runtimePlayerStats.meleeAttacks = baselineStats.meleeAttacks;
-        GetComponent<SpriteRenderer>().sprite = runtimeChoices.chosenHero.characterSprite;
+        if (runtimeChoices.chosenHero.characterSprite != null)
+        {
+            playerSprite = runtimeChoices.chosenHero.characterSprite;
+        }
+        else
+        {
+            playerSprite = defaultSprite;
+        }
+        GetComponent<SpriteRenderer>().sprite = playerSprite;
+
+
 
         currentHitPoints = baselineStats.startingHitPoints;
         playerHPEvent.Raise(currentHitPoints);

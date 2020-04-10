@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemFrameDisplay : MonoBehaviour
 {
     [SerializeField] private int _itemFrameNumber;
     public ChoiceCategory runTimeChoices;
     public GameObject itemSocketFilledBackground, itemSocketDefaultBackground;
-    public SpriteRenderer spriteRenderer;
+    public Image itemImage;
 
     public void OnHeroPickedItem()
     {
@@ -15,7 +16,8 @@ public class ItemFrameDisplay : MonoBehaviour
         {
             itemSocketFilledBackground.SetActive(true);
             itemSocketDefaultBackground.SetActive(false);
-            spriteRenderer.sprite = runTimeChoices.playerItems[_itemFrameNumber - 1].itemSprite;
+            itemImage.gameObject.SetActive(true);
+            itemImage.sprite = runTimeChoices.playerItems[_itemFrameNumber - 1].itemSprite;
         }
     }
 }

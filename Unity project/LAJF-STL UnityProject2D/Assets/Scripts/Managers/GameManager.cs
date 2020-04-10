@@ -101,8 +101,13 @@ public class GameManager : MonoBehaviour
         {
             isGamePaused.setBool(false);
         }
+        runTimeChoises.runTimeLoopCount = 1; // this is the first loop
+        NextEnvironment();
+    }
 
-        sceneManager.RequestEnvironmentChange(runTimeChoises.chosenEnvironments[0].environmentIndex);
+    public void NextEnvironment()
+    {
+        sceneManager.RequestEnvironmentChange(runTimeChoises.chosenEnvironments[runTimeChoises.runTimeLoopCount - 1].environmentIndex); // Changing environment to the requested environment in the array (depending on runtime loop count)
     }
 
     public void PlayerHealthResponse(int playerHP)
@@ -224,6 +229,16 @@ public class GameManager : MonoBehaviour
 
     public void OnPickedItem()
     {
+        if (runTimeChoises.runTimeLoopCount<5)
+        {
+            runTimeChoises.runTimeLoopCount++;
+        }
+        else
+        {
+            runTimeChoises.runTimeLoopCount = 1;
+        }
+
+        NextEnvironment();
         //change environment to next one in line.
         sceneManager.ChooseSceneToLoad(indexOfGameLoopScene);
         nextTransition.Raise(16);
