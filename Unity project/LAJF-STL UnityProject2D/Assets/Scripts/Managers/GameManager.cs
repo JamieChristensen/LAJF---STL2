@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public ChoiceCategory runTimeChoises;
 
     public MusicManager musicManager;
+    public GameObject musicManagerPrefab;
 
     public NarratorBehaviour narrator;
 
@@ -97,7 +98,7 @@ public class GameManager : MonoBehaviour
         {
             isGamePaused.setBool(false);
         }
-        runTimeChoises.runTimeLoopCount = 1; // this is the first loop
+       // runTimeChoises.runTimeLoopCount = 1; // this is the first loop
         NextEnvironment();
     }
 
@@ -158,12 +159,12 @@ public class GameManager : MonoBehaviour
         //Need to figure out which gamestate to go to - rather than none
 
         RequestGameStateChange(GameStates.None);
-        sceneManager.ChooseSceneToLoad(indexOfMinionChoiceScene); // get the minion scene ready
+        sceneManager.ChooseChoiceSceneToLoad(indexOfMinionChoiceScene); // get the minion scene ready
     }
 
     public void GodsPickedMonster()
     {
-        sceneManager.ChooseSceneToLoad(indexOfModifierChoiceScene);
+        sceneManager.ChooseChoiceSceneToLoad(indexOfModifierChoiceScene);
         nextTransition.Raise(10);
     }
 
@@ -174,7 +175,7 @@ public class GameManager : MonoBehaviour
 
     public void GodsPickedMonsterAndTrait()
     {
-        sceneManager.ChooseSceneToLoad(indexOfGameLoopScene);
+        sceneManager.ChooseChoiceSceneToLoad(indexOfGameLoopScene);
         nextTransition.Raise(12);
         Time.timeScale = 1f;
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
@@ -218,14 +219,14 @@ public class GameManager : MonoBehaviour
         
         canPlayerMove = false;
        // Time.timeScale = 0f;
-        sceneManager.ChooseSceneToLoad(indexOfItemChoiceScene);
+        sceneManager.ChooseChoiceSceneToLoad(indexOfItemChoiceScene);
         nextTransition.Raise(14);
         // StartCoroutine(sceneManager.ALoadEnvironment(indexOfItemChoiceScene)); //6 is the index of item-choice scene.
     }
 
     public void OnPickedItem()
     {
-        if (runTimeChoises.runTimeLoopCount<5)
+        if (runTimeChoises.runTimeLoopCount<6)
         {
             runTimeChoises.runTimeLoopCount++;
         }
@@ -234,11 +235,12 @@ public class GameManager : MonoBehaviour
             runTimeChoises.runTimeLoopCount = 1;
         }
 
-        NextEnvironment();
+
         //change environment to next one in line.
-        sceneManager.ChooseSceneToLoad(indexOfGameLoopScene);
+        NextEnvironment();
+        sceneManager.ChooseChoiceSceneToLoad(indexOfMinionChoiceScene);
         nextTransition.Raise(16);
-        RequestGameStateChange(GameStates.InitializingNextScene);
+       // RequestGameStateChange(GameStates.InitializingNextScene);
         Time.timeScale = 1f;
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
        // StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
@@ -296,6 +298,19 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
+    }
+
+    public void OnHeroWonRound()
+    {
+        try
+        {
+            musicManager.PlayMusic("Ending");
+        }
+        catch
+        {
+            Debug.Log("there is no music manager");
+        }
+        FindObjectOfType<CustomSceneManager>().LoadCredits();
     }
 
 }

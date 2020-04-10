@@ -10,15 +10,16 @@ using STL2.Events;
 //"ALoad" refers to async loading something in. Remember to only load things in async once.
 public class CustomSceneManager : MonoBehaviour
 {
+    #region INSPECTOR
     [SerializeField]
     private int currentEnvironmentIndex = -1;
+    private int currentChoiceSceneIndex = -1;
     [SerializeField]
     public BoolVariable isLoadingScene;
     //private bool isLoadingScene = false;
     private float loadProgress = 0;
 
-    private int buildIndexToLoad, previousBuildIndex;
-
+    private int environmentBuildIndexToLoad, environmentPreviousBuildIndex, choiceSceneBuildIndexToLoad, choiceScenePreviousBuildIndex;
 
     public IntEvent loadProgressInt;
 
@@ -29,6 +30,9 @@ public class CustomSceneManager : MonoBehaviour
     public IntTypeListener transitionScreenIntListener;
 
     bool firstFade = true;
+
+    #endregion INSPECTOR
+
     public void Start()
     {
       //  GameObject.DontDestroyOnLoad(this);
@@ -36,13 +40,6 @@ public class CustomSceneManager : MonoBehaviour
         {
             isLoadingScene.setBool(false);
         }
-
-    }
-
-
-    public void Update()
-    {
-        
     }
 
     public void LoadMainMenu()
@@ -72,7 +69,6 @@ public class CustomSceneManager : MonoBehaviour
             Debug.Log("Scene request denied, index out of range");
             return;
         }
-
         //Probably need some conditional to figure out how many environments there are, and not just load into those,
         //but rather ensure that the sceneIndex corresponds to a proper scene (mainmenu, gameloop, credits/end).
         SceneManager.LoadScene(_sceneIndex);
@@ -83,6 +79,8 @@ public class CustomSceneManager : MonoBehaviour
 
       //  loadProgressInt.Raise((int)(_loadProgress * 100));
     }
+
+    #region AditiveEnvironments
 
     public void RequestEnvironmentChange(int environmentIndex)
     {
@@ -103,8 +101,6 @@ public class CustomSceneManager : MonoBehaviour
         StartCoroutine(ChangeEnvironment(currentEnvironmentIndex, environmentIndex));
     }
 
-
-    #region AdditiveAsync
     //ChangeEnvironment combines two other coroutines, to ensure that before loading the next environment, the previous one is always unloaded first.
     IEnumerator ChangeEnvironment(int currentEnvironment, int newEnvironment)
     {
@@ -128,11 +124,6 @@ public class CustomSceneManager : MonoBehaviour
         yield return null;
     }
 
-
- 
-
-
-
     //Loads in new environments
     public IEnumerator ALoadEnvironment(int sceneIndex)
     {
@@ -147,14 +138,14 @@ public class CustomSceneManager : MonoBehaviour
             isLoadingScene.setBool(false);
             loadProgress = 0;
             UpdateLoadProgress(1);
-           // Debug.Log("Checking how many times this is called");
+            // Debug.Log("Checking how many times this is called");
         };
 
 
         while (!asyncLoad.isDone)
         {
             UpdateLoadProgress(asyncLoad.progress);
-         //   Debug.Log("Loading progress: " + asyncLoad.progress);
+            //   Debug.Log("Loading progress: " + asyncLoad.progress);
             loadProgress = asyncLoad.progress;
             yield return null;
         }
@@ -180,18 +171,121 @@ public class CustomSceneManager : MonoBehaviour
             yield return null;
         }
     }
-    #endregion AdditiveAsync
 
-    #region SceneTransitions
-    
-    public void ChooseSceneToLoad(int buildIndex)
+    public void LoadChosenEnvironmentScene()
     {
-        buildIndexToLoad = buildIndex;
+        if (SceneManager.sceneCount > 2)
+        {
+            StartCoroutine(AUnloadEnvironment(environmentPreviousBuildIndex));
+        }
+        if (environmentBuildIndexToLoad != 4)
+        {
+            StartCoroutine(ALoadEnvironment(environmentBuildIndexToLoad));
+            environmentPreviousBuildIndex = environmentBuildIndexToLoad;
+        }
     }
 
-    public void LoadChosenScene()
-    {
+    #endregion AditiveEnvironments
 
+    #region AdditiveChoiceScenes
+    public void RequestChoiceSceneChange(int choiceSceneIndex)
+    {
+        if (choiceSceneIndex == -1)
+        {
+            isLoadingScene.setBool(true);
+            StartCoroutine(ALoadChoiceScene(choiceSceneIndex));
+            return;
+        }
+        isLoadingScene.setBool(true);
+        StartCoroutine(ChangeChoiceScene(currentChoiceSceneIndex, choiceSceneIndex));
+    }
+
+    IEnumerator ChangeChoiceScene(int currentChoiceScene, int newChoiceScene)
+    {
+        if (currentChoiceScene < 1)
+        {
+            StartCoroutine(ALoadChoiceScene(newChoiceScene));
+            yield break;
+        }
+        AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(currentChoiceScene, UnloadSceneOptions.None);
+        asyncUnload.completed += (AsyncOperation) =>
+        {
+            StartCoroutine(ALoadChoiceScene(newChoiceScene));
+        };
+
+        while (!asyncUnload.isDone)
+        {
+            Debug.Log("Unloading progress: " + asyncUnload.progress);
+            yield return null;
+        }
+
+        yield return null;
+    }
+
+    IEnumerator ALoadChoiceScene(int sceneIndex)
+    {
+        //Unload current choice scene (if one is present)
+        //Load in new one
+        //Remove loading-screen (transition)
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
+
+        asyncLoad.completed += (AsyncOperation) =>
+        {
+            currentChoiceSceneIndex = sceneIndex;
+            isLoadingScene.setBool(false);
+            loadProgress = 0;
+            UpdateLoadProgress(1);
+            // Debug.Log("Checking how many times this is called");
+        };
+
+
+        while (!asyncLoad.isDone)
+        {
+            UpdateLoadProgress(asyncLoad.progress);
+            //   Debug.Log("Loading progress: " + asyncLoad.progress);
+            loadProgress = asyncLoad.progress;
+            yield return null;
+        }
+    }
+
+    IEnumerator AUnLoadChoiceScene(int sceneIndex)
+    {
+        if (sceneIndex == -1)
+        {
+            yield break;
+        }
+
+        AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(sceneIndex, UnloadSceneOptions.None);
+        asyncUnload.completed += (AsyncOperation) =>
+        {
+            currentChoiceSceneIndex = -1;
+        };
+
+        while (!asyncUnload.isDone)
+        {
+            Debug.Log("Unloading progress: " + asyncUnload.progress);
+            loadProgress = asyncUnload.progress;
+            yield return null;
+        }
+    }
+
+    #endregion AdditiveChoiceScenes
+
+    #region SceneTransitions
+
+    public void ChooseEnvironmentSceneToLoad(int buildIndex)
+    {
+        environmentBuildIndexToLoad = buildIndex;
+    }
+
+    public void ChooseChoiceSceneToLoad(int buildIndex)
+    {
+        choiceSceneBuildIndexToLoad = buildIndex;
+    }
+
+
+    public void LoadChosenChoiceScene()
+    {
         if (SceneManager.sceneCount == 2)
         {
             // transitionScreen.StopAllCoroutines();
@@ -200,12 +294,12 @@ public class CustomSceneManager : MonoBehaviour
         }
         else if (SceneManager.sceneCount > 2)
         {
-            StartCoroutine(AUnloadEnvironment(previousBuildIndex));
+            StartCoroutine(AUnLoadChoiceScene(choiceScenePreviousBuildIndex));
         }
-        if(buildIndexToLoad != 4)
+        if(choiceSceneBuildIndexToLoad != 4)
         {
-            StartCoroutine(ALoadEnvironment(buildIndexToLoad));
-            previousBuildIndex = buildIndexToLoad;
+            StartCoroutine(ALoadChoiceScene(choiceSceneBuildIndexToLoad));
+            choiceScenePreviousBuildIndex = choiceSceneBuildIndexToLoad;
         }
         else
         {
@@ -214,11 +308,15 @@ public class CustomSceneManager : MonoBehaviour
         }
     }
 
-
     public void OnLoadedAdditiveScene()
     {
         transitionScreen.GetComponent<CanvasGroup>().alpha = 0;
     }
     #endregion
+
+
+
+
+
 
 }

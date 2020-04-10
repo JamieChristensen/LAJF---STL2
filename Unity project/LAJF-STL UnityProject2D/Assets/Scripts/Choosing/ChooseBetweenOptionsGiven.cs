@@ -10,10 +10,11 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 {
     #region INSPECTOR
     CustomSceneManager customSceneManager;
-
+    public RuntimeChoiceManager runtimeChoiceManager;
     public VoidEvent godsHaveChosenMinion;
     public VoidEvent godsHaveChosenOpponent;
     public VoidEvent heroHasChosenItem;
+    public VoidEvent heroWon;
 
     public IntEvent preGameTransitionIndex;
 
@@ -44,6 +45,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public TextMeshProUGUI[] choiceNameText;
     public Image[] itemImageTargets;
     private PlayerItems[] playerItemChoices = new PlayerItems[2];
+    public GameObject theOnlyButton;
+    public Sprite theGrandPrize;
 
     [Header("Modifier choice variables")]
     public EnemyModifier[] modifierPool;
@@ -63,10 +66,6 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public List<TextMeshProUGUI> themeNames;
     public Environment[] environmentThemeChoices = new Environment[3];
     public List<Environment> EnvironmentsChosen; // the individual environments chosen
-
-
-
-
 
     private MusicManager _musicManager;
 
@@ -104,30 +103,40 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         if (choiceType == "Item")
         {
             #region InitializeItemSelection
-            int random = Random.Range(0, playerItemPool.Length);
-            int random2 = random;
-            if (playerItemPool.Length <= 1)
+            if (runtimeChoices.runTimeLoopCount != 4)
             {
-                random2 = 3;
+                int random = Random.Range(0, playerItemPool.Length);
+                int random2 = random;
+                if (playerItemPool.Length <= 1)
+                {
+                    random2 = 3;
+                }
+
+                while (random2 == random)
+                {
+                    Debug.Log("random2 was the same as random, rerolling");
+                    random2 = Random.Range(0, playerItemPool.Length);
+                }
+                if (runtimeChoices.playerItems.Count != 2)
+                {
+                   // runtimeChoices.playerItems.Capacity = 2;
+                }
+                playerItemChoices[0] = playerItemPool[random];
+                playerItemChoices[1] = playerItemPool[random2];
+                choiceNameText[0].text = playerItemChoices[0].name;
+                choiceNameText[1].text = playerItemChoices[1].name;
+                itemImageTargets[0].sprite = playerItemChoices[0].itemSprite;
+                itemImageTargets[1].sprite = playerItemChoices[1].itemSprite;
             }
-
-
-            while (random2 == random)
+            else
             {
-                Debug.Log("random2 was the same as random, rerolling");
-                random2 = Random.Range(0, playerItemPool.Length);
+                itemImageTargets[0].gameObject.SetActive(false);
+                itemImageTargets[1].gameObject.SetActive(false);
+                theOnlyButton.SetActive(true);
+                theOnlyButton.GetComponent<Image>().sprite = theGrandPrize;
+                theOnlyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Sweet Victory";
             }
-            if (runtimeChoices.playerItems.Count != 2)
-            {
-                runtimeChoices.playerItems.Capacity = 2;
-            }
-
-            playerItemChoices[0] = playerItemPool[random];
-            playerItemChoices[1] = playerItemPool[random2];
-            choiceNameText[0].text = playerItemChoices[0].name;
-            choiceNameText[1].text = playerItemChoices[1].name;
-            itemImageTargets[0].sprite = playerItemChoices[0].itemSprite;
-            itemImageTargets[1].sprite = playerItemChoices[1].itemSprite;
+           
             #endregion InitializeItemSelection
         }
 
@@ -389,8 +398,9 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 break;
         }
         // Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". minion! It is: " + finalChoice.name);
-        runtimeChoices.enemies.Add(enemyChoices[choice - 1]);
-        SwitchToModifierSelection(); // switching from minion select to modifier select
+        
+            runtimeChoices.enemies.Add(enemyChoices[choice - 1]); // adds the chosen minion to the array
+            SwitchToModifierSelection(); // switching from minion select to modifier select
 
     }
 
@@ -410,7 +420,6 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 break;
             case 4:
                 runtimeChoices.fourthOpponent.modifier = finalChoice;
-                runtimeChoices.runTimeLoopCount = 1;
                 break;
         }
         //  Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". modifier! It is: " + finalChoice.name);
@@ -418,8 +427,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         {
             _musicManager.PlayMusic("Battle");
         }
-        runtimeChoices.enemyModifiers.Add(enemyModifierChoices[choice - 1]);
-        godsHaveChosenOpponent.Raise(); // Raising event for opponent chosen
+            runtimeChoices.enemyModifiers.Add(enemyModifierChoices[choice - 1]); // adds the chosen modifier to the array
+            godsHaveChosenOpponent.Raise(); // Raising event for opponent chosen
     }
 
     void HeroHasChosenItem()
@@ -436,12 +445,19 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 runtimeChoices.thirdItem = finalChoice;
                 break;
         }
-        Debug.Log("Hero has chosen the" + runtimeChoices.runTimeLoopCount + ". item! It is: " + finalChoice.name);
+        if (runtimeChoices.runTimeLoopCount != 4)
+        {
+            Debug.Log("Hero has chosen the" + runtimeChoices.runTimeLoopCount + ". item! It is: " + finalChoice.name);
+            runtimeChoices.playerItems.Add(playerItemChoices[choice - 1]); // overwrites the old chosen item
+            heroHasChosenItem.Raise(); // Raising event for item chosen
+                                       //Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("The Hero Won!");
+            heroWon.Raise();
+        }
 
-        // runtimeChoices.runTimeLoopCount++;  
-        runtimeChoices.playerItems.Add(playerItemChoices[choice - 1]);
-        heroHasChosenItem.Raise(); // Raising event for item chosen
-        //Destroy(gameObject);
     }
 
 
@@ -472,22 +488,9 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         /* in scriptableObject */
 
         // TODO: MOVE LOGIC TO SCRIPTABLE OBJECT
-        runtimeChoices.runTimeLoopCount = 1;
-        runtimeChoices.character = null;
-        runtimeChoices.theme = null;
-        runtimeChoices.firstOpponent.minion = null;
-        runtimeChoices.secondOpponent.minion = null;
-        runtimeChoices.thirdOpponent.minion = null;
-        runtimeChoices.fourthOpponent.minion = null;
-        runtimeChoices.firstOpponent.modifier = null;
-        runtimeChoices.secondOpponent.modifier = null;
-        runtimeChoices.thirdOpponent.modifier = null;
-        runtimeChoices.fourthOpponent.modifier = null;
-        runtimeChoices.firstItem = null;
-        runtimeChoices.secondItem = null;
-        runtimeChoices.thirdItem = null;
-        runtimeChoices.playerItems = new List<PlayerItems>();
-        runtimeChoices.enemyModifiers = new List<EnemyModifier>();
+
+        runtimeChoiceManager.ResetRun();
+
     }
 
 

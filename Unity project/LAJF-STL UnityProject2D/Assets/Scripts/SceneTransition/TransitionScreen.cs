@@ -59,6 +59,10 @@ public class TransitionScreen : MonoBehaviour
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            DoNextTransition(3);
+        }
 
         if (SceneManager.sceneCount != 1)
         {

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e60fcdfd9bc7f2c43bdfcbee6989b79b, type: 3}
-  m_Name: 2-3 FromGodScreen
+  m_Name: 5(4) ToMinionScene
   m_EditorClassIdentifier: 
-  sceneIndex: 2
-  details: From God Screen (2) to Theme Screen (3)
-  startTransparent: 1
+  sceneIndex: 5
+  details: To Minion Screen (5) from GameLoop Scene (4)
+  startTransparent: 0
   textElement:
-  - textInput: A long way from home the scene was set...
-    timeOfTextDisplayed: 4
+  - textInput: 
+    timeOfTextDisplayed: 1
