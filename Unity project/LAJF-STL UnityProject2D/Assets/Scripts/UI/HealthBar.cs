@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour
     public int currentHp = 0;
 
     float damageScaleX = 5, currentHealthScaleX = 5;
-    
+
     public ChoiceCategory runtimeChoices;
     public P1Stats playerRuntimeStats;
 
@@ -30,7 +30,15 @@ public class HealthBar : MonoBehaviour
         VisualiseHealthChange(currentHp);
     }
 
-    public void GetMaxHP ()
+    public void UpdateHPValues(int currentHealth, int maxHitPoints)
+    {
+        maxHp = maxHitPoints;
+        currentHp = currentHealth;
+        VisualiseHealthChange(currentHp);
+    }
+
+
+    public void GetMaxHP()
     {
         if (this.CompareTag("Monster"))
         {
@@ -41,14 +49,14 @@ public class HealthBar : MonoBehaviour
             catch
             {
                 Debug.Log("Could not find the MaxHp of the Minion. Have you chosen one yet?");
-            }           
+            }
         }
         else if (this.CompareTag("P1"))
         {
             maxHp = playerRuntimeStats.maxHitPoints;
         }
     }
-    
+
 
     public void VisualiseHealthChange(int currentHealth)
     {
@@ -68,18 +76,18 @@ public class HealthBar : MonoBehaviour
             currentHealthScaleX = 0;
             CurrentHealthFillTransform.localScale = new Vector3(currentHealthScaleX, 1, 1);
         }
-        
 
-       // Debug.Log(HealthBarScaleTransform.localScale);
+
+        // Debug.Log(HealthBarScaleTransform.localScale);
 
     }
 
     private void Update()
     {
-        if(freezeVisibleDamage == true)
+        if (freezeVisibleDamage == true)
         {
             timer += Time.deltaTime;
-            if(timer > freezeTime)
+            if (timer > freezeTime)
             {
                 freezeVisibleDamage = false;
             }
@@ -89,7 +97,7 @@ public class HealthBar : MonoBehaviour
             damageScaleX = Mathf.Lerp(damageScaleX, currentHealthScaleX, Time.deltaTime * 4f);
             DamageHealthFillTransform.localScale = new Vector3(damageScaleX, 1, 1);
         }
-        
+
 
     }
 
