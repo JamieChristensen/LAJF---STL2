@@ -15,6 +15,7 @@ public class CageControl : MonoBehaviour
     bool runningCoroutine = false;
     
     public VoidEvent heroHasBeenCaptured;
+    public VoidEvent playerReleasedFromCage;
 
     private MusicManager _musicManager;
     public MusicManager musicManager { get { return _musicManager; } }
@@ -135,6 +136,7 @@ public class CageControl : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         runningCoroutine = false;
+        playerReleasedFromCage.Raise();
     }
 
 

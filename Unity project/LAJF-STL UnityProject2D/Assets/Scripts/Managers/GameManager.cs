@@ -79,11 +79,7 @@ public class GameManager : MonoBehaviour
 
        // Debug.Log("Index to Load: " + runTimeChoises.chosenEnvironments[0].environmentIndex.ToString());
         
-        
 
-
-        IPausable pausable = FindObjectOfType<EnemyBehaviour>();
-        pausable.Pause();
 
          canPlayerMove = true;
 
