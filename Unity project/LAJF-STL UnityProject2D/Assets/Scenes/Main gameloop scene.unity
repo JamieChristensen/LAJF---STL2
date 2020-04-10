@@ -1132,13 +1132,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 968574184372043922, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
-      propertyPath: godNumber
-      value: 3
+      propertyPath: shoot
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 1515916720333487623, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
-      propertyPath: godNumber
-      value: 2
+      propertyPath: shoot
+      value: 117
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097950839168532979, guid: d36c49ed10fe60c4db762c1dd971e38e,
+        type: 3}
+      propertyPath: shoot
+      value: 121
       objectReference: {fileID: 0}
     - target: {fileID: 5369928524516502939, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
