@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using STL2.Events;
 using TMPro;
@@ -44,7 +45,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     // Start is called before the first frame update
     void Start()
     {
-       // InitalizeEnemy();
+        // InitalizeEnemy();
         _audioList = FindObjectOfType<AudioList>();
         rb = GetComponent<Rigidbody2D>();
         matDefault = spriteRenderer.material;
@@ -65,9 +66,9 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
             if (!alreadyDied)
             {
                 gameObject.layer = 15;
-                 rb2.AddForce(new Vector2(UnityEngine.Random.Range(-3f, 3f) * 10, UnityEngine.Random.Range(3, 9f) * 10), ForceMode2D.Impulse);
-                 rb2.AddTorque(50, ForceMode2D.Impulse);
-                 rb2.gravityScale = 0f;
+                rb2.AddForce(new Vector2(UnityEngine.Random.Range(-3f, 3f) * 10, UnityEngine.Random.Range(3, 9f) * 10), ForceMode2D.Impulse);
+                rb2.AddTorque(50, ForceMode2D.Impulse);
+                rb2.gravityScale = 0f;
 
                 Invoke("DeathAnimation", 0.2f);
                 audioList.PlayWithVariablePitch(audioList.deathEnemy);
@@ -174,7 +175,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     {
         spriteRenderer.material = matDefault;
     }
-    
+
     public void DeathAnimation() // Add Particle Burst
     {
         Destroy(rb);
@@ -190,7 +191,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         Destroy(gameObject);
 
     }
-    
+
     public bool IsPaused()
     {
         return isPaused;
@@ -208,9 +209,9 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     // previous params for this function (Enemy enemy, List<EnemyModifier> enemyModifiers)
     public void InitalizeEnemy()
     {
-       List<EnemyModifier> enemyModifiers = new List<EnemyModifier>();
-       agent = runtimeChoices.enemies[runtimeChoices.enemies.Count - 1];
-       modifiers.Add(runtimeChoices.enemyModifiers[runtimeChoices.enemyModifiers.Count - 1]);
+        List<EnemyModifier> enemyModifiers = new List<EnemyModifier>();
+        agent = runtimeChoices.enemies[runtimeChoices.enemies.Count - 1];
+        modifiers.Add(runtimeChoices.enemyModifiers[runtimeChoices.enemyModifiers.Count - 1]);
         // get info from runtime stats from somewhere 
         // enemy = runtimeStats.whatever.enemy
         // EnemyModifiers = runtimeStats.whatever.modifer
@@ -220,6 +221,28 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         nameUI.SetText(name);
         currentHealth = agent.health;
 
+    }
+    public void InitalizeEnemy(Enemy _agent, EnemyModifier[] _modifiers)
+    {
+        agent = _agent;
+        spriteRenderer.sprite = agent.sprite;
+        name = agent.GenerateName(_modifiers.ToList());
+        nameUI.SetText(name);
+
+        currentHealth = agent.health;
+        healthBar.UpdateHPValues(currentHealth, agent.health);
+        foreach (EnemyModifier modifier in _modifiers)
+        {
+            ApplyModifier(modifier);
+        }
+
+        healthBar.UpdateHPValues(currentHealth, agent.health);
+    }
+
+    private void ApplyModifier(EnemyModifier _modifier)
+    {
+        //Do anything else modifiers do:
+        throw new NotImplementedException();
     }
 
     IEnumerator DelayDeathAnnouncement(float delay)
@@ -231,7 +254,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public void SetupHealthBar()
     {
-      healthBar.VisualiseHealthChange(agent.health); 
+        healthBar.VisualiseHealthChange(agent.health);
     }
 
 }

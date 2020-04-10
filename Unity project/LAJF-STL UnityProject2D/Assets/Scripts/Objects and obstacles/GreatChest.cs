@@ -80,9 +80,14 @@ public class GreatChest : MonoBehaviour
         finishedAnimation = false;
         playerOpenedBox = false;
         raisedEvent = false;
-        
+
         //Reset used sprite
         spriteRenderer.sprite = sprites[0];
+    }
+
+    public void SetInactivePosition(Vector3 newPosition)
+    {
+        inactivePosition = newPosition;
     }
 
     public void RemoveGlow()

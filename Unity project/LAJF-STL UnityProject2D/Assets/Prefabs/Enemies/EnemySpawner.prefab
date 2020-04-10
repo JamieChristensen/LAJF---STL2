@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9005650612711449377}
   - component: {fileID: 9005650612711449376}
+  - component: {fileID: 571079552182635962}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -45,3 +46,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2409340943091751089, guid: b56009adef33d4c4ba164743272a898b,
     type: 3}
+  greatChest: {fileID: 0}
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  enemySpawnPos: {x: 26, y: 22, z: 0}
+  chestPosition: {x: 16, y: 20, z: 0}
+--- !u!114 &571079552182635962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005650612711449379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 8dfe41fd063cf55448be65b51a0b9a45, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9005650612711449376}
+        m_MethodName: SpawnEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

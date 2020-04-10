@@ -159,6 +159,8 @@ MonoBehaviour:
   highTransform: {fileID: 1770646634854397114}
   countDown: {fileID: 7561321694131596461}
   heroHasBeenCaptured: {fileID: 0}
+  playerReleasedFromCage: {fileID: 11400000, guid: 8dfe41fd063cf55448be65b51a0b9a45,
+    type: 2}
 --- !u!1 &8227188450344665840
 GameObject:
   m_ObjectHideFlags: 0
