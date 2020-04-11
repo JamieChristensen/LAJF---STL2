@@ -76,22 +76,6 @@ public class GodController : MonoBehaviour
 
     void Update()
     {
-        if (!isEmoting)
-        {
-            return;
-        }
-        emoteDuration += Time.deltaTime;
-        if (emoteMaxTime <= emoteDuration)
-        {
-            isEmoting = false;
-            emoteDuration = 0;
-            emoteRenderer.sprite = null;
-        }
-
-        if (timer > cooldownTime)
-        {
-            OnCooldown = false;
-        }
 
         if (Input.GetKeyDown(shoot) && OnCooldown == false)
         {
@@ -99,11 +83,30 @@ public class GodController : MonoBehaviour
             timer = 0;
             OnCooldown = true;
         }
+
+        if (timer > cooldownTime)
+        {
+            OnCooldown = false;
+        }
+
+
         if (OnCooldown)
         {
             cooldownTime += Time.deltaTime;
         }
 
+        if (!isEmoting)
+        {
+            return;
+        }
+
+        emoteDuration += Time.deltaTime;
+        if (emoteMaxTime <= emoteDuration)
+        {
+            isEmoting = false;
+            emoteDuration = 0;
+            emoteRenderer.sprite = null;
+        }
     }
 
     public int GetGodNumber()
