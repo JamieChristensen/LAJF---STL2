@@ -140,6 +140,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 675074725570035137, guid: 95b0ec9532b386a4daccb9f57110d67d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3409593614892565915, guid: 95b0ec9532b386a4daccb9f57110d67d,
         type: 3}
       propertyPath: heroHasBeenCaptured

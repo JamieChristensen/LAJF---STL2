@@ -43,7 +43,7 @@ public class GodController : MonoBehaviour
     public float lightningSpeed;
     public Transform firePoint;
     private bool OnCooldown = false;
-    private float timer = 0, cooldownTime = 30;
+    private float timer = 0, cooldownTime = 15;
 
     public void Start()
     {
@@ -83,16 +83,13 @@ public class GodController : MonoBehaviour
             timer = 0;
             OnCooldown = true;
         }
-
+        if (OnCooldown)
+        {
+            timer += Time.deltaTime;
+        }
         if (timer > cooldownTime)
         {
             OnCooldown = false;
-        }
-
-
-        if (OnCooldown)
-        {
-            cooldownTime += Time.deltaTime;
         }
 
         if (!isEmoting)

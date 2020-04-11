@@ -6,8 +6,8 @@ public class AudioList : MonoBehaviour
 {
 
     // SFX 
-    public AudioSource 
-         attack1, 
+    public AudioSource
+         attack1,
          attack2,
          choiceHasBeenMade,
          deathEnemy,
@@ -16,6 +16,8 @@ public class AudioList : MonoBehaviour
          hurt,
          jump,
          land,
+         lightningStrike,
+         lightningZap,
          loseFx,
          narratorRead,
          narratorHit,

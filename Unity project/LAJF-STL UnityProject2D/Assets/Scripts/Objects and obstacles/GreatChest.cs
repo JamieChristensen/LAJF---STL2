@@ -22,11 +22,13 @@ public class GreatChest : MonoBehaviour
     public VoidEvent narratorHit;
 
     public ParticleSystem wealthGlow;
+    private ParticleSystem instanceWealthGlow;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         inactivePosition = transform.position;
+        GetGlow();
     }
 
     void Update()
@@ -75,7 +77,7 @@ public class GreatChest : MonoBehaviour
         //Reset physics, position.
         rb.gravityScale = 0;
         transform.position = inactivePosition;
-
+        transform.rotation = new Quaternion(0, 0, 0, 0);
         //reset bools used to raise event and animate.
         finishedAnimation = false;
         playerOpenedBox = false;
@@ -94,12 +96,13 @@ public class GreatChest : MonoBehaviour
 
     public void RemoveGlow()
     {
-        wealthGlow.gameObject.SetActive(false);
+        Destroy(instanceWealthGlow.gameObject);
     }
 
     public void GetGlow()
     {
-        wealthGlow.gameObject.SetActive(true);
+        Debug.Log("Glow is coming up!");
+       instanceWealthGlow = Instantiate(wealthGlow, gameObject.transform);
     }
 
 }

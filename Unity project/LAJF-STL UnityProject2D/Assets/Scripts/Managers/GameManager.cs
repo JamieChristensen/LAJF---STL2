@@ -302,6 +302,11 @@ public class GameManager : MonoBehaviour
 
     public void OnHeroWonRound()
     {
+        StartCoroutine(EndScene());
+    }
+
+    IEnumerator EndScene()
+    {
         try
         {
             musicManager.PlayMusic("Ending");
@@ -310,6 +315,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("there is no music manager");
         }
+        nextTransition.Raise(18);
+
+        yield return new WaitForSeconds(6);
         FindObjectOfType<CustomSceneManager>().LoadCredits();
     }
 

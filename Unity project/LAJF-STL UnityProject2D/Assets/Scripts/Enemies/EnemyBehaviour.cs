@@ -151,7 +151,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.VisualiseHealthChange(currentHealth);
+        healthBar.GetCurrentHP(currentHealth);
         DamageAnimation();
         audioList.PlayWithVariablePitch(audioList.hurt);
     }
@@ -179,15 +179,17 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     public void DeathAnimation() // Add Particle Burst
     {
         Destroy(rb);
-        Instantiate(deathLeadUp, particlePoint.position, particlePoint.rotation);
+        ParticleSystem instance = Instantiate(deathLeadUp, particlePoint.position, particlePoint.rotation);
         healthBar.transform.parent = null;
         Invoke("DeathExplode", 1);
+        Destroy(instance.gameObject, instance.duration);
     }
 
     public void DeathExplode() // Add Particle Burst
     {
         audioList.explosion.Play();
-        Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
+        ParticleSystem instance = Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
+        Destroy(instance.gameObject, instance.duration);
         Destroy(gameObject);
 
     }
