@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ProgressionTracker : MonoBehaviour
 {
-    public Material defeated;
+    public Sprite defeated;
     // public Sprite defeated;
     public Sprite noInfo;
     public GameObject[] levels;
@@ -17,65 +17,71 @@ public class ProgressionTracker : MonoBehaviour
     public void UpdateProgression()
     {
         progress = runtimeChoices.runTimeLoopCount;
-        Debug.Log("updating, progress is " + progress);
 
         ResetProgression();
 
         // looping over the levels that the hero have gone through
         for (int i = 1; i <= progress; i++)
         {
-            if(i == progress)
+            // current encouonter 
+            if (i == progress)
             {
-                Sprite enemy = runtimeChoices.enemies[runtimeChoices.enemies.Count - 1].sprite;
+                Sprite enemy = runtimeChoices.enemies[i - 1].sprite;
+
                 // find all children gameobjects in the game
-                foreach (Transform childTransform in levels[i - 1].transform)
+                foreach (Transform childTransform in levels[i - 1].GetComponentsInChildren<Transform>(true))
                 {
-                    GameObject child = levels[i - 1].GetComponentInChildren<Transform>().gameObject;
-                    if (child.name == "progression Arrow")
-                        gameObject.SetActive(true);
+                    GameObject child = childTransform.gameObject;
+                    if (child.name == "Progression Arrow")
+                        child.SetActive(true);
                     if (child.name == "Encounter")
-                        gameObject.GetComponent<Image>().sprite = enemy;
+                        child.GetComponent<Image>().sprite = enemy;
                 }
             }
-            
             else
             {
+                
                 // find the previous opponents
                 Sprite enemy = runtimeChoices.enemies[i - 1].sprite;
                 // add dead material or red cross when we find it;
-                foreach (Transform childTransform in levels[i - 1].transform)
+                foreach (Transform childTransform in levels[i - 1].GetComponentsInChildren<Transform>(true))
                 {
-                    GameObject child = levels[i - 1].GetComponentInChildren<Transform>().gameObject;
+                    GameObject child = childTransform.gameObject;
                     if (child.name == "Encounter")
                     {
-                        Image enemyImage = gameObject.GetComponent<Image>();
+                        Image enemyImage = child.GetComponent<Image>();
                         enemyImage.sprite = enemy;
-                        enemyImage.material = defeated;
                     }
+                    if (child.name == "Defeated")
+                        child.SetActive(true);
+                    
                 }
+                
             }
 
         }
     }
 
-     private void ResetProgression()
+    private void ResetProgression()
     {
         // deactivate all elements
-        foreach(GameObject level in levels)
+        foreach (GameObject level in levels)
         {
-            foreach(Transform trans in transform)
+            foreach (Transform trans in level.GetComponentsInChildren<Transform>(true))
             {
                 GameObject child = trans.gameObject;
-            if (child.name == "progression Arrow")
-                gameObject.SetActive(false);
-            if (child.name == "Encounter")
-                gameObject.GetComponent<Image>().sprite = noInfo;
+                if (child.name == "Progression Arrow")
+                    child.SetActive(false);
+                if (child.name == "Encounter")
+                    child.GetComponent<Image>().sprite = noInfo;
+                if (child.name == "Defeated")
+                    child.SetActive(false);
             }
         }
-        
+
     }
 
-       public void SetNewProgression()
+    public void SetNewProgression()
     {
         ResetProgression();
         startProgression.SetActive(true);
