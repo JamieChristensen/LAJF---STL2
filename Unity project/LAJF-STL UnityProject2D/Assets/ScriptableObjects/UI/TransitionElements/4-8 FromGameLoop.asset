@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e60fcdfd9bc7f2c43bdfcbee6989b79b, type: 3}
   m_Name: 4-8 FromGameLoop
   m_EditorClassIdentifier: 
-  sceneIndex: 4
-  details: From GameLoop Scene (4) to End Scene (8)
+  sceneIndex: 7
+  details: From Item Screen (7) to End Scene (8)
   startTransparent: 1
   textElement:
   - textInput: The End Is Neigh...
-    timeOfTextDisplayed: 2
+    timeOfTextDisplayed: 10

@@ -336,16 +336,19 @@ public class P1Controller : MonoBehaviour
     public void DeathAnimation() // Add Particle Burst
     {
         Destroy(rb);
-        Instantiate(deathLeadUp, particlePoint.position, particlePoint.rotation);
+        ParticleSystem instance = Instantiate(deathLeadUp, particlePoint.position, particlePoint.rotation);
         healthBar.transform.parent = null;
+        Destroy(instance.gameObject, instance.duration);
         Invoke("DeathExplode", 1);
     }
 
     public void DeathExplode() // Add Particle Burst
     {
         audioList.explosion.Play();
-        Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
+
+        ParticleSystem instance = Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
         Destroy(gameObject);
+        Destroy(instance.gameObject, instance.duration);
     }
 
 

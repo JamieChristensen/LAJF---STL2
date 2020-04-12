@@ -37,6 +37,14 @@ public class GodController : MonoBehaviour
     [SerializeField]
     private SettingsScrObj gamesettings;
 
+    //Lightning
+    public KeyCode shoot;
+    public GameObject lightningPrefab;
+    public float lightningSpeed;
+    public Transform firePoint;
+    private bool OnCooldown = false;
+    private float timer = 0, cooldownTime = 15;
+
     public void Start()
     {
         emoteDuration = 0;
@@ -68,10 +76,27 @@ public class GodController : MonoBehaviour
 
     void Update()
     {
+
+        if (Input.GetKeyDown(shoot) && OnCooldown == false)
+        {
+            Shoot();
+            timer = 0;
+            OnCooldown = true;
+        }
+        if (OnCooldown)
+        {
+            timer += Time.deltaTime;
+        }
+        if (timer > cooldownTime)
+        {
+            OnCooldown = false;
+        }
+
         if (!isEmoting)
         {
             return;
         }
+
         emoteDuration += Time.deltaTime;
         if (emoteMaxTime <= emoteDuration)
         {
@@ -88,7 +113,10 @@ public class GodController : MonoBehaviour
 
     public void Shoot()
     {
-        throw new NotImplementedException();
+        Debug.Log("Lightning");
+        GameObject instance = Instantiate(lightningPrefab, firePoint.position, Quaternion.identity);
+        Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
+        rb.AddForce(Vector2.down * lightningSpeed, ForceMode2D.Impulse);
     }
 
     public void Emote()

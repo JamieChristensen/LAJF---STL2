@@ -33,6 +33,11 @@ public class CageControl : MonoBehaviour
         CaptureHero();
     }
 
+    public void QuickCaptureHero()
+    {
+        transform.position = new Vector3(_playerTransform.position.x, _spawnPoint.y, _spawnPoint.z);
+        timer = 3;
+    }
 
     public void CaptureHero()
     {

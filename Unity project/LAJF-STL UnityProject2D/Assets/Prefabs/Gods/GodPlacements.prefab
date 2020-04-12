@@ -53,7 +53,7 @@ PrefabInstance:
     - target: {fileID: 2909577711432919680, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -5.19
       objectReference: {fileID: 0}
     - target: {fileID: 2909577711432919680, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
         type: 3}
@@ -100,6 +100,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4186911246101685232, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186911246101685232, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4930063018866748867, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531318744926372242, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: godNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531318744926372242, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: lightningPrefab
+      value: 
+      objectReference: {fileID: 6043162701559719940, guid: 8d103ad9c76fee74a9fc4930f5661771,
+        type: 3}
     - target: {fileID: 5743991128405102087, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
         type: 3}
       propertyPath: m_Sprite
@@ -149,7 +175,7 @@ PrefabInstance:
     - target: {fileID: 2909577711432919680, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -5.19
       objectReference: {fileID: 0}
     - target: {fileID: 2909577711432919680, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
         type: 3}
@@ -196,6 +222,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4186911246101685232, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.6499996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186911246101685232, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4930063018866748867, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6.239999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531318744926372242, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: lightningPrefab
+      value: 
+      objectReference: {fileID: 6043162701559719940, guid: 8d103ad9c76fee74a9fc4930f5661771,
+        type: 3}
     - target: {fileID: 5743991128405102087, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
         type: 3}
       propertyPath: m_Sprite
@@ -245,7 +292,7 @@ PrefabInstance:
     - target: {fileID: 2909577711432919680, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -5.19
       objectReference: {fileID: 0}
     - target: {fileID: 2909577711432919680, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
         type: 3}
@@ -292,6 +339,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4186911246101685232, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.6499996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186911246101685232, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.0699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4930063018866748867, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6.239999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531318744926372242, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: godNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531318744926372242, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: lightningPrefab
+      value: 
+      objectReference: {fileID: 6043162701559719940, guid: 8d103ad9c76fee74a9fc4930f5661771,
+        type: 3}
     - target: {fileID: 5743991128405102087, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
         type: 3}
       propertyPath: m_Sprite
