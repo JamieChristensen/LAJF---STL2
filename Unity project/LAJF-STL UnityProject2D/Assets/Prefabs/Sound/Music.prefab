@@ -75,7 +75,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ending
     clip: {fileID: 8300000, guid: fb5b95e43e96e294b8b28e3b825c6723, type: 3}
-    volume: 0.6
+    volume: 0.8
     pitch: 1
     loop: 1
     audioMixerGroup: {fileID: 24300002, guid: 0a1a1b5c65fd0ae448bd3fa9db38a37b, type: 2}
