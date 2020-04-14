@@ -54,6 +54,7 @@ public class CustomSceneManager : MonoBehaviour
         }
         SceneManager.LoadScene(0); //Index of main-menu. 
     }
+
     public void LoadCredits()
     {
         //Should probably not just load this scene, but this is a start.

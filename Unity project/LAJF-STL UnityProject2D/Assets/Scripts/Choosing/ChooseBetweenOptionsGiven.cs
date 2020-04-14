@@ -47,6 +47,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     private PlayerItems[] playerItemChoices = new PlayerItems[2];
     public GameObject theOnlyButton;
     public Sprite theGrandPrize;
+    public PlayerItems victoryShades;
 
     [Header("Modifier choice variables")]
     public EnemyModifier[] modifierPool;
@@ -455,6 +456,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         else
         {
             Debug.Log("The Hero Won!");
+            runtimeChoices.playerItems.Add(victoryShades);
+
             heroWon.Raise();
         }
 
