@@ -4,10 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using STL2.Events;
+using UnityEngine.UI;
 
 
 public class ChooseGods : MonoBehaviour
 {
+    public ButtonSounds buttonSounds;
+    public TransitionNarrator transitionNarrator;
+
     public ChoiceCategory runTimeChoices;
     [SerializeField]
     private SettingsScrObj gamesettings;
@@ -21,6 +25,9 @@ public class ChooseGods : MonoBehaviour
 
     [SerializeField]
     private int[] choices = new int[3]; //player2 choice in 0, player3 choice in 1, player4 choice in 2. Range 1-5. 0 if nothing has been chosen.
+    public Image[] backgrounds;
+    public Image[] highlights;
+    public Image[] overlays;
     private int p2Index, p3Index, p4Index;
     private bool p2LockedIn, p3LockedIn, p4LockedIn;
 
@@ -58,16 +65,20 @@ public class ChooseGods : MonoBehaviour
             }
             choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
+
     }
 
     public void Update()
     {
-        if (p2LockedIn && p3LockedIn && p4LockedIn && lockedIn == false)
+        if (p2LockedIn /*&& p3LockedIn && p4LockedIn */ && lockedIn == false)
         {
             for (int i = 0; i < choices.Length; i++)
             {
                 runTimeChoices.chosenGods[i] = chooseableGods[choices[i]];
             }
+
+            buttonSounds.OnChoiceMade();
+            transitionNarrator.DoNarration();
 
             LoadTransition();
             lockedIn = true;
@@ -156,6 +167,23 @@ public class ChooseGods : MonoBehaviour
             return;
         }
         choices[godNumber] = newSelection;
+        for (int i = 0; i < backgrounds.Length; i++)
+        {
+            if (i == newSelection)
+            {
+                backgrounds[i].gameObject.SetActive(true);
+                highlights[i].gameObject.SetActive(true);
+                overlays[i].gameObject.SetActive(false);
+            }
+            else
+            {
+                backgrounds[i].gameObject.SetActive(false);
+                highlights[i].gameObject.SetActive(false);
+                overlays[i].gameObject.SetActive(true);
+            }
+            
+        }
+        
         //Reset text on each element:
         foreach (TextMeshProUGUI choiceText in choiceTMProText)
         {

@@ -1302,6 +1302,16 @@ PrefabInstance:
       propertyPath: gods.Array.data[2]
       value: 
       objectReference: {fileID: 1944620984}
+    - target: {fileID: 4723526808058741398, guid: fd688c84911281a4395823b11e3069e5,
+        type: 3}
+      propertyPath: godSelectInput.Array.data[0]
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723526808058741398, guid: fd688c84911281a4395823b11e3069e5,
+        type: 3}
+      propertyPath: player1AttackKey
+      value: 304
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd688c84911281a4395823b11e3069e5, type: 3}
 --- !u!4 &1245511636365716050
@@ -1423,7 +1433,7 @@ PrefabInstance:
     - target: {fileID: 2097950839168532979, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
       propertyPath: shoot
-      value: 121
+      value: 274
       objectReference: {fileID: 0}
     - target: {fileID: 5369928524516502939, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
