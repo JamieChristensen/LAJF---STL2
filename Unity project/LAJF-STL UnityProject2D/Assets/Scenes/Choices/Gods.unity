@@ -483,6 +483,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SFX
       objectReference: {fileID: 0}
+    - target: {fileID: 5056255463373047658, guid: 0ff3f7e4ef487844bbb7bc52578b6e69,
+        type: 3}
+      propertyPath: voiceLineIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5056255463373047659, guid: 0ff3f7e4ef487844bbb7bc52578b6e69,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -881,6 +881,18 @@ RectTransform:
   m_AnchoredPosition: {x: -2, y: -20.125}
   m_SizeDelta: {x: -640, y: -250.36319}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &915258329 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5056255463373047658, guid: 0ff3f7e4ef487844bbb7bc52578b6e69,
+    type: 3}
+  m_PrefabInstance: {fileID: 236684094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f40cfa8bf81c3c46a1b40075190ccd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1154734008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2265,6 +2277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6920f45c4b2b4674fa725347b2d83948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  voiceLineIndex: 1
   buttonSounds: {fileID: 2867410946190812736}
   transitionNarrator: {fileID: 1154734010}
   runtimeChoices: {fileID: 0}
@@ -2294,6 +2307,7 @@ MonoBehaviour:
   p1Select: 32
   p1Left: 97
   p1Right: 100
+  audioList: {fileID: 915258329}
 --- !u!114 &2911421558393780485
 MonoBehaviour:
   m_ObjectHideFlags: 0

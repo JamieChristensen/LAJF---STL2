@@ -304,7 +304,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 break;
         }
 
-        RaiseEvent(choiceType);
+        StartCoroutine(LockAfterDelay());
+
     }
 
     #endregion // LockingChoice
@@ -480,6 +481,12 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     }
 
+
+    IEnumerator LockAfterDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        RaiseEvent(choiceType);
+    }
 
     public void ResetAllChoices()
     {
