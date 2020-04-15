@@ -891,7 +891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 157.20027, y: -20.125458}
+  m_AnchoredPosition: {x: 157.20026, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461216124
@@ -1350,7 +1350,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 157.20027, y: -20.125458}
+  m_AnchoredPosition: {x: 157.20026, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963206122
@@ -3411,6 +3411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c6890977ce99e488dbc00c9b5f3e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonSounds: {fileID: 2867410946190812736}
+  transitionNarrator: {fileID: 1154734010}
   runTimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   gamesettings: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af, type: 2}
   chooseableGods:

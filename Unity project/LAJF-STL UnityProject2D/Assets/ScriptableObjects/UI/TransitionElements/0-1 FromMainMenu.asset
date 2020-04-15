@@ -17,4 +17,4 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInput: Once upon a time, there was a hero, You!
-    timeOfTextDisplayed: 4.5
+    timeOfTextDisplayed: 3.5

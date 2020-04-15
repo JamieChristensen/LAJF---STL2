@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class ChooseGods : MonoBehaviour
 {
+    public ButtonSounds buttonSounds;
+    public TransitionNarrator transitionNarrator;
+
     public ChoiceCategory runTimeChoices;
     [SerializeField]
     private SettingsScrObj gamesettings;
@@ -62,6 +65,7 @@ public class ChooseGods : MonoBehaviour
             }
             choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
+
     }
 
     public void Update()
@@ -72,6 +76,9 @@ public class ChooseGods : MonoBehaviour
             {
                 runTimeChoices.chosenGods[i] = chooseableGods[choices[i]];
             }
+
+            buttonSounds.OnChoiceMade();
+            transitionNarrator.DoNarration();
 
             LoadTransition();
             lockedIn = true;
