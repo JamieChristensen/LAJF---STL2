@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
   m_Name: PeasantChineseHat
   m_EditorClassIdentifier: 
-  myName: Peasant with Chinese Hat
+  myName: Peasant, who happens to be asian, with a hat
   description: Peasant, chinese, yellow hat
   trait: 'Chinese: He must be a ninja then'
   characterSprite: {fileID: 8504305874624505467, guid: 4689567f5d6a5a846b7016a2ff8574e8,

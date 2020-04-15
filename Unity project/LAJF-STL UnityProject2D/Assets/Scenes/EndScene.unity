@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.99994, y: -377}
+  m_AnchoredPosition: {x: 399.99994, y: -385}
   m_SizeDelta: {x: 490, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &106807076
@@ -456,8 +456,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -337.99997}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -63, y: -302}
+  m_SizeDelta: {x: 631.7, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &363793527
 CanvasGroup:
@@ -488,8 +488,8 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 300
+  m_ChildAlignment: 3
+  m_Spacing: 166.45
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -513,10 +513,28 @@ MonoBehaviour:
   musicManager: {fileID: 0}
   endSceneVisuals: {fileID: 9039245506763273944, guid: a2e15da3074d96049b939229a9542b9e,
     type: 3}
-  scrollSpeed: 30
+  scrollSpeed: 55
   baseText: {fileID: 106807074}
   creditsText: {fileID: 9160693856537786406, guid: e2db89d99d0e4054f8f036bcd2a37d14,
     type: 3}
+  coolDescriptors:
+  - gloriously
+  - bravely
+  - righteously
+  - in a rage induced haze
+  - with great judgement
+  - in a cool looking manner
+  - with little deliberation
+  - ruthlessly
+  - forcefully
+  killingWords:
+  - slayed
+  - defeated
+  - overcame
+  - ended the existence of
+  - razed
+  - disgraced
+  - coughed on
 --- !u!1 &1250072930
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +632,7 @@ GameObject:
   - component: {fileID: 1550099911}
   - component: {fileID: 1550099910}
   m_Layer: 5
-  m_Name: Main Menu
+  m_Name: Main Menu button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
