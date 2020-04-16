@@ -920,6 +920,11 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 236684095}
+    - target: {fileID: 554963477601737872, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: audioList
+      value: 
+      objectReference: {fileID: 915258329}
     - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1066,6 +1071,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 40ecd4b92adb06c4ba6484eebaa5fcb2,
         type: 2}
+    - target: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: audioList
+      value: 
+      objectReference: {fileID: 915258329}
+    - target: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: voiceLineIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbbb37c9bb70bee488540616023c104d, type: 3}
 --- !u!114 &1154734009 stripped
@@ -2277,7 +2292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6920f45c4b2b4674fa725347b2d83948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voiceLineIndex: 1
   buttonSounds: {fileID: 2867410946190812736}
   transitionNarrator: {fileID: 1154734010}
   runtimeChoices: {fileID: 0}
@@ -2307,7 +2321,6 @@ MonoBehaviour:
   p1Select: 32
   p1Left: 97
   p1Right: 100
-  audioList: {fileID: 915258329}
 --- !u!114 &2911421558393780485
 MonoBehaviour:
   m_ObjectHideFlags: 0

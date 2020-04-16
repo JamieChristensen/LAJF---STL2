@@ -45,7 +45,6 @@ public class ChooseGods : MonoBehaviour
 
     bool lockedIn = false;
 
-
     public void Start()
     {
         choices = new int[3];
@@ -79,8 +78,8 @@ public class ChooseGods : MonoBehaviour
 
             buttonSounds.OnChoiceMade();
             transitionNarrator.DoNarration();
-
-            LoadTransition();
+            
+            Invoke("LoadTransition",1.5f);
             lockedIn = true;
             return;
         }
@@ -210,4 +209,5 @@ public class ChooseGods : MonoBehaviour
             choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
     }
+
 }

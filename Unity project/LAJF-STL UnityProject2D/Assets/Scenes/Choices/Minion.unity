@@ -715,6 +715,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ff3f7e4ef487844bbb7bc52578b6e69, type: 3}
+--- !u!114 &1292126497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5056255463373047658, guid: 0ff3f7e4ef487844bbb7bc52578b6e69,
+    type: 3}
+  m_PrefabInstance: {fileID: 1292126496}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f40cfa8bf81c3c46a1b40075190ccd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1766649635
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,6 +3563,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2753250053838935130, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: voiceLineIndex
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2753250053838935130, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: transitionNarrator
+      value: 
+      objectReference: {fileID: 8341984467671690306}
+    - target: {fileID: 2753250053838935130, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: audioList
+      value: 
+      objectReference: {fileID: 1292126497}
+    - target: {fileID: 6634193747434407991, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: audioList
+      value: 
+      objectReference: {fileID: 1292126497}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dee2047a9be4ff4286953596427c40d, type: 3}
 --- !u!114 &8341984467671690306 stripped

@@ -17,4 +17,4 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInput: Ohh... And also some Deities passed through!
-    timeOfTextDisplayed: 3.5
+    timeOfTextDisplayed: 6

@@ -6,8 +6,6 @@ using TMPro;
 
 public class p1Choose : MonoBehaviour
 {
-    public int voiceLineIndex;
-
     public ButtonSounds buttonSounds;
     public TransitionNarrator transitionNarrator;
 
@@ -35,7 +33,7 @@ public class p1Choose : MonoBehaviour
     bool selected = false;
     private int choice = 0;
 
-    public AudioList audioList;
+    
 
     public void Start()
     {
@@ -50,6 +48,7 @@ public class p1Choose : MonoBehaviour
             amountOfChoices = 1;
         }
         ChangeAndDisplaySelection(0);
+
     }
 
     private void Update()
@@ -67,7 +66,7 @@ public class p1Choose : MonoBehaviour
             chooseBetweenOptionsScript.LockSelectedChoice(choiceType);
 
             buttonSounds.OnChoiceMade();
-            StartCoroutine(NarrateAfterDelay());
+            transitionNarrator.DoNarration();
 
             lockedIn = true;
             return;
@@ -131,13 +130,4 @@ public class p1Choose : MonoBehaviour
         }
 
     }
-
-    IEnumerator NarrateAfterDelay()
-    {
-        yield return new WaitForSeconds(1.5f);
-        audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[voiceLineIndex];
-        transitionNarrator.DoNarration();
-    }
-
-
 }

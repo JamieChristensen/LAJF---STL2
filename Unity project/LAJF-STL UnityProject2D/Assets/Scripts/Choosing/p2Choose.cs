@@ -108,8 +108,4 @@ public class p2Choose : MonoBehaviour
             choiceTMProText[choice].text += "Player 2" + "\n";
         }
     }
-
-
-
-
 }

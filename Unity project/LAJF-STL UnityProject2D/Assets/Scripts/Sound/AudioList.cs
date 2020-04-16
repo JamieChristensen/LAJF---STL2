@@ -49,7 +49,7 @@ public class AudioList : MonoBehaviour
 
 
 
-    public void OnHeroWin()
+    public void OnHeroOpenedBox()
     {
         winFx.Play();
     }
@@ -59,8 +59,13 @@ public class AudioList : MonoBehaviour
         if (heroHP <= 0)
         {
             StartCoroutine(PlayOnDelay(loseFx, 1.5f));
-        }
-        
+            narratorVoiceLines.clip = transitionVoiceLines[9];
+        } 
+    }
+
+    public void OnHeroWin()
+    {
+        narratorVoiceLines.clip = transitionVoiceLines[9];
     }
 
     IEnumerator PlayOnDelay(AudioSource source, float delay)
@@ -78,6 +83,9 @@ public class AudioList : MonoBehaviour
     {
         narratorHit.Play();
     }
+
+
+
 }
 
 

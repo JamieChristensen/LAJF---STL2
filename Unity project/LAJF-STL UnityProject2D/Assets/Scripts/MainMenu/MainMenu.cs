@@ -17,11 +17,16 @@ public class MainMenu : MonoBehaviour
     public TransitionScreen introTransition;
     public RuntimeChoiceManager runtimeChoiceManager;
 
+    bool notFaded = true;
 
     public void StartFading()
     {
+        if (notFaded)
+        {
+            StartCoroutine(DelayedTransition(1.5f));
+            notFaded = false;
+        }
         
-        introTransition.DoNextTransition(0);
     }
     public void StartGame()
     {
@@ -52,5 +57,11 @@ public class MainMenu : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator DelayedTransition(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        introTransition.DoNextTransition(0);
     }
 }

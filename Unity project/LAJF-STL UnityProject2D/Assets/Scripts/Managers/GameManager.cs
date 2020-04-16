@@ -207,6 +207,12 @@ public class GameManager : MonoBehaviour
 
     public void OnOpenedChest()
     {
+        StartCoroutine(OpenChestCoroutine());
+    }
+
+    IEnumerator OpenChestCoroutine()
+    {
+
         try
         {
             musicManager.PlayMusic("Peace");
@@ -215,11 +221,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("there is no music manager");
         }
-        
-        
+
         canPlayerMove = false;
-       // Time.timeScale = 0f;
+        // Time.timeScale = 0f;
         sceneManager.ChooseChoiceSceneToLoad(indexOfItemChoiceScene);
+        yield return new WaitForSeconds(1.5f);
         nextTransition.Raise(14);
         // StartCoroutine(sceneManager.ALoadEnvironment(indexOfItemChoiceScene)); //6 is the index of item-choice scene.
     }
@@ -274,29 +280,22 @@ public class GameManager : MonoBehaviour
         {
             canMonsterMove[i] = false;
         }
-
-        try
-        {
-            musicManager.PlayMusic("Ending");
-        }
-        catch
-        {
-            Debug.Log("there is no music manager");
-        }
-
         canPlayerMove = false;
         bool dying = true;
         float timer = 0;
+
         while (dying)
         {
             timer += Time.deltaTime;
             if (timer > _timeBetweenPlayerDeathAndEndScreen)
             {
-
-                FindObjectOfType<CustomSceneManager>().LoadCredits(); //End game by loading proper scene through game-manager - should happen after a delay, as to provide feedback during the delay.
+                dying = false;
+                StartCoroutine(EndScene());
             }
             yield return null;
         }
+
+        
 
     }
 
@@ -315,9 +314,10 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("there is no music manager");
         }
+        yield return new WaitForSeconds(1.5f);
         nextTransition.Raise(18);
 
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(5);
         FindObjectOfType<CustomSceneManager>().LoadCredits();
     }
 

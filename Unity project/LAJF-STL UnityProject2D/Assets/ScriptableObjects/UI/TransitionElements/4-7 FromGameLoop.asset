@@ -17,4 +17,4 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInput: The monster fell, truth be told...
-    timeOfTextDisplayed: 3.5
+    timeOfTextDisplayed: 6

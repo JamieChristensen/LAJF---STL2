@@ -7,8 +7,8 @@ public class TransitionNarrator : MonoBehaviour
 {
    // public AudioSource audioSource;
     public Camera mainCam;
-    private AudioList _audioList;
-    public AudioList audioList { get { return _audioList; } }
+    public AudioList audioList;
+
 
     public int getInSpeed = 5;
    // public Rigidbody2D rb2;
@@ -21,11 +21,6 @@ public class TransitionNarrator : MonoBehaviour
 
     private void Start()
     {
-        if (_audioList == null)
-        {
-            _audioList = FindObjectOfType<AudioList>();
-        }
-        
 
         if (mainCam == null)
         {
@@ -38,6 +33,11 @@ public class TransitionNarrator : MonoBehaviour
     {
         Narrate(uiText.text);
         visibleNarratorGameobject.SetActive(true);
+    }
+
+    public void DoPlaceholderVoiceLine()
+    {
+        audioList.narratorVoiceLines.Play();
     }
 
     public void Narrate(string text) // call this with uiText as parameter
