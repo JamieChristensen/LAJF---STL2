@@ -461,7 +461,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
             heroWon.Raise();
         }
-
+        GameObject enemyHealthBar = GameObject.Find("EnemyHealthBar");
+        Destroy(enemyHealthBar);
     }
 
 

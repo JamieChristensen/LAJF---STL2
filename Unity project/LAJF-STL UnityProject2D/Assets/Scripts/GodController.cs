@@ -42,11 +42,13 @@ public class GodController : MonoBehaviour
     public GameObject lightningPrefab;
     public float lightningSpeed;
     public Transform firePoint;
+    public TextMeshProUGUI readyForFire;
     private bool OnCooldown = false;
     private float timer = 0, cooldownTime = 15;
 
     public void Start()
     {
+        readyForFire.text = "Press ↓ to Fire!";
         emoteDuration = 0;
         emoteMaxTime = 1f;
         isEmoting = false;
@@ -81,6 +83,7 @@ public class GodController : MonoBehaviour
         {
             Shoot();
             timer = 0;
+            readyForFire.text = "Cooling off!";
             OnCooldown = true;
         }
         if (OnCooldown)
@@ -90,6 +93,7 @@ public class GodController : MonoBehaviour
         if (timer > cooldownTime)
         {
             OnCooldown = false;
+            readyForFire.text = "Press ↓ to Fire!";
         }
 
         if (!isEmoting)
