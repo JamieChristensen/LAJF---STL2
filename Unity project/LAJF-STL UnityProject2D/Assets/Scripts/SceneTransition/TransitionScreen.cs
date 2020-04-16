@@ -13,6 +13,7 @@ public class TransitionScreen : MonoBehaviour
     private TransitionElements _nextTransitionElements;
     public VoidEvent readyToLoadScene, loadedAdditiveScene;
 
+    int whichScene;
     public int voiceLineIndex;
     public AudioList audioList;
     public TransitionNarrator transitionNarrator;
@@ -119,6 +120,7 @@ public class TransitionScreen : MonoBehaviour
 
     public void DoNextTransition(int transitionIndex)
     {
+        whichScene = transitionIndex;
         if (transitioning)
         {
             StopCoroutine(co);
@@ -216,7 +218,16 @@ public class TransitionScreen : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         audioList.narratorVoiceLines.Stop();
-        audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[voiceLineIndex];
+        if (audioList.voiceLineIndex != 9)
+        {
+            audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[voiceLineIndex];
+        }
+
+        if (whichScene == 18)
+        {
+            audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[9];
+        }
+
         //transitionNarrator.DoNarration();
         transitionNarrator.DoPlaceholderVoiceLine();
 

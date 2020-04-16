@@ -8751,6 +8751,11 @@ PrefabInstance:
       propertyPath: audioList
       value: 
       objectReference: {fileID: 40047584}
+    - target: {fileID: 554963477601737872, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: OnMainMenu
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 959162681688895668, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.size

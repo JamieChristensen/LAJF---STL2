@@ -46,9 +46,6 @@ public class AudioList : MonoBehaviour
 
     }
 
-
-
-
     public void OnHeroOpenedBox()
     {
         winFx.Play();

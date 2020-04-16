@@ -18,6 +18,7 @@ public class TransitionNarrator : MonoBehaviour
 
     public Vector2 previousPosition;
 
+    public bool OnMainMenu = false;
 
     private void Start()
     {
@@ -55,6 +56,12 @@ public class TransitionNarrator : MonoBehaviour
 
 
         //  RandomizePosition();
+        audioList.narratorVoiceLines.Stop();
+        if (OnMainMenu == false)
+        {
+            yield return new WaitForSeconds(0.9f);
+        }
+        
         EnterScene();
 
         // play audio file 
@@ -70,10 +77,11 @@ public class TransitionNarrator : MonoBehaviour
 
     void EnterScene()
     {
-       // RandomizePosition();
+        // RandomizePosition();
 
-       //  Vector2 direction = (mainCam.transform.position - transform.position).normalized;
+        //  Vector2 direction = (mainCam.transform.position - transform.position).normalized;
         //rb2.velocity = direction * getInSpeed;
+        
         audioList.PlayWithVariablePitch(audioList.narratorRead);
     }
     /*

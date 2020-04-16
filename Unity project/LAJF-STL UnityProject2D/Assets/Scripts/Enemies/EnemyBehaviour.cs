@@ -244,7 +244,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     private void ApplyModifier(EnemyModifier _modifier)
     {
         //Do anything else modifiers do:
-        throw new NotImplementedException();
+      //  throw new NotImplementedException();
     }
 
     IEnumerator DelayDeathAnnouncement(float delay)
