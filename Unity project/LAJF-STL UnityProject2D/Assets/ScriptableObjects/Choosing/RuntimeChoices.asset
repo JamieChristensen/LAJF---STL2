@@ -18,12 +18,30 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
   - {fileID: 11400000, guid: 0d870e1f04d298b44a5f5fd745ccf72f, type: 2}
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
-  playerItems: []
+  playerItems:
+  - {fileID: 11400000, guid: 5966a2f15e04c4a4997eec965b58ecc2, type: 2}
+  - {fileID: 11400000, guid: 5966a2f15e04c4a4997eec965b58ecc2, type: 2}
   enemies:
   - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
   - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
+  - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
+  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
+  - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
+  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
+  - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
+  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
   enemyModifiers:
   - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
+  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
+  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
+  - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
+  - {fileID: 11400000, guid: 43928b0c3460d764d9dbeb910483ea71, type: 2}
+  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
+  - {fileID: 11400000, guid: 43928b0c3460d764d9dbeb910483ea71, type: 2}
+  - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
+  - {fileID: 11400000, guid: 43928b0c3460d764d9dbeb910483ea71, type: 2}
   - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
   chosenEnvironments:
   - environmentName: Castle2
@@ -46,21 +64,21 @@ MonoBehaviour:
     environmentSprite: {fileID: 21300000, guid: 1957038bcc272d143b2298b2f1575f59,
       type: 3}
     environmentIndex: 22
-  runTimeLoopCount: 4
+  runTimeLoopCount: 1
   chosenHero: {fileID: 11400000, guid: 7f7febd433328a94a94af68dd70f11b0, type: 2}
   character: {fileID: 0}
   theme: {fileID: 0}
   firstOpponent:
-    minion: {fileID: 6271494558876136031, guid: ad41a8d43eab452448bc40561b6bfae5,
-      type: 3}
-    modifier: {fileID: 0}
-  firstItem: {fileID: 4805518738470751890, guid: 19819d60ef550904487d9640c79f4884,
-    type: 3}
-  secondOpponent:
     minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
       type: 3}
     modifier: {fileID: 0}
-  secondItem: {fileID: 4805518738470751890, guid: 19819d60ef550904487d9640c79f4884,
+  firstItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
+    type: 3}
+  secondOpponent:
+    minion: {fileID: 1234957342701670930, guid: 370fc784448474943b53bb2504194280,
+      type: 3}
+    modifier: {fileID: 0}
+  secondItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
     type: 3}
   thirdOpponent:
     minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
@@ -69,6 +87,6 @@ MonoBehaviour:
   thirdItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
     type: 3}
   fourthOpponent:
-    minion: {fileID: 6271494558876136031, guid: ad41a8d43eab452448bc40561b6bfae5,
+    minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
       type: 3}
     modifier: {fileID: 0}

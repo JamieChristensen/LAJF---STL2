@@ -6,117 +6,132 @@ using TMPro;
 using UnityEngine;
 
 
-    public class NarratorBehaviour : MonoBehaviour
-    {
+public class NarratorBehaviour : MonoBehaviour
+{
     public AudioSource audioSource;
-    public Camera mainCam;
+    public AudioClip clearThroat;
+    public AudioClip textToSpeechClip;
 
-    public int getInSpeed = 5;
+    public Camera mainCam;
+    public int getInSpeed = 4;
     public Rigidbody2D rb2;
     public float readSpeed;
     public TextMeshProUGUI uiText;
 
-    [SerializeField]
-    private ChoiceCategory runTimeChoices;
-    
-
+    public Vector2 targetPosition;
     public Vector2 previousPosition;
 
+    [SerializeField]
+    //private ChoiceCategory runTimeChoices;
+    private TTS textToSpeech;
+
+    private int uiOffset = -17; // to make up for the bottom UI.
+    private bool isEnteringScene;
+    private bool isExitingScene;
+    private bool isRunning;
+
     void Start()
+    {
+        textToSpeech = new TTS();
+        StartCoroutine(textToSpeech.InitalizeService());
+        uiText.text = "";
+    }
+    private void Update()
+    {
+        // 
+        if (isEnteringScene)
         {
-            uiText.text = "";
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, getInSpeed*Time.deltaTime);
         }
-
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        //StartCoroutine(readText("din mor"));
-        if (Input.GetMouseButtonUp(1))
+        if (isExitingScene)
         {
-            IPausable enemy = FindObjectOfType<EnemyBehaviour>();
-            if (enemy.IsPaused())
-                enemy.UnPause();
-            else
-                enemy.Pause();
-
-            Debug.Log("from Narrator behaviour/ should pause? " + enemy.IsPaused());
-            
+            transform.position = Vector2.MoveTowards(transform.position, previousPosition, getInSpeed * Time.deltaTime);
         }
-    }
-      
-
-    private void ExitScene()
-    {
-        Vector2 direction = - (mainCam.transform.position - transform.position).normalized;
-        rb2.velocity = direction * (getInSpeed + 5);
-    }
-
-    void EnterScene()
-    {
-        RandomizePosition();
-
-        Vector2 direction = (mainCam.transform.position - transform.position).normalized;
-        rb2.velocity = direction*getInSpeed;
-        audioSource.Play();
-    }
+        
+        
+    }   
 
     void RandomizePosition()
     {
         float y, x;
-        // determine which side to use / width or height
-        // could use while loop to check if position is allowed 
-        
-        bool bottomOrRight = UnityEngine.Random.Range(0f, 1f) >= 0.5f;
-        if (UnityEngine.Random.Range(0f, 1f) >= 0.5f)
+
+        bool isVertical = UnityEngine.Random.Range(0f, 1f) >= 0.5f; // whether to spawn on a vertical or horizontal side.
+        bool switchSide = UnityEngine.Random.Range(0f, 1f) >= 0.5f; // determine which side to use / width or height
+
+        if (isVertical)
         {
-            y = UnityEngine.Random.Range(mainCam.ScreenToWorldPoint(new Vector3(0, 0, 1f)).y, mainCam.ScreenToWorldPoint(new Vector3(0,mainCam.pixelHeight,1f)).y);
-            if(bottomOrRight)
+            y = UnityEngine.Random.Range(mainCam.ScreenToWorldPoint(new Vector3(0, 0, 1f)).y, mainCam.ScreenToWorldPoint(new Vector3(0, mainCam.pixelHeight, 1f)).y);
+            if (switchSide)
                 x = mainCam.ScreenToWorldPoint(new Vector3(0, 0, 1f)).x;
             else
-               x = mainCam.ScreenToWorldPoint(new Vector3(mainCam.pixelWidth, 0, 1f)).x;
+                x = mainCam.ScreenToWorldPoint(new Vector3(mainCam.pixelWidth, 0, 1f)).x;
 
         }
-        else{
-            if (bottomOrRight)
+        else
+        {
+            if (switchSide)
                 y = mainCam.ScreenToWorldPoint(new Vector3(0, 0, 1f)).y;
             else
                 y = mainCam.ScreenToWorldPoint(new Vector3(0, mainCam.pixelHeight, 1f)).y;
 
             x = UnityEngine.Random.Range(mainCam.ScreenToWorldPoint(new Vector3(0, 0, 1f)).x, mainCam.ScreenToWorldPoint(new Vector3(mainCam.pixelWidth, 0, 1f)).x);
         }
+
+        // making sure narrator isn't in a wrong spot  
+        if (y < uiOffset)
+        {
+            y = uiOffset;
+        }
+
         Vector3 newPos = new Vector3(x, y);
-        Debug.Log(newPos);
-        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * 100);
+        transform.position = newPos;
+        previousPosition = newPos;
+        targetPosition = Vector2.Lerp(newPos, mainCam.transform.position, 0.2f);
+
     }
 
-    public void Narrate(string text)
+    public void Narrate(string text) // this function is to be utilized elsewhere
     {
-        // TODO make set text string from somewhere else
-       // string text = "The hero has slain the foul beast and is rewarded with a treasure!";
-
-       StartCoroutine(ReadText(text));
-    } 
+        if (isRunning)
+        {
+            return;
+        }
+        isRunning = true;
+        Debug.Log("Trying to read this: " + text);
+        StartCoroutine(ReadText(text));
+    }
 
     IEnumerator ReadText(string text)
     {
-       // execute TTS service with text param and wait for respons 
-       
-
-      //  RandomizePosition();
-        EnterScene();
         
+        // execute TTS service with text param and wait for respons 
+        yield return StartCoroutine(textToSpeech.SynthesizeText(text, this));
+        
+        RandomizePosition();
+
+        audioSource.clip = clearThroat;
+        audioSource.Play();
+
+        isEnteringScene = true;
+        isExitingScene = false;
+
+        // wait for narrator to clear his throat 
+        yield return new WaitForSeconds(audioSource.clip.length);
+
         // show text on screen 
+        if (textToSpeechClip != null)
+        {
+            audioSource.clip = textToSpeechClip;
+            audioSource.Play();
+        }
         uiText.text = text;
-       
         // play audio file 
 
-        yield return new WaitForSeconds(4*readSpeed);
-        ExitScene();
-        uiText.text = "";
+        yield return new WaitForSeconds(4 * readSpeed);
+        isEnteringScene = false;
+        isExitingScene = true;
         // remove text 
-    } 
+        uiText.text = "";
+        isRunning = false;
+    }
 }
-     
