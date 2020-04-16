@@ -10,6 +10,7 @@ public class EndSceneVisuals : MonoBehaviour
     public Image enemyImage;
     public Image itemImage;
     public Image environment;
+    public Image chest;
 
 
     private void Start()

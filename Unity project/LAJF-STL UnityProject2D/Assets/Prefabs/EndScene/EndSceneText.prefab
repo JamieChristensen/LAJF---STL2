@@ -354,6 +354,7 @@ MonoBehaviour:
   enemyImage: {fileID: 5979781625646064970}
   itemImage: {fileID: 654337046099477418}
   environment: {fileID: 8611186760917734553}
+  chest: {fileID: 7528966403392582901}
 --- !u!222 &6913541577190783712
 CanvasRenderer:
   m_ObjectHideFlags: 0
