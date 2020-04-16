@@ -134,7 +134,13 @@ public class UIManager : MonoBehaviour
 
     public void NextTransition()
     {
-        nextTransition.Raise(nextTransitionIndex);
+        StartCoroutine(Delay(1.5f));
     }
 
+
+    IEnumerator Delay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        nextTransition.Raise(nextTransitionIndex);
+    }
 }

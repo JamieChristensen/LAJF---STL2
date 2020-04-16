@@ -30,8 +30,8 @@ public class Spawner : MonoBehaviour
     public void SpawnEnemy()
     {
 
-
-        GameObject go = Instantiate(enemyPrefab, enemySpawnPos, Quaternion.identity);
+        Vector3 deltaVector = new Vector3(Random.Range(0,60), 0, 0);
+        GameObject go = Instantiate(enemyPrefab, enemySpawnPos-deltaVector, Quaternion.identity);
         EnemyBehaviour enemyBehaviour = go.GetComponent<EnemyBehaviour>();
         //Runtimeloopcount incremented once per item-choice.
         int runTimeLoopCount = runtimeChoices.runTimeLoopCount;

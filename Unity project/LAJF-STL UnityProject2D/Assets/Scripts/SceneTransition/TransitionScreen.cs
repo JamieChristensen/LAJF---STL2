@@ -13,6 +13,11 @@ public class TransitionScreen : MonoBehaviour
     private TransitionElements _nextTransitionElements;
     public VoidEvent readyToLoadScene, loadedAdditiveScene;
 
+    int whichScene;
+    public int voiceLineIndex;
+    public AudioList audioList;
+    public TransitionNarrator transitionNarrator;
+
     bool transitioning = false;
     Coroutine co;
 
@@ -48,10 +53,12 @@ public class TransitionScreen : MonoBehaviour
     {
         if (outOfThreeScenarios == 3)
         {
+            atTransitionDestinationScene = true;
             DoNextTransition(15);
         }
         else if (outOfThreeScenarios == 2)
         {
+            atTransitionDestinationScene = true;
             DoNextTransition(11);
         }
         
@@ -113,13 +120,20 @@ public class TransitionScreen : MonoBehaviour
 
     public void DoNextTransition(int transitionIndex)
     {
+        whichScene = transitionIndex;
         if (transitioning)
         {
             StopCoroutine(co);
             atTransitionDestinationScene = false;
             transitioning = false;
+            
         }
-
+       
+        if (atTransitionDestinationScene == false)
+        {
+            StartCoroutine(NarrateAfterDelay(1));
+        }
+        
 
         co = StartCoroutine(Transition(transitionIndex));
     }
@@ -198,5 +212,34 @@ public class TransitionScreen : MonoBehaviour
 
     #endregion
 
+
+
+    IEnumerator NarrateAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        audioList.narratorVoiceLines.Stop();
+        if (audioList.voiceLineIndex != 9)
+        {
+            audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[voiceLineIndex];
+        }
+
+        if (whichScene == 18)
+        {
+            audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[9];
+        }
+
+        //transitionNarrator.DoNarration();
+        transitionNarrator.DoPlaceholderVoiceLine();
+
+        if (SceneManager.sceneCount == 2)
+        {
+           switch (voiceLineIndex)
+            {
+                case 4:
+                    voiceLineIndex = 7;
+                    break;
+            }
+        }
+    }
 
 }

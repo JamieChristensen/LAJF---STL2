@@ -17,4 +17,4 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInput: It had mad traits and even more...
-    timeOfTextDisplayed: 4
+    timeOfTextDisplayed: 6

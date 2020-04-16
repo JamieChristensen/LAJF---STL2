@@ -7,8 +7,8 @@ public class TransitionNarrator : MonoBehaviour
 {
    // public AudioSource audioSource;
     public Camera mainCam;
-    private AudioList _audioList;
-    public AudioList audioList { get { return _audioList; } }
+    public AudioList audioList;
+
 
     public int getInSpeed = 5;
    // public Rigidbody2D rb2;
@@ -18,14 +18,10 @@ public class TransitionNarrator : MonoBehaviour
 
     public Vector2 previousPosition;
 
+    public bool OnMainMenu = false;
 
     private void Start()
     {
-        if (_audioList == null)
-        {
-            _audioList = FindObjectOfType<AudioList>();
-        }
-        
 
         if (mainCam == null)
         {
@@ -38,6 +34,11 @@ public class TransitionNarrator : MonoBehaviour
     {
         Narrate(uiText.text);
         visibleNarratorGameobject.SetActive(true);
+    }
+
+    public void DoPlaceholderVoiceLine()
+    {
+        audioList.narratorVoiceLines.Play();
     }
 
     public void Narrate(string text) // call this with uiText as parameter
@@ -55,6 +56,12 @@ public class TransitionNarrator : MonoBehaviour
 
 
         //  RandomizePosition();
+        audioList.narratorVoiceLines.Stop();
+        if (OnMainMenu == false)
+        {
+            yield return new WaitForSeconds(1.2f);
+        }
+        
         EnterScene();
 
         // play audio file 
@@ -70,10 +77,11 @@ public class TransitionNarrator : MonoBehaviour
 
     void EnterScene()
     {
-       // RandomizePosition();
+        // RandomizePosition();
 
-       //  Vector2 direction = (mainCam.transform.position - transform.position).normalized;
+        //  Vector2 direction = (mainCam.transform.position - transform.position).normalized;
         //rb2.velocity = direction * getInSpeed;
+        
         audioList.PlayWithVariablePitch(audioList.narratorRead);
     }
     /*

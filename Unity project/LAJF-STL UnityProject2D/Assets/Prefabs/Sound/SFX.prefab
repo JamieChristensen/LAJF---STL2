@@ -1,5 +1,133 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2632748501243427043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8792526989346369576}
+  - component: {fileID: 556526979246691765}
+  m_Layer: 0
+  m_Name: NarratorVoiceLines
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8792526989346369576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632748501243427043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5056255463373047659}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &556526979246691765
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632748501243427043}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: b6ff014256744c241b6fdb931439c483,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 023de65ccbf6f4949b983495992db3d6, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4876197676703709208
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +270,7 @@ GameObject:
   - component: {fileID: 1797703046}
   - component: {fileID: 2415783090736648262}
   - component: {fileID: 8217596682734830615}
+  - component: {fileID: 51275622531326002}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -176,6 +305,7 @@ Transform:
   - {fileID: 606966017375606089}
   - {fileID: 4274634606889449551}
   - {fileID: 662230934660820393}
+  - {fileID: 8792526989346369576}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -191,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f40cfa8bf81c3c46a1b40075190ccd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  voiceLineIndex: 0
   attack1: {fileID: 635765125}
   attack2: {fileID: 635765124}
   choiceHasBeenMade: {fileID: 5056255465331498297}
@@ -205,8 +336,27 @@ MonoBehaviour:
   loseFx: {fileID: 5056255463978278968}
   narratorRead: {fileID: 3046779261008059831}
   narratorHit: {fileID: 5056255464690436115}
+  narratorVoiceLines: {fileID: 556526979246691765}
   select: {fileID: 5056255463580333037}
   winFx: {fileID: 5056255464439486415}
+  chooseSceneVoiceLines:
+  - {fileID: 8300000, guid: 023de65ccbf6f4949b983495992db3d6, type: 3}
+  - {fileID: 8300000, guid: bde220807504d674da151d6d135310cc, type: 3}
+  - {fileID: 8300000, guid: 0ec4a6f75f0afce418fe362f41b46338, type: 3}
+  - {fileID: 8300000, guid: d9848d1d23b86d44782763f019639b54, type: 3}
+  - {fileID: 8300000, guid: c86547a33ef14c24abc910e5dc7a3394, type: 3}
+  - {fileID: 8300000, guid: fd5486e53090c1844b79e7277f2594a7, type: 3}
+  transitionVoiceLines:
+  - {fileID: 8300000, guid: 76f7fa498a3156a40bdda4f6540bd33c, type: 3}
+  - {fileID: 8300000, guid: fca57f78ac26d754fb14d74eacb43a6d, type: 3}
+  - {fileID: 8300000, guid: b33d1273ea2e8a349a652a458a4b97dc, type: 3}
+  - {fileID: 8300000, guid: 7c4b44b27086a414e90bffdaedd985c9, type: 3}
+  - {fileID: 8300000, guid: b48c2201542c9d24eafe972ebad66b01, type: 3}
+  - {fileID: 8300000, guid: 7503c517a375ca044a1c13fdd9bb47ee, type: 3}
+  - {fileID: 8300000, guid: cf7898a490e590948b2903d86285f843, type: 3}
+  - {fileID: 8300000, guid: 1013608491edcd642a50b4f51e9fcbc3, type: 3}
+  - {fileID: 8300000, guid: 65d3acb395466a14dae30fcc41b62904, type: 3}
+  - {fileID: 8300000, guid: 0ad12fa4ff389fd47a8a2c87c8ff2696, type: 3}
 --- !u!114 &1797703045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +401,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5056255463373047658}
-        m_MethodName: OnHeroWin
+        m_MethodName: OnHeroOpenedBox
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -306,6 +456,33 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5056255463373047658}
         m_MethodName: OnNarratorHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &51275622531326002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056255463373047657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 35bcbd147fd58dc44a1934431f4af646, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5056255463373047658}
+        m_MethodName: OnHeroWin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

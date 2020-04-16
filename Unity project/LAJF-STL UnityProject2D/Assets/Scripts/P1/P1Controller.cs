@@ -73,6 +73,8 @@ public class P1Controller : MonoBehaviour
     private float dashMaxTime = 0.3f;
     [SerializeField]
     private float dashSpeed;
+
+    private bool dashOnCooldown;
     #endregion INSPECTOR
 
     void Awake()
@@ -115,11 +117,22 @@ public class P1Controller : MonoBehaviour
                 dashTimer = 0;
             }
         }
+        if (dashOnCooldown)
+        {
+            if (isGrounded)
+            {
+                dashOnCooldown = false;
+            }
+        }
         #endregion UpdateCooldowns
 
 
         #region MovementModifying
-        rb.gravityScale = isHoldingJump ? baseGravity : dropGravityModifier;
+        if (rb != null)
+        {
+            rb.gravityScale = isHoldingJump ? baseGravity : dropGravityModifier;
+        }
+        
         #endregion MovementModifying
 
 
@@ -240,14 +253,22 @@ public class P1Controller : MonoBehaviour
                 break;
 
             case Player1Input.DoubleTapLeft:
-                Debug.Log("HEYO LEFT");
+                if (isGrounded || dashOnCooldown)
+                {
+                    return;
+                }
                 dashingLeft = true;
-                dashTimer = 0;
+                dashOnCooldown = true;
+                //dashTimer = 0;
                 break;
             case Player1Input.DoubleTapRight:
-                Debug.Log("HEYO RIGHT");
+                if (isGrounded || dashOnCooldown)
+                {
+                    return;
+                }
                 dashingRight = true;
-                dashTimer = 0;
+                dashOnCooldown = true;
+                //dashTimer = 0;
                 break;
 
         }

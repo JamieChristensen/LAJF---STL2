@@ -47,6 +47,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     private PlayerItems[] playerItemChoices = new PlayerItems[2];
     public GameObject theOnlyButton;
     public Sprite theGrandPrize;
+    public PlayerItems victoryShades;
 
     [Header("Modifier choice variables")]
     public EnemyModifier[] modifierPool;
@@ -303,7 +304,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 break;
         }
 
-        RaiseEvent(choiceType);
+        StartCoroutine(LockAfterDelay());
+
     }
 
     #endregion // LockingChoice
@@ -455,9 +457,12 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         else
         {
             Debug.Log("The Hero Won!");
+            runtimeChoices.playerItems.Add(victoryShades);
+
             heroWon.Raise();
         }
-
+        GameObject enemyHealthBar = GameObject.Find("EnemyHealthBar");
+        Destroy(enemyHealthBar);
     }
 
 
@@ -477,6 +482,12 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     }
 
+
+    IEnumerator LockAfterDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        RaiseEvent(choiceType);
+    }
 
     public void ResetAllChoices()
     {

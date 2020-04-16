@@ -17,4 +17,4 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInput: By their power, a minion was called for...
-    timeOfTextDisplayed: 3.5
+    timeOfTextDisplayed: 6

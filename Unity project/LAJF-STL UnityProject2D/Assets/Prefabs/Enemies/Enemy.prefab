@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 5027903304600822876}
   - component: {fileID: 8087521088913329261}
   m_Layer: 0
-  m_Name: HealthBar
+  m_Name: EnemyHealthBar
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -737,6 +737,7 @@ MonoBehaviour:
   CurrentHealthFillTransform: {fileID: 4006971093325749672}
   DamageHealthFillTransform: {fileID: 543901001972125127}
   maxHp: 30
+  currentHp: 0
   runtimeChoices: {fileID: 0}
   playerRuntimeStats: {fileID: 0}
 --- !u!1 &4497743821697298326

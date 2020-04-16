@@ -546,6 +546,9 @@ MonoBehaviour:
   readyToLoadScene: {fileID: 11400000, guid: ea5b1edbeb90fc549ab2dabb13a1c0ca, type: 2}
   loadedAdditiveScene: {fileID: 11400000, guid: 40ecd4b92adb06c4ba6484eebaa5fcb2,
     type: 2}
+  voiceLineIndex: 0
+  audioList: {fileID: 0}
+  transitionNarrator: {fileID: 554963477601737872}
   _fadeOnDuration: 2
   _fadeOffDuration: 2
   atTransitionDestinationScene: 1

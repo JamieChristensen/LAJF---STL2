@@ -17,4 +17,4 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInput: The hero plunged into riches of old...
-    timeOfTextDisplayed: 3
+    timeOfTextDisplayed: 6

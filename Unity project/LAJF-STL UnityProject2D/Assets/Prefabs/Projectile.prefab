@@ -51,7 +51,7 @@ MonoBehaviour:
   damage: 10
   layerMask:
     serializedVersion: 2
-    m_Bits: 14336
+    m_Bits: 210944
   particles: {fileID: 5323168398494037125}
 --- !u!212 &3370030075306089129
 SpriteRenderer:
