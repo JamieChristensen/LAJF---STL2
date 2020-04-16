@@ -128,7 +128,11 @@ public class P1Controller : MonoBehaviour
 
 
         #region MovementModifying
-        rb.gravityScale = isHoldingJump ? baseGravity : dropGravityModifier;
+        if (rb != null)
+        {
+            rb.gravityScale = isHoldingJump ? baseGravity : dropGravityModifier;
+        }
+        
         #endregion MovementModifying
 
 

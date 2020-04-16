@@ -15,6 +15,12 @@ public class MusicManager : MonoBehaviour
 
     private AudioSource pausedAudioSource;
 
+    public ChoiceCategory runTimeChoices;
+
+    public AudioClip[] battle, peace, ending;
+
+    public List<AudioSource> sources;
+
     private void Awake()
     {
         /* Singleton pattern*/
@@ -29,17 +35,17 @@ public class MusicManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-
         /* Ads an AudioSource for each music theme in the array musicThemes*/
         foreach (MusicTheme mt in musicThemes)
         {
             mt.source = gameObject.AddComponent<AudioSource>();
             mt.source.clip = mt.clip;
-
             mt.source.volume = mt.volume;
             mt.source.pitch = mt.pitch;
             mt.source.loop = mt.loop;
             mt.source.outputAudioMixerGroup = mt.audioMixerGroup;
+
+            sources.Add(mt.source);
 
             if (mt.name == "MainMenu")
             {
@@ -63,6 +69,14 @@ public class MusicManager : MonoBehaviour
             }
             else
             {
+                if (name == "Battle")
+                {
+                    musicThemes[2].source.clip = battle[runTimeChoices.runTimeLoopCount - 1];
+                }
+                else if (name == "Peace")
+                {
+                    musicThemes[3].source.clip = peace[runTimeChoices.runTimeLoopCount - 1];
+                }
                 StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 5, 1)); // turn up the volume in a fade
             }
 

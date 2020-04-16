@@ -59,7 +59,7 @@ public class TransitionNarrator : MonoBehaviour
         audioList.narratorVoiceLines.Stop();
         if (OnMainMenu == false)
         {
-            yield return new WaitForSeconds(0.9f);
+            yield return new WaitForSeconds(1.2f);
         }
         
         EnterScene();

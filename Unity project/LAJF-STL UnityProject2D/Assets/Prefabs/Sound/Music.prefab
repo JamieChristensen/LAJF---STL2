@@ -80,3 +80,17 @@ MonoBehaviour:
     loop: 1
     audioMixerGroup: {fileID: 24300002, guid: 0a1a1b5c65fd0ae448bd3fa9db38a37b, type: 2}
     source: {fileID: 0}
+  runTimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  battle:
+  - {fileID: 8300000, guid: 0517e9b2ed7639c488095d37b5daf49b, type: 3}
+  - {fileID: 8300000, guid: 0517e9b2ed7639c488095d37b5daf49b, type: 3}
+  - {fileID: 8300000, guid: 0517e9b2ed7639c488095d37b5daf49b, type: 3}
+  - {fileID: 8300000, guid: cd5324ca4ded1f948a16093bb4918b8e, type: 3}
+  peace:
+  - {fileID: 8300000, guid: afbe72c3210be4149a42d7e44f7e464b, type: 3}
+  - {fileID: 8300000, guid: afbe72c3210be4149a42d7e44f7e464b, type: 3}
+  - {fileID: 8300000, guid: afbe72c3210be4149a42d7e44f7e464b, type: 3}
+  - {fileID: 8300000, guid: aa76d8fab469c2543aa88fa568602fbd, type: 3}
+  ending:
+  - {fileID: 8300000, guid: fb5b95e43e96e294b8b28e3b825c6723, type: 3}
+  - {fileID: 8300000, guid: e66abba70ff84f2409666ac25528b77f, type: 3}

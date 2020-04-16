@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public ChoiceCategory runTimeChoises;
 
-    public MusicManager musicManager;
+    private MusicManager musicManager;
     public GameObject musicManagerPrefab;
 
     public NarratorBehaviour narrator;
@@ -69,6 +69,16 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        try
+        {
+            musicManager = FindObjectOfType<MusicManager>();
+        }
+        catch
+        {
+            Debug.Log("there is no music manager");
+        }
+        
+
         musicManager = FindObjectOfType<MusicManager>();
         /*
         for (int i = 0; i < canMonsterMove.Length; i++)
@@ -290,7 +300,7 @@ public class GameManager : MonoBehaviour
             if (timer > _timeBetweenPlayerDeathAndEndScreen)
             {
                 dying = false;
-                StartCoroutine(EndScene());
+                StartCoroutine(EndScene(false));
             }
             yield return null;
         }
@@ -301,19 +311,32 @@ public class GameManager : MonoBehaviour
 
     public void OnHeroWonRound()
     {
-        StartCoroutine(EndScene());
+        StartCoroutine(EndScene(true));
     }
 
-    IEnumerator EndScene()
+    IEnumerator EndScene(bool win)
     {
-        try
-        {
-            musicManager.PlayMusic("Ending");
-        }
-        catch
-        {
-            Debug.Log("there is no music manager");
-        }
+        
+            if (win)
+            {
+                if (musicManager != null)
+                {
+                musicManager.sources[4].clip = musicManager.ending[0];
+                musicManager.PlayMusic("Ending");
+
+                }
+
+            }
+            else
+            {
+                if (musicManager != null)
+                {
+                musicManager.sources[4].clip = musicManager.ending[1];
+                musicManager.PlayMusic("Ending");
+                }
+        
+            }
+        
         yield return new WaitForSeconds(1.5f);
         nextTransition.Raise(18);
 
