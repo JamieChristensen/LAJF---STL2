@@ -82,7 +82,7 @@ public class NarratorBehaviour : MonoBehaviour
         {
             y = uiOffset;
         }
-
+        rb2.velocity = Vector2.zero; //Reset velocity to prevent flying away instantly if previously hit by chest.
         Vector3 newPos = new Vector3(x, y);
         transform.position = newPos;
         previousPosition = newPos;
