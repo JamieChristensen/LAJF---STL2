@@ -65,8 +65,6 @@ public class EndSceneDisplay : MonoBehaviour
                     lossInstance.playerImages[0].sprite = playerSpr;
                     lossInstance.playerImages[0].rectTransform.Rotate(new Vector3(0, 180, 180)); //Flips it around X-axis. 
 
-                    Destroy(lossInstance.playerImages[1].gameObject);
-
                     lossInstance.environment.sprite = runtimeChoices.chosenEnvironments[i - 1].environmentSprite;
                     lossInstance.enemyImage.sprite = runtimeChoices.enemies[i - 1].sprite;
                     lossInstance.enemyImage.rectTransform.Rotate(new Vector3(0, 180, 180));
@@ -92,7 +90,7 @@ public class EndSceneDisplay : MonoBehaviour
 
 
                     victoryInstance.playerImages[0].sprite = playerSpr;
-                    victoryInstance.playerImages[1].sprite = playerSpr;
+
 
                     victoryInstance.environment.sprite = runtimeChoices.chosenEnvironments[i - 1].environmentSprite;
                     victoryInstance.enemyImage.sprite = runtimeChoices.enemies[i - 1].sprite;
@@ -131,7 +129,7 @@ public class EndSceneDisplay : MonoBehaviour
 
 
             instance.playerImages[0].sprite = playerSpr;
-            instance.playerImages[1].sprite = playerSpr;
+
 
             instance.environment.sprite = runtimeChoices.chosenEnvironments[i - 1].environmentSprite;
             instance.enemyImage.sprite = runtimeChoices.enemies[i - 1].sprite;
