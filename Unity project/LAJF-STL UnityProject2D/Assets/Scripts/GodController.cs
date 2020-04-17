@@ -48,7 +48,9 @@ public class GodController : MonoBehaviour
 
     public void Start()
     {
-        readyForFire.text = "Press ↓ to Fire!";
+
+
+
         emoteDuration = 0;
         emoteMaxTime = 1f;
         isEmoting = false;
@@ -74,6 +76,11 @@ public class GodController : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+        if (readyForFire == null)
+        {
+            return;
+        }
+        readyForFire.text = "Press ↓ to Fire!";
     }
 
     void Update()
