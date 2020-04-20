@@ -22,8 +22,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public ChoiceCategory theme;
     public ChoiceCategory minion;
     public ChoiceCategory modifier;
-  //  public PlayerItems item;
-   // public EnemyModifier enemyModifier;
+    //  public PlayerItems item;
+    // public EnemyModifier enemyModifier;
     public string choiceType;
 
 
@@ -51,7 +51,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     [Header("Modifier choice variables")]
     public EnemyModifier[] modifierPool;
-    public List<Image>  modifierSprites;
+    public List<Image> modifierSprites;
     public List<TextMeshProUGUI> modifierNames;
     private EnemyModifier[] enemyModifierChoices = new EnemyModifier[3];
 
@@ -120,7 +120,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 }
                 if (runtimeChoices.playerItems.Count != 2)
                 {
-                   // runtimeChoices.playerItems.Capacity = 2;
+                    // runtimeChoices.playerItems.Capacity = 2;
                 }
                 playerItemChoices[0] = playerItemPool[random];
                 playerItemChoices[1] = playerItemPool[random2];
@@ -137,7 +137,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 theOnlyButton.GetComponent<Image>().sprite = theGrandPrize;
                 theOnlyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Sweet Victory";
             }
-           
+
             #endregion InitializeItemSelection
         }
 
@@ -145,13 +145,13 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         {
             #region InitializeMinionSelection
             ShuffleList(enemyPool);
-             for (int i = 0; i < enemyModifierChoices.Length; i++)
-             {
-                 Enemy enemy = enemyPool[i];
-                 enemySprites[i].sprite = enemy.sprite;
-                 enemyNames[i].text = enemy.name;
-                 enemyChoices[i] = enemy;
-             }
+            for (int i = 0; i < enemyModifierChoices.Length; i++)
+            {
+                Enemy enemy = enemyPool[i];
+                enemySprites[i].sprite = enemy.sprite;
+                enemyNames[i].text = enemy.name;
+                enemyChoices[i] = enemy;
+            }
             #endregion InitializeMinionSelection
         }
 
@@ -349,7 +349,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     void HeroHasChosenCharacter()
     {
-       // runtimeChoices.character = finalChoice;
+        // runtimeChoices.character = finalChoice;
         runtimeChoices.chosenHero = characterChoices[choice - 1];
         Debug.Log("Hero has chosen a character! It is: " + characterChoices[choice - 1].myName);
         SwitchToGodSelection(); // switching from character select to theme select
@@ -357,7 +357,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     void GodsHaveChosenTheme()
     {
-       EnvironmentsChosen.Add(environmentThemeChoices[choice - 1]); // the chosen Environment theme is the initilized
+        EnvironmentsChosen.Add(environmentThemeChoices[choice - 1]); // the chosen Environment theme is the initilized
 
         for (int i = 0; i < environmentThemePool.environmentPool.Count; i++) // the Environment Theme Pool is checked
         {
@@ -365,7 +365,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             {
                 EnvironmentsChosen = new List<Environment>();
 
-                for (int ii = 1; ii < environmentThemePool.environmentPool[i].environments.Length;ii++)
+                for (int ii = 1; ii < environmentThemePool.environmentPool[i].environments.Length; ii++)
                 {
                     EnvironmentsChosen.Add(environmentThemePool.environmentPool[i].environments[ii]); // locates all the possible Environments in the chosen theme
                 }
@@ -374,7 +374,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
         ShuffleList(EnvironmentsChosen); // randomise the order
         /* choose 4 environments */
-        for (int i = 0; i < 4; i++) 
+        for (int i = 0; i < 4; i++)
         {
             runtimeChoices.chosenEnvironments[i] = EnvironmentsChosen[i];
         }
@@ -400,9 +400,9 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 break;
         }
         // Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". minion! It is: " + finalChoice.name);
-        
-            runtimeChoices.enemies.Add(enemyChoices[choice - 1]); // adds the chosen minion to the array
-            SwitchToModifierSelection(); // switching from minion select to modifier select
+
+        runtimeChoices.enemies.Add(enemyChoices[choice - 1]); // adds the chosen minion to the array
+        SwitchToModifierSelection(); // switching from minion select to modifier select
 
     }
 
@@ -429,8 +429,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         {
             _musicManager.PlayMusic("Battle");
         }
-            runtimeChoices.enemyModifiers.Add(enemyModifierChoices[choice - 1]); // adds the chosen modifier to the array
-            godsHaveChosenOpponent.Raise(); // Raising event for opponent chosen
+        runtimeChoices.enemyModifiers.Add(enemyModifierChoices[choice - 1]); // adds the chosen modifier to the array
+        godsHaveChosenOpponent.Raise(); // Raising event for opponent chosen
     }
 
     void HeroHasChosenItem()
@@ -449,8 +449,21 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         }
         if (runtimeChoices.runTimeLoopCount != 4)
         {
-            Debug.Log("Hero has chosen the" + runtimeChoices.runTimeLoopCount + ". item! It is: " + finalChoice.name);
+            Debug.Log("Hero has chosen the " + runtimeChoices.runTimeLoopCount + ". item! It is: " + finalChoice.name);
+            Debug.Log("player item choice: " + playerItemChoices[choice - 1]);
+            Debug.Log("playerItems List<> before add: ");
+            Debug.Log(runtimeChoices.playerItems);
+            foreach (PlayerItems item in runtimeChoices.playerItems)
+            {
+                Debug.Log(item.ToString());
+            }
             runtimeChoices.playerItems.Add(playerItemChoices[choice - 1]); // overwrites the old chosen item
+            Debug.Log("playerItems List<>: after add ");
+            Debug.Log(runtimeChoices.playerItems);
+            foreach (PlayerItems item in runtimeChoices.playerItems)
+            {
+                Debug.Log(item.ToString());
+            }
             heroHasChosenItem.Raise(); // Raising event for item chosen
                                        //Destroy(gameObject);
         }

@@ -17,4 +17,4 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInput: Then came Gods, a mighty threat!
-    timeOfTextDisplayed: 6
+    timeOfTextDisplayed: 3

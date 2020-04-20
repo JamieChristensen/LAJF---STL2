@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
     public NarratorBehaviour narrator;
 
     public static bool canPlayerMove { get; private set; }
-    [SerializeField] private bool[] _canMonsterMove; 
-    public bool[] canMonsterMove { get { return _canMonsterMove; }}
+    [SerializeField] private bool[] _canMonsterMove;
+    public bool[] canMonsterMove { get { return _canMonsterMove; } }
 
     public VoidTypeListener environmentAndHeroChoiceFinished;  //When the gods finished picking the environment.
     public VoidTypeListener godsPickedMonsterAndTrait;      //Should be raised when gods finish selecting both monster and traits.
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("there is no music manager");
         }
-        
+
 
         musicManager = FindObjectOfType<MusicManager>();
         /*
@@ -88,11 +88,11 @@ public class GameManager : MonoBehaviour
         */
         _canMonsterMove[0] = false;
 
-       // Debug.Log("Index to Load: " + runTimeChoises.chosenEnvironments[0].environmentIndex.ToString());
-        
+        // Debug.Log("Index to Load: " + runTimeChoises.chosenEnvironments[0].environmentIndex.ToString());
 
 
-         canPlayerMove = true;
+
+        canPlayerMove = true;
 
         gameState = initialGamestate;
         // GameObject.DontDestroyOnLoad(this);
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         {
             isGamePaused.setBool(false);
         }
-       // runTimeChoises.runTimeLoopCount = 1; // this is the first loop
+        // runTimeChoises.runTimeLoopCount = 1; // this is the first loop
         NextEnvironment();
     }
 
@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
 
     public void GodsHavePickedMonsterAndTrait()
     {
-        
+
     }
 
     public void GodsPickedMonsterAndTrait()
@@ -212,7 +212,7 @@ public class GameManager : MonoBehaviour
         string enemyInfo = FindObjectOfType<EnemyBehaviour>().name;
         narrator.Narrate("The Hero has Eliminated " + enemyInfo);
         RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music
-        
+
     }
 
     public void OnOpenedChest()
@@ -242,7 +242,23 @@ public class GameManager : MonoBehaviour
 
     public void OnPickedItem()
     {
-        if (runTimeChoises.runTimeLoopCount<6)
+        StartCoroutine(IncrementRuntimeLoopCount());
+
+        //change environment to next one in line.
+        NextEnvironment();
+        sceneManager.ChooseChoiceSceneToLoad(indexOfMinionChoiceScene);
+        nextTransition.Raise(16);
+        // RequestGameStateChange(GameStates.InitializingNextScene);
+        Time.timeScale = 1f;
+        canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
+                              // StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
+    }
+
+    IEnumerator IncrementRuntimeLoopCount()
+    {
+        yield return new WaitForSeconds(0.01f);
+
+        if (runTimeChoises.runTimeLoopCount < 6)
         {
             runTimeChoises.runTimeLoopCount++;
         }
@@ -251,15 +267,6 @@ public class GameManager : MonoBehaviour
             runTimeChoises.runTimeLoopCount = 1;
         }
 
-
-        //change environment to next one in line.
-        NextEnvironment();
-        sceneManager.ChooseChoiceSceneToLoad(indexOfMinionChoiceScene);
-        nextTransition.Raise(16);
-       // RequestGameStateChange(GameStates.InitializingNextScene);
-        Time.timeScale = 1f;
-        canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
-       // StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
     }
 
 
@@ -305,7 +312,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        
+
 
     }
 
@@ -316,27 +323,27 @@ public class GameManager : MonoBehaviour
 
     IEnumerator EndScene(bool win)
     {
-        
-            if (win)
+
+        if (win)
+        {
+            if (musicManager != null)
             {
-                if (musicManager != null)
-                {
                 musicManager.sources[4].clip = musicManager.ending[0];
                 musicManager.PlayMusic("Ending");
 
-                }
-
             }
-            else
+
+        }
+        else
+        {
+            if (musicManager != null)
             {
-                if (musicManager != null)
-                {
                 musicManager.sources[4].clip = musicManager.ending[1];
                 musicManager.PlayMusic("Ending");
-                }
-        
             }
-        
+
+        }
+
         yield return new WaitForSeconds(1.5f);
         nextTransition.Raise(18);
 

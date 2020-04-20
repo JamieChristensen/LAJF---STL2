@@ -11,6 +11,7 @@ public class ItemFrameDisplay : MonoBehaviour
     public Image itemImage;
     public Sprite cage;
 
+
     public void OnHeroPickedItem()
     {
         if (runTimeChoices.runTimeLoopCount == _itemFrameNumber)
@@ -18,10 +19,17 @@ public class ItemFrameDisplay : MonoBehaviour
             itemSocketFilledBackground.SetActive(true);
             itemSocketDefaultBackground.SetActive(false);
             itemImage.gameObject.SetActive(true);
-            if (runTimeChoices.playerItems.Count != 0)
+            if (runTimeChoices.playerItems.Count != 0 && runTimeChoices.playerItems != null)
             {
+                Debug.Log("ItemFrame runtime playerItemsList: ");
+                foreach (PlayerItems item in runTimeChoices.playerItems)
+                {
+                    Debug.Log(item.ToString());
+                }
                 itemImage.sprite = cage;
-                //itemImage.sprite = runTimeChoices.playerItems[_itemFrameNumber - 1].itemSprite;
+
+                int clampedSpriteIndex = Mathf.Clamp(_itemFrameNumber - 1, 0, runTimeChoices.playerItems.Count - 1);
+                itemImage.sprite = runTimeChoices.playerItems[clampedSpriteIndex].itemSprite;
             }
             else
             {
@@ -29,4 +37,6 @@ public class ItemFrameDisplay : MonoBehaviour
             }
         }
     }
+
+
 }

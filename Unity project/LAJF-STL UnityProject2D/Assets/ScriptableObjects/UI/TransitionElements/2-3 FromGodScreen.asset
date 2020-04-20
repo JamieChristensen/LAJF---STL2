@@ -17,4 +17,4 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInput: A long way from home the scene was set...
-    timeOfTextDisplayed: 6
+    timeOfTextDisplayed: 3
