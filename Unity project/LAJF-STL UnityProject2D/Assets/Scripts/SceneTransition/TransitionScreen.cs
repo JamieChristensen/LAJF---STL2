@@ -152,7 +152,7 @@ public class TransitionScreen : MonoBehaviour
         float timeToLerp = transitionElements[transitionIndex].textElement[0].timeOfTextDisplayed;
         float timeLerped = 0;
 
-        Debug.Log("Doing Transition - " + _nextTransitionElements.details);
+        //Debug.Log("Doing Transition - " + _nextTransitionElements.details);
 
         float oppositeAlpha;
         if (_nextTransitionElements.startTransparent)

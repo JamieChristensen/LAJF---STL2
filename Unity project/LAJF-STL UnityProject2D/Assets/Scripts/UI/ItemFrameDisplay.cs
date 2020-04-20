@@ -9,6 +9,7 @@ public class ItemFrameDisplay : MonoBehaviour
     public ChoiceCategory runTimeChoices;
     public GameObject itemSocketFilledBackground, itemSocketDefaultBackground;
     public Image itemImage;
+    public Sprite cage;
 
     public void OnHeroPickedItem()
     {
@@ -17,7 +18,15 @@ public class ItemFrameDisplay : MonoBehaviour
             itemSocketFilledBackground.SetActive(true);
             itemSocketDefaultBackground.SetActive(false);
             itemImage.gameObject.SetActive(true);
-            itemImage.sprite = runTimeChoices.playerItems[_itemFrameNumber - 1].itemSprite;
+            if (runTimeChoices.playerItems.Count != 0)
+            {
+                itemImage.sprite = cage;
+                //itemImage.sprite = runTimeChoices.playerItems[_itemFrameNumber - 1].itemSprite;
+            }
+            else
+            {
+                itemImage.sprite = cage;
+            }
         }
     }
 }

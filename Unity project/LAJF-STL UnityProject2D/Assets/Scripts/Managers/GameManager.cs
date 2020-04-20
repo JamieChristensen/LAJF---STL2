@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("there is no music manager");
         }
-        string enemyInfo = FindObjectOfType<EnemyBehaviour>().nameUI.text;
+        string enemyInfo = FindObjectOfType<EnemyBehaviour>().name;
         narrator.Narrate("The Hero has Eliminated " + enemyInfo);
         RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music
         

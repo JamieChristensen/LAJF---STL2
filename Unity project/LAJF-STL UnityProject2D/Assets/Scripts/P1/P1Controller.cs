@@ -308,9 +308,9 @@ public class P1Controller : MonoBehaviour
 
             runtimePlayerStats.baseAttackDamage += playerItem.damageModifier;
         }
-
+        
         playerItems.AddRange(chosenItems.Except(playerItems)); //Add new items to playeritems
-        Debug.Log("Updated runtime playerstats with new item!");
+        //Debug.Log("Updated runtime playerstats with new item!");
 
         //Strictly speaking only necessary if playerHP actually changed here, but for good measure:
         playerHPEvent.Raise(currentHitPoints);
