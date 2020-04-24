@@ -1587,7 +1587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3799,6 +3799,16 @@ PrefabInstance:
       propertyPath: audioList
       value: 
       objectReference: {fileID: 1292126497}
+    - target: {fileID: 2753250053838935131, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2753250053843468296, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6634193747434407991, guid: 3dee2047a9be4ff4286953596427c40d,
         type: 3}
       propertyPath: audioList

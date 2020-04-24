@@ -45,12 +45,10 @@ public class GodController : MonoBehaviour
     public TextMeshProUGUI readyForFire;
     private bool OnCooldown = false;
     private float timer = 0, cooldownTime = 15;
+    public bool inCombatMode = true; // the god can only attack if this is true 
 
     public void Start()
     {
-
-
-
         emoteDuration = 0;
         emoteMaxTime = 1f;
         isEmoting = false;
@@ -86,7 +84,7 @@ public class GodController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(shoot) && OnCooldown == false)
+        if (Input.GetKeyDown(shoot) && OnCooldown == false /*&& inCombatMode == true */)
         {
             Shoot();
             timer = 0;
@@ -136,4 +134,15 @@ public class GodController : MonoBehaviour
         isEmoting = true;
         emoteDuration = 0;
     }
+
+    public void OnMonsterDied()
+    {
+        inCombatMode = false;
+    }
+
+    public void OnHeroReleasedFromCage()
+    {
+        inCombatMode = true;
+    }
+
 }
