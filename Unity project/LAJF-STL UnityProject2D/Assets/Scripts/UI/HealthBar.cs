@@ -33,9 +33,9 @@ public class HealthBar : MonoBehaviour
     public void UpdateHPValues(int currentHealth, int maxHitPoints)
     {
         maxHp = maxHitPoints;
-        Debug.Log("maxHp: " + maxHp);
+        //Debug.Log("maxHp: " + maxHp);
         currentHp = currentHealth;
-        Debug.Log("currentHp: " + currentHp);
+        //Debug.Log("currentHp: " + currentHp);
         VisualiseHealthChange(currentHealth);
     }
 
@@ -81,7 +81,7 @@ public class HealthBar : MonoBehaviour
         }
 
 
-        Debug.Log("CurrentHealthFillTransform.localScale: " + CurrentHealthFillTransform.localScale);
+        //Debug.Log("CurrentHealthFillTransform.localScale: " + CurrentHealthFillTransform.localScale);
 
     }
 
@@ -97,9 +97,13 @@ public class HealthBar : MonoBehaviour
         }
         else
         {
+            if (CurrentHealthFillTransform.localScale == DamageHealthFillTransform.localScale)
+            {
+                return;
+            }
             damageScaleX = Mathf.Lerp(damageScaleX, currentHealthScaleX, Time.deltaTime * 4f);
             DamageHealthFillTransform.localScale = new Vector3(damageScaleX, 1, 1);
-            Debug.Log("DamageHealthFillTransform.localScale: " + DamageHealthFillTransform.localScale);
+            //Debug.Log("DamageHealthFillTransform.localScale: " + DamageHealthFillTransform.localScale);
         }
     }
 
