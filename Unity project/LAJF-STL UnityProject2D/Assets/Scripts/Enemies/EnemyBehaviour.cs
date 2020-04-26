@@ -17,6 +17,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     public TextMeshProUGUI nameUI;
 
     private int currentHealth;
+    public int maxHealth;
     [SerializeField]
     private float projectileSpeed = 1;
     private float cooldownTimer;
@@ -222,6 +223,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         name = agent.GenerateName(modifiers);
         nameUI.SetText(name);
         currentHealth = agent.health;
+        maxHealth = currentHealth;
 
     }
     public void InitalizeEnemy(Enemy _agent, EnemyModifier[] _modifiers)
@@ -232,13 +234,14 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         nameUI.SetText(name);
 
         currentHealth = agent.health;
-        healthBar.UpdateHPValues(currentHealth, agent.health);
+        maxHealth = currentHealth;
+        healthBar.UpdateHPValues(currentHealth, maxHealth);
         foreach (EnemyModifier modifier in _modifiers)
         {
             ApplyModifier(modifier);
         }
 
-        healthBar.UpdateHPValues(currentHealth, agent.health);
+        healthBar.UpdateHPValues(currentHealth, maxHealth);
     }
 
     private void ApplyModifier(EnemyModifier _modifier)

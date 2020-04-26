@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5531318744926372242}
   - component: {fileID: 2961752108973264672}
   - component: {fileID: 8745486207803386865}
+  - component: {fileID: 5526591701296776627}
   m_Layer: 0
   m_Name: God topbar
   m_TagString: Untagged
@@ -117,6 +118,7 @@ MonoBehaviour:
   lightningSpeed: 25
   firePoint: {fileID: 7840291326655741840}
   readyForFire: {fileID: 0}
+  inCombatMode: 1
 --- !u!114 &2961752108973264672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +164,33 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5531318744926372242}
         m_MethodName: OnHeroReleasedFromCage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5526591701296776627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866493795351746613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 228bcd2449e92ab4caea40490134b6b8, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5531318744926372242}
+        m_MethodName: OnHeroCaged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

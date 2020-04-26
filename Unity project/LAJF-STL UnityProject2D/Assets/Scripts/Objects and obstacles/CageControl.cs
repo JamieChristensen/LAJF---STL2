@@ -134,6 +134,8 @@ public class CageControl : MonoBehaviour
         runningCoroutine = true;
         Vector3 targetPosition = highTransform.position;
 
+        playerReleasedFromCage.Raise();
+
         while (transform.position != targetPosition && timer < 5)
         {
             transform.position = Vector3.Lerp(transform.position, targetPosition, timer / 100f);
@@ -141,7 +143,7 @@ public class CageControl : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         runningCoroutine = false;
-        playerReleasedFromCage.Raise();
+        
     }
 
 

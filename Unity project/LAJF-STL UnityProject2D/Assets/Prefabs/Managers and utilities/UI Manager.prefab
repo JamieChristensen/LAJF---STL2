@@ -304,8 +304,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.789978, y: 43.700012}
-  m_SizeDelta: {x: -63.25, y: -249.89}
+  m_AnchoredPosition: {x: 1.7900391, y: 43.69995}
+  m_SizeDelta: {x: -63.25, y: -244.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1846368448
 CanvasRenderer:
@@ -768,6 +768,7 @@ MonoBehaviour:
   itemSocketFilledBackground: {fileID: 5037408905343088967}
   itemSocketDefaultBackground: {fileID: 8278234971436590653}
   itemImage: {fileID: 4500942909285470833}
+  cage: {fileID: 0}
 --- !u!1 &1172420935659835347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,6 +1141,7 @@ MonoBehaviour:
   itemSocketFilledBackground: {fileID: 4683162118469130359}
   itemSocketDefaultBackground: {fileID: 1172420935659835347}
   itemImage: {fileID: 6497973780493231070}
+  cage: {fileID: 0}
 --- !u!1 &3758555717210759009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,6 +2246,7 @@ MonoBehaviour:
   itemSocketFilledBackground: {fileID: 8495209820792202168}
   itemSocketDefaultBackground: {fileID: 3086973968939678533}
   itemImage: {fileID: 7421654395464839162}
+  cage: {fileID: 0}
 --- !u!1 &8278234971436590653
 GameObject:
   m_ObjectHideFlags: 0
@@ -2440,6 +2443,7 @@ MonoBehaviour:
   itemSocketFilledBackground: {fileID: 761547682177939782}
   itemSocketDefaultBackground: {fileID: 3758555717210759009}
   itemImage: {fileID: 3853768445551394098}
+  cage: {fileID: 0}
 --- !u!1 &8495209820792202168
 GameObject:
   m_ObjectHideFlags: 0

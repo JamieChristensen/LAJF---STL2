@@ -84,7 +84,7 @@ public class GodController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(shoot) && OnCooldown == false /*&& inCombatMode == true */)
+        if (Input.GetKeyDown(shoot) && OnCooldown == false && inCombatMode == true)
         {
             Shoot();
             timer = 0;
@@ -98,7 +98,13 @@ public class GodController : MonoBehaviour
         if (timer > cooldownTime)
         {
             OnCooldown = false;
+            timer = 0;
+            if (!inCombatMode)
+            {
+                return;
+            }
             readyForFire.text = "Press ↓ to Fire!";
+            
         }
 
         if (!isEmoting)
@@ -138,11 +144,24 @@ public class GodController : MonoBehaviour
     public void OnMonsterDied()
     {
         inCombatMode = false;
+        readyForFire.text = "Waiting for combat!";
+    }
+
+    public void OnHeroCaged()
+    {
+        inCombatMode = false;
+        readyForFire.text = "Waiting for combat!";
     }
 
     public void OnHeroReleasedFromCage()
     {
         inCombatMode = true;
+        if (OnCooldown)
+        {
+            readyForFire.text = "Cooling off!";
+            return;
+        }
+        readyForFire.text = "Press ↓ to Fire!";
     }
 
 }

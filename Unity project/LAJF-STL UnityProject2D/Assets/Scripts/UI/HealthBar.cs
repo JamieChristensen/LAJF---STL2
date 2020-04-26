@@ -14,8 +14,8 @@ public class HealthBar : MonoBehaviour
 
     bool freezeVisibleDamage = false;
     float freezeTime = 0.5f, timer = 0;
-    public int maxHp = 0;
-    public int currentHp = 0;
+    public float maxHp = 0;
+    public float currentHp = 0;
 
     float damageScaleX = 5, currentHealthScaleX = 5;
 
@@ -27,14 +27,16 @@ public class HealthBar : MonoBehaviour
     {
         GetMaxHP();
         currentHp = currentHealth;
-        VisualiseHealthChange(currentHp);
+        VisualiseHealthChange(currentHealth);
     }
 
     public void UpdateHPValues(int currentHealth, int maxHitPoints)
     {
         maxHp = maxHitPoints;
+        Debug.Log("maxHp: " + maxHp);
         currentHp = currentHealth;
-        VisualiseHealthChange(currentHp);
+        Debug.Log("currentHp: " + currentHp);
+        VisualiseHealthChange(currentHealth);
     }
 
 
@@ -44,7 +46,7 @@ public class HealthBar : MonoBehaviour
         {
             try
             {
-                maxHp = GetComponentInParent<EnemyBehaviour>().agent.health;
+                maxHp = GetComponentInParent<EnemyBehaviour>().maxHealth;
             }
             catch
             {
@@ -60,12 +62,13 @@ public class HealthBar : MonoBehaviour
 
     public void VisualiseHealthChange(int currentHealth)
     {
-        if (currentHealth > 0)
+        currentHp = currentHealth;
+        if (currentHp > 0)
         {
             freezeVisibleDamage = true;
             timer = 0;
-            hitPointsText.SetText(currentHealth + " HP");
-            currentHealthScaleX = (5 * currentHealth / maxHp);
+            hitPointsText.SetText(currentHp + " HP");
+            currentHealthScaleX = (5 * currentHp / maxHp);
             CurrentHealthFillTransform.localScale = new Vector3(currentHealthScaleX, 1, 1);
         }
         else
@@ -78,7 +81,7 @@ public class HealthBar : MonoBehaviour
         }
 
 
-        // Debug.Log(HealthBarScaleTransform.localScale);
+        Debug.Log("CurrentHealthFillTransform.localScale: " + CurrentHealthFillTransform.localScale);
 
     }
 
@@ -96,10 +99,11 @@ public class HealthBar : MonoBehaviour
         {
             damageScaleX = Mathf.Lerp(damageScaleX, currentHealthScaleX, Time.deltaTime * 4f);
             DamageHealthFillTransform.localScale = new Vector3(damageScaleX, 1, 1);
+            Debug.Log("DamageHealthFillTransform.localScale: " + DamageHealthFillTransform.localScale);
         }
-
-
     }
+
+
 
 
 

@@ -29,15 +29,43 @@ public class Spawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
+        switch (runtimeChoices.runTimeLoopCount)
+        {
+            case 1:
+                StartCoroutine(SpawnEnemyAfterDelay(3));
+                break;
 
-        Vector3 deltaVector = new Vector3(Random.Range(0,60), 0, 0);
-        GameObject go = Instantiate(enemyPrefab, enemySpawnPos-deltaVector, Quaternion.identity);
+            case 2:
+                StartCoroutine(SpawnEnemyAfterDelay(3));
+                break;
+
+            case 3:
+                StartCoroutine(SpawnEnemyAfterDelay(3));
+                break;
+
+            case 4:
+                StartCoroutine(SpawnEnemyAfterDelay(5));
+                break;
+
+            default:
+                StartCoroutine(SpawnEnemyAfterDelay(5));
+                break;
+        }
+        
+        
+    }
+
+    IEnumerator SpawnEnemyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Vector3 deltaVector = new Vector3(Random.Range(0, 60), 0, 0);
+        GameObject go = Instantiate(enemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
         EnemyBehaviour enemyBehaviour = go.GetComponent<EnemyBehaviour>();
         //Runtimeloopcount incremented once per item-choice.
         int runTimeLoopCount = runtimeChoices.runTimeLoopCount;
 
-        Enemy enemy = runtimeChoices.enemies[runTimeLoopCount-1];
-        EnemyModifier[] modifiers = new EnemyModifier[] { runtimeChoices.enemyModifiers[runTimeLoopCount-1] };
+        Enemy enemy = runtimeChoices.enemies[runTimeLoopCount - 1];
+        EnemyModifier[] modifiers = new EnemyModifier[] { runtimeChoices.enemyModifiers[runTimeLoopCount - 1] };
         enemyBehaviour.InitalizeEnemy(enemy, modifiers);
 
         //take account for boss-amount of modifiers
