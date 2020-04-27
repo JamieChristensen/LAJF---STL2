@@ -17,6 +17,7 @@ public class P1Controller : MonoBehaviour
         DoubleTapLeft,
         DoubleTapRight
     };
+
     #region INSPECTOR
     public P1Stats runtimePlayerStats;
     public IntEvent playerHPEvent;
@@ -173,7 +174,10 @@ public class P1Controller : MonoBehaviour
 
 
         #region UpdateSprites
-        spriteRenderer.flipX = moveDirection.x > 0;
+        bool isMovingRight = moveDirection.x > 0;
+        spriteRenderer.flipX = isMovingRight;
+        shotgunImage.rectTransform.rotation = isMovingRight ? Quaternion.Euler(new Vector3(0, 0, 0)) : Quaternion.Euler(new Vector3(180, 0, 180));
+
         #endregion UpdateSprites
     }
 

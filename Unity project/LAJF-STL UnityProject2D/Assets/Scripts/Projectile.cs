@@ -10,6 +10,14 @@ public class Projectile : MonoBehaviour
     public ParticleSystem particles;
     private float timer = 0;
     private float maxTime = 0.1f;
+
+    [SerializeField]
+    private GameObject particleExplosion;
+
+
+
+
+
     public void OnCollisionEnter2D(Collision2D coll)
     {
         GameObject collided = coll.gameObject;
@@ -23,10 +31,15 @@ public class Projectile : MonoBehaviour
             if (collided.CompareTag("Player")){
                 collided.GetComponent<P1Controller>().TakeDamage(damage);
             }
+            
+            
+            GameObject instance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
+            Destroy(instance, 1f);
 
             GameObject.Destroy(gameObject);
         }
     }
+
     public void Start(){
         particles.Stop();
         particles.Clear();
