@@ -18,3 +18,4 @@ MonoBehaviour:
   healthModifier: 0
   speedModifier: 0
   damageModifier: 0
+  weaponType: 1

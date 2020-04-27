@@ -76,6 +76,9 @@ public class P1Controller : MonoBehaviour
     private float dashSpeed;
     private bool dashOnCooldown;
     private bool hasShotgun = false;
+    private bool hasGatlingGun = false;
+    private bool hasExplodingShots = false;
+
     [SerializeField]
     private Image shotgunImage;
 
@@ -105,6 +108,9 @@ public class P1Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             hasShotgun = true;
+            hasGatlingGun = true;
+            hasExplodingShots = true;
+
             shotgunImage.gameObject.SetActive(true);
         }
 
@@ -223,7 +229,7 @@ public class P1Controller : MonoBehaviour
         }
     }
 
-    private bool canPlayerAttack()
+    private bool CanPlayerAttack()
     {
         //Can have many more conditionals changing this in the future:
         return !justUsedRangedAttack;
@@ -234,7 +240,7 @@ public class P1Controller : MonoBehaviour
         switch (input)
         {
             case Player1Input.Attack:
-                if (!canPlayerAttack())
+                if (!CanPlayerAttack())
                 {
                     return;
                 }
@@ -353,6 +359,7 @@ public class P1Controller : MonoBehaviour
 
             runtimePlayerStats.baseAttackDamage += playerItem.damageModifier;
 
+
             //Weapontypes addons:
             switch (playerItem.weaponType)
             {
@@ -384,9 +391,15 @@ public class P1Controller : MonoBehaviour
         runtimePlayerStats.baseAttackDamage = baselineStats.baseAttackDamage;
         runtimePlayerStats.maxHitPoints = baselineStats.maxHitPoints;
         runtimePlayerStats.moveSpeed = baselineStats.moveSpeed;
-        rangedCooldownMaxTime = baselineStats.attackRate;
+
+        runtimePlayerStats.attackRate = baselineStats.attackRate;
+        rangedCooldownMaxTime = runtimePlayerStats.attackRate;
+
+
         runtimePlayerStats.jumpForce = baselineStats.jumpForce;
         runtimePlayerStats.rangedAttacks = baselineStats.rangedAttacks;
+
+
         runtimePlayerStats.meleeAttacks = baselineStats.meleeAttacks;
         if (runtimeChoices.chosenHero.characterSprite != null)
         {

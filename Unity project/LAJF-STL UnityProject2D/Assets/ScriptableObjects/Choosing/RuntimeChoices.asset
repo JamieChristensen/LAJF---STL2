@@ -15,61 +15,45 @@ MonoBehaviour:
   CategoryName: Runtime Choices
   Options: []
   chosenGods:
+  - {fileID: 11400000, guid: 517b2ecde8cfef14ba0b67d4f2fbc910, type: 2}
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
-  - {fileID: 11400000, guid: 0d870e1f04d298b44a5f5fd745ccf72f, type: 2}
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
-  playerItems:
-  - {fileID: 11400000, guid: 5966a2f15e04c4a4997eec965b58ecc2, type: 2}
-  - {fileID: 11400000, guid: 5966a2f15e04c4a4997eec965b58ecc2, type: 2}
+  playerItems: []
+  baselineItem: {fileID: 11400000, guid: 3517c50eeea57b54880e316331a20839, type: 2}
   enemies:
-  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
-  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
+  - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
   - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
   - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
-  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
-  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
-  - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
-  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
-  - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
-  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
   enemyModifiers:
-  - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
-  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
-  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
-  - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
-  - {fileID: 11400000, guid: 43928b0c3460d764d9dbeb910483ea71, type: 2}
-  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
-  - {fileID: 11400000, guid: 43928b0c3460d764d9dbeb910483ea71, type: 2}
-  - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
-  - {fileID: 11400000, guid: 43928b0c3460d764d9dbeb910483ea71, type: 2}
+  - {fileID: 11400000, guid: 82d84c797c4bb9949b13a7b7b0526361, type: 2}
   - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
   chosenEnvironments:
-  - environmentName: Castle2
-    theme: Castle
-    environmentSprite: {fileID: 21300000, guid: 96578e020b98850489190505a747cfde,
+  - environmentName: Mythical2
+    theme: Mythical
+    environmentSprite: {fileID: 21300000, guid: 0a649816dd2711641a4e90cc09052196,
       type: 3}
-    environmentIndex: 19
-  - environmentName: Castle3
-    theme: Castle
-    environmentSprite: {fileID: 21300000, guid: 543280da1b454154f9f3220d5e2f1d2a,
+    environmentIndex: 28
+  - environmentName: Mythical3
+    theme: Mythical
+    environmentSprite: {fileID: 21300000, guid: 1ad27daa2c1e2864b8a1b825736de7c2,
       type: 3}
-    environmentIndex: 20
-  - environmentName: Castle1
-    theme: Castle
-    environmentSprite: {fileID: 21300000, guid: aa5a9cec318fc474e96ab2e55dc0601d,
+    environmentIndex: 29
+  - environmentName: Mythical1
+    theme: Mythical
+    environmentSprite: {fileID: 21300000, guid: 3a86162e1535e9641a445fe8417e7209,
       type: 3}
-    environmentIndex: 18
-  - environmentName: Castle5
-    theme: Castle
-    environmentSprite: {fileID: 21300000, guid: 1957038bcc272d143b2298b2f1575f59,
+    environmentIndex: 27
+  - environmentName: Mythical4
+    theme: Mythical
+    environmentSprite: {fileID: 21300000, guid: f939548dec3ea0c48bb35af0f68a2ee0,
       type: 3}
-    environmentIndex: 22
+    environmentIndex: 30
   runTimeLoopCount: 1
-  chosenHero: {fileID: 11400000, guid: 7f7febd433328a94a94af68dd70f11b0, type: 2}
+  chosenHero: {fileID: 11400000, guid: 773b4d324289d78408402733c242829c, type: 2}
   character: {fileID: 0}
   theme: {fileID: 0}
   firstOpponent:
-    minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
+    minion: {fileID: 6271494558876136031, guid: ad41a8d43eab452448bc40561b6bfae5,
       type: 3}
     modifier: {fileID: 0}
   firstItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,

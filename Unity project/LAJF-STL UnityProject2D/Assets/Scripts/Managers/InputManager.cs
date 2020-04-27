@@ -102,7 +102,7 @@ public class InputManager : MonoBehaviour
 
             player1Jump = Input.GetKeyDown(player1JumpKey);
             player1JumpHold = Input.GetKey(player1JumpKey);
-            player1Attack = Input.GetKeyDown(player1AttackKey);
+            player1Attack = Input.GetKey(player1AttackKey);
 
 
             if (Input.GetKeyDown(player1Left))
