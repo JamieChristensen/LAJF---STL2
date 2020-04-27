@@ -16,9 +16,13 @@ public class EndSceneDisplay : MonoBehaviour
 
     [SerializeField]
     private float scrollSpeed;
+    [SerializeField]
+    private float extraSpeedForScroll;
 
     public GameObject baseText;
     public GameObject creditsText;
+
+    public KeyCode[] keysThatCanSpeedUpScene;
 
     [SerializeField]
     private string[] coolDescriptors = { "gloriously", "bravely", "righteously",
@@ -145,7 +149,17 @@ public class EndSceneDisplay : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector3.up * scrollSpeed * Time.deltaTime);
-        baseText.transform.Translate(Vector3.up * scrollSpeed * Time.deltaTime);
+        float effectiveScrollSpeed = scrollSpeed;
+
+        foreach (KeyCode keycode in keysThatCanSpeedUpScene)
+        {
+            if (Input.GetKey(keycode))
+            {
+                effectiveScrollSpeed += extraSpeedForScroll;
+            }
+        }
+
+        transform.Translate(Vector3.up * effectiveScrollSpeed * Time.deltaTime);
+        baseText.transform.Translate(Vector3.up * effectiveScrollSpeed * Time.deltaTime);
     }
 }
