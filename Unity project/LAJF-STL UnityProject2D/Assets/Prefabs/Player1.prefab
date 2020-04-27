@@ -128,7 +128,8 @@ MonoBehaviour:
   jump: 32
   attackRanged: 106
   attackMelee: 104
-  spriteRenderer: {fileID: 5892630455597672936}
+  defaultSprite: {fileID: 0}
+  playerSprite: {fileID: 0}
   matWhite: {fileID: 0}
   deathLeadUp: {fileID: 6230110633612993981, guid: 732429f1d1fe58c49a5207514a308df5,
     type: 3}
@@ -145,7 +146,7 @@ MonoBehaviour:
   rangedCooldownMaxTime: 0.2
   obstacles:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 208896
   projectileSpeed: 40
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   playerItems: []

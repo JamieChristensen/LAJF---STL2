@@ -479,7 +479,7 @@ PrefabInstance:
     - target: {fileID: 3976270134125333037, guid: 382a995c9cc81b34f983693e31457cd1,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Cage
       objectReference: {fileID: 0}
     - target: {fileID: 6274955463350767892, guid: 382a995c9cc81b34f983693e31457cd1,
         type: 3}

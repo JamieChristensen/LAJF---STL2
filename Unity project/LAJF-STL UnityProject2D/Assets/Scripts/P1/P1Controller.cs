@@ -132,7 +132,7 @@ public class P1Controller : MonoBehaviour
         {
             rb.gravityScale = isHoldingJump ? baseGravity : dropGravityModifier;
         }
-        
+
         #endregion MovementModifying
 
 
@@ -216,10 +216,7 @@ public class P1Controller : MonoBehaviour
                 moveDirection = (value > 0.1f) ? Vector2.right :
                     (value < -0.1f) ? Vector2.left : moveDirection;
 
-                if (IsPlayerCloseToWall(1.5f))
-                {
-                    rb.velocity = new Vector2(0, rb.velocity.y);
-                }
+
 
                 if (dashingLeft || dashingRight)
                 {
@@ -231,6 +228,11 @@ public class P1Controller : MonoBehaviour
                     rb.velocity = new Vector2(dashDirection * dashSpeed, 0);
                 }
 
+                if (IsPlayerCloseToObstacle(1.5f))
+                {
+                    
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                }
 
                 break;
             case Player1Input.Jump:
@@ -276,13 +278,13 @@ public class P1Controller : MonoBehaviour
 
     }
 
-    private bool IsPlayerCloseToWall(float range)
+    private bool IsPlayerCloseToObstacle(float range)
     {
         //Has to collisioncheck for walls/ground after every round of movement-input.
         //Check if there is a wall on the side the player is moving:
         RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, range, obstacles);
         // If it hits something...
-        if (hit.collider != null && (hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Ground")))
+        if (hit.collider != null && (hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Ground") || hit.transform.CompareTag("Cage")))
         {
             return true;
         }
@@ -308,7 +310,7 @@ public class P1Controller : MonoBehaviour
 
             runtimePlayerStats.baseAttackDamage += playerItem.damageModifier;
         }
-        
+
         playerItems.AddRange(chosenItems.Except(playerItems)); //Add new items to playeritems
         //Debug.Log("Updated runtime playerstats with new item!");
 
