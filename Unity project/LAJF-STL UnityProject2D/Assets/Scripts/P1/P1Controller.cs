@@ -87,6 +87,7 @@ public class P1Controller : MonoBehaviour
     [Range(0.1f, 0.9f)]
     private float gatlingMovespeedMultiplier = 0.5f;
 
+    [SerializeField]
     private bool hasExplodingShots = false;
 
     [SerializeField]
