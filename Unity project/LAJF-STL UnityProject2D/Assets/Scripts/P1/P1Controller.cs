@@ -75,7 +75,7 @@ public class P1Controller : MonoBehaviour
     [SerializeField]
     private float dashSpeed;
     private bool dashOnCooldown;
-    private bool hasShotgun = false; 
+    private bool hasShotgun = false;
     [SerializeField]
     private Image shotgunImage;
 
@@ -373,7 +373,7 @@ public class P1Controller : MonoBehaviour
         }
 
         playerItems.AddRange(chosenItems.Except(playerItems)); //Add new items to playeritems
-        //Debug.Log("Updated runtime playerstats with new item!");
+        Debug.Log("Updated runtime playerstats with new item!");
 
         //Strictly speaking only necessary if playerHP actually changed here, but for good measure:
         playerHPEvent.Raise(currentHitPoints);
@@ -403,6 +403,26 @@ public class P1Controller : MonoBehaviour
         currentHitPoints = baselineStats.startingHitPoints;
         playerHPEvent.Raise(currentHitPoints);
         //healthBar.VisualiseHealthChange(baselineStats.startingHitPoints);
+
+        runtimeChoices.baselineItem = baselineStats.startItem;
+
+        //Weapontypes addons:
+        switch (baselineStats.startItem.weaponType)
+        {
+            case PlayerItems.WeaponType.None:
+                break;
+
+            case PlayerItems.WeaponType.ExplodingShots:
+                break;
+
+            case PlayerItems.WeaponType.Gatlinggun:
+                break;
+
+            case PlayerItems.WeaponType.Shotgun:
+                hasShotgun = true;
+                shotgunImage.gameObject.SetActive(true);
+                break;
+        }
     }
 
     public void DamageAnimation()
