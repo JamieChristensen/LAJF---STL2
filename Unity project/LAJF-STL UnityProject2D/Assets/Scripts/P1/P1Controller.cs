@@ -15,7 +15,8 @@ public class P1Controller : MonoBehaviour
         Attack,
         JumpHold,
         DoubleTapLeft,
-        DoubleTapRight
+        DoubleTapRight,
+        Explosion
     };
 
     #region INSPECTOR
@@ -90,6 +91,9 @@ public class P1Controller : MonoBehaviour
 
     [SerializeField]
     private Image shotgunImage;
+
+    [SerializeField]
+    private VoidEvent explosionEvent;
 
 
     #endregion INSPECTOR
@@ -189,12 +193,15 @@ public class P1Controller : MonoBehaviour
 
     public void RangedAttack()
     {
+        List<Projectile> projectiles = new List<Projectile>();
+
         #region BaseLineAttack
         GameObject instance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f), Quaternion.identity);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
         rb.AddForce(moveDirection * projectileSpeed, ForceMode2D.Impulse);
 
         Projectile projInstance = instance.GetComponent<Projectile>();
+        projectiles.Add(projInstance);
         projInstance.damage = (int)runtimePlayerStats.baseAttackDamage;
         #endregion BaseLineAttack
 
@@ -218,6 +225,7 @@ public class P1Controller : MonoBehaviour
                 rbShotgun.AddForce(moveDirection * projectileSpeed, ForceMode2D.Impulse);
 
                 Projectile shotgunProjInstance = shotgunInstance.GetComponent<Projectile>();
+                projectiles.Add(shotgunProjInstance);
                 shotgunProjInstance.damage = (int)runtimePlayerStats.baseAttackDamage;
 
 
@@ -230,8 +238,17 @@ public class P1Controller : MonoBehaviour
 
         if (hasGatlingGun)
         {
-
+            //Doesn't do anything here.. -yet?
         }
+
+        if (hasExplodingShots)
+        {
+            foreach (Projectile proj in projectiles)
+            {
+                proj.isExplodingProjectile = true;
+            }
+        }
+
 
 
 
@@ -353,7 +370,9 @@ public class P1Controller : MonoBehaviour
                 dashOnCooldown = true;
                 //dashTimer = 0;
                 break;
-
+            case Player1Input.Explosion:
+                explosionEvent.Raise();
+                break;
         }
 
 

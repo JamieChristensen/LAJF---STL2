@@ -232,6 +232,7 @@ MonoBehaviour:
   gatlingSpeedMultiplier: 0.298
   gatlingMovespeedMultiplier: 0.38
   shotgunImage: {fileID: 304472617576270937}
+  explosionEvent: {fileID: 11400000, guid: ba259034f5adc28458c5f96fd00dd823, type: 2}
 --- !u!70 &5892630455597672943
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

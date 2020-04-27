@@ -29,6 +29,8 @@ public class InputManager : MonoBehaviour
     private bool player1Jump;
     private bool player1JumpHold;
     private bool player1Attack;
+    private bool player1AttackLifted;
+    private bool player1AttackExplosion;
 
     private float doubleTapMaxTime = 0.5f;
     private float tapTimerLeft, tapTimerRight;
@@ -104,6 +106,21 @@ public class InputManager : MonoBehaviour
             player1JumpHold = Input.GetKey(player1JumpKey);
             player1Attack = Input.GetKeyDown(player1AttackKey);
 
+            if (Input.GetKeyUp(player1AttackKey))
+            {
+                player1AttackLifted = true;
+            }
+
+
+            //explosion is only true for one frame, during this frame, SendInputs() tells the P1Controller that this is the case.
+            player1AttackExplosion = player1AttackLifted && player1Attack;
+            if (player1AttackExplosion)
+            {
+                player1AttackLifted = false;
+            }
+
+
+
             if (player1.hasGatlingGun)
             {
                 player1Attack = Input.GetKey(player1AttackKey);
@@ -123,7 +140,7 @@ public class InputManager : MonoBehaviour
                 }
                 tapTimingLeft = true;
             }
-            
+
             if (Input.GetKeyDown(player1Right))
             {
                 if (tapTimingLeft)
@@ -164,10 +181,19 @@ public class InputManager : MonoBehaviour
     {
         if (player1 != null && GameManager.canPlayerMove)
         {
+            if (player1AttackExplosion)
+            {
+                //Send input to player that explosion is true.
+                player1.ReceiveInput(P1Controller.Player1Input.Explosion, 0);
+                player1AttackExplosion = false;
+                player1AttackLifted = false;
+            }
+            
             if (player1Attack)
             {
                 player1.ReceiveInput(P1Controller.Player1Input.Attack, 0);  //Float doesn't matter for attack
             }
+
 
             if (player1Jump)
             {
