@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
   m_Name: PeasantGreenHat
   m_EditorClassIdentifier: 
-  myName: Peasant, who happens to be asian, with a GREEN hat
+  myName: Peasant with a gatling gun
   description: Peasant, green hat
   trait: 'Green hat: He is almost invissible in green terrain'
   characterSprite: {fileID: 21300000, guid: 0dfffb7b96f5a4747b4b98fe769196b7, type: 3}
@@ -25,3 +25,4 @@ MonoBehaviour:
   maxHitPoints: 80
   startingHitPoints: 80
   baseDamageReduction: 1
+  startItem: {fileID: 11400000, guid: 970a9a44848f5a64e8345d352a5f9052, type: 2}

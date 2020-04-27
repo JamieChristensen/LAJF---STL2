@@ -76,7 +76,15 @@ public class P1Controller : MonoBehaviour
     private float dashSpeed;
     private bool dashOnCooldown;
     private bool hasShotgun = false;
-    private bool hasGatlingGun = false;
+    public bool hasGatlingGun = false;
+    [SerializeField]
+    [Range(0.1f, 0.9f)]
+    private float gatlingSpeedMultiplier = 0.75f;
+
+    [SerializeField]
+    [Range(0.1f, 0.9f)]
+    private float gatlingMovespeedMultiplier = 0.5f;
+
     private bool hasExplodingShots = false;
 
     [SerializeField]
@@ -108,7 +116,16 @@ public class P1Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             hasShotgun = true;
-            hasGatlingGun = true;
+
+            if (!hasGatlingGun)
+            {
+                hasGatlingGun = true;
+                runtimePlayerStats.attackRate = runtimePlayerStats.attackRate * gatlingSpeedMultiplier;
+                rangedCooldownMaxTime = runtimePlayerStats.attackRate;
+            }
+
+
+
             hasExplodingShots = true;
 
             shotgunImage.gameObject.SetActive(true);
@@ -205,8 +222,14 @@ public class P1Controller : MonoBehaviour
                     offsetMagicNumber += 1.5f;
                 }
             }
+        }
+
+        if (hasGatlingGun)
+        {
 
         }
+
+
 
         #endregion ModifiedAttacks
 
@@ -239,25 +262,6 @@ public class P1Controller : MonoBehaviour
     {
         switch (input)
         {
-            case Player1Input.Attack:
-                if (!CanPlayerAttack())
-                {
-                    return;
-                }
-
-                if (runtimePlayerStats.rangedAttacks)
-                {
-                    RangedAttack();
-                    return;
-                }
-
-                if (runtimePlayerStats.meleeAttacks)
-                {
-                    MeleeAttack();
-                    return;
-                }
-
-                break;
             case Player1Input.Horizontal:
 
 
@@ -276,12 +280,36 @@ public class P1Controller : MonoBehaviour
                     Debug.Log("DASH DIRECTION: " + dashDirection);
                     rb.velocity = new Vector2(dashDirection * dashSpeed, 0);
                 }
-
                 if (IsPlayerCloseToObstacle(1.5f))
                 {
 
                     rb.velocity = new Vector2(0, rb.velocity.y);
                 }
+
+                if (hasGatlingGun && justUsedRangedAttack)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x * gatlingMovespeedMultiplier, rb.velocity.y);
+                }
+
+                break;
+            case Player1Input.Attack:
+                if (!CanPlayerAttack())
+                {
+                    return;
+                }
+
+                if (runtimePlayerStats.rangedAttacks)
+                {
+                    RangedAttack();
+                    return;
+                }
+
+                if (runtimePlayerStats.meleeAttacks)
+                {
+                    MeleeAttack();
+                    return;
+                }
+
 
                 break;
             case Player1Input.Jump:
@@ -367,13 +395,22 @@ public class P1Controller : MonoBehaviour
                     break;
 
                 case PlayerItems.WeaponType.ExplodingShots:
+                    hasExplodingShots = true;
+                    shotgunImage.sprite = playerItem.itemSprite;
+                    shotgunImage.gameObject.SetActive(true);
                     break;
 
                 case PlayerItems.WeaponType.Gatlinggun:
+                    hasGatlingGun = true;
+                    runtimePlayerStats.attackRate = runtimePlayerStats.attackRate * gatlingSpeedMultiplier;
+                    rangedCooldownMaxTime = runtimePlayerStats.attackRate;
+                    shotgunImage.sprite = playerItem.itemSprite;
+                    shotgunImage.gameObject.SetActive(true);
                     break;
 
                 case PlayerItems.WeaponType.Shotgun:
                     hasShotgun = true;
+                    shotgunImage.sprite = playerItem.itemSprite;
                     shotgunImage.gameObject.SetActive(true);
                     break;
             }
@@ -394,7 +431,6 @@ public class P1Controller : MonoBehaviour
 
         runtimePlayerStats.attackRate = baselineStats.attackRate;
         rangedCooldownMaxTime = runtimePlayerStats.attackRate;
-
 
         runtimePlayerStats.jumpForce = baselineStats.jumpForce;
         runtimePlayerStats.rangedAttacks = baselineStats.rangedAttacks;
@@ -423,16 +459,24 @@ public class P1Controller : MonoBehaviour
         switch (baselineStats.startItem.weaponType)
         {
             case PlayerItems.WeaponType.None:
+                //Do nothing
                 break;
 
             case PlayerItems.WeaponType.ExplodingShots:
+                hasExplodingShots = true;
+                shotgunImage.sprite = baselineStats.startItem.itemSprite;
+                shotgunImage.gameObject.SetActive(true);
                 break;
 
             case PlayerItems.WeaponType.Gatlinggun:
+                hasGatlingGun = true;
+                shotgunImage.sprite = baselineStats.startItem.itemSprite;
+                shotgunImage.gameObject.SetActive(true);
                 break;
 
             case PlayerItems.WeaponType.Shotgun:
                 hasShotgun = true;
+                shotgunImage.sprite = baselineStats.startItem.itemSprite;
                 shotgunImage.gameObject.SetActive(true);
                 break;
         }
