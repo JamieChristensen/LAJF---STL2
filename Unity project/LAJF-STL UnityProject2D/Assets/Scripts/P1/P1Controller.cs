@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using STL2.Events;
+using UnityEngine.UI;
 
 public class P1Controller : MonoBehaviour
 {
@@ -73,8 +74,12 @@ public class P1Controller : MonoBehaviour
     private float dashMaxTime = 0.3f;
     [SerializeField]
     private float dashSpeed;
-
     private bool dashOnCooldown;
+    private bool hasShotgun = false; 
+    [SerializeField]
+    private Image shotgunImage;
+
+
     #endregion INSPECTOR
 
     void Awake()
@@ -96,6 +101,13 @@ public class P1Controller : MonoBehaviour
 
     private void Update()
     {
+        //Cheat to enable weapons for testing:
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            hasShotgun = true;
+            shotgunImage.gameObject.SetActive(true);
+        }
+
         #region UpdateCooldowns
         if (justUsedRangedAttack)
         {
@@ -150,16 +162,47 @@ public class P1Controller : MonoBehaviour
 
     public void RangedAttack()
     {
+        #region BaseLineAttack
         GameObject instance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f), Quaternion.identity);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
-        //rb.velocity = moveDirection * projectileSpeed;
         rb.AddForce(moveDirection * projectileSpeed, ForceMode2D.Impulse);
-
 
         Projectile projInstance = instance.GetComponent<Projectile>();
         projInstance.damage = (int)runtimePlayerStats.baseAttackDamage;
+        #endregion BaseLineAttack
 
         audioList.PlayWithVariablePitch(audioList.attack1);
+
+        #region ModifiedAttacks
+        if (hasShotgun)
+        {
+            int magicNumberExtraProjectileCount = 2;
+
+            float offsetMagicNumber = 1.5f;
+            for (int i = 0; i < magicNumberExtraProjectileCount; i++)
+            {
+
+                int sign = i % 2 == 0 ? 1 : -1;
+                float yPositionOfShot = sign * offsetMagicNumber;
+                Vector3 shotPosition = new Vector3(0, yPositionOfShot, 0);
+
+                GameObject shotgunInstance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f) + shotPosition, Quaternion.identity);
+                Rigidbody2D rbShotgun = shotgunInstance.GetComponent<Rigidbody2D>();
+                rbShotgun.AddForce(moveDirection * projectileSpeed, ForceMode2D.Impulse);
+
+                Projectile shotgunProjInstance = shotgunInstance.GetComponent<Projectile>();
+                shotgunProjInstance.damage = (int)runtimePlayerStats.baseAttackDamage;
+
+
+                if (i % 2 == 0 && i != 0)
+                {
+                    offsetMagicNumber += 1.5f;
+                }
+            }
+
+        }
+
+        #endregion ModifiedAttacks
 
         justUsedRangedAttack = true;
     }
@@ -230,7 +273,7 @@ public class P1Controller : MonoBehaviour
 
                 if (IsPlayerCloseToObstacle(1.5f))
                 {
-                    
+
                     rb.velocity = new Vector2(0, rb.velocity.y);
                 }
 
@@ -309,6 +352,24 @@ public class P1Controller : MonoBehaviour
             runtimePlayerStats.moveSpeed += playerItem.speedModifier;
 
             runtimePlayerStats.baseAttackDamage += playerItem.damageModifier;
+
+            //Weapontypes addons:
+            switch (playerItem.weaponType)
+            {
+                case PlayerItems.WeaponType.None:
+                    break;
+
+                case PlayerItems.WeaponType.ExplodingShots:
+                    break;
+
+                case PlayerItems.WeaponType.Gatlinggun:
+                    break;
+
+                case PlayerItems.WeaponType.Shotgun:
+                    hasShotgun = true;
+                    shotgunImage.gameObject.SetActive(true);
+                    break;
+            }
         }
 
         playerItems.AddRange(chosenItems.Except(playerItems)); //Add new items to playeritems
