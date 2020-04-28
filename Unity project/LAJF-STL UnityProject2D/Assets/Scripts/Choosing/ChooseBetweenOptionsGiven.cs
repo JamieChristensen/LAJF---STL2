@@ -106,21 +106,30 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         {
 
             #region InitializeItemSelection
-            
+
 
             int poolLenght = AllPossiblePlayerItems.Length + 1;
             poolLenght -= runtimeChoices.runTimeLoopCount;
 
             playerItemPool = new PlayerItems[poolLenght];
-            AvailableItems = new List <PlayerItems>();
+            AvailableItems = new List<PlayerItems>();
 
             foreach (PlayerItems item in AllPossiblePlayerItems)
             {
-                foreach (PlayerItems runtimeItem in runtimeChoices.playerItems)
+                AvailableItems.Add(item); // add the item to the available items to choose from
+                for (int i = 0; i < AllPossiblePlayerItems.Length; i++)
                 {
-                    if (item != runtimeItem) // if the item is not already chosen
+                    
+                    try
                     {
-                        AvailableItems.Add(item); // add the item to the available items to choose from
+                        if (item == runtimeChoices.playerItems[i])
+                        {
+                            AvailableItems.Remove(item);
+                        }
+                    }
+                    catch
+                    {
+
                     }
                 }
             }
