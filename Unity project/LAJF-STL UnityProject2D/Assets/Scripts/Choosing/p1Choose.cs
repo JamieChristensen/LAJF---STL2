@@ -31,9 +31,11 @@ public class p1Choose : MonoBehaviour
 
     bool lockedIn = false;
     bool selected = false;
+
+    [SerializeField]
     private int choice = 0;
 
-    
+
 
     public void Start()
     {
@@ -129,5 +131,11 @@ public class p1Choose : MonoBehaviour
             victoryChoiceTMProText.text += "Player 1" + "\n";
         }
 
+    }
+
+    public int GetChoiceIndex()
+    {
+        Debug.Log("Get choice index p1choose");
+        return choice;
     }
 }

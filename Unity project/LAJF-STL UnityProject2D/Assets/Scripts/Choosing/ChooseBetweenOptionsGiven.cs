@@ -38,13 +38,13 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public CharacterPool characterpool;
     public List<Image> characterSprites;
     public List<TextMeshProUGUI> characterNames;
-    private P1Stats[] characterChoices = new P1Stats[3];
+    public P1Stats[] characterChoices = new P1Stats[3];
 
     [Header("Item choice variables")]
     public PlayerItems[] playerItemPool;
     public TextMeshProUGUI[] choiceNameText;
     public Image[] itemImageTargets;
-    private PlayerItems[] playerItemChoices = new PlayerItems[2];
+    public PlayerItems[] playerItemChoices = new PlayerItems[2];
     public GameObject theOnlyButton;
     public Sprite theGrandPrize;
     public PlayerItems victoryShades;
@@ -53,13 +53,13 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public EnemyModifier[] modifierPool;
     public List<Image> modifierSprites;
     public List<TextMeshProUGUI> modifierNames;
-    private EnemyModifier[] enemyModifierChoices = new EnemyModifier[3];
+    public EnemyModifier[] enemyModifierChoices = new EnemyModifier[3];
 
     [Header("Minion choice variables")]
     public Enemy[] enemyPool;
     public List<Image> enemySprites;
     public List<TextMeshProUGUI> enemyNames;
-    private Enemy[] enemyChoices = new Enemy[3];
+    public Enemy[] enemyChoices = new Enemy[3];
 
     [Header("Theme choice variables")]
     public EnvironmentPool environmentThemePool;
@@ -587,4 +587,9 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         }
     }
     #endregion ShuffleFunctionOverloads
+
+    public int GetChoiceIndex()
+    {
+        return choice;
+    }
 }
