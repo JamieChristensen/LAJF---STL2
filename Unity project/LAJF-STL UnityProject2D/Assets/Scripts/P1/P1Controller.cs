@@ -302,7 +302,7 @@ public class P1Controller : MonoBehaviour
                     Debug.Log("DASH DIRECTION: " + dashDirection);
                     rb.velocity = new Vector2(dashDirection * dashSpeed, 0);
                 }
-                if (IsPlayerCloseToObstacle(1.5f))
+                if (IsPlayerCloseToObstacle((GetComponent<BoxCollider2D>().size.x / 2) + 1.4f))
                 {
 
                     rb.velocity = new Vector2(0, rb.velocity.y);
@@ -383,6 +383,7 @@ public class P1Controller : MonoBehaviour
     {
         //Has to collisioncheck for walls/ground after every round of movement-input.
         //Check if there is a wall on the side the player is moving:
+
         RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, range, obstacles);
         // If it hits something...
         if (hit.collider != null && (hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Ground") || hit.transform.CompareTag("Cage")))
@@ -471,7 +472,9 @@ public class P1Controller : MonoBehaviour
         }
         GetComponent<SpriteRenderer>().sprite = playerSprite;
 
-
+        BoxCollider2D boxColl2D = GetComponent<BoxCollider2D>();
+        boxColl2D.offset = runtimeChoices.chosenHero.colliderOffset;
+        boxColl2D.size = runtimeChoices.chosenHero.colliderSize;
 
         currentHitPoints = baselineStats.startingHitPoints;
         playerHPEvent.Raise(currentHitPoints);

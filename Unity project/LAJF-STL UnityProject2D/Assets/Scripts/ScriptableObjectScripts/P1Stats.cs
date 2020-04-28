@@ -11,6 +11,10 @@ public class P1Stats : ScriptableObject
     public string trait; // the traits of choosing this character
     public Sprite characterSprite;
 
+    //The proper box-collider settings for the character. 
+    public Vector2 colliderSize;
+    public Vector2 colliderOffset;
+
     [Header("Movement")]
     public float moveSpeed; //the speed the player is able to move with
     public float jumpForce; //how high the player jump
@@ -29,4 +33,6 @@ public class P1Stats : ScriptableObject
 
     [Header("Baseline items")]
     public PlayerItems startItem;
+
+
 }
