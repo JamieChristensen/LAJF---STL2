@@ -1409,6 +1409,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9005650612711449376, guid: 4c8b91af623fccc449d8351369779d7f,
+        type: 3}
+      propertyPath: agileEnemyPrefab
+      value: 
+      objectReference: {fileID: 2409340943091751089, guid: d0b579e6c3d51db4bb76576560cbba39,
+        type: 3}
     - target: {fileID: 9005650612711449377, guid: 4c8b91af623fccc449d8351369779d7f,
         type: 3}
       propertyPath: m_LocalPosition.x
