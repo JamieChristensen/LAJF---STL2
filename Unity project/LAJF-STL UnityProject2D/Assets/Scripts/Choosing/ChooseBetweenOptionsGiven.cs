@@ -122,7 +122,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                     
                     try
                     {
-                        if (item != runtimeChoices.playerItems[i])
+                        if (item == runtimeChoices.playerItems[i])
                         {
                             AvailableItems.Remove(item);
                         }

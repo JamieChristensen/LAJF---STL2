@@ -70,10 +70,10 @@ public class TooltipManager : MonoBehaviour
             //Do nothing
             return;
         }
-        Debug.Log("made it down here");
+        //Debug.Log("made it down here");
         choiceIndex = FindChoiceIndex();
 
-        Debug.Log("Choice index for tooltip is: " + choiceIndex);
+       // Debug.Log("Choice index for tooltip is: " + choiceIndex);
         UpdateTooltip(choiceType);
 
     }
@@ -105,7 +105,12 @@ public class TooltipManager : MonoBehaviour
                 break;
 
             case "Item":
-                tooltipText = playerItemChoices[choiceIndex].description;
+                if (playerItemChoices[0] != null)
+                {
+                    tooltipText = playerItemChoices[choiceIndex].description;
+                    break;
+                }
+                tooltipText = choiceManager.victoryShades.description;
                 break;
 
             case "Minion":
