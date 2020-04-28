@@ -356,6 +356,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 785652477461804414, guid: d841c53573435014890e63ee23fa195a,
+        type: 3}
+      propertyPath: textMeshPro
+      value: 
+      objectReference: {fileID: 586446354}
     - target: {fileID: 7880977790444208797, guid: d841c53573435014890e63ee23fa195a,
         type: 3}
       propertyPath: m_Name
@@ -957,6 +962,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 586446352}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &586446354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4849888594462695413, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
+    type: 3}
+  m_PrefabInstance: {fileID: 586446352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &708557332
 GameObject:
   m_ObjectHideFlags: 0
