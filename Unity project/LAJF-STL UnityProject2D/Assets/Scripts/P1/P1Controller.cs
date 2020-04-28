@@ -494,6 +494,8 @@ public class P1Controller : MonoBehaviour
 
             case PlayerItems.WeaponType.Gatlinggun:
                 hasGatlingGun = true;
+                runtimePlayerStats.attackRate = runtimePlayerStats.attackRate * gatlingSpeedMultiplier;
+                rangedCooldownMaxTime = runtimePlayerStats.attackRate;
                 shotgunImage.sprite = baselineStats.startItem.itemSprite;
                 shotgunImage.gameObject.SetActive(true);
                 break;
