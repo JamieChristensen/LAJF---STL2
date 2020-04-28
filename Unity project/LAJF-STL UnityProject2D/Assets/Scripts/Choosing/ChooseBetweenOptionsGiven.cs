@@ -41,7 +41,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     private P1Stats[] characterChoices = new P1Stats[3];
 
     [Header("Item choice variables")]
-    public PlayerItems[] playerItemPool;
+    public PlayerItems[] playerItemPool, AllPossiblePlayerItems;
+    public List<PlayerItems> AvailableItems;
     public TextMeshProUGUI[] choiceNameText;
     public Image[] itemImageTargets;
     private PlayerItems[] playerItemChoices = new PlayerItems[2];
@@ -103,7 +104,32 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
         if (choiceType == "Item")
         {
+
             #region InitializeItemSelection
+            
+
+            int poolLenght = AllPossiblePlayerItems.Length + 1;
+            poolLenght -= runtimeChoices.runTimeLoopCount;
+
+            playerItemPool = new PlayerItems[poolLenght];
+            AvailableItems = new List <PlayerItems>();
+
+            foreach (PlayerItems item in AllPossiblePlayerItems)
+            {
+                foreach (PlayerItems runtimeItem in runtimeChoices.playerItems)
+                {
+                    if (item != runtimeItem) // if the item is not already chosen
+                    {
+                        AvailableItems.Add(item); // add the item to the available items to choose from
+                    }
+                }
+            }
+
+            for (int i = 0; i < AvailableItems.Count; i++)
+            {
+                playerItemPool[i] = AvailableItems[i];
+            }
+
             if (runtimeChoices.runTimeLoopCount != 4)
             {
                 int random = Random.Range(0, playerItemPool.Length);

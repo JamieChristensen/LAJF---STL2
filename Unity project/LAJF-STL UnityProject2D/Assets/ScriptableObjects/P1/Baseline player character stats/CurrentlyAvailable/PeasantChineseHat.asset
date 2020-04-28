@@ -15,8 +15,7 @@ MonoBehaviour:
   myName: Peasant with a shotgun
   description: Peasant, chinese, yellow hat
   trait: 'Chinese: He must be a ninja then'
-  characterSprite: {fileID: 8504305874624505467, guid: 4689567f5d6a5a846b7016a2ff8574e8,
-    type: 3}
+  characterSprite: {fileID: 21300000, guid: c414fb3ea8fa1a54ab355916e62972b8, type: 3}
   moveSpeed: 20
   jumpForce: 16
   baseAttackDamage: 5
