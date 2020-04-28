@@ -180,7 +180,7 @@ public class P1Controller : MonoBehaviour
 
         #region UpdateSprites
         bool isMovingRight = moveDirection.x > 0;
-        spriteRenderer.flipX = isMovingRight;
+        spriteRenderer.flipX = !isMovingRight;
         shotgunImage.rectTransform.rotation = isMovingRight ? Quaternion.Euler(new Vector3(0, 0, 0)) : Quaternion.Euler(new Vector3(180, 0, 180));
 
         #endregion UpdateSprites
