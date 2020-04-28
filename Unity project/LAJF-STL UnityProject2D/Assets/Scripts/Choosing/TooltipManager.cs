@@ -25,6 +25,7 @@ public class TooltipManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        textMeshPro = GameObject.Find("DescriptionText").GetComponent<TextMeshProUGUI>();
         choiceIndex = -1; //Initial none-chosen.
         if (choiceManager == null)
         {
