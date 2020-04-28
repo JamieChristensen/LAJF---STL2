@@ -116,7 +116,12 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
             foreach (PlayerItems item in AllPossiblePlayerItems)
             {
+                
                 AvailableItems.Add(item); // add the item to the available items to choose from
+                if (item == runtimeChoices.baselineItem)
+                {
+                    AvailableItems.Remove(item);
+                }
                 for (int i = 0; i < AllPossiblePlayerItems.Length; i++)
                 {
                     
@@ -126,6 +131,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                         {
                             AvailableItems.Remove(item);
                         }
+                        
                     }
                     catch
                     {
