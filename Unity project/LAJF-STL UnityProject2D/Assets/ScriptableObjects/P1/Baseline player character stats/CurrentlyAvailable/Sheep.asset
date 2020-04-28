@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
+  m_Name: Sheep
+  m_EditorClassIdentifier: 
+  myName: Baahhd Sheep
+  description: A sheep with a thirst for blood... And a gatling gun
+  trait: 'Green hat: He is almost invissible in green terrain'
+  characterSprite: {fileID: 21300000, guid: 6252c6e232801894b9427ad5a41225ad, type: 3}
+  moveSpeed: 16
+  jumpForce: 20
+  baseAttackDamage: 10
+  attackRate: 0.25
+  rangedAttacks: 1
+  meleeAttacks: 0
+  maxHitPoints: 80
+  startingHitPoints: 80
+  baseDamageReduction: 1
+  startItem: {fileID: 11400000, guid: 970a9a44848f5a64e8345d352a5f9052, type: 2}

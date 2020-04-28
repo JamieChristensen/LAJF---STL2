@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
-  m_Name: PeasantNoHat
+  m_Name: Peasant
   m_EditorClassIdentifier: 
-  myName: Spartanian War Hero
-  description: Peasant, no hat
-  trait: 'No hat: can jump very high without a hat pulling him down'
-  characterSprite: {fileID: 21300000, guid: 7061cf790df43234e92d6942bde3a8f4, type: 3}
-  moveSpeed: 10
-  jumpForce: 30
-  baseAttackDamage: 10
+  myName: Peasant with a shotgun
+  description: Get off his lawn or face his triple-barreled shotgun
+  trait: 'Chinese: He must be a ninja then'
+  characterSprite: {fileID: 21300000, guid: c414fb3ea8fa1a54ab355916e62972b8, type: 3}
+  moveSpeed: 20
+  jumpForce: 16
+  baseAttackDamage: 5
   attackRate: 0.4
   rangedAttacks: 1
   meleeAttacks: 0
-  maxHitPoints: 150
-  startingHitPoints: 90
+  maxHitPoints: 60
+  startingHitPoints: 60
   baseDamageReduction: 1
-  startItem: {fileID: 11400000, guid: c1c0983851958c34e8b4d3a9d9b3e3d5, type: 2}
+  startItem: {fileID: 11400000, guid: 3517c50eeea57b54880e316331a20839, type: 2}
