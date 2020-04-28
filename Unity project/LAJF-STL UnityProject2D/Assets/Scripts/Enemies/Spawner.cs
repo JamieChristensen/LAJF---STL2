@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     //Spawns chest, enemy, perhaps more in the future.
     public GameObject enemyPrefab;
+    public GameObject agileEnemyPrefab;
 
     public GreatChest greatChest;
     public ChoiceCategory runtimeChoices;
@@ -59,8 +60,10 @@ public class Spawner : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Vector3 deltaVector = new Vector3(Random.Range(0, 60), 0, 0);
-        GameObject go = Instantiate(enemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
-        EnemyBehaviour enemyBehaviour = go.GetComponent<EnemyBehaviour>();
+     //   GameObject go = Instantiate(enemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
+        GameObject go = Instantiate(agileEnemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
+        //EnemyBehaviour enemyBehaviour = go.GetComponent<EnemyBehaviour>();
+        EnemyBehaviour enemyBehaviour = go.GetComponent<AgileEnemy>();
         //Runtimeloopcount incremented once per item-choice.
         int runTimeLoopCount = runtimeChoices.runTimeLoopCount;
 

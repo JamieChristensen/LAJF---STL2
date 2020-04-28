@@ -56,36 +56,97 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     }
 
     void FixedUpdate()
-    {
 
+    {
         if (isPaused)
             return;
-        #region OnDeath
-        // Am I alive?
-        if (currentHealth <= 0)
+
+        // checks if it should die
+        Die();
+
+        if (!alreadyDied)
         {
-            if (!alreadyDied)
-            {
-                gameObject.layer = 15;
-                rb2.AddForce(new Vector2(UnityEngine.Random.Range(-3f, 3f) * 10, UnityEngine.Random.Range(3, 9f) * 10), ForceMode2D.Impulse);
-                rb2.AddTorque(50, ForceMode2D.Impulse);
-                rb2.gravityScale = 0f;
-
-                Invoke("DeathAnimation", 0.2f);
-                audioList.PlayWithVariablePitch(audioList.deathEnemy);
-                StartCoroutine(DelayDeathAnnouncement(1.1f));
-
-                if (UnityEngine.Random.Range(0, 10f) > 6)
-                {
-                    GameObject.Destroy(gameObject.GetComponent<Collider2D>());
-                }
-                // GameObject.Destroy(this);
-                alreadyDied = true;
-            }
-
-            return;
+            MoveToTarget();
+            AttackIfReady();
         }
-        #endregion OnDeath
+    }
+
+    protected virtual void MoveToTarget()
+    {
+        if (target.gameObject != null)
+        {
+            Vector2 direction = (target.transform.position - transform.position).normalized;
+            rb2.velocity = new Vector2(direction.x * agent.speed, rb2.velocity.y);
+        }
+
+    }
+
+    protected virtual void MeleeAttack()
+    {
+        // Vector2 direction = (target.transform.position - transform.position);
+        // Collider2D attack = RaycastHit2D();
+        throw new NotImplementedException("melee attack");
+    }
+
+    protected virtual void RangedAttack()
+    {
+        Vector2 direction = (target.transform.position - transform.position).normalized;
+        GameObject bullet = Instantiate(bulletObj, transform.position + (((Vector3)direction) * 0.2f), Quaternion.identity);
+
+        bullet.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed, ForceMode2D.Impulse);
+        bullet.GetComponent<Projectile>().damage = agent.damage;
+    }
+
+    protected virtual void Die()
+    {
+
+        if (!CanDie())
+            return;
+
+        gameObject.layer = 15;
+        rb2.AddForce(new Vector2(UnityEngine.Random.Range(-3f, 3f) * 10, UnityEngine.Random.Range(3, 9f) * 10), ForceMode2D.Impulse);
+        rb2.AddTorque(50, ForceMode2D.Impulse);
+        rb2.gravityScale = 0f;
+
+        Invoke("DeathAnimation", 0.2f);
+        audioList.PlayWithVariablePitch(audioList.deathEnemy);
+        StartCoroutine(DelayDeathAnnouncement(1.1f));
+
+        if (UnityEngine.Random.Range(0, 10f) > 6)
+        {
+            GameObject.Destroy(gameObject.GetComponent<Collider2D>());
+        }
+        alreadyDied = true;
+    }
+
+    private bool CanDie()
+    {
+        return currentHealth <= 0 && !alreadyDied;
+    }
+
+    protected void AttackIfReady()
+    {
+        string attackType = agent.attackType;
+        if (agent.range >= GetTargetDistance())
+        {
+            if (cooldownTimer <= 0)
+            {
+                cooldownTimer = agent.attackSpeed;
+                if (gameManager.canMonsterMove[monsterNumber - 1])
+                {
+                    if (attackType == "melee")
+                        MeleeAttack();
+                    if (attackType == "range")
+                        RangedAttack();
+                }
+                return;
+            }
+        }
+        cooldownTimer -= Time.deltaTime;
+    }
+
+    public float GetTargetDistance()
+    {
         float distance;
         if (target.gameObject != null)
         {
@@ -93,60 +154,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         }
         else
         { distance = 0; }
-
-        // start of behavior tree here
-
-        if (agent.range >= distance)
-        {
-            if (cooldownTimer <= 0)
-            {
-                Debug.Log("attacking");
-                cooldownTimer = agent.attackSpeed;
-                Attack(agent.attackType);
-                return;
-            }
-        }
-        if (target.gameObject != null)
-        {
-            MoveTowards(target.transform);
-        }
-
-        cooldownTimer -= Time.deltaTime;
-    }
-
-    private void Attack(string attackType)
-    {
-        if (gameManager.canMonsterMove[monsterNumber - 1])
-        {
-            if (attackType == "melee")
-                MeleeAttack();
-            if (attackType == "range")
-                RangedAttack();
-        }
-    }
-
-    private void MoveTowards(Transform tf)
-    {
-        {
-            Vector2 direction = (tf.position - transform.position).normalized;
-            rb2.velocity = new Vector2(direction.x * agent.speed, rb2.velocity.y);
-        }
-
-    }
-
-    void MeleeAttack()
-    {
-        // Vector2 direction = (target.transform.position - transform.position);
-        // Collider2D attack = RaycastHit2D();
-        throw new NotImplementedException("melee attack");
-    }
-
-    void RangedAttack()
-    {
-        Vector2 direction = (target.transform.position - transform.position).normalized;
-        GameObject bullet = Instantiate(bulletObj, transform.position + (((Vector3)direction) * 0.2f), Quaternion.identity);
-        bullet.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed, ForceMode2D.Impulse);
-        bullet.GetComponent<Projectile>().damage = agent.damage;
+        return distance;
     }
 
     public void TakeDamage(int damage)
@@ -172,7 +180,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         Invoke("ResetMaterial", 0.1f);
     }
 
-    void ResetMaterial()
+    private void ResetMaterial()
     {
         spriteRenderer.material = matDefault;
     }
@@ -199,6 +207,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     {
         return isPaused;
     }
+
     public void Pause()
     {
         isPaused = true;
@@ -226,6 +235,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         maxHealth = currentHealth;
 
     }
+
     public void InitalizeEnemy(Enemy _agent, EnemyModifier[] _modifiers)
     {
         agent = _agent;
@@ -244,22 +254,21 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         healthBar.UpdateHPValues(currentHealth, maxHealth);
     }
 
-    private void ApplyModifier(EnemyModifier _modifier)
-    {
-        //Do anything else modifiers do:
-      //  throw new NotImplementedException();
-    }
-
     IEnumerator DelayDeathAnnouncement(float delay)
     {
         yield return new WaitForSeconds(delay);
         monsterDied.Raise();
     }
 
-
     public void SetupHealthBar()
     {
         healthBar.VisualiseHealthChange(agent.health);
+    }
+
+    private void ApplyModifier(EnemyModifier _modifier)
+    {
+        //Do anything else modifiers do:
+        //  throw new NotImplementedException();
     }
 
 }
