@@ -514,9 +514,11 @@ MonoBehaviour:
   endSceneVisuals: {fileID: 9039245506763273944, guid: a2e15da3074d96049b939229a9542b9e,
     type: 3}
   scrollSpeed: 55
+  extraSpeedForScroll: 55
   baseText: {fileID: 106807074}
   creditsText: {fileID: 9160693856537786406, guid: e2db89d99d0e4054f8f036bcd2a37d14,
     type: 3}
+  keysThatCanSpeedUpScene: 12010000110100007700000073000000
   coolDescriptors:
   - gloriously
   - bravely
@@ -535,6 +537,9 @@ MonoBehaviour:
   - razed
   - disgraced
   - coughed on
+  heroDeathWords:
+  - got tired of life while battling
+  - got a heart-attack while fighting
 --- !u!1 &1250072930
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class ChoiceCategory : ScriptableObject
 
     public GodInformation[] chosenGods = new GodInformation[3];
     public List<PlayerItems> playerItems;
+    public PlayerItems baselineItem;
     public List<Enemy> enemies;
     public List<EnemyModifier> enemyModifiers;
     public Environment[] chosenEnvironments;

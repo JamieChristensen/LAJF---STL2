@@ -38,13 +38,14 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public CharacterPool characterpool;
     public List<Image> characterSprites;
     public List<TextMeshProUGUI> characterNames;
-    private P1Stats[] characterChoices = new P1Stats[3];
+    public P1Stats[] characterChoices = new P1Stats[3];
 
     [Header("Item choice variables")]
-    public PlayerItems[] playerItemPool;
+    public PlayerItems[] playerItemPool, AllPossiblePlayerItems;
+    public List<PlayerItems> AvailableItems;
     public TextMeshProUGUI[] choiceNameText;
     public Image[] itemImageTargets;
-    private PlayerItems[] playerItemChoices = new PlayerItems[2];
+    public PlayerItems[] playerItemChoices = new PlayerItems[2];
     public GameObject theOnlyButton;
     public Sprite theGrandPrize;
     public PlayerItems victoryShades;
@@ -53,13 +54,13 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     public EnemyModifier[] modifierPool;
     public List<Image> modifierSprites;
     public List<TextMeshProUGUI> modifierNames;
-    private EnemyModifier[] enemyModifierChoices = new EnemyModifier[3];
+    public EnemyModifier[] enemyModifierChoices = new EnemyModifier[3];
 
     [Header("Minion choice variables")]
     public Enemy[] enemyPool;
     public List<Image> enemySprites;
     public List<TextMeshProUGUI> enemyNames;
-    private Enemy[] enemyChoices = new Enemy[3];
+    public Enemy[] enemyChoices = new Enemy[3];
 
     [Header("Theme choice variables")]
     public EnvironmentPool environmentThemePool;
@@ -103,7 +104,41 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
         if (choiceType == "Item")
         {
+
             #region InitializeItemSelection
+
+
+            int poolLenght = AllPossiblePlayerItems.Length + 1;
+            poolLenght -= runtimeChoices.runTimeLoopCount;
+
+            playerItemPool = new PlayerItems[poolLenght];
+            AvailableItems = new List<PlayerItems>();
+
+            foreach (PlayerItems item in AllPossiblePlayerItems)
+            {
+                AvailableItems.Add(item); // add the item to the available items to choose from
+                for (int i = 0; i < AllPossiblePlayerItems.Length; i++)
+                {
+                    
+                    try
+                    {
+                        if (item == runtimeChoices.playerItems[i])
+                        {
+                            AvailableItems.Remove(item);
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+
+            for (int i = 0; i < AvailableItems.Count; i++)
+            {
+                playerItemPool[i] = AvailableItems[i];
+            }
+
             if (runtimeChoices.runTimeLoopCount != 4)
             {
                 int random = Random.Range(0, playerItemPool.Length);
@@ -587,4 +622,9 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         }
     }
     #endregion ShuffleFunctionOverloads
+
+    public int GetChoiceIndex()
+    {
+        return choice;
+    }
 }

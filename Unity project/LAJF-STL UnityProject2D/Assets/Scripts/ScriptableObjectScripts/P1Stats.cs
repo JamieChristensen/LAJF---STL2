@@ -26,4 +26,7 @@ public class P1Stats : ScriptableObject
     public int startingHitPoints; // the amount of HP in the beginining of the run
     public float baseDamageReduction; // the starting damage reduction of the character
 
+
+    [Header("Baseline items")]
+    public PlayerItems startItem;
 }

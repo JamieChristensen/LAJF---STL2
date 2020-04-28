@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b15ad80fe0f25847a7c2a0bbaa2de03, type: 3}
+  m_Name: Gatling Gun
+  m_EditorClassIdentifier: 
+  itemName: Gatling Gun
+  description: Pewpewpewpewpewpewpew
+  itemSprite: {fileID: 21300000, guid: 34f27a81547dd77429754b647c7522c5, type: 3}
+  healthModifier: 0
+  speedModifier: 0
+  damageModifier: 0
+  weaponType: 2

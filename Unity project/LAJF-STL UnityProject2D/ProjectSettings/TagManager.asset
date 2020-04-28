@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Monster
   - Narrator
+  - Cage
   layers:
   - Default
   - TransparentFX

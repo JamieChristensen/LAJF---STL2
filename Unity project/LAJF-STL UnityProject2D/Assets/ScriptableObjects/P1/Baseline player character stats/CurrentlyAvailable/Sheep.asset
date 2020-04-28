@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
-  m_Name: PeasantNoHat
+  m_Name: Sheep
   m_EditorClassIdentifier: 
-  myName: Hatless asian peasant
-  description: Peasant, no hat
-  trait: 'No hat: can jump very high without a hat pulling him down'
-  characterSprite: {fileID: 21300000, guid: 8222dcf447d0b744d998e2477de34e79, type: 3}
-  moveSpeed: 10
-  jumpForce: 30
+  myName: Baahhd Sheep
+  description: A sheep with a thirst for blood... And a gatling gun
+  trait: 'Green hat: He is almost invissible in green terrain'
+  characterSprite: {fileID: 21300000, guid: 6252c6e232801894b9427ad5a41225ad, type: 3}
+  moveSpeed: 16
+  jumpForce: 20
   baseAttackDamage: 10
-  attackRate: 0.4
+  attackRate: 0.25
   rangedAttacks: 1
   meleeAttacks: 0
-  maxHitPoints: 150
-  startingHitPoints: 90
+  maxHitPoints: 80
+  startingHitPoints: 80
   baseDamageReduction: 1
+  startItem: {fileID: 11400000, guid: 970a9a44848f5a64e8345d352a5f9052, type: 2}

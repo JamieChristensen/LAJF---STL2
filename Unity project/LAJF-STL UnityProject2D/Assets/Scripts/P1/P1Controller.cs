@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using STL2.Events;
+using UnityEngine.UI;
 
 public class P1Controller : MonoBehaviour
 {
@@ -14,8 +15,10 @@ public class P1Controller : MonoBehaviour
         Attack,
         JumpHold,
         DoubleTapLeft,
-        DoubleTapRight
+        DoubleTapRight,
+        Explosion
     };
+
     #region INSPECTOR
     public P1Stats runtimePlayerStats;
     public IntEvent playerHPEvent;
@@ -73,8 +76,27 @@ public class P1Controller : MonoBehaviour
     private float dashMaxTime = 0.3f;
     [SerializeField]
     private float dashSpeed;
-
     private bool dashOnCooldown;
+    private bool hasShotgun = false;
+    public bool hasGatlingGun = false;
+    [SerializeField]
+    [Range(0.1f, 0.9f)]
+    private float gatlingSpeedMultiplier = 0.75f;
+
+    [SerializeField]
+    [Range(0.1f, 0.9f)]
+    private float gatlingMovespeedMultiplier = 0.5f;
+
+    [SerializeField]
+    private bool hasExplodingShots = false;
+
+    [SerializeField]
+    private Image shotgunImage;
+
+    [SerializeField]
+    private VoidEvent explosionEvent;
+
+
     #endregion INSPECTOR
 
     void Awake()
@@ -96,6 +118,25 @@ public class P1Controller : MonoBehaviour
 
     private void Update()
     {
+        //Cheat to enable weapons for testing:
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            hasShotgun = true;
+
+            if (!hasGatlingGun)
+            {
+                hasGatlingGun = true;
+                runtimePlayerStats.attackRate = runtimePlayerStats.attackRate * gatlingSpeedMultiplier;
+                rangedCooldownMaxTime = runtimePlayerStats.attackRate;
+            }
+
+
+
+            hasExplodingShots = true;
+
+            shotgunImage.gameObject.SetActive(true);
+        }
+
         #region UpdateCooldowns
         if (justUsedRangedAttack)
         {
@@ -132,13 +173,16 @@ public class P1Controller : MonoBehaviour
         {
             rb.gravityScale = isHoldingJump ? baseGravity : dropGravityModifier;
         }
-        
+
         #endregion MovementModifying
 
 
 
         #region UpdateSprites
-        spriteRenderer.flipX = moveDirection.x > 0;
+        bool isMovingRight = moveDirection.x > 0;
+        spriteRenderer.flipX = !isMovingRight;
+        shotgunImage.rectTransform.rotation = isMovingRight ? Quaternion.Euler(new Vector3(0, 0, 0)) : Quaternion.Euler(new Vector3(180, 0, 180));
+
         #endregion UpdateSprites
     }
 
@@ -150,16 +194,66 @@ public class P1Controller : MonoBehaviour
 
     public void RangedAttack()
     {
+        List<Projectile> projectiles = new List<Projectile>();
+
+        #region BaseLineAttack
         GameObject instance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f), Quaternion.identity);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
-        //rb.velocity = moveDirection * projectileSpeed;
         rb.AddForce(moveDirection * projectileSpeed, ForceMode2D.Impulse);
 
-
         Projectile projInstance = instance.GetComponent<Projectile>();
+        projectiles.Add(projInstance);
         projInstance.damage = (int)runtimePlayerStats.baseAttackDamage;
+        #endregion BaseLineAttack
 
         audioList.PlayWithVariablePitch(audioList.attack1);
+
+        #region ModifiedAttacks
+        if (hasShotgun)
+        {
+            int magicNumberExtraProjectileCount = 2;
+
+            float offsetMagicNumber = 1.5f;
+            for (int i = 0; i < magicNumberExtraProjectileCount; i++)
+            {
+
+                int sign = i % 2 == 0 ? 1 : -1;
+                float yPositionOfShot = sign * offsetMagicNumber;
+                Vector3 shotPosition = new Vector3(0, yPositionOfShot, 0);
+
+                GameObject shotgunInstance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f) + shotPosition, Quaternion.identity);
+                Rigidbody2D rbShotgun = shotgunInstance.GetComponent<Rigidbody2D>();
+                rbShotgun.AddForce(moveDirection * projectileSpeed, ForceMode2D.Impulse);
+
+                Projectile shotgunProjInstance = shotgunInstance.GetComponent<Projectile>();
+                projectiles.Add(shotgunProjInstance);
+                shotgunProjInstance.damage = (int)runtimePlayerStats.baseAttackDamage;
+
+
+                if (i % 2 == 0 && i != 0)
+                {
+                    offsetMagicNumber += 1.5f;
+                }
+            }
+        }
+
+        if (hasGatlingGun)
+        {
+            //Doesn't do anything here.. -yet?
+        }
+
+        if (hasExplodingShots)
+        {
+            foreach (Projectile proj in projectiles)
+            {
+                proj.isExplodingProjectile = true;
+            }
+        }
+
+
+
+
+        #endregion ModifiedAttacks
 
         justUsedRangedAttack = true;
     }
@@ -180,7 +274,7 @@ public class P1Controller : MonoBehaviour
         }
     }
 
-    private bool canPlayerAttack()
+    private bool CanPlayerAttack()
     {
         //Can have many more conditionals changing this in the future:
         return !justUsedRangedAttack;
@@ -190,8 +284,38 @@ public class P1Controller : MonoBehaviour
     {
         switch (input)
         {
+            case Player1Input.Horizontal:
+
+
+                rb.velocity = new Vector2(runtimePlayerStats.moveSpeed * value, rb.velocity.y); //if we press the key that corresponds with KeyCode left, then we want the rigidbody to move to the left
+                moveDirection = (value > 0.1f) ? Vector2.right :
+                    (value < -0.1f) ? Vector2.left : moveDirection;
+
+
+
+                if (dashingLeft || dashingRight)
+                {
+                    float leftD, rightD;
+                    leftD = dashingLeft ? 1 : 0;
+                    rightD = dashingRight ? 1 : 0;
+                    float dashDirection = rightD - leftD;
+                    Debug.Log("DASH DIRECTION: " + dashDirection);
+                    rb.velocity = new Vector2(dashDirection * dashSpeed, 0);
+                }
+                if (IsPlayerCloseToObstacle(1.5f))
+                {
+
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                }
+
+                if (hasGatlingGun && justUsedRangedAttack)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x * gatlingMovespeedMultiplier, rb.velocity.y);
+                }
+
+                break;
             case Player1Input.Attack:
-                if (!canPlayerAttack())
+                if (!CanPlayerAttack())
                 {
                     return;
                 }
@@ -206,29 +330,6 @@ public class P1Controller : MonoBehaviour
                 {
                     MeleeAttack();
                     return;
-                }
-
-                break;
-            case Player1Input.Horizontal:
-
-
-                rb.velocity = new Vector2(runtimePlayerStats.moveSpeed * value, rb.velocity.y); //if we press the key that corresponds with KeyCode left, then we want the rigidbody to move to the left
-                moveDirection = (value > 0.1f) ? Vector2.right :
-                    (value < -0.1f) ? Vector2.left : moveDirection;
-
-                if (IsPlayerCloseToWall(1.5f))
-                {
-                    rb.velocity = new Vector2(0, rb.velocity.y);
-                }
-
-                if (dashingLeft || dashingRight)
-                {
-                    float leftD, rightD;
-                    leftD = dashingLeft ? 1 : 0;
-                    rightD = dashingRight ? 1 : 0;
-                    float dashDirection = rightD - leftD;
-                    Debug.Log("DASH DIRECTION: " + dashDirection);
-                    rb.velocity = new Vector2(dashDirection * dashSpeed, 0);
                 }
 
 
@@ -270,19 +371,21 @@ public class P1Controller : MonoBehaviour
                 dashOnCooldown = true;
                 //dashTimer = 0;
                 break;
-
+            case Player1Input.Explosion:
+                explosionEvent.Raise();
+                break;
         }
 
 
     }
 
-    private bool IsPlayerCloseToWall(float range)
+    private bool IsPlayerCloseToObstacle(float range)
     {
         //Has to collisioncheck for walls/ground after every round of movement-input.
         //Check if there is a wall on the side the player is moving:
         RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, range, obstacles);
         // If it hits something...
-        if (hit.collider != null && (hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Ground")))
+        if (hit.collider != null && (hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Ground") || hit.transform.CompareTag("Cage")))
         {
             return true;
         }
@@ -307,10 +410,38 @@ public class P1Controller : MonoBehaviour
             runtimePlayerStats.moveSpeed += playerItem.speedModifier;
 
             runtimePlayerStats.baseAttackDamage += playerItem.damageModifier;
+
+
+            //Weapontypes addons:
+            switch (playerItem.weaponType)
+            {
+                case PlayerItems.WeaponType.None:
+                    break;
+
+                case PlayerItems.WeaponType.ExplodingShots:
+                    hasExplodingShots = true;
+                    shotgunImage.sprite = playerItem.itemSprite;
+                    shotgunImage.gameObject.SetActive(true);
+                    break;
+
+                case PlayerItems.WeaponType.Gatlinggun:
+                    hasGatlingGun = true;
+                    runtimePlayerStats.attackRate = runtimePlayerStats.attackRate * gatlingSpeedMultiplier;
+                    rangedCooldownMaxTime = runtimePlayerStats.attackRate;
+                    shotgunImage.sprite = playerItem.itemSprite;
+                    shotgunImage.gameObject.SetActive(true);
+                    break;
+
+                case PlayerItems.WeaponType.Shotgun:
+                    hasShotgun = true;
+                    shotgunImage.sprite = playerItem.itemSprite;
+                    shotgunImage.gameObject.SetActive(true);
+                    break;
+            }
         }
-        
+
         playerItems.AddRange(chosenItems.Except(playerItems)); //Add new items to playeritems
-        //Debug.Log("Updated runtime playerstats with new item!");
+        Debug.Log("Updated runtime playerstats with new item!");
 
         //Strictly speaking only necessary if playerHP actually changed here, but for good measure:
         playerHPEvent.Raise(currentHitPoints);
@@ -321,9 +452,14 @@ public class P1Controller : MonoBehaviour
         runtimePlayerStats.baseAttackDamage = baselineStats.baseAttackDamage;
         runtimePlayerStats.maxHitPoints = baselineStats.maxHitPoints;
         runtimePlayerStats.moveSpeed = baselineStats.moveSpeed;
-        rangedCooldownMaxTime = baselineStats.attackRate;
+
+        runtimePlayerStats.attackRate = baselineStats.attackRate;
+        rangedCooldownMaxTime = runtimePlayerStats.attackRate;
+
         runtimePlayerStats.jumpForce = baselineStats.jumpForce;
         runtimePlayerStats.rangedAttacks = baselineStats.rangedAttacks;
+
+
         runtimePlayerStats.meleeAttacks = baselineStats.meleeAttacks;
         if (runtimeChoices.chosenHero.characterSprite != null)
         {
@@ -340,6 +476,36 @@ public class P1Controller : MonoBehaviour
         currentHitPoints = baselineStats.startingHitPoints;
         playerHPEvent.Raise(currentHitPoints);
         //healthBar.VisualiseHealthChange(baselineStats.startingHitPoints);
+
+        runtimeChoices.baselineItem = baselineStats.startItem;
+
+        //Weapontypes addons:
+        switch (baselineStats.startItem.weaponType)
+        {
+            case PlayerItems.WeaponType.None:
+                //Do nothing
+                break;
+
+            case PlayerItems.WeaponType.ExplodingShots:
+                hasExplodingShots = true;
+                shotgunImage.sprite = baselineStats.startItem.itemSprite;
+                shotgunImage.gameObject.SetActive(true);
+                break;
+
+            case PlayerItems.WeaponType.Gatlinggun:
+                hasGatlingGun = true;
+                runtimePlayerStats.attackRate = runtimePlayerStats.attackRate * gatlingSpeedMultiplier;
+                rangedCooldownMaxTime = runtimePlayerStats.attackRate;
+                shotgunImage.sprite = baselineStats.startItem.itemSprite;
+                shotgunImage.gameObject.SetActive(true);
+                break;
+
+            case PlayerItems.WeaponType.Shotgun:
+                hasShotgun = true;
+                shotgunImage.sprite = baselineStats.startItem.itemSprite;
+                shotgunImage.gameObject.SetActive(true);
+                break;
+        }
     }
 
     public void DamageAnimation()
