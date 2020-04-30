@@ -157,6 +157,53 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &644084766677704729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6907928757165733800}
+  - component: {fileID: 7402431904174802653}
+  m_Layer: 0
+  m_Name: DodgeRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6907928757165733800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644084766677704729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2409340943091751088}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &7402431904174802653
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644084766677704729}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 8
 --- !u!1 &694132592322637169
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +268,7 @@ Transform:
   m_Children:
   - {fileID: 2409340943155953352}
   - {fileID: 5027903304600822876}
+  - {fileID: 6907928757165733800}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -349,6 +397,17 @@ MonoBehaviour:
   matWhite: {fileID: 2100000, guid: da2c11b1a32a0e748b87c0907cbfc44d, type: 2}
   agent: {fileID: 0}
   modifiers: []
+  jumpFrequency: 0.02
+  moveCap: 8
+  dodgeCooldown: 100
+  dodgeTimer: 0
+  dodgeForce: 50
+  dodgeDuration: 0.13
+  dodgeRemaining: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  jumpHeight: 10
 --- !u!1 &2409340943155953353
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +483,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.77, y: 6.77}
+  m_Size: {x: 6.76, y: 6.76}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
