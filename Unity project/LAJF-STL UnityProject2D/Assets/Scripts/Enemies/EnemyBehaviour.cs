@@ -219,7 +219,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     }
 
     // previous params for this function (Enemy enemy, List<EnemyModifier> enemyModifiers)
-    public void InitalizeEnemy()
+    public virtual void InitalizeEnemy()
     {
         List<EnemyModifier> enemyModifiers = new List<EnemyModifier>();
         agent = runtimeChoices.enemies[runtimeChoices.enemies.Count - 1];
