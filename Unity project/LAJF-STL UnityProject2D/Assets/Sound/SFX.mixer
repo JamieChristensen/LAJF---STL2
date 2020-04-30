@@ -7,12 +7,12 @@ AudioMixerController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SFX
-  m_OutputGroup: {fileID: 0}
+  m_OutputGroup: {fileID: 24300002, guid: cd1c7f898172da1478c2f8059b4934d3, type: 2}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
   m_StartSnapshot: {fileID: 24500006}
-  m_SuspendThreshold: -80
+  m_SuspendThreshold: 0
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters: []
@@ -65,5 +65,5 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: ed74e2e007cd52145b80c24aede0ea76
   m_FloatValues:
-    e91a761c5abf7494281d4ffcff127dd6: -4.9356413
+    e91a761c5abf7494281d4ffcff127dd6: 0
   m_TransitionOverrides: {}
