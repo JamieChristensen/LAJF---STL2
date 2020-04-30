@@ -16,5 +16,8 @@ MonoBehaviour:
   details: From God Screen (2) to Theme Screen (3)
   startTransparent: 1
   textElement:
-  - textInput: A long way from home the scene was set...
+  - textInput: 'was said with great frustration. They stole the relic in a secret
+      Location! '
+    textInputs:
+    - 'was said with great frustration. They stole the relic in a secret Location! '
     timeOfTextDisplayed: 3

@@ -17,6 +17,7 @@ public class TransitionScreen : MonoBehaviour
     public int voiceLineIndex;
     public AudioList audioList;
     public TransitionNarrator transitionNarrator;
+    public ChoiceCategory runtimeChoices;
 
     bool transitioning = false;
     Coroutine co;
@@ -144,9 +145,35 @@ public class TransitionScreen : MonoBehaviour
     {
        
         transitioning = true;
-        middleInfo.text = transitionElements[transitionIndex].textElement[0].textInput;
+        if (transitionElements[transitionIndex] != null)
+        {
+            if (transitionElements[transitionIndex].textElement[0].textInputs.Length != 0 && transitionIndex != 18)
+            {
+                middleInfo.text = transitionElements[transitionIndex].textElement[0].textInputs[runtimeChoices.runTimeLoopCount - 1];
+            }
+            else if (transitionIndex == 18)
+            {
+                bool didHeroWin = false;
+                foreach (PlayerItems item in runtimeChoices.playerItems)
+                {
+                    didHeroWin = (item.itemName == "Victory Shades") ? true : didHeroWin;
+                }
+                if (didHeroWin)
+                {
+                    middleInfo.text = transitionElements[transitionIndex].textElement[0].textInputs[0];
+                }
+                else
+                {
+                    middleInfo.text = transitionElements[transitionIndex].textElement[0].textInputs[1];
+                }
 
-
+            }
+            else
+            {
+                middleInfo.text = "";
+            }
+        }
+        
         _nextTransitionElements = transitionElements[transitionIndex];
 
         float timeToLerp = transitionElements[transitionIndex].textElement[0].timeOfTextDisplayed;

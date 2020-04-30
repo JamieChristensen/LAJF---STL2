@@ -16,5 +16,9 @@ MonoBehaviour:
   details: From Main Menu (0) to Character screen (1)
   startTransparent: 1
   textElement:
-  - textInput: Once upon a time, there was a hero, You!
+  - textInput: ', a relic too powerful to even imagine was forged in glory. I would
+      tell you much more, but now the Hero enters the story!'
+    textInputs:
+    - ', a relic too powerful to even imagine was forged in glory. I would tell you
+      much more, but now the Hero enters the story!'
     timeOfTextDisplayed: 3

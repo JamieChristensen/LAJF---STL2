@@ -17,4 +17,6 @@ MonoBehaviour:
   startTransparent: 0
   textElement:
   - textInput: On the dance floor!
+    textInputs:
+    - 
     timeOfTextDisplayed: 1

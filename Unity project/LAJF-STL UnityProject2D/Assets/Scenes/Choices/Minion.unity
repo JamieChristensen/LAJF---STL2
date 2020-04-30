@@ -2425,15 +2425,28 @@ MonoBehaviour:
   characterpool: {fileID: 0}
   characterSprites: []
   characterNames: []
+  characterChoices:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   playerItemPool: []
+  AllPossiblePlayerItems: []
+  AvailableItems: []
   choiceNameText: []
   itemImageTargets: []
+  playerItemChoices:
+  - {fileID: 0}
+  - {fileID: 0}
   theOnlyButton: {fileID: 0}
   theGrandPrize: {fileID: 0}
   victoryShades: {fileID: 0}
   modifierPool: []
   modifierSprites: []
   modifierNames: []
+  enemyModifierChoices:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   enemyPool:
   - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
   - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
@@ -2447,6 +2460,10 @@ MonoBehaviour:
   - {fileID: 7525804958251268487}
   - {fileID: 6320013300238701869}
   - {fileID: 9043267199911539318}
+  enemyChoices:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   environmentThemePool: {fileID: 0}
   themeSprites: []
   themeNames: []
@@ -3799,6 +3816,12 @@ PrefabInstance:
       propertyPath: audioList
       value: 
       objectReference: {fileID: 1292126497}
+    - target: {fileID: 2753250053838935130, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: runtimeChoices
+      value: 
+      objectReference: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391,
+        type: 2}
     - target: {fileID: 2753250053838935131, guid: 3dee2047a9be4ff4286953596427c40d,
         type: 3}
       propertyPath: m_Alpha

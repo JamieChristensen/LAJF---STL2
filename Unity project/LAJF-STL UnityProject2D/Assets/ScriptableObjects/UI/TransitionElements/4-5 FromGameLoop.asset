@@ -16,5 +16,10 @@ MonoBehaviour:
   details: From GameLoop Scene (4) to Minion Screen (5)
   startTransparent: 1
   textElement:
-  - textInput: By their power, a minion was called for...
+  - textInput: 
+    textInputs:
+    - 'The hero was captured, a sacrifice, to a monster of terror and demise! '
+    - THIS SHOULD NOT BE TRIGGERED!!!
+    - THIS SHOULD NOT BE TRIGGERED!!!
+    - THIS SHOULD NOT BE TRIGGERED!!!
     timeOfTextDisplayed: 3

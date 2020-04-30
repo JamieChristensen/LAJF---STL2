@@ -16,5 +16,6 @@ public class TransitionElements : ScriptableObject
 [Serializable] public class TextElement
 {
     public string textInput;
+    public string[] textInputs;
     public float timeOfTextDisplayed;
 }
