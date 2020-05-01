@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 3
   details: To Theme Screen (3) from God Screen (2)
+  introFillers: []
+  heroComments: []
   startTransparent: 0
   textElement:
-  - textInput: 
+  - textInputs: []
     timeOfTextDisplayed: 1
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: ec3a890a3ce7ccd41b7df928d14747b4, type: 3}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 0}

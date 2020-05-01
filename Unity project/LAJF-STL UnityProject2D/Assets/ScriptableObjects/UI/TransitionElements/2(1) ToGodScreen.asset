@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 2
   details: To God Screen (2) from Character Screen (1)
+  introFillers: []
+  heroComments: []
   startTransparent: 0
   textElement:
-  - textInput: 
-    textInputs:
+  - textInputs:
     - 
     - 
     - 
     - 
     timeOfTextDisplayed: 1
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: a40532fccf9d54147a2a0fb7061de8ca, type: 3}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 0}

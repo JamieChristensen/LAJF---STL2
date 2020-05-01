@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 1
   details: From Character Screen (1)To God Screen (2)
+  introFillers: []
+  heroComments: []
   startTransparent: 1
   textElement:
-  - textInput: ', said the Hero in search for treasure. Angering the Gods with a
-      wrath, no scale could ever measure! '
-    textInputs:
+  - textInputs:
     - ', said the Hero in search for treasure. Angering the Gods with a wrath, no
       scale could ever measure! '
     timeOfTextDisplayed: 3
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: a40532fccf9d54147a2a0fb7061de8ca, type: 3}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 0}

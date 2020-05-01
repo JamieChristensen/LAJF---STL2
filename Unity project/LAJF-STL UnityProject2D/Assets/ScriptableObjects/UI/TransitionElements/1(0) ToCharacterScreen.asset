@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 1
   details: To CharacterScreen (1) from Main Menu (0)
+  introFillers: []
+  heroComments: []
   startTransparent: 0
   textElement:
-  - textInput: 
-    textInputs:
+  - textInputs:
     - 
     - 
     - 
     - 
     timeOfTextDisplayed: 1
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: 16809b492b730434e91aa00b16ee1939, type: 3}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 0}

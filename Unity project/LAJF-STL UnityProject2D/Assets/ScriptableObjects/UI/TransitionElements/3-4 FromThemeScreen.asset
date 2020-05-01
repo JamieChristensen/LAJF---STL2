@@ -14,10 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 3
   details: From Theme Screen (3) to GameLoop Scene (4)
+  introFillers: []
+  heroComments: []
   startTransparent: 1
   textElement:
-  - textInput: 
-    textInputs:
+  - textInputs:
     - 'The hero was on their tail, following his map, which led him into an unexpected
       trap! '
     timeOfTextDisplayed: 3
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: 66355108e01702e48acb090a08601256, type: 3}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 0}

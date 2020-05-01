@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 2
   details: From God Screen (2) to Theme Screen (3)
+  introFillers: []
+  heroComments: []
   startTransparent: 1
   textElement:
-  - textInput: 'was said with great frustration. They stole the relic in a secret
-      Location! '
-    textInputs:
+  - textInputs:
     - 'was said with great frustration. They stole the relic in a secret Location! '
     timeOfTextDisplayed: 3
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: ec3a890a3ce7ccd41b7df928d14747b4, type: 3}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 0}

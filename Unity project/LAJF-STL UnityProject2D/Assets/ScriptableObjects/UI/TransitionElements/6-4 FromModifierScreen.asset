@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 6
   details: From Modifier Screen (6) to GameLoop Scene (4)
+  introFillers: []
+  heroComments: []
   startTransparent: 1
   textElement:
-  - textInput: 
-    textInputs:
+  - textInputs:
     - The hero was surprised and in denial, from heaven came its first trial!
     - They took the battle to a different place, yet another enemy to face!
-    - "\u201C_______?\u201D, The hero asked, as the third foe was/became unmasked!"
+    - "\u201C_______?\u201D, The hero asked, as the third foe became unmasked!"
     - A final test to end the journey.  Now comes the question - Was the hero worthy?
     timeOfTextDisplayed: 3
+  transitionBackgrounds: []
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 0}

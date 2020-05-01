@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 4
   details: To GameLoop Scene (4) from Theme Screen (3)
+  introFillers: []
+  heroComments: []
   startTransparent: 0
   textElement:
-  - textInput: 
-    textInputs:
+  - textInputs:
     - 
     - 
     - 
     - 
     timeOfTextDisplayed: 1
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: 66355108e01702e48acb090a08601256, type: 3}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 0}

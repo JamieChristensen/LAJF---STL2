@@ -4,10 +4,12 @@ using UnityEngine;
 using TMPro;
 using STL2.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TransitionScreen : MonoBehaviour
 {
     private CanvasGroup _TransitionCanvasGroup;
+    public Image transitionBackgroundPanel;
     public TextMeshProUGUI middleInfo;
     public TransitionElements[] transitionElements;
     private TransitionElements _nextTransitionElements;
@@ -21,6 +23,8 @@ public class TransitionScreen : MonoBehaviour
 
     bool transitioning = false;
     Coroutine co;
+
+    public string firstPart = "";
 
     // time to fade on
     [SerializeField]
@@ -141,9 +145,19 @@ public class TransitionScreen : MonoBehaviour
         transitioning = true;
         if (transitionElements[transitionIndex] != null)
         {
+            if (transitionElements[transitionIndex].transitionBackgrounds.Count == 1)
+            {
+                transitionBackgroundPanel.sprite = transitionElements[transitionIndex].transitionBackgrounds[0];
+            }
+
+            if (transitionIndex == 0)
+            {
+                firstPart = transitionElements[0].introFillers[Random.Range(0, transitionElements[0].introFillers.Length)];
+            }
+                
             if (transitionElements[transitionIndex].textElement[0].textInputs.Length != 0 && transitionIndex != 18)
             {
-                middleInfo.text = transitionElements[transitionIndex].textElement[0].textInputs[runtimeChoices.runTimeLoopCount - 1];
+                middleInfo.text = firstPart + transitionElements[transitionIndex].textElement[0].textInputs[runtimeChoices.runTimeLoopCount - 1];
             }
             else if (transitionIndex == 18)
             {

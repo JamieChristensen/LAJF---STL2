@@ -125,7 +125,11 @@ public class NarratorBehaviour : MonoBehaviour
         if (textToSpeechClip != null)
         {
             audioList.textToSpeechSource.clip = textToSpeechClip;
-            audioList.textToSpeechSource.Play();
+            if (!audioList.narratorHit.isPlaying)
+            {
+                audioList.textToSpeechSource.Play();
+            }
+            
         }
         uiText.text = text;
         // play audio file 

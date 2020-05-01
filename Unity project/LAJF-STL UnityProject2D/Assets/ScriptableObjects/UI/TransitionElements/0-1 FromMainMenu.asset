@@ -14,17 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 0
   details: From Main Menu (0) to Character screen (1)
+  introFillers:
+  - 'A thousand years ago, '
+  - 'A few moments and a sandwich ago, '
+  - 'On the same day Jesus was born, '
+  - 'Definitely before tuesday, '
+  - 'Before the internet, '
+  heroComments: []
   startTransparent: 1
   textElement:
-  - textInput: ', a relic too powerful to even imagine was forged in glory. I would
-      tell you much more, but now the Hero enters the story!'
-    textInputs:
-    - ', a relic too powerful to even imagine was forged in glory. I would tell you
-      much more, but now the Hero enters the story!'
-    - ', a relic too powerful to even imagine was forged in glory. I would tell you
-      much more, but now the Hero enters the story!'
-    - ', a relic too powerful to even imagine was forged in glory. I would tell you
-      much more, but now the Hero enters the story!'
-    - ', a relic too powerful to even imagine was forged in glory. I would tell you
-      much more, but now the Hero enters the story!'
-    timeOfTextDisplayed: 3
+  - textInputs:
+    - a relic too powerful to even imagine was forged in glory. I would tell you
+      much more, but now the Hero enters the story!
+    - a relic too powerful to even imagine was forged in glory. I would tell you
+      much more, but now the Hero enters the story!
+    - a relic too powerful to even imagine was forged in glory. I would tell you
+      much more, but now the Hero enters the story!
+    - a relic too powerful to even imagine was forged in glory. I would tell you
+      much more, but now the Hero enters the story!
+    timeOfTextDisplayed: 6
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: 16809b492b730434e91aa00b16ee1939, type: 3}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 0}
