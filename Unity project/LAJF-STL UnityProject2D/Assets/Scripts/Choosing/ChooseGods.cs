@@ -77,7 +77,7 @@ public class ChooseGods : MonoBehaviour
             }
 
             buttonSounds.OnChoiceMade();
-            transitionNarrator.DoNarration();
+            //transitionNarrator.DoNarration();
             
             Invoke("LoadTransition",1.5f);
             lockedIn = true;

@@ -18,7 +18,7 @@ MonoBehaviour:
   textElement:
   - textInput: 
     textInputs:
-    - THIS SHOULD NOT BE TRIGGERED!!!
+    - 'The hero was captured, a sacrifice, to a monster of terror and demise! '
     - Finally relief as the road came to a stop, but the gods were just starting
       to warm up!
     - Safe and sound the hero cheered obliviously, little did they know, it was time
