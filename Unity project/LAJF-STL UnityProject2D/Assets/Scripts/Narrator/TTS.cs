@@ -128,7 +128,6 @@ namespace IBM.Watson.DeveloperCloud.Services.TextToSpeech.v1
             tts = new TextToSpeechService(authenticator);
             tts.SetServiceUrl(url);
             Debug.Log("TTS is initialized");
-            isTTSinitialized = true;
             //StartCoroutine(ReadText("The Hero was frozen in his track for a moment, but then he decided that he should kill the opponent"));
         }
 
