@@ -13,9 +13,14 @@ namespace IBM.Watson.DeveloperCloud.Services.TextToSpeech.v1
         public TextToSpeechService tts;
         public AudioSource audioSource;
 
+        [SerializeField]
+        
+        public bool isLive = false;
+
         private string apiKey = "xdSCHOL3tNL_40-kKkfJCJdquqp359vYP2nyHDT4E-38";
         private string url = "https://api.eu-de.text-to-speech.watson.cloud.ibm.com/instances/4cb486f1-6105-425f-a322-de1aa187f142";
         private IamAuthenticator authenticator;
+
 
         public static TTS instance;
 
@@ -43,29 +48,40 @@ namespace IBM.Watson.DeveloperCloud.Services.TextToSpeech.v1
             }
             byte[] synthesizeResponse = null;
             AudioClip clip = null;
-            tts.Synthesize(
-                callback: (DetailedResponse<byte[]> response, IBMError error) =>
-                {
-                    synthesizeResponse = response.Result;
-                    clip = WaveFile.ParseWAV("Narrator_text.wav", synthesizeResponse);
-                    Debug.Log("clip");
-                    Debug.Log(clip);
-                    if (error != null)
-                    {
-                        Debug.Log(error.ErrorMessage);
-                    }
 
-                },
-                text: textToRead,
-                voice: "en-US_MichaelVoice",
-                accept: "audio/wav"
-            );
-
-            while (synthesizeResponse == null)
+            if (tts != null && isLive)
             {
+                tts.Synthesize(
+                    callback: (DetailedResponse<byte[]> response, IBMError error) =>
+                    {
+                        synthesizeResponse = response.Result;
+                        clip = WaveFile.ParseWAV("Narrator_text.wav", synthesizeResponse);
+                        Debug.Log("clip");
+                        Debug.Log(clip);
+                        if (error != null)
+                        {
+                            Debug.Log(error.ErrorMessage);
+                        }
+
+                    },
+                    text: textToRead,
+                    voice: "en-US_MichaelVoice",
+                    accept: "audio/wav"
+                );
+
+                while (synthesizeResponse == null)
+                {
+                    yield return null;
+                }
+                output.textToSpeechClip = clip;
+            }
+            else
+            {
+                Debug.LogWarning("Custom warning message: Narrator should have spoken, but TTS is null or just in developer mode to debug mock instead");
+                Debug.LogWarning("Narrator is reading this: " + textToRead);
                 yield return null;
             }
-            output.textToSpeechClip = clip;
+
         }
 
         public IEnumerator SynthesizeText(string textToRead, AudioList output)

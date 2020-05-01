@@ -93,7 +93,7 @@ public class Spawner : MonoBehaviour
             case Enemy.EnemyType.Splitter:
                 //TODO: Make splitter:
                 go = Instantiate(splitterEnemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
-                enemyBehaviour = go.GetComponent<EnemyBehaviour>();
+                enemyBehaviour = go.GetComponent<SplitterEnemy>();
                 break;
 
             default:

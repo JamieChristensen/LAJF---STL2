@@ -37,7 +37,6 @@ public class OrbEnemy : EnemyBehaviour
 
     private int currentTargetTransformIndex = 1;
 
-    private int currentHealth;
 
     private Transform playerTransform;
 
@@ -45,13 +44,13 @@ public class OrbEnemy : EnemyBehaviour
     {
         InitalizeEnemy();
         playerTransform = FindObjectOfType<P1Controller>().transform;
+
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
 
     public override void InitalizeEnemy()
     {
-        currentHealth = 10;
-
         Orb orbInstance = Instantiate(orbPrefab, transform.position, Quaternion.identity, transform).GetComponent<Orb>();
 
         currentOrbTransform = orbPositions[0];
@@ -62,7 +61,6 @@ public class OrbEnemy : EnemyBehaviour
 
         base.InitalizeEnemy();
 
-        currentHealth = 10;
         //Instantiate orb prefab
     }
 
@@ -78,6 +76,7 @@ public class OrbEnemy : EnemyBehaviour
 
     protected override void MoveToTarget()
     {
+
         base.MoveToTarget();
         if (isOrbDead)
         {
@@ -132,7 +131,7 @@ public class OrbEnemy : EnemyBehaviour
 
     protected override void Die()
     {
-        Debug.Log("No.");
+        base.Die();
     }
 
     protected override void RangedAttack()

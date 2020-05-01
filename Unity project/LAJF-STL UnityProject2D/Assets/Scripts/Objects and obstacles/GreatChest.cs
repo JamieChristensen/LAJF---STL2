@@ -76,6 +76,7 @@ public class GreatChest : MonoBehaviour
     {
         //Reset physics, position.
         rb.gravityScale = 0;
+        rb.velocity = Vector2.zero;
         Vector3 deltaVector = new Vector3(Random.Range(0, 40), 0, 0);
         transform.position = inactivePosition-deltaVector;
         transform.rotation = new Quaternion(0, 0, 0, 0);

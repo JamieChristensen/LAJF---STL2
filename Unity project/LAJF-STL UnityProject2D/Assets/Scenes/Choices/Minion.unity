@@ -2517,10 +2517,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemyPool:
-  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
   - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
   - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
-  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
   enemySprites:
   - {fileID: 1969982587352721118}
   - {fileID: 1744236459321764018}
