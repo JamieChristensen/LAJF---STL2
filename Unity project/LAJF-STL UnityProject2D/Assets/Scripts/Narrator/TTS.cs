@@ -16,8 +16,10 @@ namespace IBM.Watson.DeveloperCloud.Services.TextToSpeech.v1
         private string apiKey = "VnxnnSeufHYPPhjiERJ25GZ1g8WAn6S2BwjJ9JQWf5N5";
         private string url = "https://api.eu-gb.text-to-speech.watson.cloud.ibm.com/instances/39fb4761-4a5b-4215-8f3f-2cd5841a241c";
         private IamAuthenticator authenticator;
-    
-        public IEnumerator SynthesizeText(string textToRead,  NarratorBehaviour output)
+
+        public bool isTTSinitialized { get; private set; }
+
+        public IEnumerator SynthesizeText(string textToRead, NarratorBehaviour output)
         {
             if (textToRead == null || textToRead == "")
             {
@@ -25,29 +27,41 @@ namespace IBM.Watson.DeveloperCloud.Services.TextToSpeech.v1
             }
             byte[] synthesizeResponse = null;
             AudioClip clip = null;
-            tts.Synthesize(
-                callback: (DetailedResponse<byte[]> response, IBMError error) =>
-                {
-                    synthesizeResponse = response.Result;
-                    clip = WaveFile.ParseWAV("Narrator_text.wav", synthesizeResponse);
-                    Debug.Log("clip");
-                    Debug.Log(clip);
-                    if (error != null)
-                    {
-                        Debug.Log(error.ErrorMessage);
-                    }
 
-                },
-                text: textToRead,
-                voice: "en-US_MichaelVoice",
-                accept: "audio/wav"
-            );
-
-            while (synthesizeResponse == null)
+            Debug.Log(tts);
+            if (tts != null)
             {
+                tts.Synthesize(
+                    callback: (DetailedResponse<byte[]> response, IBMError error) =>
+                    {
+                        synthesizeResponse = response.Result;
+                        clip = WaveFile.ParseWAV("Narrator_text.wav", synthesizeResponse);
+                        Debug.Log("clip");
+                        Debug.Log(clip);
+                        if (error != null)
+                        {
+                            Debug.Log(error.ErrorMessage);
+                        }
+
+                    },
+                    text: textToRead,
+                    voice: "en-US_MichaelVoice",
+                    accept: "audio/wav"
+                );
+
+                while (synthesizeResponse == null)
+                {
+                    yield return null;
+                }
+                output.textToSpeechClip = clip;
+            }
+            else
+            {
+
+                Debug.LogWarning("Custom warning message: Narrator should have spoken, but TTS is null");
                 yield return null;
             }
-            output.textToSpeechClip = clip;
+
         }
 
         public IEnumerator InitalizeService()
@@ -62,6 +76,7 @@ namespace IBM.Watson.DeveloperCloud.Services.TextToSpeech.v1
             tts = new TextToSpeechService(authenticator);
             tts.SetServiceUrl(url);
             Debug.Log("TTS is initialized");
+            isTTSinitialized = true;
             //StartCoroutine(ReadText("The Hero was frozen in his track for a moment, but then he decided that he should kill the opponent"));
         }
 
