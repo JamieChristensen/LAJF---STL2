@@ -242,7 +242,12 @@ public class GameManager : MonoBehaviour
         canPlayerMove = false;
         // Time.timeScale = 0f;
         sceneManager.ChooseChoiceSceneToLoad(indexOfItemChoiceScene);
-        yield return new WaitForSeconds(1.5f);
+        float extraTime = 0;
+        if (GameObject.Find("TextToSpeech").GetComponent<AudioSource>().isPlaying)
+        {
+            extraTime = 2.5f;
+        }
+        yield return new WaitForSeconds(1.5f + extraTime);
         nextTransition.Raise(14);
         // StartCoroutine(sceneManager.ALoadEnvironment(indexOfItemChoiceScene)); //6 is the index of item-choice scene.
     }

@@ -16,45 +16,37 @@ MonoBehaviour:
   Options: []
   chosenGods:
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
-  - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
-  - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
   playerItems:
-  - {fileID: 11400000, guid: c1c0983851958c34e8b4d3a9d9b3e3d5, type: 2}
-  - {fileID: 11400000, guid: 0449e37f5ac35744bb01ef93d8177982, type: 2}
-  - {fileID: 11400000, guid: 5966a2f15e04c4a4997eec965b58ecc2, type: 2}
+  - {fileID: 11400000, guid: e908707d1505a324085395952b68f7c3, type: 2}
   baselineItem: {fileID: 11400000, guid: 970a9a44848f5a64e8345d352a5f9052, type: 2}
   enemies:
   - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
-  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
-  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
   - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
   enemyModifiers:
-  - {fileID: 11400000, guid: 43928b0c3460d764d9dbeb910483ea71, type: 2}
   - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
-  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
-  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
+  - {fileID: 11400000, guid: 82d84c797c4bb9949b13a7b7b0526361, type: 2}
   chosenEnvironments:
-  - environmentName: Castle2
-    theme: Castle
-    environmentSprite: {fileID: 21300000, guid: 96578e020b98850489190505a747cfde,
+  - environmentName: Space3
+    theme: Space
+    environmentSprite: {fileID: 21300000, guid: 977029ab4b62254499c913eb1126c976,
       type: 3}
-    environmentIndex: 19
-  - environmentName: Castle1
-    theme: Castle
-    environmentSprite: {fileID: 21300000, guid: aa5a9cec318fc474e96ab2e55dc0601d,
+    environmentIndex: 15
+  - environmentName: Space1
+    theme: Space
+    environmentSprite: {fileID: 21300000, guid: 08696e9d0877dbb4db4890d9a88ed615,
       type: 3}
-    environmentIndex: 18
-  - environmentName: Castle5
-    theme: Castle
-    environmentSprite: {fileID: 21300000, guid: 1957038bcc272d143b2298b2f1575f59,
+    environmentIndex: 13
+  - environmentName: Space4
+    theme: Space
+    environmentSprite: {fileID: 21300000, guid: a3a887465523a624ab1b513352af0268,
       type: 3}
-    environmentIndex: 22
-  - environmentName: Castle3
-    theme: Castle
-    environmentSprite: {fileID: 21300000, guid: 543280da1b454154f9f3220d5e2f1d2a,
+    environmentIndex: 16
+  - environmentName: Space2
+    theme: Space
+    environmentSprite: {fileID: 21300000, guid: 913f61ef3af3b4142859694fe8212e66,
       type: 3}
-    environmentIndex: 20
-  runTimeLoopCount: 4
+    environmentIndex: 14
+  runTimeLoopCount: 2
   chosenHero: {fileID: 11400000, guid: a22363f69a855974e9844ae770f88311, type: 2}
   character: {fileID: 0}
   theme: {fileID: 0}
@@ -62,21 +54,21 @@ MonoBehaviour:
     minion: {fileID: 6271494558876136031, guid: ad41a8d43eab452448bc40561b6bfae5,
       type: 3}
     modifier: {fileID: 0}
-  firstItem: {fileID: 4805518738470751890, guid: 19819d60ef550904487d9640c79f4884,
+  firstItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
     type: 3}
   secondOpponent:
-    minion: {fileID: 1234957342701670930, guid: 370fc784448474943b53bb2504194280,
+    minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
       type: 3}
     modifier: {fileID: 0}
-  secondItem: {fileID: 4805518738470751890, guid: 19819d60ef550904487d9640c79f4884,
+  secondItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
     type: 3}
   thirdOpponent:
-    minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
+    minion: {fileID: 6271494558876136031, guid: ad41a8d43eab452448bc40561b6bfae5,
       type: 3}
     modifier: {fileID: 0}
-  thirdItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
+  thirdItem: {fileID: 4805518738470751890, guid: 19819d60ef550904487d9640c79f4884,
     type: 3}
   fourthOpponent:
-    minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
+    minion: {fileID: 6271494558876136031, guid: ad41a8d43eab452448bc40561b6bfae5,
       type: 3}
     modifier: {fileID: 0}

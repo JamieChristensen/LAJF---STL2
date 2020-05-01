@@ -19,7 +19,7 @@ MonoBehaviour:
   colliderSize: {x: 2, y: 7}
   colliderOffset: {x: 0, y: 0}
   moveSpeed: 10
-  jumpForce: 30
+  jumpForce: 25
   baseAttackDamage: 10
   attackRate: 0.4
   rangedAttacks: 1

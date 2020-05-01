@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class NarratorBehaviour : MonoBehaviour
 {
-    public AudioSource audioSource;
+    public AudioList audioList;
     public AudioClip clearThroat;
     public AudioClip textToSpeechClip;
 
@@ -32,6 +32,7 @@ public class NarratorBehaviour : MonoBehaviour
 
     void Start()
     {
+        audioList = FindObjectOfType<AudioList>();
         textToSpeech = FindObjectOfType<TTS>();
         StartCoroutine(textToSpeech.InitalizeService());
         uiText.text = "";
@@ -111,20 +112,20 @@ public class NarratorBehaviour : MonoBehaviour
         
         RandomizePosition();
 
-        audioSource.clip = clearThroat;
-        audioSource.Play();
+        audioList.textToSpeechSource.clip = clearThroat;
+        audioList.textToSpeechSource.Play();
 
         isEnteringScene = true;
         isExitingScene = false;
 
         // wait for narrator to clear his throat 
-        yield return new WaitForSeconds(audioSource.clip.length);
+        yield return new WaitForSeconds(audioList.textToSpeechSource.clip.length);
 
         // show text on screen 
         if (textToSpeechClip != null)
         {
-            audioSource.clip = textToSpeechClip;
-            audioSource.Play();
+            audioList.textToSpeechSource.clip = textToSpeechClip;
+            audioList.textToSpeechSource.Play();
         }
         uiText.text = text;
         // play audio file 
