@@ -1357,51 +1357,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2114617311 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9005650612711449379, guid: 4c8b91af623fccc449d8351369779d7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 215539154918158727}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2114617312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114617311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 1cade647f7014d543829d17d91acb9c9, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2114617314}
-        m_MethodName: ResetChestState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2114617314 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9005650612711449376, guid: 4c8b91af623fccc449d8351369779d7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 215539154918158727}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114617311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eea8e3fd9a24a54bb2564e257cdfffd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &215539154918158727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1409,12 +1364,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9005650612711449376, guid: 4c8b91af623fccc449d8351369779d7f,
-        type: 3}
-      propertyPath: agileEnemyPrefab
-      value: 
-      objectReference: {fileID: 2409340943091751089, guid: a6f3693824ad82841b5c741c698ad22d,
-        type: 3}
     - target: {fileID: 9005650612711449377, guid: 4c8b91af623fccc449d8351369779d7f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3238,6 +3187,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 40.9
       objectReference: {fileID: 0}
+    - target: {fileID: 5772170284192428899, guid: 3539789bdec8393459ac9e102f6dc3ee,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: d70835d04d746ad42a76e62fa92eaae0, type: 2}
+    - target: {fileID: 5772170285532311352, guid: 3539789bdec8393459ac9e102f6dc3ee,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: d70835d04d746ad42a76e62fa92eaae0, type: 2}
     - target: {fileID: 5772170285532311359, guid: 3539789bdec8393459ac9e102f6dc3ee,
         type: 3}
       propertyPath: m_LocalPosition.x

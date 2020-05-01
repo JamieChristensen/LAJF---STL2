@@ -5,9 +5,13 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     //Spawns chest, enemy, perhaps more in the future.
+    [Header("EnemyPrefabs")]
     public GameObject enemyPrefab;
     public GameObject agileEnemyPrefab;
+    public GameObject orbEnemyPrefab;
+    public GameObject splitterEnemyPrefab;
 
+    [Header("Other")]
     public GreatChest greatChest;
     public ChoiceCategory runtimeChoices;
 
@@ -52,25 +56,57 @@ public class Spawner : MonoBehaviour
                 StartCoroutine(SpawnEnemyAfterDelay(5));
                 break;
         }
-        
-        
+
+
     }
 
     IEnumerator SpawnEnemyAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        Vector3 deltaVector = new Vector3(Random.Range(0, 60), 0, 0);
-     //   GameObject go = Instantiate(enemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
-        GameObject go = Instantiate(agileEnemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
-        //EnemyBehaviour enemyBehaviour = go.GetComponent<EnemyBehaviour>();
-        EnemyBehaviour enemyBehaviour = go.GetComponent<AgileEnemy>();
-        //Runtimeloopcount incremented once per item-choice.
+
         int runTimeLoopCount = runtimeChoices.runTimeLoopCount;
-
         Enemy enemy = runtimeChoices.enemies[runTimeLoopCount - 1];
-        EnemyModifier[] modifiers = new EnemyModifier[] { runtimeChoices.enemyModifiers[runTimeLoopCount - 1] };
-        enemyBehaviour.InitalizeEnemy(enemy, modifiers);
+        Enemy.EnemyType enemyType = enemy.enemyType;
 
-        //take account for boss-amount of modifiers
+        Vector3 deltaVector = new Vector3(Random.Range(0, 60), 0, 0);
+
+        GameObject go;
+        EnemyBehaviour enemyBehaviour;
+
+        switch (enemyType)
+        {
+            case Enemy.EnemyType.None:
+                go = Instantiate(enemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
+                enemyBehaviour = go.GetComponent<EnemyBehaviour>();
+                break;
+
+            case Enemy.EnemyType.Agile:
+                go = Instantiate(agileEnemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
+                enemyBehaviour = go.GetComponent<AgileEnemy>();
+                break;
+
+            case Enemy.EnemyType.Orb:
+                go = Instantiate(orbEnemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
+                enemyBehaviour = go.GetComponent<OrbEnemy>();
+                break;
+
+            case Enemy.EnemyType.Splitter:
+                //TODO: Make splitter:
+                go = Instantiate(splitterEnemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
+                enemyBehaviour = go.GetComponent<EnemyBehaviour>();
+                break;
+
+            default:
+                //Default is only here to ensure that enemyBehaviour is always assigned for future use in this method call.
+                go = Instantiate(enemyPrefab, enemySpawnPos - deltaVector, Quaternion.identity);
+                enemyBehaviour = go.GetComponent<EnemyBehaviour>();
+                break;
+        }
+
+
+        EnemyModifier[] modifiers = new EnemyModifier[] { runtimeChoices.enemyModifiers[runTimeLoopCount - 1] };
+        enemyBehaviour.InitalizeEnemy(enemy, modifiers);        //take account for boss-amount of modifiers
+
+
     }
 }
