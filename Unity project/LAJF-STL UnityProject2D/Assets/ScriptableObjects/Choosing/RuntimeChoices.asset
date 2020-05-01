@@ -19,41 +19,50 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
   playerItems: []
-  baselineItem: {fileID: 11400000, guid: 3517c50eeea57b54880e316331a20839, type: 2}
+  baselineItem: {fileID: 11400000, guid: c1c0983851958c34e8b4d3a9d9b3e3d5, type: 2}
   enemies:
   - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
   - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
+  - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
   - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
+  - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
+  - {fileID: 11400000, guid: 718863cf8077f2f4ab22d3e8ba7bf39a, type: 2}
+  - {fileID: 11400000, guid: 216bf3ccec03d7140aa7c7027a2ec883, type: 2}
   enemyModifiers:
-  - {fileID: 11400000, guid: 82d84c797c4bb9949b13a7b7b0526361, type: 2}
+  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
+  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
+  - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
+  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
+  - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
+  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
   - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
   chosenEnvironments:
-  - environmentName: Mythical2
-    theme: Mythical
-    environmentSprite: {fileID: 21300000, guid: 0a649816dd2711641a4e90cc09052196,
+  - environmentName: Space5
+    theme: Space
+    environmentSprite: {fileID: 21300000, guid: e36777cffaaf6ab4eb12ef35cadc237c,
       type: 3}
-    environmentIndex: 28
-  - environmentName: Mythical3
-    theme: Mythical
-    environmentSprite: {fileID: 21300000, guid: 1ad27daa2c1e2864b8a1b825736de7c2,
+    environmentIndex: 17
+  - environmentName: Space1
+    theme: Space
+    environmentSprite: {fileID: 21300000, guid: 08696e9d0877dbb4db4890d9a88ed615,
       type: 3}
-    environmentIndex: 29
-  - environmentName: Mythical1
-    theme: Mythical
-    environmentSprite: {fileID: 21300000, guid: 3a86162e1535e9641a445fe8417e7209,
+    environmentIndex: 13
+  - environmentName: Space2
+    theme: Space
+    environmentSprite: {fileID: 21300000, guid: 913f61ef3af3b4142859694fe8212e66,
       type: 3}
-    environmentIndex: 27
-  - environmentName: Mythical4
-    theme: Mythical
-    environmentSprite: {fileID: 21300000, guid: f939548dec3ea0c48bb35af0f68a2ee0,
+    environmentIndex: 14
+  - environmentName: Space4
+    theme: Space
+    environmentSprite: {fileID: 21300000, guid: a3a887465523a624ab1b513352af0268,
       type: 3}
-    environmentIndex: 30
+    environmentIndex: 16
   runTimeLoopCount: 1
-  chosenHero: {fileID: 11400000, guid: 773b4d324289d78408402733c242829c, type: 2}
+  chosenHero: {fileID: 11400000, guid: 7f7febd433328a94a94af68dd70f11b0, type: 2}
   character: {fileID: 0}
   theme: {fileID: 0}
   firstOpponent:
-    minion: {fileID: 6271494558876136031, guid: ad41a8d43eab452448bc40561b6bfae5,
+    minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
       type: 3}
     modifier: {fileID: 0}
   firstItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,

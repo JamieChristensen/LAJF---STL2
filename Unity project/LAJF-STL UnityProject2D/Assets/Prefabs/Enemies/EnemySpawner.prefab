@@ -46,6 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2409340943091751089, guid: b56009adef33d4c4ba164743272a898b,
     type: 3}
+  agileEnemyPrefab: {fileID: 2409340943091751089, guid: d0b579e6c3d51db4bb76576560cbba39,
+    type: 3}
+  orbEnemyPrefab: {fileID: 7197962424530652541, guid: 0dbe643fead2be44fae3749a9d054a03,
+    type: 3}
+  splitterEnemyPrefab: {fileID: 344757896960665010, guid: d713346c3cb80654aa4884df1d5d131d,
+    type: 3}
   greatChest: {fileID: 0}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   enemySpawnPos: {x: 26, y: 22, z: 0}

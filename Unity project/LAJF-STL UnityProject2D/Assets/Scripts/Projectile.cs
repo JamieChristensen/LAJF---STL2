@@ -37,8 +37,24 @@ public class Projectile : MonoBehaviour
 
             if (collided.CompareTag("Monster"))
             {
-                //My best guess of what Luca would implement:
-                collided.GetComponent<EnemyBehaviour>().TakeDamage(damage);
+                Debug.Log(collided.ToString());
+                //Apologies for shit code, I have to check somehow, and this is the best I can think of at 00:40 tonight:
+                if (collided.GetComponent<Orb>() != null)
+                {
+                    collided.GetComponent<Orb>().TakeDamage(damage);
+                }
+                else if (collided.GetComponent<EnemyBehaviour>() != null)
+                {
+                    collided.GetComponent<EnemyBehaviour>().TakeDamage(damage);
+                }
+                else if (collided.GetComponent<AgileEnemy>() != null)
+                {
+                    collided.GetComponent<AgileEnemy>().TakeDamage(damage);
+                }
+                else if (collided.GetComponent<OrbEnemy>() != null)
+                {
+                    collided.GetComponent<OrbEnemy>().TakeDamage(damage);
+                }
             }
 
             if (collided.CompareTag("Player"))
@@ -72,7 +88,24 @@ public class Projectile : MonoBehaviour
         {
             if (hit.collider.CompareTag("Monster"))
             {
-                hit.collider.gameObject.GetComponent<EnemyBehaviour>().TakeDamage(damage);
+
+                //Apologies for shit code, I have to check somehow, and this is the best I can think of at 00:40 tonight:
+                if (hit.collider.GetComponent<Orb>() != null)
+                {
+                    hit.collider.GetComponent<Orb>().TakeDamage(damage);
+                }
+                else if (hit.collider.GetComponent<EnemyBehaviour>() != null)
+                {
+                    hit.collider.GetComponent<EnemyBehaviour>().TakeDamage(damage);
+                }
+                else if (hit.collider.GetComponent<AgileEnemy>() != null)
+                {
+                    hit.collider.GetComponent<AgileEnemy>().TakeDamage(damage);
+                }
+                else if (hit.collider.GetComponent<OrbEnemy>() != null)
+                {
+                    hit.collider.GetComponent<OrbEnemy>().TakeDamage(damage);
+                }
             }
         }
 

@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="New Enemy", menuName = "ScriptableObject/Enemy")]
+[CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemy")]
 public class Enemy : ScriptableObject
 {
+
+    public enum EnemyType
+    {
+        None, Agile, Orb, Splitter
+    }
+
     // generic
     public new string name;
     public int health;
@@ -12,7 +18,7 @@ public class Enemy : ScriptableObject
 
     // visual
     public Sprite sprite;
-    public float scaleFactor; 
+    public float scaleFactor;
 
     // combat 
     public int damage;
@@ -21,13 +27,15 @@ public class Enemy : ScriptableObject
     public float attackSpeed;
     // just for testing
 
+    [Header("EnemyType")]
+    public EnemyType enemyType;
     public string GenerateName(List<EnemyModifier> modifiers)
     {
         string modifiedName = name;
 
-        if(modifiers.Count > 0)
+        if (modifiers.Count > 0)
         {
-            foreach(EnemyModifier m in modifiers)
+            foreach (EnemyModifier m in modifiers)
             {
                 // look for _ 
                 string extraText = m.name.Trim();
@@ -42,7 +50,8 @@ public class Enemy : ScriptableObject
             }
         }
         return modifiedName;
-    } 
+    }
+
 
 
     //public Trait trait;

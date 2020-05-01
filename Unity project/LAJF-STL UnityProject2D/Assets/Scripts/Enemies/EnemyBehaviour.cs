@@ -19,7 +19,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     private int currentHealth;
     public int maxHealth;
     [SerializeField]
-    private float projectileSpeed = 1;
+    private float projectileSpeed = 1; //Public so it can be accessed by Orb.cs ¯\_(ツ)_/¯
     private float cooldownTimer;
     [SerializeField]
     private int monsterNumber = 1;
@@ -109,7 +109,10 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         rb2.gravityScale = 0f;
 
         Invoke("DeathAnimation", 0.2f);
-        audioList.PlayWithVariablePitch(audioList.deathEnemy);
+        if (audioList != null)
+        {
+            audioList.PlayWithVariablePitch(audioList.deathEnemy);
+        }
         StartCoroutine(DelayDeathAnnouncement(1.1f));
 
         if (UnityEngine.Random.Range(0, 10f) > 6)
@@ -157,12 +160,15 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         return distance;
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.GetCurrentHP(currentHealth);
         DamageAnimation();
-        audioList.PlayWithVariablePitch(audioList.hurt);
+        if (audioList != null)
+        {
+            audioList.PlayWithVariablePitch(audioList.hurt);
+        }
     }
 
     public void OnPlayerDamaged(int PlayerHealth)

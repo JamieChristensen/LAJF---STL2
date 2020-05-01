@@ -10,6 +10,20 @@ public class Orb : MonoBehaviour
 
     public GameObject particleExplosionObj;
 
+    [Range(1, 30)]
+    public int damage;
+
+    private OrbEnemy parentOrb;
+
+    [SerializeField]
+    [Range(0.5f, 10f)]
+    private float projectileSpeed;
+
+    public void Start()
+    {
+        parentOrb = transform.parent.GetComponent<OrbEnemy>();
+    }
+
 
     public void TakeDamage(int dmg)
     {
@@ -20,6 +34,9 @@ public class Orb : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("Orb died");
+            Instantiate(particleExplosionObj);
+            transform.parent.GetComponent<OrbEnemy>().isOrbDead = true;
+            Destroy(gameObject);
             //TODO: Add death explosion, sounds and particles and stuff.
         }
     }
@@ -29,7 +46,17 @@ public class Orb : MonoBehaviour
         GameObject other = collision.gameObject;
         if (Projectile.IsInLayerMask(other.layer, layerMask))
         {
-            
+            //Visuals, sounds and other could be here, rather than in "takedamage". 
         }
+    }
+
+    public void Attack(Transform target)
+    {
+        Vector2 direction = (target.transform.position - transform.position).normalized;
+        GameObject bullet = Instantiate(parentOrb.bulletObj, transform.position + (((Vector3)direction) * 0.2f), Quaternion.identity);
+
+        bullet.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed, ForceMode2D.Impulse);
+        bullet.GetComponent<Projectile>().damage = damage;
+
     }
 }
