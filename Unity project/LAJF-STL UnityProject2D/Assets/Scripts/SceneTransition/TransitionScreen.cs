@@ -17,6 +17,7 @@ public class TransitionScreen : MonoBehaviour
     public int voiceLineIndex;
     public AudioList audioList;
     public TransitionNarrator transitionNarrator;
+    public ChoiceCategory runtimeChoices;
 
     bool transitioning = false;
     Coroutine co;
@@ -129,12 +130,6 @@ public class TransitionScreen : MonoBehaviour
             
         }
        
-        if (atTransitionDestinationScene == false)
-        {
-            StartCoroutine(NarrateAfterDelay(1));
-        }
-        
-
         co = StartCoroutine(Transition(transitionIndex));
     }
 
@@ -144,10 +139,41 @@ public class TransitionScreen : MonoBehaviour
     {
        
         transitioning = true;
-        middleInfo.text = transitionElements[transitionIndex].textElement[0].textInput;
+        if (transitionElements[transitionIndex] != null)
+        {
+            if (transitionElements[transitionIndex].textElement[0].textInputs.Length != 0 && transitionIndex != 18)
+            {
+                middleInfo.text = transitionElements[transitionIndex].textElement[0].textInputs[runtimeChoices.runTimeLoopCount - 1];
+            }
+            else if (transitionIndex == 18)
+            {
+                bool didHeroWin = false;
+                foreach (PlayerItems item in runtimeChoices.playerItems)
+                {
+                    didHeroWin = (item.itemName == "Victory Shades") ? true : didHeroWin;
+                }
+                if (didHeroWin)
+                {
+                    middleInfo.text = transitionElements[transitionIndex].textElement[0].textInputs[0];
+                }
+                else
+                {
+                    middleInfo.text = transitionElements[transitionIndex].textElement[0].textInputs[1];
+                }
 
-
+            }
+            else
+            {
+                middleInfo.text = "";
+            }
+        }
+        
         _nextTransitionElements = transitionElements[transitionIndex];
+
+        if (atTransitionDestinationScene == false)
+        {
+          //  StartCoroutine(NarrateAfterDelay(2));
+        }
 
         float timeToLerp = transitionElements[transitionIndex].textElement[0].timeOfTextDisplayed;
         float timeLerped = 0;
@@ -217,6 +243,7 @@ public class TransitionScreen : MonoBehaviour
     IEnumerator NarrateAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+       /*
         audioList.narratorVoiceLines.Stop();
         if (audioList.voiceLineIndex != 9)
         {
@@ -227,9 +254,10 @@ public class TransitionScreen : MonoBehaviour
         {
             audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[9];
         }
+        */
 
-        //transitionNarrator.DoNarration();
-        transitionNarrator.DoPlaceholderVoiceLine();
+        transitionNarrator.DoNarration(middleInfo.text);
+        //transitionNarrator.DoPlaceholderVoiceLine();
 
         if (SceneManager.sceneCount == 2)
         {

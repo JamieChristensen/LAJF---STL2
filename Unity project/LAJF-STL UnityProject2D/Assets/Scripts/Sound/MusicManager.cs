@@ -9,7 +9,7 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
 
-    public AudioMixer audioMixer;
+    public AudioMixer audioMixer, masterAudioMixer;
 
     public MusicTheme[] musicThemes;
 
@@ -47,12 +47,23 @@ public class MusicManager : MonoBehaviour
 
             sources.Add(mt.source);
 
-            if (mt.name == "MainMenu")
+            if (mt.name == "MainMenu" && SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                mt.source.Play();
+            }
+            else if (mt.name == "Choosing" && SceneManager.GetActiveScene().buildIndex != 0)
             {
                 mt.source.Play();
             }
         }
+        
     }
+
+    private void Start()
+    {
+        SetVolume(1);
+    }
+
 
     public void PlayMusic(string name) // play a music theme (by name) after a specified delay (in float seconds)
     {
@@ -143,6 +154,14 @@ public class MusicManager : MonoBehaviour
         yield return new WaitForSeconds(6);
         musicThemeAudioSource.Stop();
     }
+
+
+    public void SetVolume(float volume)
+    {
+        masterAudioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
+    }
+
+
 }
 
 

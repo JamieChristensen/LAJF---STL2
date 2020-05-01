@@ -108,7 +108,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             #region InitializeItemSelection
 
 
-            int poolLenght = AllPossiblePlayerItems.Length + 1;
+            int poolLenght = AllPossiblePlayerItems.Length;
             poolLenght -= runtimeChoices.runTimeLoopCount;
 
             playerItemPool = new PlayerItems[poolLenght];
@@ -121,6 +121,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 if (item == runtimeChoices.baselineItem)
                 {
                     AvailableItems.Remove(item);
+                    Debug.Log("Removing this item: " + item.itemName);
                 }
                 for (int i = 0; i < AllPossiblePlayerItems.Length; i++)
                 {
@@ -130,6 +131,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                         if (item == runtimeChoices.playerItems[i])
                         {
                             AvailableItems.Remove(item);
+                            Debug.Log("Removing this item: " + item.itemName);
                         }
                         
                     }
@@ -151,7 +153,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                 int random2 = random;
                 if (playerItemPool.Length <= 1)
                 {
-                    random2 = 3;
+                    random2 = Random.Range(0, playerItemPool.Length);
                 }
 
                 while (random2 == random)
@@ -159,10 +161,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
                     Debug.Log("random2 was the same as random, rerolling");
                     random2 = Random.Range(0, playerItemPool.Length);
                 }
-                if (runtimeChoices.playerItems.Count != 2)
-                {
-                    // runtimeChoices.playerItems.Capacity = 2;
-                }
+                
+
                 playerItemChoices[0] = playerItemPool[random];
                 playerItemChoices[1] = playerItemPool[random2];
                 choiceNameText[0].text = playerItemChoices[0].name;
@@ -505,6 +505,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             {
                 Debug.Log(item.ToString());
             }
+
             heroHasChosenItem.Raise(); // Raising event for item chosen
                                        //Destroy(gameObject);
         }

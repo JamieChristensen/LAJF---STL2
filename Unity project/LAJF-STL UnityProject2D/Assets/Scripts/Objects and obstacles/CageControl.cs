@@ -30,7 +30,7 @@ public class CageControl : MonoBehaviour
     private void Start()
     {
         _musicManager = FindObjectOfType<MusicManager>();
-        CaptureHero();
+        Invoke("CaptureHero",0.1f);
     }
 
     public void QuickCaptureHero()
@@ -41,13 +41,28 @@ public class CageControl : MonoBehaviour
 
     public void CaptureHero()
     {
+        
         try
         {
-            musicManager.adjustCurrentPlayingVolume(0.5f);
+            _musicManager = FindObjectOfType<MusicManager>();
+
+            if (_musicManager != null)
+            {
+                _musicManager.adjustCurrentPlayingVolume(0.4f);
+            }
+
         }
         catch
         {
-           // Debug.Log("there is no music manager");
+            if (_musicManager == null)
+            {
+                Debug.Log("there is no music manager");
+            }
+            else
+            {
+                Debug.Log("Problems with adjusting Volume!");
+            }
+            
         }
         
         if (runningCoroutine)

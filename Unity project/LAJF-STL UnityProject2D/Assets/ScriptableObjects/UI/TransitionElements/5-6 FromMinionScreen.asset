@@ -16,5 +16,11 @@ MonoBehaviour:
   details: From Minion Screen (5) to Modifier Screen (6)
   startTransparent: 1
   textElement:
-  - textInput: It had mad traits and even more...
+  - textInput: 
+    textInputs:
+    - A perfect being, astonishing and great, It even came with the following trait!
+    - The next part will describe the creature, as gods gave it this very feature!
+    - Despite their ability, no hero should be spared, forged in divinity, this enemy
+      came prepared!
+    - One by one they all got tougher, the task was simply, to make the hero suffer!
     timeOfTextDisplayed: 3

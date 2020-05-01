@@ -17,4 +17,9 @@ MonoBehaviour:
   startTransparent: 0
   textElement:
   - textInput: 
+    textInputs:
+    - 
+    - 
+    - 
+    - 
     timeOfTextDisplayed: 1
