@@ -64,7 +64,7 @@ public class Projectile : MonoBehaviour
 
 
 
-            GameObject instance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
+            GameObject instance = Instantiate(particleExplosion, coll.GetContact(0).point, Quaternion.identity);
             Destroy(instance, 1f);
 
             GameObject.Destroy(gameObject);

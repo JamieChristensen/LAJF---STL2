@@ -37,7 +37,6 @@ public class OrbEnemy : EnemyBehaviour
 
     private int currentTargetTransformIndex = 1;
 
-    private int currentHealth;
 
     private Transform playerTransform;
 
@@ -50,8 +49,6 @@ public class OrbEnemy : EnemyBehaviour
 
     public override void InitalizeEnemy()
     {
-        currentHealth = 10;
-
         Orb orbInstance = Instantiate(orbPrefab, transform.position, Quaternion.identity, transform).GetComponent<Orb>();
 
         currentOrbTransform = orbPositions[0];
@@ -62,7 +59,6 @@ public class OrbEnemy : EnemyBehaviour
 
         base.InitalizeEnemy();
 
-        currentHealth = 10;
         //Instantiate orb prefab
     }
 

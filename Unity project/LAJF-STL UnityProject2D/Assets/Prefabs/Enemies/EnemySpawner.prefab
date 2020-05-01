@@ -50,7 +50,7 @@ MonoBehaviour:
     type: 3}
   orbEnemyPrefab: {fileID: 7197962424530652541, guid: 0dbe643fead2be44fae3749a9d054a03,
     type: 3}
-  splitterEnemyPrefab: {fileID: 344757896960665010, guid: d713346c3cb80654aa4884df1d5d131d,
+  splitterEnemyPrefab: {fileID: 1921902109411611017, guid: 169ea84c15c253a4fbda54885b340fd7,
     type: 3}
   greatChest: {fileID: 0}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}

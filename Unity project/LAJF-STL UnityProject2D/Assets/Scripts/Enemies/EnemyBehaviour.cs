@@ -16,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     public new string name;
     public TextMeshProUGUI nameUI;
 
-    private int currentHealth;
+    protected int currentHealth;
     public int maxHealth;
     [SerializeField]
     private float projectileSpeed = 1; //Public so it can be accessed by Orb.cs ¯\_(ツ)_/¯
@@ -78,7 +78,6 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
             Vector2 direction = (target.transform.position - transform.position).normalized;
             rb2.velocity = new Vector2(direction.x * agent.speed, rb2.velocity.y);
         }
-
     }
 
     protected virtual void MeleeAttack()
@@ -101,7 +100,9 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     {
 
         if (!CanDie())
+        {
             return;
+        }
 
         gameObject.layer = 15;
         rb2.AddForce(new Vector2(UnityEngine.Random.Range(-3f, 3f) * 10, UnityEngine.Random.Range(3, 9f) * 10), ForceMode2D.Impulse);
@@ -113,7 +114,11 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         {
             audioList.PlayWithVariablePitch(audioList.deathEnemy);
         }
-        StartCoroutine(DelayDeathAnnouncement(1.1f));
+
+        if (FindObjectsOfType<EnemyBehaviour>().Length <= 1)
+        {
+            StartCoroutine(DelayDeathAnnouncement(1.1f));
+        }
 
         if (UnityEngine.Random.Range(0, 10f) > 6)
         {
