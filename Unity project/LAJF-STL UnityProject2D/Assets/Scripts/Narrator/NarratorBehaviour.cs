@@ -32,7 +32,7 @@ public class NarratorBehaviour : MonoBehaviour
 
     void Start()
     {
-        textToSpeech = FindObjectOfType<TTS>();
+        textToSpeech = new TTS();
         StartCoroutine(textToSpeech.InitalizeService());
         uiText.text = "";
     }
@@ -100,7 +100,6 @@ public class NarratorBehaviour : MonoBehaviour
         isRunning = true;
         Debug.Log("Trying to read this: " + text);
         StartCoroutine(ReadText(text));
-        
     }
 
     IEnumerator ReadText(string text)

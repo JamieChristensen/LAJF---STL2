@@ -130,6 +130,12 @@ public class TransitionScreen : MonoBehaviour
             
         }
        
+        if (atTransitionDestinationScene == false)
+        {
+            StartCoroutine(NarrateAfterDelay(1));
+        }
+        
+
         co = StartCoroutine(Transition(transitionIndex));
     }
 
@@ -169,11 +175,6 @@ public class TransitionScreen : MonoBehaviour
         }
         
         _nextTransitionElements = transitionElements[transitionIndex];
-
-        if (atTransitionDestinationScene == false)
-        {
-          //  StartCoroutine(NarrateAfterDelay(2));
-        }
 
         float timeToLerp = transitionElements[transitionIndex].textElement[0].timeOfTextDisplayed;
         float timeLerped = 0;
@@ -243,7 +244,6 @@ public class TransitionScreen : MonoBehaviour
     IEnumerator NarrateAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-       /*
         audioList.narratorVoiceLines.Stop();
         if (audioList.voiceLineIndex != 9)
         {
@@ -254,10 +254,9 @@ public class TransitionScreen : MonoBehaviour
         {
             audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[9];
         }
-        */
 
-        transitionNarrator.DoNarration(middleInfo.text);
-        //transitionNarrator.DoPlaceholderVoiceLine();
+        //transitionNarrator.DoNarration();
+        transitionNarrator.DoPlaceholderVoiceLine();
 
         if (SceneManager.sceneCount == 2)
         {

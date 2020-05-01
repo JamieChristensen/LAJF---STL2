@@ -1,5 +1,4 @@
-﻿using IBM.Watson.DeveloperCloud.Services.TextToSpeech.v1;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -17,18 +16,13 @@ public class TransitionNarrator : MonoBehaviour
     public TextMeshProUGUI uiText; // the text to read
     public GameObject visibleNarratorGameobject;
 
-    private AudioClip textToSpeechClip;
-
     public Vector2 previousPosition;
 
     public bool OnMainMenu = false;
 
-    public TTS textToSpeech;
-
     private void Start()
     {
-        visibleNarratorGameobject.SetActive(false);
-        textToSpeech = FindObjectOfType<TTS>();
+
         if (mainCam == null)
         {
             mainCam = FindObjectOfType<Camera>();
@@ -36,15 +30,15 @@ public class TransitionNarrator : MonoBehaviour
         
     }
 
-    public void DoNarration(string readableText)
+    public void DoNarration()
     {
-        Narrate(readableText);
+        Narrate(uiText.text);
         visibleNarratorGameobject.SetActive(true);
     }
 
     public void DoPlaceholderVoiceLine()
     {
-       // audioList.narratorVoiceLines.Play();
+        audioList.narratorVoiceLines.Play();
     }
 
     public void Narrate(string text) // call this with uiText as parameter
@@ -55,35 +49,80 @@ public class TransitionNarrator : MonoBehaviour
         StartCoroutine(ReadText(text));
     }
 
-
+    
     IEnumerator ReadText(string text)
     {
-        textToSpeechClip = audioList.textToSpeechSource.clip;
         // execute TTS service with text param and wait for respons 
-        yield return StartCoroutine(textToSpeech.SynthesizeText(text, audioList));
 
-        //isEnteringScene = true;
-        //isExitingScene = false;
 
-        /*
-        // wait for narrator to clear his throat 
-        yield return new WaitForSeconds(audioSource.clip.length);
-        */
-
-        // show text on screen 
-        if (textToSpeechClip != null)
+        //  RandomizePosition();
+        audioList.narratorVoiceLines.Stop();
+        if (OnMainMenu == false)
         {
-            audioList.textToSpeechSource.Play();
+            yield return new WaitForSeconds(1.2f);
         }
-        uiText.text = text;
+        
+        EnterScene();
+
         // play audio file 
 
         yield return new WaitForSeconds(4 * readSpeed);
-        //isEnteringScene = false;
-        //isExitingScene = true;
+      //  ExitScene();
         // remove text 
-        uiText.text = "";
-        //isRunning = false;
     }
 
+
+    
+    
+
+    void EnterScene()
+    {
+        // RandomizePosition();
+
+        //  Vector2 direction = (mainCam.transform.position - transform.position).normalized;
+        //rb2.velocity = direction * getInSpeed;
+        
+        audioList.PlayWithVariablePitch(audioList.narratorRead);
+    }
+    /*
+
+    private void ExitScene()
+    {
+         Vector2 direction = -(mainCam.transform.position - transform.position).normalized;
+        // rb2.velocity = direction * (getInSpeed + 5);
+    }
+
+
+    void RandomizePosition()
+    {
+        float y, x;
+        // determine which side to use / width or height
+        // could use while loop to check if position is allowed 
+
+        bool bottomOrRight = UnityEngine.Random.Range(0f, 1f) >= 0.5f;
+        if (UnityEngine.Random.Range(0f, 1f) >= 0.5f)
+        {
+            y = UnityEngine.Random.Range(mainCam.ScreenToWorldPoint(new Vector3(0, 0, 1f)).y, mainCam.ScreenToWorldPoint(new Vector3(0, mainCam.pixelHeight, 1f)).y);
+            if (bottomOrRight)
+                x = mainCam.ScreenToWorldPoint(new Vector3(0, 0, 1f)).x;
+            else
+                x = mainCam.ScreenToWorldPoint(new Vector3(mainCam.pixelWidth, 0, 1f)).x;
+
+        }
+        else
+        {
+
+            if (bottomOrRight)
+                y = mainCam.ScreenToWorldPoint(new Vector3(0, 0, 1f)).y;
+            else
+                y = mainCam.ScreenToWorldPoint(new Vector3(0, mainCam.pixelHeight, 1f)).y;
+
+            x = UnityEngine.Random.Range(mainCam.ScreenToWorldPoint(new Vector3(0, 0, 1f)).x, mainCam.ScreenToWorldPoint(new Vector3(mainCam.pixelWidth, 0, 1f)).x);
+        }
+        Vector3 newPos = new Vector3(x, y);
+        Debug.Log(newPos);
+        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * 100);
+    }
+
+    */
 }

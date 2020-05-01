@@ -25,7 +25,6 @@ public class AudioList : MonoBehaviour
          narratorHit,
          narratorVoiceLines,
          select,
-         textToSpeechSource,
          winFx;
 
     [Header("Narrator Voicelines")]
@@ -37,7 +36,6 @@ public class AudioList : MonoBehaviour
         audioSource.Play();
     }
 
-    /*
     private void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 4 || SceneManager.sceneCount == 3)
@@ -47,7 +45,6 @@ public class AudioList : MonoBehaviour
         }
 
     }
-    */
 
     public void OnHeroOpenedBox()
     {
@@ -82,10 +79,6 @@ public class AudioList : MonoBehaviour
     public void OnNarratorHit()
     {
         narratorHit.Play();
-        if (textToSpeechSource.isPlaying)
-        {
-            textToSpeechSource.Stop();
-        }
     }
 
 
