@@ -16,5 +16,9 @@ MonoBehaviour:
   details: From Character Screen (1)To God Screen (2)
   startTransparent: 1
   textElement:
-  - textInput: Ohh... And also some Deities passed through!
+  - textInput: ', said the Hero in search for treasure. Angering the Gods with a
+      wrath, no scale could ever measure! '
+    textInputs:
+    - ', said the Hero in search for treasure. Angering the Gods with a wrath, no
+      scale could ever measure! '
     timeOfTextDisplayed: 3

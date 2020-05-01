@@ -16,5 +16,8 @@ MonoBehaviour:
   details: From Theme Screen (3) to GameLoop Scene (4)
   startTransparent: 1
   textElement:
-  - textInput: Then came Gods, a mighty threat!
+  - textInput: 
+    textInputs:
+    - 'The hero was on their tail, following his map, which led him into an unexpected
+      trap! '
     timeOfTextDisplayed: 3

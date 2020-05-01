@@ -17,4 +17,10 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInput: The monster fell, truth be told...
+    textInputs:
+    - "The hero\u2019s quest had just begun, a filled chest, but writings that said
+      \u201COnly one\u201D! "
+    - "With nipples so fine, amazing chest, the hero was seduced by \u201CBe my guest\u201D!"
+    - "Another fell with all its weight, the next thing sealed the hero\u2019s fate!"
+    - All stories have to come to an end, even this, my humble friend!
     timeOfTextDisplayed: 3

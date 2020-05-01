@@ -133,11 +133,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
+  audioList: {fileID: 0}
   getInSpeed: 5
   readSpeed: 0
   uiText: {fileID: 9049779017664538650}
   visibleNarratorGameobject: {fileID: 483654232148004046}
   previousPosition: {x: 0, y: 0}
+  OnMainMenu: 0
 --- !u!114 &1989718898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,6 +551,7 @@ MonoBehaviour:
   voiceLineIndex: 0
   audioList: {fileID: 0}
   transitionNarrator: {fileID: 554963477601737872}
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   _fadeOnDuration: 2
   _fadeOffDuration: 2
   atTransitionDestinationScene: 1

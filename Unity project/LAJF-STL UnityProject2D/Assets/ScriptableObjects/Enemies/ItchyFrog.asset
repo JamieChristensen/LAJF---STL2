@@ -21,3 +21,4 @@ MonoBehaviour:
   attackType: range
   range: 40
   attackSpeed: 1.3
+  enemyType: 1

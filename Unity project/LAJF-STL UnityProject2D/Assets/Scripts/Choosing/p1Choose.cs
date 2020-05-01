@@ -68,7 +68,7 @@ public class p1Choose : MonoBehaviour
             chooseBetweenOptionsScript.LockSelectedChoice(choiceType);
 
             buttonSounds.OnChoiceMade();
-            transitionNarrator.DoNarration();
+            //transitionNarrator.DoNarration();
 
             lockedIn = true;
             return;
