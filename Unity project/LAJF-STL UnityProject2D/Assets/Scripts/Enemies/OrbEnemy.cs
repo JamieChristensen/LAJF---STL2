@@ -44,6 +44,8 @@ public class OrbEnemy : EnemyBehaviour
     {
         InitalizeEnemy();
         playerTransform = FindObjectOfType<P1Controller>().transform;
+
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
 
@@ -74,6 +76,7 @@ public class OrbEnemy : EnemyBehaviour
 
     protected override void MoveToTarget()
     {
+
         base.MoveToTarget();
         if (isOrbDead)
         {
@@ -128,7 +131,7 @@ public class OrbEnemy : EnemyBehaviour
 
     protected override void Die()
     {
-        Debug.Log("No.");
+        base.Die();
     }
 
     protected override void RangedAttack()
