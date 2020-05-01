@@ -101,7 +101,7 @@ public class P1Controller : MonoBehaviour
 
     void Awake()
     {
-        _audioList = FindObjectOfType<AudioList>();
+       
         moveDirection = Vector2.right;
         InitializePlayerStats(runtimeChoices.chosenHero); //Use the chosen stats to set baseline of this run.
     }
@@ -109,7 +109,7 @@ public class P1Controller : MonoBehaviour
     private void Start()
     {
 
-
+        _audioList = FindObjectOfType<AudioList>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         matDefault = spriteRenderer.material;
     }

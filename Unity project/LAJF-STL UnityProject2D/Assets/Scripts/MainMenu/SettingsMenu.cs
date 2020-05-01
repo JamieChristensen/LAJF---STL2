@@ -24,8 +24,6 @@ public class SettingsMenu : MonoBehaviour
 
         int currentResolutionIndex = 0;
 
-        SetVolume(1);
-
         for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + " x " + resolutions[i].height;

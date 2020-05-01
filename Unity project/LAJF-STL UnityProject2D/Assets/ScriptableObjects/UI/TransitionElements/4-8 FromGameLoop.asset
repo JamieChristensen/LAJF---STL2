@@ -18,7 +18,7 @@ MonoBehaviour:
   textElement:
   - textInput: The End Is Neigh...
     textInputs:
-    - "The hero was the victor and all was neat, the gods had failed/lost, I\u2019m
-      out. Yeet!"
+    - "The hero was the victor and all was neat, the gods had failed, I\u2019m out.
+      Yeet!"
     - "Not all endings end well. Especially not this one\u2026"
     timeOfTextDisplayed: 10

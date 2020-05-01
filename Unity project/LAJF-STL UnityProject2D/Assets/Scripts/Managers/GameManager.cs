@@ -69,17 +69,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        try
-        {
-            musicManager = FindObjectOfType<MusicManager>();
-        }
-        catch
-        {
-            Debug.Log("there is no music manager");
-        }
-
-
-        musicManager = FindObjectOfType<MusicManager>();
+      
         /*
         for (int i = 0; i < canMonsterMove.Length; i++)
         {
@@ -203,7 +193,16 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            musicManager.adjustCurrentPlayingVolume(0.4f);
+            if (musicManager != null)
+            {
+                musicManager.adjustCurrentPlayingVolume(0.4f);
+            }
+            else
+            {
+                musicManager = FindObjectOfType<MusicManager>();
+                musicManager.adjustCurrentPlayingVolume(0.4f);
+            }
+
         }
         catch
         {
@@ -225,7 +224,15 @@ public class GameManager : MonoBehaviour
 
         try
         {
-            musicManager.PlayMusic("Peace");
+            if (musicManager != null)
+            {
+                musicManager.PlayMusic("Peace");
+            }
+            else
+            {
+                musicManager = FindObjectOfType<MusicManager>();
+                musicManager.PlayMusic("Peace");
+            }
         }
         catch
         {
@@ -247,7 +254,7 @@ public class GameManager : MonoBehaviour
         //change environment to next one in line.
         NextEnvironment();
         sceneManager.ChooseChoiceSceneToLoad(indexOfMinionChoiceScene);
-        nextTransition.Raise(16);
+        
         // RequestGameStateChange(GameStates.InitializingNextScene);
         Time.timeScale = 1f;
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
@@ -266,7 +273,7 @@ public class GameManager : MonoBehaviour
         {
             runTimeChoises.runTimeLoopCount = 1;
         }
-
+        nextTransition.Raise(16);
     }
 
 
@@ -301,6 +308,8 @@ public class GameManager : MonoBehaviour
         bool dying = true;
         float timer = 0;
 
+        musicManager = FindObjectOfType<MusicManager>();
+        musicManager.adjustCurrentPlayingVolume(0.4f);
         while (dying)
         {
             timer += Time.deltaTime;
@@ -323,11 +332,19 @@ public class GameManager : MonoBehaviour
 
     IEnumerator EndScene(bool win)
     {
-
+        
+        yield return new WaitForSeconds(1);
         if (win)
         {
             if (musicManager != null)
             {
+                musicManager.sources[4].clip = musicManager.ending[0];
+                musicManager.PlayMusic("Ending");
+
+            }
+            else
+            {
+                musicManager = FindObjectOfType<MusicManager>();
                 musicManager.sources[4].clip = musicManager.ending[0];
                 musicManager.PlayMusic("Ending");
 
@@ -341,13 +358,19 @@ public class GameManager : MonoBehaviour
                 musicManager.sources[4].clip = musicManager.ending[1];
                 musicManager.PlayMusic("Ending");
             }
+            else
+            {
+                musicManager = FindObjectOfType<MusicManager>();
+                musicManager.sources[4].clip = musicManager.ending[1];
+                musicManager.PlayMusic("Ending");
+            }
 
         }
 
         yield return new WaitForSeconds(1.5f);
         nextTransition.Raise(18);
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         FindObjectOfType<CustomSceneManager>().LoadCredits();
     }
 

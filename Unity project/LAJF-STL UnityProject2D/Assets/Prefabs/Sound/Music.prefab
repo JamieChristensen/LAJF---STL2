@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: ffd7c0d863f82f4488d97658d88f5ec8, type: 2}
+  masterAudioMixer: {fileID: 24100000, guid: cd1c7f898172da1478c2f8059b4934d3, type: 2}
   musicThemes:
   - name: MainMenu
     clip: {fileID: 8300000, guid: de0de06714b26624d9592d42bfe0cd58, type: 3}
@@ -94,3 +95,4 @@ MonoBehaviour:
   ending:
   - {fileID: 8300000, guid: fb5b95e43e96e294b8b28e3b825c6723, type: 3}
   - {fileID: 8300000, guid: e66abba70ff84f2409666ac25528b77f, type: 3}
+  sources: []
