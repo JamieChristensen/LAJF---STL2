@@ -13,6 +13,10 @@ namespace IBM.Watson.DeveloperCloud.Services.TextToSpeech.v1
         public TextToSpeechService tts;
         public AudioSource audioSource;
 
+        [SerializeField]
+        
+        public bool isLive = false;
+
         private string apiKey = "xdSCHOL3tNL_40-kKkfJCJdquqp359vYP2nyHDT4E-38";
         private string url = "https://api.eu-de.text-to-speech.watson.cloud.ibm.com/instances/4cb486f1-6105-425f-a322-de1aa187f142";
         private IamAuthenticator authenticator;
@@ -45,8 +49,7 @@ namespace IBM.Watson.DeveloperCloud.Services.TextToSpeech.v1
             byte[] synthesizeResponse = null;
             AudioClip clip = null;
 
-            Debug.Log(tts);
-            if (tts != null)
+            if (tts != null && isLive)
             {
                 tts.Synthesize(
                     callback: (DetailedResponse<byte[]> response, IBMError error) =>
@@ -74,8 +77,8 @@ namespace IBM.Watson.DeveloperCloud.Services.TextToSpeech.v1
             }
             else
             {
-
-                Debug.LogWarning("Custom warning message: Narrator should have spoken, but TTS is null");
+                Debug.LogWarning("Custom warning message: Narrator should have spoken, but TTS is null or just in developer mode to debug mock instead");
+                Debug.LogWarning("Narrator is reading this: " + textToRead);
                 yield return null;
             }
 
