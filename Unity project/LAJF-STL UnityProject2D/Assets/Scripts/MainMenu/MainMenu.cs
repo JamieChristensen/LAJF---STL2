@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
     public Button creditsButton;
     public Button exitGameButton;
 
+    public Button[] primaryMainMenuButtons;
+
     public GameObject settingsMenu;
     public GameObject creditsMenu;
 
@@ -24,6 +26,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+
         if (EventSystem.current.currentSelectedGameObject == null)
         {
             startGameButton.Select();
@@ -32,7 +35,7 @@ public class MainMenu : MonoBehaviour
     }
     private void Update()
     {
-        
+
         if (Input.GetAxis("Vertical") != 0)
         {
             if (EventSystem.current.currentSelectedGameObject == null || EventSystem.current.currentSelectedGameObject.activeSelf == false)
@@ -42,8 +45,22 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    //TODO: Make primary main menu buttons unselectable (uninteractable) in a function - call that function when a main-menu button is pressed.
-    //TODO: Same as above, but inverse - and activate that function when exiting sub-menus in main menu.
+    public void DisablePrimaryButtons()
+    {
+        foreach (Button button in primaryMainMenuButtons)
+        {
+            button.interactable = false;
+        }
+    }
+
+    public void EnablePrimaryButtons()
+    {
+        foreach (Button button in primaryMainMenuButtons)
+        {
+            button.interactable = true;
+        }
+    }
+
     //TODO: Make settings interactable. 
 
     public void StartFading()
