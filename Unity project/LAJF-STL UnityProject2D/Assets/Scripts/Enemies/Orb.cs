@@ -16,7 +16,7 @@ public class Orb : MonoBehaviour
     private OrbEnemy parentOrb;
 
     [SerializeField]
-    [Range(0.5f, 10f)]
+    [Range(0.5f, 100f)]
     private float projectileSpeed;
 
     public void Start()
