@@ -18,7 +18,11 @@ MonoBehaviour:
   heroComments: []
   startTransparent: 0
   textElement:
-  - textInputs: []
+  - textInputs:
+    - 
+    - 
+    - 
+    - 
     timeOfTextDisplayed: 1
   transitionBackgrounds:
   - {fileID: 21300000, guid: ec3a890a3ce7ccd41b7df928d14747b4, type: 3}

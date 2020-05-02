@@ -155,7 +155,7 @@ public class TransitionScreen : MonoBehaviour
                 firstPart = transitionElements[0].introFillers[Random.Range(0, transitionElements[0].introFillers.Length)];
             }
                 
-            if (transitionElements[transitionIndex].textElement[0].textInputs.Length != 0 && transitionIndex != 18)
+            if (transitionIndex != 18)
             {
                 middleInfo.text = firstPart + transitionElements[transitionIndex].textElement[0].textInputs[runtimeChoices.runTimeLoopCount - 1];
             }

@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 7
   details: From Item Screen (7) to GameLoop Scene (4)
+  introFillers: []
+  heroComments: []
   startTransparent: 1
   textElement:
-  - textInput: 
-    textInputs:
+  - textInputs:
     - 'The hero was captured, a sacrifice, to a monster of terror and demise! '
     - Finally relief as the road came to a stop, but the gods were just starting
       to warm up!
@@ -25,3 +26,7 @@ MonoBehaviour:
       to take it seriously!
     - Both daring and bold the hero would saddle, with just, behold, a final battle!
     timeOfTextDisplayed: 3
+  transitionBackgrounds: []
+  environmentBackgrounds:
+  - {fileID: 0}
+  runtimeChoices: {fileID: 0}

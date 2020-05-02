@@ -25,5 +25,6 @@ MonoBehaviour:
     - A final test to end the journey.  Now comes the question - Was the hero worthy?
     timeOfTextDisplayed: 3
   transitionBackgrounds: []
-  environmentBackgrounds: []
+  environmentBackgrounds:
+  - {fileID: 0}
   runtimeChoices: {fileID: 0}

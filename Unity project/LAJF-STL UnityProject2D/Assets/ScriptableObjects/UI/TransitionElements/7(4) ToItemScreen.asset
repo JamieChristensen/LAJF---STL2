@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 7
   details: To Item Screen (7) from GameLoop Scene (4)
+  introFillers: []
+  heroComments: []
   startTransparent: 0
   textElement:
-  - textInput: 
-    textInputs:
+  - textInputs:
     - 
     - 
     - 
     - 
     timeOfTextDisplayed: 1
+  transitionBackgrounds:
+  - {fileID: 0}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 0}

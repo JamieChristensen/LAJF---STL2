@@ -21,6 +21,12 @@ MonoBehaviour:
   - textInputs:
     - 'The hero was on their tail, following his map, which led him into an unexpected
       trap! '
+    - 'The hero was on their tail, following his map, which led him into an unexpected
+      trap! '
+    - 'The hero was on their tail, following his map, which led him into an unexpected
+      trap! '
+    - 'The hero was on their tail, following his map, which led him into an unexpected
+      trap! '
     timeOfTextDisplayed: 3
   transitionBackgrounds:
   - {fileID: 21300000, guid: 66355108e01702e48acb090a08601256, type: 3}

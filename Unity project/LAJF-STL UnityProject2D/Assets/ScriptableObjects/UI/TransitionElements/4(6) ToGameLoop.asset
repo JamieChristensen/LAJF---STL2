@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 4
   details: To GameLoop Scene (4) from Modifier Screen (6)
+  introFillers: []
+  heroComments: []
   startTransparent: 0
   textElement:
-  - textInput: On the dance floor!
-    textInputs:
+  - textInputs:
     - 
     - 
     - 
     - 
     timeOfTextDisplayed: 1
+  transitionBackgrounds:
+  - {fileID: 0}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 0}

@@ -14,11 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 7
   details: From Item Screen (7) to End Scene (8)
+  introFillers: []
+  heroComments: []
   startTransparent: 1
   textElement:
-  - textInput: The End Is Neigh...
-    textInputs:
+  - textInputs:
     - "The hero was the victor and all was neat, the gods had failed, I\u2019m out.
       Yeet!"
     - "Not all endings end well. Especially not this one\u2026"
     timeOfTextDisplayed: 10
+  transitionBackgrounds: []
+  environmentBackgrounds:
+  - {fileID: 0}
+  runtimeChoices: {fileID: 0}
