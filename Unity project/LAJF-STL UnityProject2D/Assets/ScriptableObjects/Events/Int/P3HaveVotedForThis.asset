@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ec69050b891de345a681fe5e3cd50f6, type: 3}
-  m_Name: P3VotedFor
+  m_Name: P3HaveVotedForThis
   m_EditorClassIdentifier: 

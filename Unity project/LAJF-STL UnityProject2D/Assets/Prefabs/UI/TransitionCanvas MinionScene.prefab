@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34495b4af3339ef4fa6093f70e0fc93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionBackgroundPanel: {fileID: 2753250053843468296}
   middleInfo: {fileID: 2753250055176322237}
   transitionElements:
   - {fileID: 11400000, guid: 616d08418e0dd3a4aa5857e4a3e76baa, type: 2}
@@ -151,6 +152,11 @@ MonoBehaviour:
   readyToLoadScene: {fileID: 11400000, guid: ea5b1edbeb90fc549ab2dabb13a1c0ca, type: 2}
   loadedAdditiveScene: {fileID: 11400000, guid: 40ecd4b92adb06c4ba6484eebaa5fcb2,
     type: 2}
+  voiceLineIndex: 0
+  audioList: {fileID: 0}
+  transitionNarrator: {fileID: 0}
+  runtimeChoices: {fileID: 0}
+  firstPart: 
   _fadeOnDuration: 2
   _fadeOffDuration: 2
   atTransitionDestinationScene: 1
@@ -544,11 +550,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
+  audioList: {fileID: 0}
   getInSpeed: 5
   readSpeed: 0
   uiText: {fileID: 2753250055176322237}
   visibleNarratorGameobject: {fileID: 6707140440295839849}
   previousPosition: {x: 0, y: 0}
+  OnMainMenu: 0
+  textToSpeech: {fileID: 0}
 --- !u!114 &6603055815344449493
 MonoBehaviour:
   m_ObjectHideFlags: 0
