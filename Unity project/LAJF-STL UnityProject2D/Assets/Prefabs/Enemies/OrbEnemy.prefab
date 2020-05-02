@@ -555,7 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2: {fileID: 7197962424530652539}
   target: {fileID: 0}
-  bulletObj: {fileID: 3604006451443815256, guid: 781e18538fd716748ab0e6afc2f43f66,
+  bulletObj: {fileID: 8532673322242369149, guid: b4a27070d39fa044c8a306c37054eba6,
     type: 3}
   healthBar: {fileID: 3654490736652671393}
   name: 
@@ -575,6 +575,7 @@ MonoBehaviour:
   matWhite: {fileID: 2100000, guid: da2c11b1a32a0e748b87c0907cbfc44d, type: 2}
   agent: {fileID: 11400000, guid: 15e94d8d4d5a3a64595633b0e5cd8cd3, type: 2}
   modifiers: []
+  alreadyDied: 0
   orbPrefab: {fileID: 7541748802338077583, guid: 42b473043c030fa4bb059fb835562f3a,
     type: 3}
   orb: {fileID: 0}
@@ -723,7 +724,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 801fe92ec85f2fb43835547d00c2ae23, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a1d5542f8a65684182e494e42812023, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

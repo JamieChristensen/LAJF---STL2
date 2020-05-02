@@ -13,6 +13,7 @@ public class Enemy : ScriptableObject
 
     // generic
     public new string name;
+    public string description; //Could be used for tooltips like similar scriptableObjects
     public int health;
     public float speed;
 

@@ -66,7 +66,7 @@ public class TransitionScreen : MonoBehaviour
             atTransitionDestinationScene = true;
             DoNextTransition(11);
         }
-        
+
     }
 
     private void Start()
@@ -126,22 +126,23 @@ public class TransitionScreen : MonoBehaviour
     public void DoNextTransition(int transitionIndex)
     {
         whichScene = transitionIndex;
+
         if (transitioning)
         {
             StopCoroutine(co);
             atTransitionDestinationScene = false;
             transitioning = false;
-            
+
         }
-       
         co = StartCoroutine(Transition(transitionIndex));
+
     }
 
 
     #region Transition
     IEnumerator Transition(int transitionIndex)
     {
-       
+
         transitioning = true;
         if (transitionElements[transitionIndex] != null)
         {
@@ -154,7 +155,7 @@ public class TransitionScreen : MonoBehaviour
             {
                 firstPart = transitionElements[0].introFillers[Random.Range(0, transitionElements[0].introFillers.Length)];
             }
-                
+
             if (transitionIndex != 18)
             {
                 middleInfo.text = firstPart + transitionElements[transitionIndex].textElement[0].textInputs[runtimeChoices.runTimeLoopCount - 1];
@@ -181,12 +182,12 @@ public class TransitionScreen : MonoBehaviour
                 middleInfo.text = "";
             }
         }
-        
+
         _nextTransitionElements = transitionElements[transitionIndex];
 
         if (atTransitionDestinationScene == false)
         {
-          //  StartCoroutine(NarrateAfterDelay(2));
+            //  StartCoroutine(NarrateAfterDelay(2));
         }
 
         float timeToLerp = transitionElements[transitionIndex].textElement[0].timeOfTextDisplayed;
@@ -245,7 +246,7 @@ public class TransitionScreen : MonoBehaviour
 
         }
 
-     //   Debug.Log("Done with Transition");
+        //   Debug.Log("Done with Transition");
 
     }
 
@@ -257,25 +258,25 @@ public class TransitionScreen : MonoBehaviour
     IEnumerator NarrateAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-       /*
-        audioList.narratorVoiceLines.Stop();
-        if (audioList.voiceLineIndex != 9)
-        {
-            audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[voiceLineIndex];
-        }
+        /*
+         audioList.narratorVoiceLines.Stop();
+         if (audioList.voiceLineIndex != 9)
+         {
+             audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[voiceLineIndex];
+         }
 
-        if (whichScene == 18)
-        {
-            audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[9];
-        }
-        */
+         if (whichScene == 18)
+         {
+             audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[9];
+         }
+         */
 
         transitionNarrator.DoNarration(middleInfo.text);
         //transitionNarrator.DoPlaceholderVoiceLine();
 
         if (SceneManager.sceneCount == 2)
         {
-           switch (voiceLineIndex)
+            switch (voiceLineIndex)
             {
                 case 4:
                     voiceLineIndex = 7;
