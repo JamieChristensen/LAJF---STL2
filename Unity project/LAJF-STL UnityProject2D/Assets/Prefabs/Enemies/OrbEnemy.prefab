@@ -572,6 +572,7 @@ MonoBehaviour:
     type: 3}
   spriteRenderer: {fileID: 7197962424594918147}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  matDefault: {fileID: 0}
   matWhite: {fileID: 2100000, guid: da2c11b1a32a0e748b87c0907cbfc44d, type: 2}
   agent: {fileID: 11400000, guid: 15e94d8d4d5a3a64595633b0e5cd8cd3, type: 2}
   modifiers: []
@@ -590,6 +591,7 @@ MonoBehaviour:
   - {fileID: 2762018859664657780}
   - {fileID: 645757565114718994}
   isOrbDead: 0
+  isInitialized: 0
 --- !u!50 &7197962424530652539
 Rigidbody2D:
   serializedVersion: 4
