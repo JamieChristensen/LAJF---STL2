@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class p4Vote : Vote
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void PlaceVote(int choice)
     {
-        
+        this.choice = choice;
+        base.PlaceVote(choice);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void CancelVote()
     {
-        
+        base.CancelVote();
     }
 }
