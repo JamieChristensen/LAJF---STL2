@@ -138,24 +138,30 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
 
     public void CountVotes()
     {
-        int votesFor1 = 0; 
-        int votesFor2 = 0;
-        int votesFor3 = 0;
+        VotesForNumber votesFor1 = new VotesForNumber();
+        VotesForNumber votesFor2 = new VotesForNumber();
+        VotesForNumber votesFor3 = new VotesForNumber();
+        votesFor1.votes = 0;
+        votesFor2.votes = 0;
+        votesFor3.votes = 0;
+        votesFor1.number = 1;
+        votesFor2.number = 2;
+        votesFor2.number = 3;
 
         for (int i = 0; i < amountOfPlayers-1;i++)
         {
             switch (playerVotes[i])
             {
                 case 1:
-                    votesFor1++;
+                    votesFor1.votes++;
                 break;
 
                 case 2:
-                    votesFor2++;
+                    votesFor2.votes++;
                 break;
 
                 case 3:
-                    votesFor3++;
+                    votesFor3.votes++;
                 break;
 
                 default:
@@ -169,24 +175,37 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
                     break;
             }
         }
-        if (votesFor1 == votesFor2)
+        List<VotesForNumber> votesForNumber = new List<VotesForNumber>(); 
+        votesForNumber.Add(votesFor1);
+        votesForNumber.Add(votesFor2);
+        votesForNumber.Add(votesFor3);
+        votesForNumber.Sort((a, b) => b.votes.CompareTo(a.votes));
+        foreach (VotesForNumber option in votesForNumber)
         {
-            if (votesFor1 == votesFor3)
+            Debug.Log("Votes: " + option.votes + " - Number: " + option.number.ToString());
+        }
+
+        if (votesForNumber[0].votes > votesForNumber[1].votes)
+        {
+            choice = votesForNumber[0].number;
+            ChooseAnOption(choice);
+            return;
+        }
+        else if (votesForNumber[0].votes == votesForNumber[1].votes)
+        {
+            if (votesForNumber[0].votes == votesForNumber[2].votes)
             {
                 choice = RandomizeChoice();
+                ChooseAnOption(choice);
                 return;
             }
-            
+            else
+            {
+                choice = RandomizeChoiceBetweenTwo(votesForNumber[0].number, votesForNumber[1].number);
+                ChooseAnOption(choice);
+                return;
+            }
         }
-        else if (votesFor1 == votesFor3)
-        {
-
-        }
-        else if (votesFor2 == votesFor3)
-        {
-
-        }
-            
 
     }
 
@@ -222,4 +241,11 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
 
 
 
+}
+
+[System.Serializable]
+public class VotesForNumber
+{
+    public int number;
+    public int votes;
 }

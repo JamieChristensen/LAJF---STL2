@@ -2337,6 +2337,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1675714936137165011, guid: 2b8049b9349802348942e4759c3bba33,
+        type: 3}
+      propertyPath: buttonSounds
+      value: 
+      objectReference: {fileID: 83067747}
+    - target: {fileID: 1675714936137165011, guid: 2b8049b9349802348942e4759c3bba33,
+        type: 3}
+      propertyPath: chooseBetweenOptionsGiven
+      value: 
+      objectReference: {fileID: 83067745}
     - target: {fileID: 1675714936137165013, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
       propertyPath: m_Name

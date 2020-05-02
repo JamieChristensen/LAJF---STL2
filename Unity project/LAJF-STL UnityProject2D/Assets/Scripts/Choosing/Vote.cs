@@ -12,7 +12,11 @@ public class Vote : MonoBehaviour
     public KeyCode Select;
     public KeyCode Left, Right, Return;
 
-    
+    protected virtual void Update()
+    {
+        
+    }
+
     protected virtual void PlaceVote(int choice)
     {
         playerVotesForChoiceIndex.Raise(choice);
