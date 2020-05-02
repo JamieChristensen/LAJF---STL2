@@ -41,7 +41,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     private AudioList _audioList;
     public AudioList audioList { get { return _audioList; } }
 
-    bool alreadyDied = false;
+    public bool alreadyDied = false;
 
     // Start is called before the first frame update
     void Start()
@@ -115,16 +115,15 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
             audioList.PlayWithVariablePitch(audioList.deathEnemy);
         }
 
-        if (FindObjectsOfType<EnemyBehaviour>().Length <= 1)
-        {
-            StartCoroutine(DelayDeathAnnouncement(1.1f));
-        }
+        StartCoroutine(DelayDeathAnnouncement(1.1f));
+
 
         if (UnityEngine.Random.Range(0, 10f) > 6)
         {
             GameObject.Destroy(gameObject.GetComponent<Collider2D>());
         }
         alreadyDied = true;
+
     }
 
     private bool CanDie()
@@ -268,7 +267,15 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     IEnumerator DelayDeathAnnouncement(float delay)
     {
         yield return new WaitForSeconds(delay);
-        monsterDied.Raise();
+
+        Debug.Log("Length of enemybehaviours: " + FindObjectsOfType<EnemyBehaviour>().Length);
+
+        int amountOfEnemiesAlive = FindObjectsOfType<EnemyBehaviour>().Where(x => x.alreadyDied == false).Count();
+
+        if (amountOfEnemiesAlive <= 0)
+        {
+            monsterDied.Raise();
+        }
     }
 
     public void SetupHealthBar()
