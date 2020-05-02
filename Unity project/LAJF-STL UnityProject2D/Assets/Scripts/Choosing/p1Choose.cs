@@ -29,8 +29,15 @@ public class p1Choose : MonoBehaviour
     public KeyCode p1Select;
     public KeyCode p1Left, p1Right;
 
+    public KeyCode p1SelectAlt;
+    [Tooltip("Must match an Input-Axis")]
+    public string p1SelectAltAxisName;
+
     bool lockedIn = false;
     bool selected = false;
+
+    bool pressedDownHorizontalAxis;
+    float horizontalAxisValue;
 
     [SerializeField]
     private int choice = 0;
@@ -55,6 +62,20 @@ public class p1Choose : MonoBehaviour
 
     private void Update()
     {
+        #region Alternate/ControllerInput
+        //Debug.Log(Input.GetAxis(p1SelectAltAxisName) + " P1 Horizontal axis input");
+        if (Input.GetAxis(p1SelectAltAxisName) != 0 && !pressedDownHorizontalAxis)
+        {
+            pressedDownHorizontalAxis = true;
+            horizontalAxisValue = Input.GetAxis(p1SelectAltAxisName);
+        }
+        if (Input.GetAxis(p1SelectAltAxisName) == 0)
+        {
+            pressedDownHorizontalAxis = false;
+        }
+        #endregion Alternate/ControllerInput
+
+
         if (selected == true && lockedIn == false)
         {
             if (choiceType == "Character")
@@ -76,17 +97,20 @@ public class p1Choose : MonoBehaviour
 
         if (lockedIn == false)
         {
-            if (Input.GetKeyDown(p1Left))
+
+            if (Input.GetKeyDown(p1Left) || horizontalAxisValue < 0)
             {
                 int selection = (choice + (amountOfChoices - 1)) % amountOfChoices; //Move leftwards in choices.
                 ChangeAndDisplaySelection(selection);
+                horizontalAxisValue = 0;
             }
-            if (Input.GetKeyDown(p1Right))
+            if (Input.GetKeyDown(p1Right) || horizontalAxisValue > 0)
             {
                 int selection = (choice + (amountOfChoices + 1)) % amountOfChoices; //Move right in choices.
                 ChangeAndDisplaySelection(selection);
+                horizontalAxisValue = 0;
             }
-            if (Input.GetKeyDown(p1Select))
+            if (Input.GetKeyDown(p1Select) || Input.GetKeyDown(p1SelectAlt))
             {
                 selected = true;
             }

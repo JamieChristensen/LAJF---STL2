@@ -2702,6 +2702,8 @@ MonoBehaviour:
   p1Select: 32
   p1Left: 97
   p1Right: 100
+  p1SelectAlt: 330
+  p1SelectAltAxisName: P1Horizontal
   choice: 0
 --- !u!114 &2911421558393780485
 MonoBehaviour:
