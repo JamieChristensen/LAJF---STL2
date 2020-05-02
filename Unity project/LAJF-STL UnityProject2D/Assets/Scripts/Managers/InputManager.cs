@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+
 public class InputManager : MonoBehaviour
 {
     //TODO: Change these objects to corresponding classes as they are implemented.
@@ -20,7 +21,8 @@ public class InputManager : MonoBehaviour
     //Should just be an array of gods, loop through the input axes using index
     //when for-looping through them.
     //Initialize "gods" when the amount of players has been selected.
-
+    [Header("PauseButtonAxis")]
+    public string pauseAxisName;
     [Header("Player 1 keyboard controls")]
     public KeyCode player1JumpKey;
     public KeyCode player1AttackKey;
@@ -65,17 +67,40 @@ public class InputManager : MonoBehaviour
     //Player1 will have WASD/arrowbuttons for control, and spacebar + some button, for shooting (and a proper control scheme for controllers)
     //Players2,3,4 will need some alternate controls on keyboard too - but otherwise controller usage too.
 
+    private bool pressedPause = false;
+    private UIManager uiManager;
     private void Start()
     {
         //Alternatively, assign gods in inspector and figure out a way to disable superfluous gods.
         amountOfPlayers = gameSettings.GetAmountOfPlayers();
         amountOfGods = amountOfPlayers - 1;
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     private void Update()
     {
+        Debug.Log("Input: " + Input.GetAxisRaw(pauseAxisName));
+        if (Input.GetAxisRaw(pauseAxisName) == 0)
+        {
+            pressedPause = false;
+        }
+        if (Input.GetAxisRaw(pauseAxisName) != 0 && !pressedPause)
+        {
+            pressedPause = true;
+            if (uiManager.unpauseButton.isActiveAndEnabled)
+            {
+                uiManager.unpauseButton.onClick.Invoke();
+            }
+            else if (uiManager.pauseButton.isActiveAndEnabled)
+            {
+                uiManager.pauseButton.onClick.Invoke();
+            }
+        }
+
+
         GetInputs();
         SendHeroInputs();
+
 
         tapTimerLeft = tapTimingLeft ? tapTimerLeft + Time.deltaTime : 0;
         tapTimerRight = tapTimingRight ? tapTimerRight + Time.deltaTime : 0;

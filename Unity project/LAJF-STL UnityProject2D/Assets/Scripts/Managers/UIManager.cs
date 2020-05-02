@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
 {
     //This entire thing would do well to be more state-driven than what it is now.
     //Should keep track of the current UI-state, and handle UI-transitions in general.
+    public Button pauseButton;
+    public Button unpauseButton;
     public bool isLoadingScreenOn = false;
 
     public BoolVariable isGamePaused;
@@ -31,10 +33,11 @@ public class UIManager : MonoBehaviour
     private float timer; //Used to prevent loadingscreen instantly disappearing/blinking.
 
     public GameObject pauseCanvasGroup;
+    public GameObject[] disableOnPauseGroup;
 
     private void Start()
     {
-        nextTransition.Raise(7);  
+        nextTransition.Raise(7);
     }
 
     public void Update()
@@ -76,37 +79,49 @@ public class UIManager : MonoBehaviour
     //Called by an event on the UIManager object.
     public void UpdateLoadingScreen(int progress)
     {
-        
-            if (progress == 0)
+
+        if (progress == 0)
+        {
+            StartLoadingScreen();
+            return;
+        }
+
+        if (!isLoadingScreenOn)
+        {
+            return;
+        }
+        progressBar.value = progress;
+
+        if (progress == 100)
+        {
+            if (timer >= maxTime)
             {
-                StartLoadingScreen();
+                timer = 0;
+                CloseLoadingScreen();
                 return;
             }
+        }
 
-            if (!isLoadingScreenOn)
-            {
-                return;
-            }
-            progressBar.value = progress;
 
-            if (progress == 100)
-            {
-                if (timer >= maxTime)
-                {
-                    timer = 0;
-                    CloseLoadingScreen();
-                    return;
-                }
-            }
-        
-       
     }
 
-    public void OnPauseButtonClicked(){
+    public void OnPauseButtonClicked()
+    {
         pauseCanvasGroup.SetActive(isGamePaused.myBool);
+
+        foreach (GameObject go in disableOnPauseGroup)
+        {
+            go.SetActive(!isGamePaused.myBool);
+        }
+
+        if (isGamePaused)
+        {
+            FindObjectOfType<Button>().Select();
+        }
     }
 
-    public void UpdateHPSlider(int hp){
+    public void UpdateHPSlider(int hp)
+    {
         playerHPSlider.value = hp;
     }
 
