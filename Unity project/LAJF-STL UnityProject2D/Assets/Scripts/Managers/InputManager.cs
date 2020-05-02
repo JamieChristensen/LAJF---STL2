@@ -21,11 +21,16 @@ public class InputManager : MonoBehaviour
     //when for-looping through them.
     //Initialize "gods" when the amount of players has been selected.
 
-    [Header("Player 1 controls")]
+    [Header("Player 1 keyboard controls")]
     public KeyCode player1JumpKey;
     public KeyCode player1AttackKey;
     private float player1Hori;
     public KeyCode player1Left, player1Right;
+    [Header("Player 1 controller controls")]
+    public KeyCode player1JumpAlt, player1AttackAlt;
+    public KeyCode player1DashLeft, player1DashRight;
+    public string player1HoriAxisName;
+
     private bool player1Jump;
     private bool player1JumpHold;
     private bool player1Attack;
@@ -100,13 +105,17 @@ public class InputManager : MonoBehaviour
 
             float left = Input.GetKey(player1Left) ? 1 : 0;
             float right = Input.GetKey(player1Right) ? 1 : 0;
-            player1Hori = right - left;
+            float player1HoriAlt = Input.GetAxis(player1HoriAxisName);
+            player1Hori = Mathf.Clamp((player1HoriAlt + (right - left)), -1, 1); //Sum keyboard and controller input, clamp it and use that as input.
 
-            player1Jump = Input.GetKeyDown(player1JumpKey);
-            player1JumpHold = Input.GetKey(player1JumpKey);
-            player1Attack = Input.GetKeyDown(player1AttackKey);
 
-            if (Input.GetKeyUp(player1AttackKey))
+            player1Jump = Input.GetKeyDown(player1JumpKey) || Input.GetKeyDown(player1JumpAlt);
+            player1JumpHold = Input.GetKey(player1JumpKey) || Input.GetKey(player1JumpAlt);
+
+            player1Attack = Input.GetKeyDown(player1AttackKey) || Input.GetKeyDown(player1AttackAlt);
+            //Debug.Log(Input.GetKeyDown(player1AttackAlt) + " PLAYER 1 ATTACK ALT");
+
+            if (Input.GetKeyUp(player1AttackKey) || Input.GetKeyDown(player1AttackAlt))
             {
                 player1AttackLifted = true;
             }
@@ -123,7 +132,7 @@ public class InputManager : MonoBehaviour
 
             if (player1.hasGatlingGun)
             {
-                player1Attack = Input.GetKey(player1AttackKey);
+                player1Attack = Input.GetKey(player1AttackKey) || Input.GetKey(player1AttackAlt);
             }
 
 
@@ -153,7 +162,24 @@ public class InputManager : MonoBehaviour
                     return;
                 }
                 tapTimingRight = true;
+            }
 
+            if (tapCoolingDown)
+            {
+                return;
+            }
+            if (player1 != null && GameManager.canPlayerMove)
+            {
+                if (Input.GetKeyDown(player1DashLeft))
+                {
+                    tapCoolingDown = true;
+                    player1.ReceiveInput(P1Controller.Player1Input.DoubleTapLeft, 0);
+                }
+                if (Input.GetKeyDown(player1DashRight))
+                {
+                    tapCoolingDown = true;
+                    player1.ReceiveInput(P1Controller.Player1Input.DoubleTapRight, 0);
+                }
             }
         }
 
@@ -188,7 +214,7 @@ public class InputManager : MonoBehaviour
                 player1AttackExplosion = false;
                 player1AttackLifted = false;
             }
-            
+
             if (player1Attack)
             {
                 player1.ReceiveInput(P1Controller.Player1Input.Attack, 0);  //Float doesn't matter for attack
@@ -210,6 +236,8 @@ public class InputManager : MonoBehaviour
             }
 
             player1.ReceiveInput(P1Controller.Player1Input.Horizontal, player1Hori);
+
+
 
             if (justTapped && tapTimingLeft)
             {

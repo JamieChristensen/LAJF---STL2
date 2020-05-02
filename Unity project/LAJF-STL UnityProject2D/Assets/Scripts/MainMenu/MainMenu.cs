@@ -42,6 +42,10 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    //TODO: Make primary main menu buttons unselectable (uninteractable) in a function - call that function when a main-menu button is pressed.
+    //TODO: Same as above, but inverse - and activate that function when exiting sub-menus in main menu.
+    //TODO: Make settings interactable. 
+
     public void StartFading()
     {
         if (notFaded)
