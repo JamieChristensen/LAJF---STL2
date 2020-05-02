@@ -148,7 +148,10 @@ public class TransitionScreen : MonoBehaviour
         {
             if (transitionElements[transitionIndex].transitionBackgrounds.Count == 1)
             {
-                transitionBackgroundPanel.sprite = transitionElements[transitionIndex].transitionBackgrounds[0];
+                if (transitionElements[transitionIndex].transitionBackgrounds[0] && transitionBackgroundPanel != null)
+                {
+                    transitionBackgroundPanel.sprite = transitionElements[transitionIndex].transitionBackgrounds[0];
+                }
             }
 
             if (transitionIndex == 0)

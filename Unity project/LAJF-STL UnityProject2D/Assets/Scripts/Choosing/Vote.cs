@@ -1,18 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using STL2.Events;
 
 public class Vote : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public IntEvent playerVotesForChoiceIndex;
+    public int choice = 0;
+
+    [Header("Player2 controls")]
+    public KeyCode Select;
+    public KeyCode Left, Right, Return;
+
+    
+    protected virtual void PlaceVote(int choice)
     {
-        
+        playerVotesForChoiceIndex.Raise(choice);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void CancelVote()
     {
-        
+        choice = 0;
+        playerVotesForChoiceIndex.Raise(choice);
     }
 }
