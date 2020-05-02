@@ -43,9 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3bcd3d30c5b714592b6fc55a437c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 2
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   playerVotesForChoiceIndex: {fileID: 11400000, guid: 849a5be841e0017428ed3bae6b86ded2,
     type: 2}
-  choice: 0
+  choice: 1
+  lockedIn: 0
+  godAvatar: {fileID: 0}
+  highLight: {fileID: 0}
+  godAvatarGameObject: {fileID: 0}
+  voteLocationTransforms:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Select: 13
   Left: 276
   Right: 275
@@ -93,9 +103,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43986f6ae0dd576498e17bf302162b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 3
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   playerVotesForChoiceIndex: {fileID: 11400000, guid: f2bc27642f2a9e1448a88e7a3c76d310,
     type: 2}
-  choice: 0
+  choice: 1
+  lockedIn: 0
+  godAvatar: {fileID: 0}
+  highLight: {fileID: 0}
+  godAvatarGameObject: {fileID: 0}
+  voteLocationTransforms:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Select: 258
   Left: 257
   Right: 259
@@ -149,13 +169,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ef2543ad8152043819d369eee22ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
-  godAvatars: []
   p2: {fileID: 4134797265137611428}
   p3: {fileID: 7480467531589095838}
   p4: {fileID: 9189168039957213517}
   settingsScirptableObject: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af,
     type: 2}
+  playerVotes: 000000000000000000000000
+  buttonSounds: {fileID: 0}
+  chooseBetweenOptionsGiven: {fileID: 0}
+  choiceType: 0
 --- !u!114 &2647526190444879012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,9 +335,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b26aea5eb380745a3502c8adfbc522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 4
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   playerVotesForChoiceIndex: {fileID: 11400000, guid: be2dd5adbbe4be04181a22f9282eeed3,
     type: 2}
-  choice: 0
+  choice: 1
+  lockedIn: 0
+  godAvatar: {fileID: 0}
+  highLight: {fileID: 0}
+  godAvatarGameObject: {fileID: 0}
+  voteLocationTransforms:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Select: 264
   Left: 263
   Right: 265

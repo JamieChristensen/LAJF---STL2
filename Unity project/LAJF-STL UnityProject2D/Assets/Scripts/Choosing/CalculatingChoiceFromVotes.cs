@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class CalculatingChoiceFromVotes : MonoBehaviour
 {
-    public ChoiceCategory runtimeChoices;
-    public Image[] godAvatars;
 
     public p2Vote p2;
     public p3Vote p3;
@@ -16,7 +14,7 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
 
     public int[] playerVotes;
     int amountOfPlayers, amountOfVotes, choice;
-    bool p2HasVoted = false, p3HasVoted = false, p4HasVoted = false;
+    bool p2HasVoted = false, p3HasVoted = false, p4HasVoted = false, openForVotes = true;
 
 
     public ButtonSounds buttonSounds;
@@ -35,7 +33,11 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
 
     private void Update()
     {
-        CheckForPlayerVotes();
+        if (openForVotes)
+        {
+            CheckForPlayerVotes();
+        }
+        
     }
 
     public void CheckForPlayerVotes()
@@ -43,8 +45,28 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
         if (amountOfPlayers-1 == amountOfVotes)
         {
             CalculateVotes();
+            openForVotes = false;
             return;
         }
+    }
+
+    public void OutOfTime()
+    {
+        if (!p2HasVoted)
+        {
+            playerVotes[0] = 0;
+        }
+        if (!p3HasVoted)
+        {
+            playerVotes[1] = 0;
+        }
+        if (!p4HasVoted)
+        {
+            playerVotes[2] = 0;
+        }
+        CalculateVotes();
+        openForVotes = false;
+        return;
     }
 
     #region Voting
@@ -55,9 +77,11 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
         if (playerVotes[0] != 0)
         {
             p2HasVoted = true;
+            amountOfVotes++;
             return;
         }
         p2HasVoted = false;
+        amountOfVotes--;
     }
 
     public void Player3VotedFor(int choice)
@@ -66,9 +90,11 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
         if (playerVotes[1] != 0)
         {
             p3HasVoted = true;
+            amountOfVotes++;
             return;
         }
         p3HasVoted = false;
+        amountOfVotes--;
     }
 
     public void Player4VotedFor(int choice)
@@ -77,15 +103,20 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
         if (playerVotes[2] != 0)
         {
             p4HasVoted = true;
+            amountOfVotes++;
             return;
         }
         p4HasVoted = false;
+        amountOfVotes--;
     }
 
     #endregion Voting
 
     public void CalculateVotes()
     {
+        p2.enabled = false;
+        p3.enabled = false;
+        p4.enabled = false;
         switch (amountOfPlayers)
         {
             case 2:
@@ -133,6 +164,8 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
 
             buttonSounds.OnChoiceMade();
 
+        //Debug.Log(p2HasVoted.ToString() + " " + p3HasVoted.ToString() + " " + p4HasVoted.ToString());
+        //Debug.Log("2: " + playerVotes[0] + " - 3: " + playerVotes[1] + " - 4: " + playerVotes[2]);
             return;
    }
 
@@ -146,7 +179,7 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
         votesFor3.votes = 0;
         votesFor1.number = 1;
         votesFor2.number = 2;
-        votesFor2.number = 3;
+        votesFor3.number = 3;
 
         for (int i = 0; i < amountOfPlayers-1;i++)
         {
@@ -180,10 +213,12 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
         votesForNumber.Add(votesFor2);
         votesForNumber.Add(votesFor3);
         votesForNumber.Sort((a, b) => b.votes.CompareTo(a.votes));
+        /*
         foreach (VotesForNumber option in votesForNumber)
         {
-            Debug.Log("Votes: " + option.votes + " - Number: " + option.number.ToString());
+            //Debug.Log("Votes: " + option.votes + " - Number: " + option.number.ToString());
         }
+        */
 
         if (votesForNumber[0].votes > votesForNumber[1].votes)
         {
@@ -235,10 +270,7 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
         {
             return second;
         }
-
     }
-
-
 
 
 }
