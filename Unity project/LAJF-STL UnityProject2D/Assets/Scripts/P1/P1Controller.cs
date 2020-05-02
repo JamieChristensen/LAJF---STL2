@@ -25,9 +25,12 @@ public class P1Controller : MonoBehaviour
 
     public Rigidbody2D rb;//declares variable to give the player gravity and the ability to interact with physics
 
+    [Header("Controls")]
     /* controls */
     public KeyCode left, right, jump, attackRanged, attackMelee;
 
+
+    [Header("Visuals and misc.:")]
     [SerializeField]
     public Sprite defaultSprite, playerSprite;
     private SpriteRenderer spriteRenderer;

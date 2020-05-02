@@ -2816,6 +2816,8 @@ MonoBehaviour:
   p1Select: 32
   p1Left: 97
   p1Right: 100
+  p1SelectAlt: 330
+  p1SelectAltAxisName: P1Horizontal
   choice: 0
 --- !u!1 &2228596600336018488
 GameObject:

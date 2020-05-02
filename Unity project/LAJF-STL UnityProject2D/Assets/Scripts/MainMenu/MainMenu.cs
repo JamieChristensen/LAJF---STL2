@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
     public Button creditsButton;
     public Button exitGameButton;
 
+    public Button[] primaryMainMenuButtons;
+
     public GameObject settingsMenu;
     public GameObject creditsMenu;
 
@@ -24,6 +26,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+
         if (EventSystem.current.currentSelectedGameObject == null)
         {
             startGameButton.Select();
@@ -32,7 +35,7 @@ public class MainMenu : MonoBehaviour
     }
     private void Update()
     {
-        
+
         if (Input.GetAxis("Vertical") != 0)
         {
             if (EventSystem.current.currentSelectedGameObject == null || EventSystem.current.currentSelectedGameObject.activeSelf == false)
@@ -41,6 +44,24 @@ public class MainMenu : MonoBehaviour
             }
         }
     }
+
+    public void DisablePrimaryButtons()
+    {
+        foreach (Button button in primaryMainMenuButtons)
+        {
+            button.interactable = false;
+        }
+    }
+
+    public void EnablePrimaryButtons()
+    {
+        foreach (Button button in primaryMainMenuButtons)
+        {
+            button.interactable = true;
+        }
+    }
+
+    //TODO: Make settings interactable. 
 
     public void StartFading()
     {
