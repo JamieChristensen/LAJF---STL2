@@ -83,7 +83,6 @@ public class Projectile : MonoBehaviour
         contactFilter.SetLayerMask(layerMask);
         Physics2D.CircleCast(transform.position, explosionRadius, Vector2.zero, contactFilter, explosionHits, 10f);
 
-        Debug.Log("explode");
         foreach (RaycastHit2D hit in explosionHits)
         {
             if (hit.collider.CompareTag("Monster"))
