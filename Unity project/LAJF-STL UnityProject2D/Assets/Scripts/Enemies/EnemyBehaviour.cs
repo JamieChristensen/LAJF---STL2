@@ -34,7 +34,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     public ChoiceCategory runtimeChoices;
     private Rigidbody2D rb;
     //White and default materials
-    private Material matDefault;
+    public Material matDefault;
     public Material matWhite;
     public Enemy agent;
     public List<EnemyModifier> modifiers;
@@ -110,6 +110,10 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         rb2.gravityScale = 0f;
 
         Invoke("DeathAnimation", 0.2f);
+        if (audioList == null)
+        {
+            _audioList = FindObjectOfType<AudioList>();
+        }
         if (audioList != null)
         {
             audioList.PlayWithVariablePitch(audioList.deathEnemy);
@@ -139,6 +143,10 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
             if (cooldownTimer <= 0)
             {
                 cooldownTimer = agent.attackSpeed;
+                if (gameManager == null)
+                {
+                    gameManager = FindObjectOfType<GameManager>();
+                }
                 if (gameManager.canMonsterMove[monsterNumber - 1])
                 {
                     if (attackType == "melee")
@@ -206,7 +214,14 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public void DeathExplode() // Add Particle Burst
     {
-        audioList.explosion.Play();
+        if (audioList == null)
+        {
+            _audioList = FindObjectOfType<AudioList>();
+        }
+        if (audioList != null)
+        {
+            audioList.explosion.Play();
+        }
         ParticleSystem instance = Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
         Destroy(instance.gameObject, instance.duration);
         Destroy(gameObject);

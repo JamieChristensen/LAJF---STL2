@@ -40,18 +40,19 @@ public class OrbEnemy : EnemyBehaviour
 
     private Transform playerTransform;
 
+    public bool isInitialized = false;
     void Start()
     {
-        InitalizeEnemy();
         playerTransform = FindObjectOfType<P1Controller>().transform;
-
         target = GameObject.FindGameObjectWithTag("Player");
+        matDefault = spriteRenderer.material;
     }
 
 
     public override void InitalizeEnemy()
     {
         Orb orbInstance = Instantiate(orbPrefab, transform.position, Quaternion.identity, transform).GetComponent<Orb>();
+
 
         currentOrbTransform = orbPositions[0];
         currentTargetTransformIndex = 1;
@@ -60,7 +61,6 @@ public class OrbEnemy : EnemyBehaviour
         orb = orbInstance;
 
         base.InitalizeEnemy();
-
         //Instantiate orb prefab
     }
 
@@ -76,7 +76,11 @@ public class OrbEnemy : EnemyBehaviour
 
     protected override void MoveToTarget()
     {
-
+        if (!isInitialized)
+        {
+            InitalizeEnemy();
+            isInitialized = true;
+        }
         base.MoveToTarget();
         if (isOrbDead)
         {

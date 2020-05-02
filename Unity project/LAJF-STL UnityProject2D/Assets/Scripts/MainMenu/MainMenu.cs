@@ -4,13 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using UnityEngine.EventSystems;
+
 public class MainMenu : MonoBehaviour
 {
+    public Button selectedButton;
     public Button startGameButton;
     public Button settingsButton;
     public Button creditsButton;
     public Button exitGameButton;
-    
+
     public GameObject settingsMenu;
     public GameObject creditsMenu;
 
@@ -19,6 +22,26 @@ public class MainMenu : MonoBehaviour
 
     bool notFaded = true;
 
+    private void Start()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            startGameButton.Select();
+            print("selected button");
+        }
+    }
+    private void Update()
+    {
+        
+        if (Input.GetAxis("Vertical") != 0)
+        {
+            if (EventSystem.current.currentSelectedGameObject == null || EventSystem.current.currentSelectedGameObject.activeSelf == false)
+            {
+                startGameButton.Select();
+            }
+        }
+    }
+
     public void StartFading()
     {
         if (notFaded)
@@ -26,7 +49,7 @@ public class MainMenu : MonoBehaviour
             StartCoroutine(DelayedTransition(1.5f));
             notFaded = false;
         }
-        
+
     }
     public void StartGame()
     {

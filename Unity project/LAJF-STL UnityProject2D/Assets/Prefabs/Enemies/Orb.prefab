@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 748287193514752123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.1}
   m_Children: []
   m_Father: {fileID: 3617510848251982451}
   m_RootOrder: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0468afe2b1c179642bb7ab95c3e6ef6e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58352f4b6172f1a47995ce35e0435060, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   particleExplosionObj: {fileID: 2364717285391735988, guid: 98c81f08eace3574bb15275b8ffe8d48,
     type: 3}
   damage: 9
-  projectileSpeed: 4.43
+  projectileSpeed: 35
 --- !u!58 &7502020673589203604
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.78
 --- !u!50 &-7154943419513871160
 Rigidbody2D:
   serializedVersion: 4
