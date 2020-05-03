@@ -304,4 +304,17 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         //  throw new NotImplementedException();
     }
 
+    private void ShoulderCannonModifier()
+    {
+
+    }
+    private void BlessedModifier()
+    {
+
+    }
+    private void AngryModifier()
+    {
+
+    }
+
 }
