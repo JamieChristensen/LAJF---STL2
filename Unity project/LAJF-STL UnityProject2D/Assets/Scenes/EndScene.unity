@@ -518,7 +518,7 @@ MonoBehaviour:
   baseText: {fileID: 106807074}
   creditsText: {fileID: 9160693856537786406, guid: e2db89d99d0e4054f8f036bcd2a37d14,
     type: 3}
-  keysThatCanSpeedUpScene: 12010000110100007700000073000000
+  keysThatCanSpeedUpScene: 1201000011010000770000004c01000060010000880100007401000073000000
   coolDescriptors:
   - gloriously
   - bravely
@@ -704,7 +704,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0, g: 0.054832935, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
