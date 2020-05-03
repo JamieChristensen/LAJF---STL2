@@ -8,14 +8,19 @@ using TMPro;
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
-
+    public Slider volumeSlider;
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
+    public SettingsScrObj gameSettings;
 
     Resolution[] resolutions;
 
     void Start()
     {
+
+        SetVolume(gameSettings.gameVolume);
+        volumeSlider.value = gameSettings.gameVolume;
+
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -49,6 +54,7 @@ public class SettingsMenu : MonoBehaviour
     public void SetVolume (float volume)
     {
         audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
+        gameSettings.gameVolume = volume;
     }
 
     public void SetQuality (int qualityIndex)

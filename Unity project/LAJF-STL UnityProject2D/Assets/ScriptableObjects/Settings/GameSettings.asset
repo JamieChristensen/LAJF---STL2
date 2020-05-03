@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   amountOfPlayers: 2
+  gameVolume: 0.84675986

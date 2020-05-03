@@ -96,3 +96,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fb5b95e43e96e294b8b28e3b825c6723, type: 3}
   - {fileID: 8300000, guid: e66abba70ff84f2409666ac25528b77f, type: 3}
   sources: []
+  gameSettings: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af, type: 2}
