@@ -43,6 +43,11 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public bool alreadyDied = false;
 
+    [ColorUsage(true, true)]
+    public Color outline;
+    [Range(0, 0.1f)]
+    public float outlineThiccness;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +59,14 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         target = GameObject.FindGameObjectWithTag("Player");
         cooldownTimer = 0;
     }
+
+    void Update()
+    {
+        spriteRenderer.material.SetTexture("_MainTex", agent.sprite.texture);
+        spriteRenderer.material.SetFloat("_Thickness", outlineThiccness);
+        spriteRenderer.material.SetColor("_Color", outline);
+    }
+
 
     void FixedUpdate()
 
@@ -261,6 +274,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         maxHealth = currentHealth;
 
         spriteRenderer.material.SetTexture("_MainTex", agent.sprite.texture);
+        spriteRenderer.material.SetFloat("_Thickness", 0.05f);
     }
 
     public void InitalizeEnemy(Enemy _agent, EnemyModifier[] _modifiers)
@@ -277,6 +291,9 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         {
             ApplyModifier(modifier);
         }
+
+        spriteRenderer.material.SetTexture("_MainTex", agent.sprite.texture);
+        spriteRenderer.material.SetFloat("_Thickness", 0.05f);
 
         healthBar.UpdateHPValues(currentHealth, maxHealth);
     }

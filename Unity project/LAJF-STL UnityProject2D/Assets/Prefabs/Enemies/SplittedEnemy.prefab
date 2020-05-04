@@ -728,9 +728,12 @@ MonoBehaviour:
     type: 3}
   spriteRenderer: {fileID: 5470028573115656753}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  rb: {fileID: 0}
+  matDefault: {fileID: 0}
   matWhite: {fileID: 2100000, guid: da2c11b1a32a0e748b87c0907cbfc44d, type: 2}
   agent: {fileID: 0}
   modifiers: []
+  alreadyDied: 0
   isSplitted: 0
   amountOfSplits: 2
   splittedEnemy: {fileID: 0}
@@ -1022,7 +1025,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8efca9af6b93ec64cb418a1b44bb3360, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
