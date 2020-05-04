@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using UnityEngine.UI;
 
 public class EndSceneDisplay : MonoBehaviour
 {
@@ -149,6 +150,12 @@ public class EndSceneDisplay : MonoBehaviour
 
     private void Update()
     {
+
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            GameObject.Find("Main Menu button").GetComponent<Button>().Select();
+        }
+
         float effectiveScrollSpeed = scrollSpeed;
 
         foreach (KeyCode keycode in keysThatCanSpeedUpScene)

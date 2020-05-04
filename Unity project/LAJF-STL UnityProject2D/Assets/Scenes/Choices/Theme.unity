@@ -2559,6 +2559,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af,
         type: 2}
+    - target: {fileID: 4134797265137611428, guid: 2b8049b9349802348942e4759c3bba33,
+        type: 3}
+      propertyPath: playerHorizontalAxis
+      value: P2Horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134797265137611428, guid: 2b8049b9349802348942e4759c3bba33,
+        type: 3}
+      propertyPath: returnAlt
+      value: 352
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134797265137611428, guid: 2b8049b9349802348942e4759c3bba33,
+        type: 3}
+      propertyPath: selectAlt
+      value: 351
+      objectReference: {fileID: 0}
     - target: {fileID: 7480467531589095838, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
       propertyPath: godAvatar
@@ -2600,6 +2615,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af,
         type: 2}
+    - target: {fileID: 7480467531589095838, guid: 2b8049b9349802348942e4759c3bba33,
+        type: 3}
+      propertyPath: playerHorizontalAxis
+      value: P3Horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480467531589095838, guid: 2b8049b9349802348942e4759c3bba33,
+        type: 3}
+      propertyPath: returnAlt
+      value: 372
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480467531589095838, guid: 2b8049b9349802348942e4759c3bba33,
+        type: 3}
+      propertyPath: selectAlt
+      value: 371
+      objectReference: {fileID: 0}
     - target: {fileID: 8797934409557611098, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
       propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.size
@@ -2641,6 +2671,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af,
         type: 2}
+    - target: {fileID: 9189168039957213517, guid: 2b8049b9349802348942e4759c3bba33,
+        type: 3}
+      propertyPath: playerHorizontalAxis
+      value: P4Horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189168039957213517, guid: 2b8049b9349802348942e4759c3bba33,
+        type: 3}
+      propertyPath: returnAlt
+      value: 392
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189168039957213517, guid: 2b8049b9349802348942e4759c3bba33,
+        type: 3}
+      propertyPath: selectAlt
+      value: 391
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b8049b9349802348942e4759c3bba33, type: 3}
 --- !u!114 &1811799788623837363

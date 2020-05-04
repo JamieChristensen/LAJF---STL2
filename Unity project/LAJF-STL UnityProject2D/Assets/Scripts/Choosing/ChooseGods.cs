@@ -32,17 +32,28 @@ public class ChooseGods : MonoBehaviour
     private bool p2LockedIn, p3LockedIn, p4LockedIn;
 
     [Header("Player2 controls")]
+    private bool p2WaitForNextClick = false;
     public KeyCode p2left;
     public KeyCode p2right, p2select;
 
+    public KeyCode p2SelectAlt;
+    public string p2HorizontalAxisName;
+
     [Header("Player3 controls")]
+    private bool p3WaitForNextClick = false;
     public KeyCode p3left;
     public KeyCode p3right, p3select;
 
+    public KeyCode p3SelectAlt;
+    public string p3HorizontalAxisName;
+
     [Header("Player4 controls")]
+    private bool p4WaitForNextClick = false;
     public KeyCode p4left;
     public KeyCode p4right, p4select;
 
+    public KeyCode p4SelectAlt;
+    public string p4HorizontalAxisName;
     bool lockedIn = false;
 
     public void Start()
@@ -78,8 +89,8 @@ public class ChooseGods : MonoBehaviour
 
             buttonSounds.OnChoiceMade();
             //transitionNarrator.DoNarration();
-            
-            Invoke("LoadTransition",1.5f);
+
+            Invoke("LoadTransition", 1.5f);
             lockedIn = true;
             return;
         }
@@ -89,17 +100,31 @@ public class ChooseGods : MonoBehaviour
         int currentPlayerIndex = p2Index; //Index of the player whose character we're checking inputs for.
         if (!p2LockedIn)
         {
-            if (Input.GetKeyDown(p2left))
+            bool p2leftPressed = false;
+            bool p2rightPressed = false;
+            float p2HoriInput = Input.GetAxis(p2HorizontalAxisName);
+            if (p2HoriInput != 0 && p2WaitForNextClick)
+            {
+                p2leftPressed = p2HoriInput < 0 ? true : false;
+                p2rightPressed = !p2leftPressed;
+                p2WaitForNextClick = true;
+            }
+            if (p2HoriInput == 0)
+            {
+                p2WaitForNextClick = false;
+            }
+
+            if (Input.GetKeyDown(p2left) || p2leftPressed)
             {
                 int selection = (choices[currentPlayerIndex] + (amountOfChoices - 1)) % amountOfChoices; //Move leftwards in choices.
                 ChangeAndDisplaySelection(currentPlayerIndex, selection);
             }
-            if (Input.GetKeyDown(p2right))
+            if (Input.GetKeyDown(p2right) || p2rightPressed)
             {
                 int selection = (choices[currentPlayerIndex] + (amountOfChoices + 1)) % amountOfChoices; //Move right in choices.
                 ChangeAndDisplaySelection(currentPlayerIndex, selection);
             }
-            if (Input.GetKeyDown(p2select))
+            if (Input.GetKeyDown(p2select) || Input.GetKeyDown(p2SelectAlt))
             {
                 p2LockedIn = true;
             }
@@ -109,6 +134,20 @@ public class ChooseGods : MonoBehaviour
         currentPlayerIndex = p3Index;
         if (!p3LockedIn)
         {
+            bool p3leftPressed = false;
+            bool p3rightPressed = false;
+            float p3HoriInput = Input.GetAxis(p3HorizontalAxisName);
+            if (p3HoriInput != 0 && p3WaitForNextClick)
+            {
+                p3leftPressed = p3HoriInput < 0 ? true : false;
+                p3rightPressed = !p3leftPressed;
+                p3WaitForNextClick = true;
+            }
+            if (p3HoriInput == 0)
+            {
+                p3WaitForNextClick = false;
+            }
+
             if (Input.GetKeyDown(p3left))
             {
                 int selection = (choices[currentPlayerIndex] + (amountOfChoices - 1)) % amountOfChoices;
@@ -128,6 +167,20 @@ public class ChooseGods : MonoBehaviour
         currentPlayerIndex = p4Index;
         if (!p4LockedIn)
         {
+            bool p4leftPressed = false;
+            bool p4rightPressed = false;
+            float p4HoriInput = Input.GetAxis(p4HorizontalAxisName);
+            if (p4HoriInput != 0 && p4WaitForNextClick)
+            {
+                p4leftPressed = p4HoriInput < 0 ? true : false;
+                p4rightPressed = !p4leftPressed;
+                p4WaitForNextClick = true;
+            }
+            if (p4HoriInput == 0)
+            {
+                p4WaitForNextClick = false;
+            }
+            
             if (Input.GetKeyDown(p4left))
             {
                 int selection = (choices[currentPlayerIndex] + (amountOfChoices - 1)) % amountOfChoices;
@@ -180,15 +233,15 @@ public class ChooseGods : MonoBehaviour
                 highlights[i].gameObject.SetActive(false);
                 overlays[i].gameObject.SetActive(true);
             }
-            
+
         }
-        
+
         //Reset text on each element:
         foreach (TextMeshProUGUI choiceText in choiceTMProText)
         {
             choiceText.text = "";
         }
-        for (int i = 0; i < gamesettings.GetAmountOfPlayers()-1; i++)
+        for (int i = 0; i < gamesettings.GetAmountOfPlayers() - 1; i++)
         {
             choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
@@ -204,7 +257,7 @@ public class ChooseGods : MonoBehaviour
         {
             choiceText.text = "";
         }
-        for (int i = 0; i < gamesettings.GetAmountOfPlayers()-1; i++)
+        for (int i = 0; i < gamesettings.GetAmountOfPlayers() - 1; i++)
         {
             choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }

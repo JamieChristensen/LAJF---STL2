@@ -21,7 +21,9 @@ public class Vote : MonoBehaviour
     public KeyCode Select;
     public KeyCode Left, Right, Return;
 
-
+    public string playerHorizontalAxis;
+    public KeyCode selectAlt, returnAlt;
+    private bool waitForNextClick;
     protected virtual void Start()
     {
         godAvatar.sprite = runtimeChoices.chosenGods[playerNumber - 2].topBarIcon;
@@ -34,22 +36,40 @@ public class Vote : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (Input.GetKeyDown(Left) && !lockedIn)
+        bool clickedLeft = false;
+        bool clickedRight = false;
+        float playerHorizontalAxisValue = Input.GetAxis(playerHorizontalAxis);
+
+        
+
+        if (playerHorizontalAxisValue != 0 && waitForNextClick)
+        {
+            clickedLeft = playerHorizontalAxisValue < 0 ? true : false;
+            clickedRight = !clickedLeft;
+            waitForNextClick = true;
+        }
+        if (playerHorizontalAxisValue == 0)
+        {
+            waitForNextClick = false;
+        }
+
+
+        if ((Input.GetKeyDown(Left) || clickedLeft) && !lockedIn)
         {
             SwitchHover(-1);
             return;
         }
-        if (Input.GetKeyDown(Right) && !lockedIn)
+        if ((Input.GetKeyDown(Right) || clickedRight) && !lockedIn)
         {
             SwitchHover(1);
             return;
         }
-        if (Input.GetKeyDown(Select) && !lockedIn)
+        if ((Input.GetKeyDown(Select) || Input.GetKeyDown(selectAlt)) && !lockedIn)
         {
             PlaceVote(choice);
             return;
         }
-        if (Input.GetKeyDown(Return) && lockedIn)
+        if ((Input.GetKeyDown(Return) || Input.GetKeyDown(returnAlt)) && lockedIn)
         {
             CancelVote();
             return;
@@ -90,6 +110,6 @@ public class Vote : MonoBehaviour
     {
         highLight.enabled = lockedIn;
         godAvatarGameObject.transform.position = voteLocationTransforms[choice - 1].position;
-        
+
     }
 }
