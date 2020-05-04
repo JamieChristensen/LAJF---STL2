@@ -32,7 +32,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     public ParticleSystem deathLeadUp, deathExplosion;
     public SpriteRenderer spriteRenderer;
     public ChoiceCategory runtimeChoices;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     //White and default materials
     public Material matDefault;
     public Material matWhite;
@@ -205,6 +205,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public void DeathAnimation() // Add Particle Burst
     {
+        rb.velocity = Vector2.zero;
         Destroy(rb);
         ParticleSystem instance = Instantiate(deathLeadUp, particlePoint.position, particlePoint.rotation);
         healthBar.transform.parent = null;

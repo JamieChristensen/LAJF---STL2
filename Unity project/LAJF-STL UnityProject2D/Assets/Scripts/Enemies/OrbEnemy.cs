@@ -41,10 +41,13 @@ public class OrbEnemy : EnemyBehaviour
     private Transform playerTransform;
 
     public bool isInitialized = false;
+    public Rigidbody2D rb, rb2;
     void Start()
     {
         playerTransform = FindObjectOfType<P1Controller>().transform;
         target = GameObject.FindGameObjectWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
+        rb2 = GetComponent<Rigidbody2D>();
         matDefault = spriteRenderer.material;
     }
 
