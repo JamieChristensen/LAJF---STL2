@@ -156,17 +156,17 @@ public class ChooseGods : MonoBehaviour
                 p3WaitForNextClick = false;
             }
 
-            if (Input.GetKeyDown(p3left))
+            if (Input.GetKeyDown(p3left) || p3leftPressed)
             {
                 int selection = (choices[currentPlayerIndex] + (amountOfChoices - 1)) % amountOfChoices;
                 ChangeAndDisplaySelection(currentPlayerIndex, selection);
             }
-            if (Input.GetKeyDown(p3right))
+            if (Input.GetKeyDown(p3right) || p3leftPressed)
             {
                 int selection = (choices[currentPlayerIndex] + (amountOfChoices + 1)) % amountOfChoices; //Move leftwards in choices.
                 ChangeAndDisplaySelection(currentPlayerIndex, selection);
             }
-            if (Input.GetKeyDown(p3select))
+            if (Input.GetKeyDown(p3select) || Input.GetKeyDown(p3SelectAlt))
             {
                 p3LockedIn = true;
             }
@@ -189,17 +189,17 @@ public class ChooseGods : MonoBehaviour
                 p4WaitForNextClick = false;
             }
 
-            if (Input.GetKeyDown(p4left))
+            if (Input.GetKeyDown(p4left) || p4leftPressed)
             {
                 int selection = (choices[currentPlayerIndex] + (amountOfChoices - 1)) % amountOfChoices;
                 ChangeAndDisplaySelection(currentPlayerIndex, selection);
             }
-            if (Input.GetKeyDown(p4right))
+            if (Input.GetKeyDown(p4right) || p4rightPressed)
             {
                 int selection = (choices[currentPlayerIndex] + (amountOfChoices + 1)) % amountOfChoices;
                 ChangeAndDisplaySelection(currentPlayerIndex, selection);
             }
-            if (Input.GetKeyDown(p4select))
+            if (Input.GetKeyDown(p4select) || Input.GetKeyDown(p4SelectAlt))
             {
                 p4LockedIn = true;
             }
