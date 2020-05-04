@@ -260,6 +260,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         currentHealth = agent.health;
         maxHealth = currentHealth;
 
+        spriteRenderer.material.SetTexture("_MainTex", agent.sprite.texture);
     }
 
     public void InitalizeEnemy(Enemy _agent, EnemyModifier[] _modifiers)

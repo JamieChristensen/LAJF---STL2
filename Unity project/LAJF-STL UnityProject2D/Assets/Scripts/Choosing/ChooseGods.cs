@@ -54,6 +54,8 @@ public class ChooseGods : MonoBehaviour
 
     public KeyCode p4SelectAlt;
     public string p4HorizontalAxisName;
+
+    [SerializeField]
     bool lockedIn = false;
 
     public void Start()
@@ -67,6 +69,15 @@ public class ChooseGods : MonoBehaviour
         {
             choiceText.text = "";
         }
+        if (gamesettings.GetAmountOfPlayers() < 4)
+        {
+            p4LockedIn = true;
+        }
+        if (gamesettings.GetAmountOfPlayers() < 3)
+        {
+            p3LockedIn = true;
+        }
+        
         for (int i = 0; i < choices.Length; i++)
         {
             if (gamesettings.GetAmountOfPlayers() - 2 < i)
@@ -76,14 +87,7 @@ public class ChooseGods : MonoBehaviour
             choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
 
-        if (gamesettings.GetAmountOfPlayers() < 4)
-        {
-            p4LockedIn = true;
-        }
-        if (gamesettings.GetAmountOfPlayers() < 3)
-        {
-            p3LockedIn = true;
-        }
+
     }
 
     public void Update()
@@ -92,6 +96,7 @@ public class ChooseGods : MonoBehaviour
         {
             for (int i = 0; i < choices.Length; i++)
             {
+                Debug.Log("Heyeyeyayayayyayaaa");
                 runTimeChoices.chosenGods[i] = chooseableGods[choices[i]];
             }
 
@@ -134,7 +139,14 @@ public class ChooseGods : MonoBehaviour
             }
             if (Input.GetKeyDown(p2select) || Input.GetKeyDown(p2SelectAlt))
             {
+                Debug.Log("P2 chose hero");
                 p2LockedIn = true;
+
+                if (gamesettings.GetAmountOfPlayers() == 2)
+                {
+                    p3LockedIn = true;
+                    p4LockedIn = true;
+                }
             }
         }
 
