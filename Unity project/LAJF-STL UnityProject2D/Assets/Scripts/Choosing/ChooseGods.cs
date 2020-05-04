@@ -76,11 +76,19 @@ public class ChooseGods : MonoBehaviour
             choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
 
+        if (gamesettings.GetAmountOfPlayers() < 4)
+        {
+            p4LockedIn = true;
+        }
+        if (gamesettings.GetAmountOfPlayers() < 3)
+        {
+            p3LockedIn = true;
+        }
     }
 
     public void Update()
     {
-        if (p2LockedIn /*&& p3LockedIn && p4LockedIn */ && lockedIn == false)
+        if (p2LockedIn && p3LockedIn && p4LockedIn && lockedIn == false)
         {
             for (int i = 0; i < choices.Length; i++)
             {
@@ -180,7 +188,7 @@ public class ChooseGods : MonoBehaviour
             {
                 p4WaitForNextClick = false;
             }
-            
+
             if (Input.GetKeyDown(p4left))
             {
                 int selection = (choices[currentPlayerIndex] + (amountOfChoices - 1)) % amountOfChoices;
