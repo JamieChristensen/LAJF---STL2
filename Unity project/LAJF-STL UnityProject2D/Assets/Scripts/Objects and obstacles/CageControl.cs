@@ -76,14 +76,14 @@ public class CageControl : MonoBehaviour
     IEnumerator CaptureHeroRoutine()
     {
         _currentPosition = new Vector3 (transform.position.x, transform.position.y, transform.position.z );
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         runningCoroutine = true;
         Vector3 targetPosition = _spawnPoint;
         float timer = 0;
-        while (transform.position != targetPosition && timer < 10)
+        while (transform.position != targetPosition && timer < 5)
         {  
             targetPosition = new Vector3 (_playerTransform.position.x,_spawnPoint.y,_spawnPoint.z); 
-            transform.position = Vector3.Lerp(transform.position, targetPosition, timer/ 2000f);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, timer/ 1000f);
             _currentPosition = new Vector3 (_playerTransform.position.x,transform.position.y,transform.position.z);
             transform.position = _currentPosition;
             timer += Time.fixedDeltaTime;

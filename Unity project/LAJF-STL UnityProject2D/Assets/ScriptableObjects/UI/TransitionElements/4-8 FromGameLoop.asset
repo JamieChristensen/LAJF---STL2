@@ -23,7 +23,9 @@ MonoBehaviour:
       Yeet!"
     - "Not all endings end well. Especially not this one\u2026"
     timeOfTextDisplayed: 10
-  transitionBackgrounds: []
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: 0604f48c23e5d744ea65169e11c18e84, type: 3}
+  - {fileID: 21300000, guid: 3461e57d053776542bd7be8efd3be3e4, type: 3}
   environmentBackgrounds:
   - {fileID: 0}
   runtimeChoices: {fileID: 0}

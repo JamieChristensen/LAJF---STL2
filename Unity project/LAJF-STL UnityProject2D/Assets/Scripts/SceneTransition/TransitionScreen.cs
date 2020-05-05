@@ -173,10 +173,12 @@ public class TransitionScreen : MonoBehaviour
                 if (didHeroWin)
                 {
                     middleInfo.text = transitionElements[transitionIndex].textElement[0].textInputs[0];
+                    transitionBackgroundPanel.sprite = transitionElements[transitionIndex].transitionBackgrounds[0];
                 }
                 else
                 {
                     middleInfo.text = transitionElements[transitionIndex].textElement[0].textInputs[1];
+                    transitionBackgroundPanel.sprite = transitionElements[transitionIndex].transitionBackgrounds[1];
                 }
 
             }
