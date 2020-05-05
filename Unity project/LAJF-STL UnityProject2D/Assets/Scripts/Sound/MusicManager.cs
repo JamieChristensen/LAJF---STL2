@@ -21,6 +21,8 @@ public class MusicManager : MonoBehaviour
 
     public List<AudioSource> sources;
 
+    public SettingsScrObj gameSettings;
+
     private void Awake()
     {
         /* Singleton pattern*/
@@ -61,7 +63,7 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        SetVolume(1);
+        SetVolume(gameSettings.gameVolume);
     }
 
 

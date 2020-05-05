@@ -137,15 +137,6 @@ public class OrbEnemy : EnemyBehaviour
     }
 
 
-
-
-
-
-    protected override void Die()
-    {
-        base.Die();
-    }
-
     protected override void RangedAttack()
     {
         base.RangedAttack();

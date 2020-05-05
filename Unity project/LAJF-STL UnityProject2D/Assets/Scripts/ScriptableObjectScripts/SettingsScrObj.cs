@@ -9,6 +9,9 @@ public class SettingsScrObj : ScriptableObject
     [Range(2, 4)]
     private int amountOfPlayers;
 
+    [Range(0.0001f, 1)]
+    public float gameVolume;
+
     public void IncrementNumberOfPlayers(int increment)
     {
         amountOfPlayers += increment;

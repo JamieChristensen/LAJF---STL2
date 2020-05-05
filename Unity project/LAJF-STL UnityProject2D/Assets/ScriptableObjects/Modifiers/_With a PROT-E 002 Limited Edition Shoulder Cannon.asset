@@ -14,4 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: _With a PROT-E 002 Limited Edition Shoulder Cannon
   description: It has never been more Plug'n'Play
-  sprite: {fileID: 0}
+  modifierType: 2
+  sprite: {fileID: 21300000, guid: e36777cffaaf6ab4eb12ef35cadc237c, type: 3}
+  shoulderCannonVisual: {fileID: 21300000, guid: 56c13ad966874a14c83d19d69ae18d00,
+    type: 3}
+  damage: 10
+  projectilePrefab: {fileID: 3604006451443815256, guid: 781e18538fd716748ab0e6afc2f43f66,
+    type: 3}
+  holyOutline: {r: 0, g: 0, b: 0, a: 0}
+  holyHightlight: {fileID: 0}
+  angrySprite: {fileID: 0}
