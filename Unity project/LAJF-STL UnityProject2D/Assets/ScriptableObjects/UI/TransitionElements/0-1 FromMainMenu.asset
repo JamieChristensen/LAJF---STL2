@@ -17,9 +17,11 @@ MonoBehaviour:
   introFillers:
   - 'A thousand years ago, '
   - 'A few moments and a sandwich ago, '
-  - 'On the same day Jesus was born, '
+  - 'Back when Earth was flat, '
   - 'Definitely before tuesday, '
   - 'Before the internet, '
+  - 'Long time ago in this galaxy, '
+  - 'Back when intentionally misspelling words was considered funny, '
   heroComments: []
   startTransparent: 1
   textElement:

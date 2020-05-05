@@ -572,8 +572,9 @@ MonoBehaviour:
     type: 3}
   spriteRenderer: {fileID: 7197962424594918147}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  rb: {fileID: 7197962424530652539}
   matDefault: {fileID: 0}
-  matWhite: {fileID: 2100000, guid: da2c11b1a32a0e748b87c0907cbfc44d, type: 2}
+  matWhite: {fileID: 2100000, guid: 8efca9af6b93ec64cb418a1b44bb3360, type: 2}
   agent: {fileID: 11400000, guid: 15e94d8d4d5a3a64595633b0e5cd8cd3, type: 2}
   modifiers: []
   alreadyDied: 0
@@ -592,6 +593,8 @@ MonoBehaviour:
   - {fileID: 645757565114718994}
   isOrbDead: 0
   isInitialized: 0
+  rb: {fileID: 0}
+  rb2: {fileID: 7197962424530652539}
 --- !u!50 &7197962424530652539
 Rigidbody2D:
   serializedVersion: 4
@@ -705,7 +708,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8efca9af6b93ec64cb418a1b44bb3360, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
