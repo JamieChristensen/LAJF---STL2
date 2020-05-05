@@ -19,6 +19,7 @@ public class Enemy : ScriptableObject
 
     // visual
     public Sprite sprite;
+    public Texture2D texture;
     public float scaleFactor;
 
     // combat 

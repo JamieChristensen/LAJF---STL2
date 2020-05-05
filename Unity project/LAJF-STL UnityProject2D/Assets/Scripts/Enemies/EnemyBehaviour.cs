@@ -16,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     public new string name;
     public TextMeshProUGUI nameUI;
 
-    protected int currentHealth;
+    public int currentHealth;
     public int maxHealth;
     [SerializeField]
     private float projectileSpeed = 1; //Public so it can be accessed by Orb.cs ¯\_(ツ)_/¯
@@ -43,6 +43,18 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public bool alreadyDied = false;
 
+    [ColorUsage(true, true)]
+    public Color outline;
+    [Range(0, 0.1f)]
+    public float outlineThiccness;
+
+    public SpriteRenderer angrySpriteRenderer;
+    public SpriteRenderer shoulderCannonRenderer;
+
+    public bool hasCannon, isBlessed, isAngry;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +65,17 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         gameManager = FindObjectOfType<GameManager>();
         target = GameObject.FindGameObjectWithTag("Player");
         cooldownTimer = 0;
+
     }
+
+    void Update()
+    {
+
+        spriteRenderer.material.SetTexture("_MainTex", agent.sprite.texture);
+        spriteRenderer.material.SetFloat("_Thickness", outlineThiccness);
+        spriteRenderer.material.SetColor("_Color", outline);
+    }
+
 
     void FixedUpdate()
 
@@ -138,17 +160,43 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     protected void AttackIfReady()
     {
         string attackType = agent.attackType;
+
+
         if (agent.range >= GetTargetDistance())
         {
             if (cooldownTimer <= 0)
             {
                 cooldownTimer = agent.attackSpeed;
+
+                foreach (EnemyModifier mod in modifiers)
+                {
+                    if (mod.modifierType == EnemyModifier.ModifierType.Angry)
+                    {
+                        //Increase attackspeed by up to twice as much, depending on enemyHP (half the time between attacks as normally, when enemy has 0 HP)
+                        cooldownTimer = map(currentHealth, 0, maxHealth, agent.attackSpeed / 2, agent.attackSpeed);
+                    }
+                }
+
+
+
                 if (gameManager == null)
                 {
                     gameManager = FindObjectOfType<GameManager>();
                 }
                 if (gameManager.canMonsterMove[monsterNumber - 1])
                 {
+                    if (hasCannon)
+                    {
+                        foreach (EnemyModifier modifier in modifiers)
+                        {
+                            Vector2 velocity = new Vector2(14 * Mathf.Sign(rb.velocity.x), 14) ;
+                            if (modifier.modifierType == EnemyModifier.ModifierType.ShoulderCannon)
+                            {
+                                modifiers[0].FireShoulderCannon(velocity, transform.position, 10);
+                                velocity += new Vector2(-1, 1)*2;
+                            }
+                        }
+                    }
                     if (attackType == "melee")
                         MeleeAttack();
                     if (attackType == "range")
@@ -210,7 +258,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         ParticleSystem instance = Instantiate(deathLeadUp, particlePoint.position, particlePoint.rotation);
         healthBar.transform.parent = null;
         Invoke("DeathExplode", 1);
-        Destroy(instance.gameObject, instance.duration);
+        Destroy(instance.gameObject, instance.main.duration);
     }
 
     public void DeathExplode() // Add Particle Burst
@@ -224,7 +272,17 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
             audioList.explosion.Play();
         }
         ParticleSystem instance = Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
-        Destroy(instance.gameObject, instance.duration);
+        if (isBlessed)
+        {
+            foreach (EnemyModifier modifier in modifiers)
+            {
+                if (modifier.modifierType == EnemyModifier.ModifierType.Blessed)
+                {
+                    modifier.Revive(this);
+                }
+            }
+        }
+        Destroy(instance.gameObject, instance.main.duration);
         Destroy(gameObject);
 
     }
@@ -249,7 +307,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     {
         List<EnemyModifier> enemyModifiers = new List<EnemyModifier>();
         agent = runtimeChoices.enemies[runtimeChoices.enemies.Count - 1];
-        modifiers.Add(runtimeChoices.enemyModifiers[runtimeChoices.enemyModifiers.Count - 1]);
+        //modifiers.Add(runtimeChoices.enemyModifiers[runtimeChoices.enemyModifiers.Count - 1]);
         // get info from runtime stats from somewhere 
         // enemy = runtimeStats.whatever.enemy
         // EnemyModifiers = runtimeStats.whatever.modifer
@@ -261,6 +319,8 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         maxHealth = currentHealth;
 
         spriteRenderer.material.SetTexture("_MainTex", agent.sprite.texture);
+        spriteRenderer.material.SetFloat("_Thickness", 0.02f);
+
     }
 
     public void InitalizeEnemy(Enemy _agent, EnemyModifier[] _modifiers)
@@ -276,9 +336,14 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         foreach (EnemyModifier modifier in _modifiers)
         {
             ApplyModifier(modifier);
+            modifiers.Add(modifier);
         }
 
+        spriteRenderer.material.SetTexture("_MainTex", agent.sprite.texture);
+        spriteRenderer.material.SetFloat("_Thickness", 0.02f);
+
         healthBar.UpdateHPValues(currentHealth, maxHealth);
+
     }
 
     IEnumerator DelayDeathAnnouncement(float delay)
@@ -289,7 +354,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
         int amountOfEnemiesAlive = FindObjectsOfType<EnemyBehaviour>().Where(x => x.alreadyDied == false).Count();
 
-        if (amountOfEnemiesAlive <= 0)
+        if (amountOfEnemiesAlive <= 0 && !isBlessed)
         {
             monsterDied.Raise();
         }
@@ -302,21 +367,24 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     private void ApplyModifier(EnemyModifier _modifier)
     {
-        //Do anything else modifiers do:
-        //  throw new NotImplementedException();
+        switch (_modifier.modifierType)
+        {
+            case EnemyModifier.ModifierType.ShoulderCannon:
+                _modifier.ApplyShoulderCannonVisuals(this);
+                hasCannon = true;
+                break;
+            case EnemyModifier.ModifierType.Blessed:
+                _modifier.ApplyHolyVisuals(this);
+                isBlessed = true;
+                break;
+            case EnemyModifier.ModifierType.Angry:
+                _modifier.ApplyAngrySprite(this);
+                isAngry = true;
+                break;
+        }
     }
-
-    private void ShoulderCannonModifier()
+    float map(float s, float a1, float a2, float b1, float b2)
     {
-
+        return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
     }
-    private void BlessedModifier()
-    {
-
-    }
-    private void AngryModifier()
-    {
-
-    }
-
 }
