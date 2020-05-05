@@ -634,4 +634,15 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     {
         return choice;
     }
+
+    public void ItemChoiceTimeRanOut()
+    {
+        Debug.Log("Ran out of time");
+        int ItemIndex = Random.Range(0, 2);
+        if (runtimeChoices.runTimeLoopCount == 4)
+            ItemIndex = 0;
+
+        runtimeChoices.playerItems.Add(playerItemChoices[ItemIndex]);
+        heroHasChosenItem.Raise();
+    }
 }
