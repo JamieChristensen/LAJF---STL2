@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -513,9 +513,8 @@ MonoBehaviour:
   victoryShades: {fileID: 0}
   modifierPool:
   - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
-  - {fileID: 11400000, guid: 82d84c797c4bb9949b13a7b7b0526361, type: 2}
-  - {fileID: 11400000, guid: 6daf20e3262e73b49a5c424f0931a916, type: 2}
-  - {fileID: 11400000, guid: 43928b0c3460d764d9dbeb910483ea71, type: 2}
+  - {fileID: 11400000, guid: d7346273714b6d142b7f5a47ef8f9b3a, type: 2}
+  - {fileID: 11400000, guid: b13a26218995e63468b9a96c3a57c10b, type: 2}
   modifierSprites:
   - {fileID: 2846839169836485320}
   - {fileID: 2657137300775896228}

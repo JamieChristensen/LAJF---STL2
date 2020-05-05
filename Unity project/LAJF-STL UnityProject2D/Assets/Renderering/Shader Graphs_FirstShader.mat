@@ -30,7 +30,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_EE5D5411: 0.0098
-    - _Thickness: 0.0011
+    - _Thickness: 0.0411
     m_Colors:
     - Color_271F9681: {r: 4, g: 0, b: 0, a: 1}
-    - _Color: {r: 1, g: 0.6330148, b: 0, a: 1}
+    - _Color: {r: 2.2264152, g: 0.73807806, b: 0, a: 1}

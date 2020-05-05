@@ -33,7 +33,7 @@ public class SplitterEnemy : EnemyBehaviour
         {
             canMove = true;
         }
-        
+
         if (!canMove)
         {
             canMoveTimer += Time.deltaTime;
@@ -75,6 +75,7 @@ public class SplitterEnemy : EnemyBehaviour
             return;
         }
 
+
         if (!isSplitted)
         {
             float horizontalForceModifier = Random.Range(0.5f, 1f) * spawnForceModifier;
@@ -82,7 +83,7 @@ public class SplitterEnemy : EnemyBehaviour
             //Instantiate smaller clones.
             for (int i = 0; i < amountOfSplits; i++)
             {
-                SplitterEnemy instance = Instantiate(splittedEnemy, transform.position + (Vector3.right * (Random.Range(0,1)*2 -1)), Quaternion.identity).GetComponent<SplitterEnemy>();
+                SplitterEnemy instance = Instantiate(splittedEnemy, transform.position + (Vector3.right * (Random.Range(0, 1) * 2 - 1)), Quaternion.identity).GetComponent<SplitterEnemy>();
                 instance.isSplitted = true;
 
                 instance.canMove = false;
