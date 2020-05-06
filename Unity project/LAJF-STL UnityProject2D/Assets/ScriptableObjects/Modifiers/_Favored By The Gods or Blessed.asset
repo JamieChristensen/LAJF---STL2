@@ -20,6 +20,6 @@ MonoBehaviour:
   damage: 0
   projectilePrefab: {fileID: 0}
   holyOutline: {r: 3.4415908, g: 1.2072597, b: 0, a: 1}
-  holyHightlight: {fileID: 3364881691803240748, guid: 1dc8a33ab7765104f8314cafe9f31a5e,
+  holyHightlight: {fileID: 3364881691803240748, guid: a95b97523845a8c43a0aaa11afc75ca2,
     type: 3}
   angrySprite: {fileID: 0}
