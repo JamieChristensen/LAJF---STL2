@@ -26,7 +26,7 @@ MonoBehaviour:
       to take it seriously!
     - Both daring and bold the hero would saddle, with just, behold, a final battle!
     timeOfTextDisplayed: 3
-  transitionBackgrounds: []
-  environmentBackgrounds:
-  - {fileID: 0}
-  runtimeChoices: {fileID: 0}
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: 77a853a3f8c97054bb7e9d1d536606c3, type: 3}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}

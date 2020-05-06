@@ -25,6 +25,6 @@ MonoBehaviour:
     - 
     timeOfTextDisplayed: 1
   transitionBackgrounds:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 2069bdb83d155ec49b712a6f4250240e, type: 3}
   environmentBackgrounds: []
-  runtimeChoices: {fileID: 0}
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
