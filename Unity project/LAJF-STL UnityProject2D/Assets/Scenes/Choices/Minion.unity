@@ -4982,11 +4982,66 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4119980382478886090, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119980382478886090, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119980382478886090, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119980382478886090, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119980382478886090, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119980382478886090, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119980382478886090, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802974414902525275, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802974414902525275, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -376.00012
+      objectReference: {fileID: 0}
     - target: {fileID: 6634193747434407991, guid: 3dee2047a9be4ff4286953596427c40d,
         type: 3}
       propertyPath: audioList
       value: 
       objectReference: {fileID: 1292126497}
+    - target: {fileID: 8308524493903043488, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1677.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308524493903043488, guid: 3dee2047a9be4ff4286953596427c40d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -311
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dee2047a9be4ff4286953596427c40d, type: 3}
 --- !u!114 &8341984467671690306 stripped
