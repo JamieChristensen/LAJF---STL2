@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Unity project/LAJF-STL UnityProject2D/Assets/Thirdparty/Watson.meta
+guid: bef10aea8f8c92d4ab9aa080af13c934
+=======
 guid: 44e2f467a236f4649889355e963bb16c
+>>>>>>> master:Unity project/LAJF-STL UnityProject2D/Assets/Scripts/Interfaces.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
