@@ -154,6 +154,19 @@ public class TransitionScreen : MonoBehaviour
                 }
             }
 
+            if (transitionElements[transitionIndex].transitionBackgrounds[0] == null)
+            {
+
+                for (int i = 0; i < runtimeChoices.chosenEnvironments.Length; i++)
+                {
+                    transitionElements[transitionIndex].environmentBackgrounds[i] = runtimeChoices.chosenEnvironments[i].environmentSprite;
+                }
+
+                transitionBackgroundPanel.sprite = transitionElements[transitionIndex].environmentBackgrounds[runtimeChoices.runTimeLoopCount - 1];
+            }
+
+
+
             if (transitionIndex == 0)
             {
                 firstPart = transitionElements[0].introFillers[Random.Range(0, transitionElements[0].introFillers.Length)];

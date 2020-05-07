@@ -25,7 +25,7 @@ MonoBehaviour:
       came prepared!
     - One by one they all got tougher, the task was simply, to make the hero suffer!
     timeOfTextDisplayed: 3
-  transitionBackgrounds: []
-  environmentBackgrounds:
-  - {fileID: 0}
-  runtimeChoices: {fileID: 0}
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: 2069bdb83d155ec49b712a6f4250240e, type: 3}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}

@@ -24,7 +24,7 @@ MonoBehaviour:
     - "\u201C_______?\u201D, The hero asked, as the third foe became unmasked!"
     - A final test to end the journey.  Now comes the question - Was the hero worthy?
     timeOfTextDisplayed: 3
-  transitionBackgrounds: []
-  environmentBackgrounds:
-  - {fileID: 0}
-  runtimeChoices: {fileID: 0}
+  transitionBackgrounds:
+  - {fileID: 21300000, guid: 2069bdb83d155ec49b712a6f4250240e, type: 3}
+  environmentBackgrounds: []
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}

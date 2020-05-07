@@ -1798,7 +1798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2089,6 +2089,42 @@ PrefabInstance:
       propertyPath: m_margin.w
       value: 106.4516
       objectReference: {fileID: 0}
+    - target: {fileID: 8044203621493689158, guid: b76600786390cf048987bbbd69eaea89,
+        type: 3}
+      propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044203621493689158, guid: b76600786390cf048987bbbd69eaea89,
+        type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ada70056f44bf5419c2f5bb052095ca,
+        type: 2}
+    - target: {fileID: 8044203621493689158, guid: b76600786390cf048987bbbd69eaea89,
+        type: 3}
+      propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044203621493689158, guid: b76600786390cf048987bbbd69eaea89,
+        type: 3}
+      propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044203621493689158, guid: b76600786390cf048987bbbd69eaea89,
+        type: 3}
+      propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1461893592}
+    - target: {fileID: 8044203621493689158, guid: b76600786390cf048987bbbd69eaea89,
+        type: 3}
+      propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044203621493689158, guid: b76600786390cf048987bbbd69eaea89,
+        type: 3}
+      propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b76600786390cf048987bbbd69eaea89, type: 3}
 --- !u!224 &1461893591 stripped
@@ -2097,6 +2133,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1461893590}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1461893592 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 753582108917886421, guid: b76600786390cf048987bbbd69eaea89,
+    type: 3}
+  m_PrefabInstance: {fileID: 1461893590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c289eb73f4358914098990530749d301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1509157471 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7284960317451934574, guid: a0d4389b043e1d24f88056408226d112,
