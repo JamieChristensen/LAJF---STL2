@@ -302,6 +302,8 @@ MonoBehaviour:
   hasCannon: 0
   isBlessed: 0
   isAngry: 0
+  tombstone: {fileID: 1474379647948536103, guid: 2db2538c6bad2464985783394c9c0019,
+    type: 3}
   isSplitted: 0
   amountOfSplits: 2
   splittedEnemy: {fileID: 6110948108827775706, guid: 9acf319e75fddc947a107c157170410f,

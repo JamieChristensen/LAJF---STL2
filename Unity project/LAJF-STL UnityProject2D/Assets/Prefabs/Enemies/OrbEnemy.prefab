@@ -669,6 +669,8 @@ MonoBehaviour:
   hasCannon: 0
   isBlessed: 0
   isAngry: 0
+  tombstone: {fileID: 1474379647948536103, guid: 2db2538c6bad2464985783394c9c0019,
+    type: 3}
   orbPrefab: {fileID: 7541748802338077583, guid: 42b473043c030fa4bb059fb835562f3a,
     type: 3}
   orb: {fileID: 0}

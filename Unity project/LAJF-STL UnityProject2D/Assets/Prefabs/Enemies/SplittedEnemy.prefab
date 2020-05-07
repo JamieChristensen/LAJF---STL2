@@ -716,6 +716,7 @@ MonoBehaviour:
   healthBar: {fileID: 6694574293302736188}
   name: 
   nameUI: {fileID: 1556799148251611423}
+  currentHealth: 0
   maxHealth: 10
   projectileSpeed: 30.22
   monsterNumber: 1
@@ -734,6 +735,15 @@ MonoBehaviour:
   agent: {fileID: 0}
   modifiers: []
   alreadyDied: 0
+  outline: {r: 0, g: 0, b: 0, a: 0}
+  outlineThiccness: 0
+  angrySpriteRenderer: {fileID: 0}
+  shoulderCannonRenderer: {fileID: 0}
+  hasCannon: 0
+  isBlessed: 0
+  isAngry: 0
+  tombstone: {fileID: 1474379647948536103, guid: 2db2538c6bad2464985783394c9c0019,
+    type: 3}
   isSplitted: 0
   amountOfSplits: 2
   splittedEnemy: {fileID: 0}

@@ -53,6 +53,8 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public bool hasCannon, isBlessed, isAngry;
 
+    public GameObject tombstone;
+
 
 
     // Start is called before the first frame update
@@ -263,6 +265,13 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public void DeathExplode() // Add Particle Burst
     {
+        #region SpawnGravestone
+        GameObject go = Instantiate(tombstone, transform.position, Quaternion.identity);
+        go.GetComponent<SpriteRenderer>().material.SetTexture("_Texture2D", agent.texture);
+        go.transform.localScale = transform.localScale;
+        #endregion SpawnGravestone
+
+
         if (audioList == null)
         {
             _audioList = FindObjectOfType<AudioList>();
