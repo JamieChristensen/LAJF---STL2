@@ -9,8 +9,10 @@ public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Slider volumeSlider;
-    public TMP_Dropdown resolutionDropdown;
-    public TMP_Dropdown qualityDropdown;
+    //public TMP_Dropdown resolutionDropdown;
+    //public TMP_Dropdown qualityDropdown;
+    public Dropdown resolutionDropdown;
+    public Dropdown qualityDropdown;
     public SettingsScrObj gameSettings;
 
     Resolution[] resolutions;
