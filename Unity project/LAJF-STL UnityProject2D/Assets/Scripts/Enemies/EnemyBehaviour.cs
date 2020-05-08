@@ -55,6 +55,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public GameObject tombstone;
 
+    private bool flipped = true;
 
 
 
@@ -102,6 +103,41 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         {
             Vector2 direction = (target.transform.position - transform.position).normalized;
             rb2.velocity = new Vector2(direction.x * agent.speed, rb2.velocity.y);
+
+            #region Rotate
+            if (Mathf.Sign(rb2.velocity.x) == -1)
+            {
+                if (!flipped)
+                {
+                    spriteRenderer.flipX = false;
+                    angrySpriteRenderer.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                    Vector3 transAngry = angrySpriteRenderer.transform.localPosition;
+                    angrySpriteRenderer.transform.localPosition = new Vector3(transAngry.x * -1, transAngry.y, transAngry.z);
+
+                    shoulderCannonRenderer.transform.localRotation = Quaternion.Euler(0, 180, 45);
+                    Vector3 shoulderCannon = shoulderCannonRenderer.transform.localPosition;
+                    shoulderCannonRenderer.transform.localPosition = new Vector3(shoulderCannon.x * -1, shoulderCannon.y, shoulderCannon.z);
+
+                    flipped = true;
+                }
+            }
+            else
+            {
+                if (flipped)
+                {
+                    spriteRenderer.flipX = true;
+                    angrySpriteRenderer.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                    Vector3 transAngry = angrySpriteRenderer.transform.localPosition;
+                    angrySpriteRenderer.transform.localPosition = new Vector3(transAngry.x * -1, transAngry.y, transAngry.z);
+
+                    shoulderCannonRenderer.transform.localRotation = Quaternion.Euler(0, 0, 45);
+                    Vector3 shoulderCannon = shoulderCannonRenderer.transform.localPosition;
+                    shoulderCannonRenderer.transform.localPosition = new Vector3(shoulderCannon.x * -1, shoulderCannon.y, shoulderCannon.z);
+                    flipped = false;
+                }
+            }
+
+            #endregion Rotate
         }
     }
 
