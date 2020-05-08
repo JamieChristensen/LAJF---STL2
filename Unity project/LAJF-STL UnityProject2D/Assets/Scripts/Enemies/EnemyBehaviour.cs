@@ -55,8 +55,10 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public GameObject tombstone;
 
-    private bool flipped = true;
+    [NonSerialized]
+    public bool flipped = true;
 
+    public float desiredDistance = 30f;
 
 
     // Start is called before the first frame update
@@ -101,11 +103,24 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     {
         if (target.gameObject != null)
         {
-            Vector2 direction = (target.transform.position - transform.position).normalized;
-            rb2.velocity = new Vector2(direction.x * agent.speed, rb2.velocity.y);
+
+            float targetSign = Mathf.Sign(target.transform.position.x - transform.position.x);
+            float velocityX = targetSign * agent.speed;
+            float distance = Vector3.Distance(transform.position, target.transform.position);
+            if (distance < desiredDistance)
+            {
+                velocityX *= -1;
+            }
+            if (distance < desiredDistance + 1f && distance > desiredDistance - 1f)
+            {
+                velocityX *= 0;
+            }
+
+
+            rb2.velocity = new Vector2(velocityX, rb2.velocity.y);
 
             #region Rotate
-            if (Mathf.Sign(rb2.velocity.x) == -1)
+            if (Mathf.Sign(target.transform.position.x - transform.position.x) == -1)
             {
                 if (!flipped)
                 {
@@ -246,7 +261,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
                     {
                         foreach (EnemyModifier modifier in modifiers)
                         {
-                            Vector2 velocity = new Vector2(14 * Mathf.Sign(rb.velocity.x), 14);
+                            Vector2 velocity = new Vector2(14 * Mathf.Sign(target.transform.position.x - transform.position.x), 14);
                             if (modifier.modifierType == EnemyModifier.ModifierType.ShoulderCannon)
                             {
                                 modifiers[0].FireShoulderCannon(velocity, transform.position, 10);

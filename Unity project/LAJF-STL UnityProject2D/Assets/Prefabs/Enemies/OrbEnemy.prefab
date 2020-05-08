@@ -689,6 +689,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   rb2: {fileID: 7197962424530652539}
   spriteMat: {fileID: 0}
+  orbTransformRoot: {fileID: 5316326822850720701}
 --- !u!50 &7197962424530652539
 Rigidbody2D:
   serializedVersion: 4
