@@ -57,6 +57,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -163,9 +164,27 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     {
         string attackType = agent.attackType;
 
-
         if (agent.range >= GetTargetDistance())
         {
+            #region SetSpritesBasedOnAttackPattern
+            //Order of following if-statements matter:
+            if (cooldownTimer <= agent.attackSpeed * 0.9f)
+            {
+                spriteRenderer.sprite = agent.sprite;
+                spriteRenderer.material.SetTexture("_MainTex", spriteRenderer.sprite.texture); //Use the newly assigned texture.
+            }
+            if (cooldownTimer <= 0.7f)
+            {
+                spriteRenderer.sprite = agent.rampUpForAttackSprite;
+                spriteRenderer.material.SetTexture("_MainTex", spriteRenderer.sprite.texture); //Use the newly assigned texture.
+            }
+            if (cooldownTimer <= agent.attackSpeed * 0.1f)
+            {
+                spriteRenderer.sprite = agent.attackingSprite;
+                spriteRenderer.material.SetTexture("_MainTex", spriteRenderer.sprite.texture); //Use the newly assigned texture.
+            }
+            #endregion SetSpritesBasedOnAttackPattern
+
             if (cooldownTimer <= 0)
             {
                 cooldownTimer = agent.attackSpeed;
@@ -191,11 +210,11 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
                     {
                         foreach (EnemyModifier modifier in modifiers)
                         {
-                            Vector2 velocity = new Vector2(14 * Mathf.Sign(rb.velocity.x), 14) ;
+                            Vector2 velocity = new Vector2(14 * Mathf.Sign(rb.velocity.x), 14);
                             if (modifier.modifierType == EnemyModifier.ModifierType.ShoulderCannon)
                             {
                                 modifiers[0].FireShoulderCannon(velocity, transform.position, 10);
-                                velocity += new Vector2(-1, 1)*2;
+                                velocity += new Vector2(-1, 1) * 2;
                             }
                         }
                     }
@@ -206,6 +225,12 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
                 }
                 return;
             }
+        }
+        else //If outside of range.
+        {
+            cooldownTimer = agent.attackSpeed;
+            spriteRenderer.sprite = agent.sprite;
+            spriteRenderer.material.SetTexture("_MainTex", spriteRenderer.sprite.texture); //Use the newly assigned texture.
         }
         cooldownTimer -= Time.deltaTime;
     }

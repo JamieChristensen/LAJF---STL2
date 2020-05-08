@@ -18,8 +18,18 @@ public class Enemy : ScriptableObject
     public float speed;
 
     // visual
-    public Sprite sprite;
+    [Space]
+    [Header("Default sprite and texture")]
+    public Sprite sprite; //Default
     public Texture2D texture;
+    [Space]
+    [Header("Ramp-up-sprite")]
+    public Sprite rampUpForAttackSprite;
+    [Space]
+    [Header("Attack-sprite")]
+    public Sprite attackingSprite;
+
+
     public float scaleFactor;
 
     // combat 
