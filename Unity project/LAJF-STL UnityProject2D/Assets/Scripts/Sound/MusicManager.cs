@@ -9,7 +9,7 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
 
-    public AudioMixer audioMixer, masterAudioMixer;
+    public AudioMixer musicAudioMixer, masterAudioMixer, sfxAudioMixer;
 
     public MusicTheme[] musicThemes;
 
@@ -63,7 +63,9 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        SetVolume(gameSettings.gameVolume);
+        SetMasterVolume(gameSettings.gameMasterVolume);
+        SetMusicVolume(gameSettings.gameMusicVolume);
+        SetSFXVolume(gameSettings.gameSFXVolume);
     }
 
 
@@ -158,9 +160,19 @@ public class MusicManager : MonoBehaviour
     }
 
 
-    public void SetVolume(float volume)
+    public void SetMasterVolume(float volume)
     {
-        masterAudioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
+        masterAudioMixer.SetFloat("MasterVol", Mathf.Log10(volume) * 20);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+       musicAudioMixer.SetFloat("MusicVol", Mathf.Log10(volume) * 20);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxAudioMixer.SetFloat("SFXVol", Mathf.Log10(volume) * 20);
     }
 
 
