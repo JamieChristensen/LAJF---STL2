@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Two For One
   description: 
   health: 100
-  speed: 8
+  speed: 6
   sprite: {fileID: 21300000, guid: e5cce4d986f4c7240894f4a27414e697, type: 3}
   texture: {fileID: 2800000, guid: e5cce4d986f4c7240894f4a27414e697, type: 3}
   rampUpForAttackSprite: {fileID: 21300000, guid: 337fa468c3160dd4c8ce03f75480be64,
