@@ -45,6 +45,8 @@ public class OrbEnemy : EnemyBehaviour
 
     public Material spriteMat;
 
+    public Transform orbTransformRoot;
+
     void Start()
     {
         playerTransform = FindObjectOfType<P1Controller>().transform;
@@ -89,13 +91,28 @@ public class OrbEnemy : EnemyBehaviour
             InitalizeEnemy();
             isInitialized = true;
         }
+
+        if (flipped)
+        {
+            orbTransformRoot.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            orbTransformRoot.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+
         base.MoveToTarget();
+        
         if (isOrbDead)
         {
             return;
         }
         #region OrbMovement
         //Increment timer:
+
+
+
+
         if (!orbIsMovingToNextPosition)
         {
             orbMovementTimer += Time.deltaTime;
