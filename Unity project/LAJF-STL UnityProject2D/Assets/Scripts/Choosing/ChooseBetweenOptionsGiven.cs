@@ -468,7 +468,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         //  Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". modifier! It is: " + finalChoice.name);
         if (_musicManager != null)
         {
-            _musicManager.PlayMusic("Battle");
+            _musicManager.PlayMusic("Battle",1);
         }
         runtimeChoices.enemyModifiers.Add(enemyModifierChoices[choice - 1]); // adds the chosen modifier to the array
         godsHaveChosenOpponent.Raise(); // Raising event for opponent chosen

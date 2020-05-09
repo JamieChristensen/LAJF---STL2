@@ -1299,6 +1299,7 @@ MonoBehaviour:
   introTransition: {fileID: 2065776010}
   runtimeChoiceManager: {fileID: 11400000, guid: cd00ddd5c702f0b4390adc202d9bc81e,
     type: 2}
+  musicManager: {fileID: 842741386}
 --- !u!4 &179123606
 Transform:
   m_ObjectHideFlags: 0
@@ -4856,6 +4857,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3533239637080075381, guid: 2d82e934a2c9b5641b8ac1dffb955a81,
+        type: 3}
+      propertyPath: musicThemes.Array.data[1].volume
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d82e934a2c9b5641b8ac1dffb955a81, type: 3}
 --- !u!114 &842741386 stripped
@@ -5057,17 +5063,6 @@ MonoBehaviour:
           m_StringArgument: Choosing
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 842741386}
-        m_MethodName: PlayMusic
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Choosing
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1866652348}
         m_MethodName: SetActive
         m_Mode: 6
@@ -5081,6 +5076,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 179123605}
         m_MethodName: DisablePrimaryButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 179123605}
+        m_MethodName: ChangeMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

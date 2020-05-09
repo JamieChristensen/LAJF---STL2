@@ -67,7 +67,7 @@ public class MusicManager : MonoBehaviour
     }
 
 
-    public void PlayMusic(string name) // play a music theme (by name) after a specified delay (in float seconds)
+    public void PlayMusic(string name, float targetVolume) // play a music theme (by name) after a specified delay (in float seconds)
     {
         for (int i = 0; i < musicThemes.Length; i++) // checks all Audio Sources (music themes)
         {
@@ -90,7 +90,7 @@ public class MusicManager : MonoBehaviour
                 {
                     musicThemes[3].source.clip = peace[runTimeChoices.runTimeLoopCount - 1];
                 }
-                StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 5, 1)); // turn up the volume in a fade
+                StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 5, targetVolume)); // turn up the volume in a fade
             }
 
         }

@@ -21,10 +21,15 @@ MonoBehaviour:
   - textInputs:
     - The hero was surprised and in denial, from heaven came its first trial!
     - They took the battle to a different place, yet another enemy to face!
-    - "\u201C_______?\u201D, The hero asked, as the third foe became unmasked!"
-    - A final test to end the journey.  Now comes the question - Was the hero worthy?
-    timeOfTextDisplayed: 3
+    - '"Is this a joke?" The hero asked, as the third foe was unmasked!'
+    - A final test to end the journey.  Now comes the question. Was the hero worthy?
+    timeOfTextDisplayed: 2
   transitionBackgrounds:
   - {fileID: 21300000, guid: 2069bdb83d155ec49b712a6f4250240e, type: 3}
   environmentBackgrounds: []
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  transitionVoiceLines:
+  - {fileID: 8300000, guid: a71f3e4358434294c976cb1579aca631, type: 3}
+  - {fileID: 8300000, guid: af1a8bfe0f9682e47add0eb11098f2a0, type: 3}
+  - {fileID: 8300000, guid: 45fca3efa6ced984ca15c994ae1cd01b, type: 3}
+  - {fileID: 8300000, guid: e9f81e114b5a8be4ea339cc50ed800fa, type: 3}

@@ -55,7 +55,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Choosing
     clip: {fileID: 8300000, guid: f329a33534f94c34b8d22de83b9c6ba0, type: 3}
-    volume: 0.6
+    volume: 0.4
     pitch: 1
     loop: 1
     audioMixerGroup: {fileID: 24300002, guid: 47faf9415f1ed414ca4a7a2712435e20, type: 2}

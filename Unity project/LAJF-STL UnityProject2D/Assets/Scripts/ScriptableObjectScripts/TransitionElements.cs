@@ -14,8 +14,7 @@ public class TransitionElements : ScriptableObject
 
     public List<Sprite> transitionBackgrounds, environmentBackgrounds;
     public ChoiceCategory runtimeChoices;
-
-
+    public AudioClip[] transitionVoiceLines;
 
     public void GetEnvironmentBackgroundsForTransition()
     {

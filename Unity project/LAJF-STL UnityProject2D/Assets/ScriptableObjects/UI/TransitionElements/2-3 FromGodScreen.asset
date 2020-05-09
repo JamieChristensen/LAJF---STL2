@@ -23,8 +23,13 @@ MonoBehaviour:
     - 'was said with great frustration. They stole the relic in a secret Location! '
     - 'was said with great frustration. They stole the relic in a secret Location! '
     - 'was said with great frustration. They stole the relic in a secret Location! '
-    timeOfTextDisplayed: 3
+    timeOfTextDisplayed: 2
   transitionBackgrounds:
   - {fileID: 21300000, guid: ec3a890a3ce7ccd41b7df928d14747b4, type: 3}
   environmentBackgrounds: []
   runtimeChoices: {fileID: 0}
+  transitionVoiceLines:
+  - {fileID: 8300000, guid: f945d8c33abe34245a47097394a36d06, type: 3}
+  - {fileID: 8300000, guid: f945d8c33abe34245a47097394a36d06, type: 3}
+  - {fileID: 8300000, guid: f945d8c33abe34245a47097394a36d06, type: 3}
+  - {fileID: 8300000, guid: f945d8c33abe34245a47097394a36d06, type: 3}

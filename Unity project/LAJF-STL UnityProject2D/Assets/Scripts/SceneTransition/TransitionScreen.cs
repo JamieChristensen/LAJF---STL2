@@ -18,7 +18,7 @@ public class TransitionScreen : MonoBehaviour
     int whichScene;
     public int voiceLineIndex;
     public AudioList audioList;
-    public TransitionNarrator transitionNarrator;
+
     public ChoiceCategory runtimeChoices;
 
     bool transitioning = false;
@@ -39,6 +39,11 @@ public class TransitionScreen : MonoBehaviour
     public bool atTransitionDestinationScene = true;
 
     int outOfThreeScenarios = 1;
+
+    public TransitionNarrator transitionNarrator;
+
+    float introductionDelay;
+
 
     private void Awake()
     {
@@ -120,6 +125,7 @@ public class TransitionScreen : MonoBehaviour
     public void MainMenuException()
     {
         atTransitionDestinationScene = false;
+        introductionDelay = 4;
     }
 
 
@@ -142,7 +148,8 @@ public class TransitionScreen : MonoBehaviour
     #region Transition
     IEnumerator Transition(int transitionIndex)
     {
-
+        yield return new WaitForSeconds(introductionDelay);
+        int fillerIndex = 0;
         transitioning = true;
         if (transitionElements[transitionIndex] != null)
         {
@@ -152,6 +159,7 @@ public class TransitionScreen : MonoBehaviour
                 {
                     transitionBackgroundPanel.sprite = transitionElements[transitionIndex].transitionBackgrounds[0];
                 }
+
             }
 
             if (transitionElements[transitionIndex].transitionBackgrounds[0] == null)
@@ -169,15 +177,18 @@ public class TransitionScreen : MonoBehaviour
 
             if (transitionIndex == 0)
             {
-                firstPart = transitionElements[0].introFillers[Random.Range(0, transitionElements[0].introFillers.Length)];
+                fillerIndex = Random.Range(0, transitionElements[0].introFillers.Length);
+                firstPart = transitionElements[0].introFillers[fillerIndex];
             }
 
             if (transitionIndex != 18)
             {
                 middleInfo.text = firstPart + transitionElements[transitionIndex].textElement[0].textInputs[runtimeChoices.runTimeLoopCount - 1];
+                audioList.narratorVoiceLines.clip = transitionElements[transitionIndex].transitionVoiceLines[runtimeChoices.runTimeLoopCount - 1];
             }
             else if (transitionIndex == 18)
             {
+
                 bool didHeroWin = false;
                 foreach (PlayerItems item in runtimeChoices.playerItems)
                 {
@@ -187,11 +198,13 @@ public class TransitionScreen : MonoBehaviour
                 {
                     middleInfo.text = transitionElements[transitionIndex].textElement[0].textInputs[0];
                     transitionBackgroundPanel.sprite = transitionElements[transitionIndex].transitionBackgrounds[0];
+                    audioList.narratorVoiceLines.clip = transitionElements[transitionIndex].transitionVoiceLines[0];
                 }
                 else
                 {
                     middleInfo.text = transitionElements[transitionIndex].textElement[0].textInputs[1];
                     transitionBackgroundPanel.sprite = transitionElements[transitionIndex].transitionBackgrounds[1];
+                    audioList.narratorVoiceLines.clip = transitionElements[transitionIndex].transitionVoiceLines[1];
                 }
 
             }
@@ -199,14 +212,24 @@ public class TransitionScreen : MonoBehaviour
             {
                 middleInfo.text = "";
             }
+
+            if (atTransitionDestinationScene == false)
+            {
+                yield return new WaitForSeconds(0.5f);
+                if (firstPart != "")
+                {
+                    transitionNarrator.DoVoiceFiller(fillerIndex);
+                }
+                yield return new WaitForSeconds(0.1f);
+                transitionNarrator.DoNarration(middleInfo.text);
+            }
+
+
         }
+
+
 
         _nextTransitionElements = transitionElements[transitionIndex];
-
-        if (atTransitionDestinationScene == false)
-        {
-            //  StartCoroutine(NarrateAfterDelay(2));
-        }
 
         float timeToLerp = transitionElements[transitionIndex].textElement[0].timeOfTextDisplayed;
         float timeLerped = 0;
@@ -253,9 +276,20 @@ public class TransitionScreen : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
 
+        while (audioList.narratorVoiceLines.isPlaying || audioList.textToSpeechSource.isPlaying)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
+
+        yield return new WaitForSeconds(1f);
+
         if (atTransitionDestinationScene)
         {
             atTransitionDestinationScene = false;
+        }
+        else if (transitionIndex == 18)
+        {
+            FindObjectOfType<CustomSceneManager>().LoadCredits();
         }
         else
         {
@@ -264,6 +298,9 @@ public class TransitionScreen : MonoBehaviour
 
         }
 
+
+
+
         //   Debug.Log("Done with Transition");
 
     }
@@ -271,36 +308,5 @@ public class TransitionScreen : MonoBehaviour
 
     #endregion
 
-
-
-    IEnumerator NarrateAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        /*
-         audioList.narratorVoiceLines.Stop();
-         if (audioList.voiceLineIndex != 9)
-         {
-             audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[voiceLineIndex];
-         }
-
-         if (whichScene == 18)
-         {
-             audioList.narratorVoiceLines.clip = audioList.transitionVoiceLines[9];
-         }
-         */
-
-        transitionNarrator.DoNarration(middleInfo.text);
-        //transitionNarrator.DoPlaceholderVoiceLine();
-
-        if (SceneManager.sceneCount == 2)
-        {
-            switch (voiceLineIndex)
-            {
-                case 4:
-                    voiceLineIndex = 7;
-                    break;
-            }
-        }
-    }
 
 }
