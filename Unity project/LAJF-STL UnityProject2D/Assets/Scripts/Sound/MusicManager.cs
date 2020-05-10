@@ -9,7 +9,7 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
 
-    public AudioMixer audioMixer, masterAudioMixer;
+    public AudioMixer musicAudioMixer, masterAudioMixer, sfxAudioMixer;
 
     public MusicTheme[] musicThemes;
 
@@ -63,11 +63,13 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        SetVolume(gameSettings.gameVolume);
+        SetMasterVolume(gameSettings.gameMasterVolume);
+        SetMusicVolume(gameSettings.gameMusicVolume);
+        SetSFXVolume(gameSettings.gameSFXVolume);
     }
 
 
-    public void PlayMusic(string name) // play a music theme (by name) after a specified delay (in float seconds)
+    public void PlayMusic(string name, float targetVolume) // play a music theme (by name) after a specified delay (in float seconds)
     {
         for (int i = 0; i < musicThemes.Length; i++) // checks all Audio Sources (music themes)
         {
@@ -90,7 +92,7 @@ public class MusicManager : MonoBehaviour
                 {
                     musicThemes[3].source.clip = peace[runTimeChoices.runTimeLoopCount - 1];
                 }
-                StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 5, 1)); // turn up the volume in a fade
+                StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 5, targetVolume)); // turn up the volume in a fade
             }
 
         }
@@ -158,9 +160,19 @@ public class MusicManager : MonoBehaviour
     }
 
 
-    public void SetVolume(float volume)
+    public void SetMasterVolume(float volume)
     {
-        masterAudioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
+        masterAudioMixer.SetFloat("MasterVol", Mathf.Log10(volume) * 20);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+       musicAudioMixer.SetFloat("MusicVol", Mathf.Log10(volume) * 20);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxAudioMixer.SetFloat("SFXVol", Mathf.Log10(volume) * 20);
     }
 
 

@@ -25,8 +25,13 @@ MonoBehaviour:
     - Safe and sound the hero cheered obliviously, little did they know, it was time
       to take it seriously!
     - Both daring and bold the hero would saddle, with just, behold, a final battle!
-    timeOfTextDisplayed: 3
+    timeOfTextDisplayed: 2
   transitionBackgrounds:
   - {fileID: 21300000, guid: 77a853a3f8c97054bb7e9d1d536606c3, type: 3}
   environmentBackgrounds: []
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  transitionVoiceLines:
+  - {fileID: 8300000, guid: 33685356f75664e4aa397027d670b06a, type: 3}
+  - {fileID: 8300000, guid: 276cae7664d6f614c9f5fd01b848da8d, type: 3}
+  - {fileID: 8300000, guid: 6b13a9f0869203e41bcea576e2f48e69, type: 3}
+  - {fileID: 8300000, guid: 56066f54406f8624c957c3c8813080eb, type: 3}

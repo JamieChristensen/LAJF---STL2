@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using JetBrains.Annotations;
 
 public class TransitionNarrator : MonoBehaviour
 {
@@ -25,6 +27,10 @@ public class TransitionNarrator : MonoBehaviour
 
     public TTS textToSpeech;
 
+    bool realNarrator = true;
+
+
+
     private void Start()
     {
         visibleNarratorGameobject.SetActive(false);
@@ -38,15 +44,51 @@ public class TransitionNarrator : MonoBehaviour
 
     public void DoNarration(string readableText)
     {
+        if (realNarrator)
+        {
+            DoVoiceLine();
+            return;
+        }
         Narrate(readableText);
         visibleNarratorGameobject.SetActive(true);
     }
 
-    public void DoPlaceholderVoiceLine()
+    public void DoVoiceFiller(int fillerIndex)
     {
-       // audioList.narratorVoiceLines.Play();
+        audioList.narratorVoiceFillers[fillerIndex].Play();
     }
 
+    public void DoVoiceLine()
+    {
+        bool fillerIsPlaying = false;
+        AudioSource fillerSource = new AudioSource();
+       foreach (AudioSource AS in audioList.narratorVoiceFillers)
+       {
+            if (AS.isPlaying)
+            {
+                fillerIsPlaying = true;
+                fillerSource = AS;
+                break;
+            }
+       }
+       
+        if (fillerIsPlaying)
+        {
+            StartCoroutine(WaitForFiller(fillerSource));
+            return;
+        }
+        audioList.narratorVoiceLines.Stop();
+       audioList.narratorVoiceLines.Play();
+    }
+
+    IEnumerator WaitForFiller(AudioSource fillerSource)
+    {
+        while (fillerSource.isPlaying)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        audioList.narratorVoiceLines.Play();
+    }
     public void Narrate(string text) // call this with uiText as parameter
     {
         // TODO make set text string from somewhere else

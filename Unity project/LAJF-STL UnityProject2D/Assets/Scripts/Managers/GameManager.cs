@@ -226,12 +226,12 @@ public class GameManager : MonoBehaviour
         {
             if (musicManager != null)
             {
-                musicManager.PlayMusic("Peace");
+                musicManager.PlayMusic("Peace",1);
             }
             else
             {
                 musicManager = FindObjectOfType<MusicManager>();
-                musicManager.PlayMusic("Peace");
+                musicManager.PlayMusic("Peace",1);
             }
         }
         catch
@@ -344,14 +344,14 @@ public class GameManager : MonoBehaviour
             if (musicManager != null)
             {
                 musicManager.sources[4].clip = musicManager.ending[0];
-                musicManager.PlayMusic("Ending");
+                musicManager.PlayMusic("Ending",1);
 
             }
             else
             {
                 musicManager = FindObjectOfType<MusicManager>();
                 musicManager.sources[4].clip = musicManager.ending[0];
-                musicManager.PlayMusic("Ending");
+                musicManager.PlayMusic("Ending",1);
 
             }
 
@@ -361,22 +361,19 @@ public class GameManager : MonoBehaviour
             if (musicManager != null)
             {
                 musicManager.sources[4].clip = musicManager.ending[1];
-                musicManager.PlayMusic("Ending");
+                musicManager.PlayMusic("Ending",1);
             }
             else
             {
                 musicManager = FindObjectOfType<MusicManager>();
                 musicManager.sources[4].clip = musicManager.ending[1];
-                musicManager.PlayMusic("Ending");
+                musicManager.PlayMusic("Ending",1);
             }
 
         }
 
         yield return new WaitForSeconds(1.5f);
         nextTransition.Raise(18);
-
-        yield return new WaitForSeconds(4);
-        FindObjectOfType<CustomSceneManager>().LoadCredits();
     }
 
 }

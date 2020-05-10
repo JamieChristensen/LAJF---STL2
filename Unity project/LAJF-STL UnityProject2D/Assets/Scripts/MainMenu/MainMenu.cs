@@ -24,6 +24,8 @@ public class MainMenu : MonoBehaviour
 
     bool notFaded = true;
 
+    public MusicManager musicManager;
+
     private void Start()
     {
 
@@ -108,4 +110,10 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(delay);
         introTransition.DoNextTransition(0);
     }
+
+    public void ChangeMusic()
+    {
+        musicManager.PlayMusic("Choosing", 0.8f);
+    }
+
 }

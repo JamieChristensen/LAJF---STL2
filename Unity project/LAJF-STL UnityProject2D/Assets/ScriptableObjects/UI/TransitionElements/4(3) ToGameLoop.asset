@@ -28,3 +28,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 66355108e01702e48acb090a08601256, type: 3}
   environmentBackgrounds: []
   runtimeChoices: {fileID: 0}
+  transitionVoiceLines:
+  - {fileID: 8300000, guid: 6df2f9030aa9c2b47b16e49c2318748a, type: 3}
+  - {fileID: 8300000, guid: 6df2f9030aa9c2b47b16e49c2318748a, type: 3}
+  - {fileID: 8300000, guid: 6df2f9030aa9c2b47b16e49c2318748a, type: 3}
+  - {fileID: 8300000, guid: 6df2f9030aa9c2b47b16e49c2318748a, type: 3}

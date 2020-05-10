@@ -10,7 +10,7 @@ public class SettingsScrObj : ScriptableObject
     private int amountOfPlayers;
 
     [Range(0.0001f, 1)]
-    public float gameVolume;
+    public float gameMasterVolume, gameMusicVolume, gameSFXVolume;
 
     public void IncrementNumberOfPlayers(int increment)
     {

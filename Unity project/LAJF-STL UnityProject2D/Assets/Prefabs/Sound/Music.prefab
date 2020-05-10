@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e3f0ed42a6b1d4cbb4baed20b61f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: ffd7c0d863f82f4488d97658d88f5ec8, type: 2}
+  musicAudioMixer: {fileID: 24100000, guid: ffd7c0d863f82f4488d97658d88f5ec8, type: 2}
   masterAudioMixer: {fileID: 24100000, guid: cd1c7f898172da1478c2f8059b4934d3, type: 2}
+  sfxAudioMixer: {fileID: 24100000, guid: b6ff014256744c241b6fdb931439c483, type: 2}
   musicThemes:
   - name: MainMenu
     clip: {fileID: 8300000, guid: de0de06714b26624d9592d42bfe0cd58, type: 3}
@@ -55,7 +56,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Choosing
     clip: {fileID: 8300000, guid: f329a33534f94c34b8d22de83b9c6ba0, type: 3}
-    volume: 0.6
+    volume: 0.4
     pitch: 1
     loop: 1
     audioMixerGroup: {fileID: 24300002, guid: 47faf9415f1ed414ca4a7a2712435e20, type: 2}

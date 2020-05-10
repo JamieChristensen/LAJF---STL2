@@ -24,8 +24,13 @@ MonoBehaviour:
     - "With nipples so fine, amazing chest, the hero was seduced by \u201CBe my guest\u201D!"
     - "Another fell with all its weight, the next thing sealed the hero\u2019s fate!"
     - All stories have to come to an end, even this, my humble friend!
-    timeOfTextDisplayed: 3
+    timeOfTextDisplayed: 2
   transitionBackgrounds:
   - {fileID: 21300000, guid: 77a853a3f8c97054bb7e9d1d536606c3, type: 3}
   environmentBackgrounds: []
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  transitionVoiceLines:
+  - {fileID: 8300000, guid: e007c1edc8a5bca419593708965d2d3d, type: 3}
+  - {fileID: 8300000, guid: ba349eb5eeddd5c49b239c621b8e50d6, type: 3}
+  - {fileID: 8300000, guid: ee937be78c0622c45aca39f022f9ad4c, type: 3}
+  - {fileID: 8300000, guid: c31dc28ad223d734f9779778b2594ca5, type: 3}

@@ -7,8 +7,8 @@ using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public AudioMixer audioMixer;
-    public Slider volumeSlider;
+    public AudioMixer masterAudioMixer, musicAudioMixer, sfxAudioMixer;
+    public Slider masterVolumeSlider, musicVolumeSlider, sfxVolumeSlider;
     //public TMP_Dropdown resolutionDropdown;
     //public TMP_Dropdown qualityDropdown;
     public Dropdown resolutionDropdown;
@@ -20,8 +20,13 @@ public class SettingsMenu : MonoBehaviour
     void Start()
     {
 
-        SetVolume(gameSettings.gameVolume);
-        volumeSlider.value = gameSettings.gameVolume;
+        SetMasterVolume(gameSettings.gameMasterVolume);
+        SetMusicVolume(gameSettings.gameMusicVolume);
+        SetSFXVolume(gameSettings.gameSFXVolume);
+
+        masterVolumeSlider.value = gameSettings.gameMasterVolume;
+        musicVolumeSlider.value = gameSettings.gameMusicVolume;
+        sfxVolumeSlider.value = gameSettings.gameSFXVolume;
 
         resolutions = Screen.resolutions;
 
@@ -53,10 +58,22 @@ public class SettingsMenu : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetVolume (float volume)
+    public void SetMasterVolume(float volume)
     {
-        audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
-        gameSettings.gameVolume = volume;
+        masterAudioMixer.SetFloat("MasterVol", Mathf.Log10(volume) * 20);
+        gameSettings.gameMasterVolume = volume;
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        musicAudioMixer.SetFloat("MusicVol", Mathf.Log10(volume) * 20);
+        gameSettings.gameMusicVolume = volume;
+    }
+
+    public void SetSFXVolume (float volume)
+    {
+        sfxAudioMixer.SetFloat("SFXVol", Mathf.Log10(volume) * 20);
+        gameSettings.gameSFXVolume = volume;
     }
 
     public void SetQuality (int qualityIndex)

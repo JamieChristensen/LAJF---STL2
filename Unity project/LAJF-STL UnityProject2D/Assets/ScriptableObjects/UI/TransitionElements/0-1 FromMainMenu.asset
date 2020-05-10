@@ -17,11 +17,8 @@ MonoBehaviour:
   introFillers:
   - 'A thousand years ago, '
   - 'A few moments and a sandwich ago, '
-  - 'Back when Earth was flat, '
-  - 'Definitely before tuesday, '
-  - 'Before the internet, '
-  - 'Long time ago in this galaxy, '
   - 'Back when intentionally misspelling words was considered funny, '
+  - 'Back when a cat was either aliver or dead, '
   heroComments: []
   startTransparent: 1
   textElement:
@@ -39,3 +36,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 16809b492b730434e91aa00b16ee1939, type: 3}
   environmentBackgrounds: []
   runtimeChoices: {fileID: 0}
+  transitionVoiceLines:
+  - {fileID: 8300000, guid: c1f32e2c9bde6704c8374d6a94f07fcb, type: 3}
+  - {fileID: 8300000, guid: c1f32e2c9bde6704c8374d6a94f07fcb, type: 3}
+  - {fileID: 8300000, guid: c1f32e2c9bde6704c8374d6a94f07fcb, type: 3}
+  - {fileID: 8300000, guid: c1f32e2c9bde6704c8374d6a94f07fcb, type: 3}
