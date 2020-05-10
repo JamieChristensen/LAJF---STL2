@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e6657d2f8176d49be3a73082efbb09, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
+  realNarratorVoice: 0
+  fullscreenIsOn: 0
   amountOfPlayers: 2
-  gameMasterVolume: 1
-  gameMusicVolume: 0.5
-  gameSFXVolume: 0.0001
+  gameMasterVolume: 0.79999965
+  gameMusicVolume: 0.8
+  gameSFXVolume: 1

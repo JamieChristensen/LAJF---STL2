@@ -52,6 +52,7 @@ public class CustomSceneManager : MonoBehaviour
         {
             Debug.Log("there is no music manager");
         }
+        Time.timeScale = 1;
         SceneManager.LoadScene(0); //Index of main-menu. 
     }
 

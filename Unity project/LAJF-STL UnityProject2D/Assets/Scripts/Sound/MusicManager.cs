@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using System;
+using NSubstitute.Core;
 
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
 
-    public AudioMixer musicAudioMixer, masterAudioMixer, sfxAudioMixer;
+    public AudioMixer musicAudioMixer, masterAudioMixer, sfxAudioMixer, mainMenuAudioMixer;
 
     public MusicTheme[] musicThemes;
 
@@ -37,6 +38,12 @@ public class MusicManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+        InitializeMusicThemes();
+    }
+
+    void InitializeMusicThemes()
+    {
         /* Ads an AudioSource for each music theme in the array musicThemes*/
         foreach (MusicTheme mt in musicThemes)
         {
@@ -58,16 +65,52 @@ public class MusicManager : MonoBehaviour
                 mt.source.Play();
             }
         }
-        
     }
+
 
     private void Start()
     {
         SetMasterVolume(gameSettings.gameMasterVolume);
         SetMusicVolume(gameSettings.gameMusicVolume);
         SetSFXVolume(gameSettings.gameSFXVolume);
+        SetMainMenuVolume(1);
+       
+        bool musicIsPlaying = false; 
+        foreach (MusicTheme mt in musicThemes)
+        {
+            if (mt.source.isPlaying)
+            {
+                musicIsPlaying = true;
+            }
+        }
+        if (musicIsPlaying)
+        {
+            return;
+        }
+        PlayMusic("MainMenu", 1);    
     }
 
+    
+    void OnLevelWasLoaded()
+    {
+        SetMasterVolume(gameSettings.gameMasterVolume);
+        SetMusicVolume(gameSettings.gameMusicVolume);
+        SetSFXVolume(gameSettings.gameSFXVolume);
+        bool musicIsPlaying = false;
+        foreach (MusicTheme mt in musicThemes)
+        {
+            if (mt.source.isPlaying)
+            {
+                musicIsPlaying = true;
+            }
+        }
+        if (musicIsPlaying)
+        {
+            return;
+        }
+        PlayMusic("MainMenu", 1);
+    }
+    
 
     public void PlayMusic(string name, float targetVolume) // play a music theme (by name) after a specified delay (in float seconds)
     {
@@ -175,7 +218,10 @@ public class MusicManager : MonoBehaviour
         sfxAudioMixer.SetFloat("SFXVol", Mathf.Log10(volume) * 20);
     }
 
-
+    public void SetMainMenuVolume(float volume)
+    {
+        mainMenuAudioMixer.SetFloat("MainMenuVol", Mathf.Log10(volume) * 20);
+    }
 }
 
 

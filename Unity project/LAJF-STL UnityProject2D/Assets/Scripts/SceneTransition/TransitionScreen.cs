@@ -51,7 +51,7 @@ public class TransitionScreen : MonoBehaviour
 
     }
 
-    private void OnDisable()
+        private void OnDisable()
     {
         outOfThreeScenarios++;
         if (outOfThreeScenarios > 3)
@@ -124,6 +124,7 @@ public class TransitionScreen : MonoBehaviour
 
     public void MainMenuException()
     {
+        Debug.Log("MainMenuException");
         atTransitionDestinationScene = false;
         introductionDelay = 4;
     }

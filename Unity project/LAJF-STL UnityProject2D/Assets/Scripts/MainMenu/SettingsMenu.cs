@@ -8,18 +8,21 @@ using TMPro;
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer masterAudioMixer, musicAudioMixer, sfxAudioMixer;
-    public Slider masterVolumeSlider, musicVolumeSlider, sfxVolumeSlider;
-    //public TMP_Dropdown resolutionDropdown;
-    //public TMP_Dropdown qualityDropdown;
-    public Dropdown resolutionDropdown;
+    public Slider masterVolumeSlider, musicVolumeSlider, sfxVolumeSlider, narratorVoiceToggle;
+    public TextMeshProUGUI narratorVoiceTextMesh;
+
+     //public TMP_Dropdown resolutionDropdown;
+     //public TMP_Dropdown qualityDropdown;
+     public Dropdown resolutionDropdown;
     public Dropdown qualityDropdown;
     public SettingsScrObj gameSettings;
+    public Toggle fullscreenToggle;
+
 
     Resolution[] resolutions;
 
     void Start()
     {
-
         SetMasterVolume(gameSettings.gameMasterVolume);
         SetMusicVolume(gameSettings.gameMusicVolume);
         SetSFXVolume(gameSettings.gameSFXVolume);
@@ -28,28 +31,40 @@ public class SettingsMenu : MonoBehaviour
         musicVolumeSlider.value = gameSettings.gameMusicVolume;
         sfxVolumeSlider.value = gameSettings.gameSFXVolume;
 
-        resolutions = Screen.resolutions;
 
-        resolutionDropdown.ClearOptions();
-
-        List<string> options = new List<string>();
-
-        int currentResolutionIndex = 0;
-
-        for (int i = 0; i < resolutions.Length; i++)
+        if (resolutionDropdown != null)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
+            resolutions = Screen.resolutions;
 
-            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            resolutionDropdown.ClearOptions();
+
+            List<string> options = new List<string>();
+
+            int currentResolutionIndex = 0;
+
+            for (int i = 0; i < resolutions.Length; i++)
             {
-                currentResolutionIndex = i;
+                string option = resolutions[i].width + " x " + resolutions[i].height;
+                options.Add(option);
+
+                if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+                {
+                    currentResolutionIndex = i;
+                }
             }
+
+            resolutionDropdown.AddOptions(options);
+            resolutionDropdown.value = currentResolutionIndex;
+            resolutionDropdown.RefreshShownValue();
+
         }
 
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
+        if (narratorVoiceToggle != null)
+        {
+            ToggleNarratorVoice(!gameSettings.realNarratorVoice);
+        }
+
+        fullscreenToggle.isOn = gameSettings.fullscreenIsOn;
     }
 
     public void SetResolution (int resolutionIndex)
@@ -85,6 +100,24 @@ public class SettingsMenu : MonoBehaviour
     public void SetFullscreen (bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+        gameSettings.fullscreenIsOn = isFullscreen;
+    }
+
+    public void ToggleNarratorVoice(bool isOn)
+    {
+        if (isOn)
+        {
+            narratorVoiceToggle.value = 0;
+            narratorVoiceTextMesh.text = "TEXT TO SPEECH";
+
+        }
+        else
+        {
+            narratorVoiceToggle.value = 1;
+            narratorVoiceTextMesh.text = "REALISTIC";
+            
+        }
+        gameSettings.realNarratorVoice = !isOn;
     }
 
 
