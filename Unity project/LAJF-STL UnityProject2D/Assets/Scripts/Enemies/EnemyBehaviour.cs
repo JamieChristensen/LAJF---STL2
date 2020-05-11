@@ -8,7 +8,7 @@ using TMPro;
 
 public class EnemyBehaviour : MonoBehaviour, IPausable
 {
-    private CameraShaker cameraShaker;
+    private CameraShake cameraShaker;
     private GameManager gameManager;
     public Rigidbody2D rb2;
     public GameObject target;
@@ -67,7 +67,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
     {
         // InitalizeEnemy();
         _audioList = FindObjectOfType<AudioList>();
-        cameraShaker = FindObjectOfType<CameraShaker>();
+        cameraShaker = FindObjectOfType<CameraShake>();
         rb = GetComponent<Rigidbody2D>();
         matDefault = spriteRenderer.material;
         gameManager = FindObjectOfType<GameManager>();
@@ -360,7 +360,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         }
         if (cameraShaker != null)
         {
-            StartCoroutine(cameraShaker.CameraShake(1f, 0.5f));
+            cameraShaker.StartShake(cameraShaker.shakePropertyOnMinionDie);
         }
         ParticleSystem instance = Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
         if (isBlessed)
