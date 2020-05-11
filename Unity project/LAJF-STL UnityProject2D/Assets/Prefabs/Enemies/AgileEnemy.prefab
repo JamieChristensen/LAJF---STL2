@@ -561,7 +561,7 @@ MonoBehaviour:
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   rb: {fileID: 0}
   matDefault: {fileID: 0}
-  matWhite: {fileID: 2100000, guid: da2c11b1a32a0e748b87c0907cbfc44d, type: 2}
+  matWhite: {fileID: 2100000, guid: 507df42ccdbb8f24ca00c58560034d5e, type: 2}
   agent: {fileID: 0}
   modifiers: []
   alreadyDied: 0
@@ -574,6 +574,7 @@ MonoBehaviour:
   isAngry: 0
   tombstone: {fileID: 1474379647948536103, guid: 2db2538c6bad2464985783394c9c0019,
     type: 3}
+  desiredDistance: 30
   jumpFrequency: 0.02
   jumpHeight: 10
   moveCap: 8

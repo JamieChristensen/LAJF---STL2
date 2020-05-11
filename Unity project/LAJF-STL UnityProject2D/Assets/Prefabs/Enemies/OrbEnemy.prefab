@@ -658,7 +658,7 @@ MonoBehaviour:
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   rb: {fileID: 7197962424530652539}
   matDefault: {fileID: 0}
-  matWhite: {fileID: 2100000, guid: 8efca9af6b93ec64cb418a1b44bb3360, type: 2}
+  matWhite: {fileID: 2100000, guid: 507df42ccdbb8f24ca00c58560034d5e, type: 2}
   agent: {fileID: 11400000, guid: 15e94d8d4d5a3a64595633b0e5cd8cd3, type: 2}
   modifiers: []
   alreadyDied: 0
@@ -671,6 +671,7 @@ MonoBehaviour:
   isAngry: 0
   tombstone: {fileID: 1474379647948536103, guid: 2db2538c6bad2464985783394c9c0019,
     type: 3}
+  desiredDistance: 30
   orbPrefab: {fileID: 7541748802338077583, guid: 42b473043c030fa4bb059fb835562f3a,
     type: 3}
   orb: {fileID: 0}
@@ -688,7 +689,7 @@ MonoBehaviour:
   isInitialized: 0
   rb: {fileID: 0}
   rb2: {fileID: 7197962424530652539}
-  spriteMat: {fileID: 0}
+  spriteMat: {fileID: 2100000, guid: 507df42ccdbb8f24ca00c58560034d5e, type: 2}
   orbTransformRoot: {fileID: 5316326822850720701}
 --- !u!50 &7197962424530652539
 Rigidbody2D:
