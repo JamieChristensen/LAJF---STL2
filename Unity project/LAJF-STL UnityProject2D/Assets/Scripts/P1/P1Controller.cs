@@ -540,6 +540,8 @@ public class P1Controller : MonoBehaviour
         audioList.explosion.Play();
 
         ParticleSystem instance = Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
+        CameraShake camshake = FindObjectOfType<CameraShake>();
+        camshake.StartShake(camshake.shakePropertyOnMinionDie);
         Destroy(gameObject);
         Destroy(instance.gameObject, instance.duration);
     }

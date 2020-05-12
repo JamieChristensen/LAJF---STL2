@@ -23,10 +23,12 @@ public class GreatChest : MonoBehaviour
 
     public ParticleSystem wealthGlow;
     private ParticleSystem instanceWealthGlow;
+    private CameraShake cameraShake;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        cameraShake = FindObjectOfType<CameraShake>();
         inactivePosition = transform.position;
         GetGlow();
     }
@@ -65,6 +67,11 @@ public class GreatChest : MonoBehaviour
         {
             narratorHit.Raise();
         }
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            cameraShake.StartShake(cameraShake.shakePropertyOnMinionDie);
+        }
     }
 
     public void OnPlayerFinishChallenge()
@@ -78,7 +85,7 @@ public class GreatChest : MonoBehaviour
         rb.gravityScale = 0;
         rb.velocity = Vector2.zero;
         Vector3 deltaVector = new Vector3(Random.Range(0, 40), 0, 0);
-        transform.position = inactivePosition-deltaVector;
+        transform.position = inactivePosition - deltaVector;
         transform.rotation = new Quaternion(0, 0, 0, 0);
         //reset bools used to raise event and animate.
         finishedAnimation = false;
@@ -104,7 +111,7 @@ public class GreatChest : MonoBehaviour
     public void GetGlow()
     {
         Debug.Log("Glow is coming up!");
-       instanceWealthGlow = Instantiate(wealthGlow, gameObject.transform);
+        instanceWealthGlow = Instantiate(wealthGlow, gameObject.transform);
     }
 
 }
