@@ -11472,6 +11472,26 @@ PrefabInstance:
       propertyPath: unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 9081438540263352368}
+    - target: {fileID: 1600652049415345597, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600652049415345597, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600652049415345597, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618020438320850360, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5892630455597672938, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
         type: 3}
       propertyPath: m_LocalPosition.x

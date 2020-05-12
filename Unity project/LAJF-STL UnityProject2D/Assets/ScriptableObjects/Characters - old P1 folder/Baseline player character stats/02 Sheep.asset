@@ -15,6 +15,9 @@ MonoBehaviour:
   myName: Oh mighty sheep
   description: Beep, beep, it's a sheep...
   trait: 'Trait: Vegan - Can eat grass like a maniac!'
+  characterSprite: {fileID: 0}
+  colliderSize: {x: 0, y: 0}
+  colliderOffset: {x: 0, y: 0}
   moveSpeed: 12
   jumpForce: 16
   baseAttackDamage: 1
@@ -24,3 +27,4 @@ MonoBehaviour:
   maxHitPoints: 70
   startingHitPoints: 70
   baseDamageReduction: 0
+  startItem: {fileID: 0}
