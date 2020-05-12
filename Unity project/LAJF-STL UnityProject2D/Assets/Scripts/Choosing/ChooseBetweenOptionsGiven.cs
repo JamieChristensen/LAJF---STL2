@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 public class ChooseBetweenOptionsGiven : MonoBehaviour
 {
     #region INSPECTOR
+    public AudioList audioList;
+
     CustomSceneManager customSceneManager;
     public RuntimeChoiceManager runtimeChoiceManager;
     public VoidEvent godsHaveChosenMinion;
@@ -393,7 +395,13 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         // runtimeChoices.character = finalChoice;
         runtimeChoices.chosenHero = characterChoices[choice - 1];
         Debug.Log("Hero has chosen a character! It is: " + characterChoices[choice - 1].myName);
-        SwitchToGodSelection(); // switching from character select to theme select
+        audioList.OnHeroPicked();
+        if (runtimeChoices.chosenHero.myName != "Baahhd Sheep")
+        {
+            Invoke("SwitchToGodSelection", 1.9f); // switching from character select to theme select
+            return;
+        }
+        Invoke("SwitchToGodSelection", 1.2f); // switching from character select to theme select
     }
 
     void GodsHaveChosenTheme()
@@ -540,7 +548,8 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
 
     IEnumerator LockAfterDelay()
     {
-        yield return new WaitForSeconds(1.5f);
+
+        yield return new WaitForSeconds(0.5f);
         RaiseEvent(choiceType);
     }
 
