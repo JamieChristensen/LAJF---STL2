@@ -6275,9 +6275,9 @@ MonoBehaviour:
     strength: 0.2
     maxSpeed: 20
     minSpeed: 20
-    duration: 0.3
+    duration: 0.4
     noisePercent: 0.136
-    dampingPercent: 0.55
+    dampingPercent: 0
     rotationPercent: 0
   shakePropertyOnChestHit:
     angle: 90

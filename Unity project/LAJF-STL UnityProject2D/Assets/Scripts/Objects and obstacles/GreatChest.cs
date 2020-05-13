@@ -83,7 +83,7 @@ public class GreatChest : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             float angle = Mathf.Sign(transform.position.x - collision.transform.position.x) == 1 ? 0 : 180;
-            float magnitude = rb.velocity.magnitude;
+            float magnitude = Mathf.Clamp(rb.velocity.magnitude, 1, 10);
 
             //0.3f worked fine as a "strength" value for properties.
             cameraShake.StartShake(new CameraShake.Properties(angle, magnitudeOfScreenshakeOnWallMultiplier*magnitude, 20, 0.3f, 0, 0.6f, 0));
