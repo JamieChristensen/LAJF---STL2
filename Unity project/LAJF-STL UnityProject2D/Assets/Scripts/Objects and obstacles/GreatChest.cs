@@ -86,7 +86,7 @@ public class GreatChest : MonoBehaviour
             float magnitude = rb.velocity.magnitude;
 
             //0.3f worked fine as a "strength" value for properties.
-            cameraShake.StartShake(new CameraShake.Properties(angle, magnitudeOfScreenshakeOnWallMultiplier*magnitude, 3*magnitude, 0.3f, 0, 0.6f, 0));
+            cameraShake.StartShake(new CameraShake.Properties(angle, magnitudeOfScreenshakeOnWallMultiplier*magnitude, 20, 0.3f, 0, 0.6f, 0));
 
         }
     }
