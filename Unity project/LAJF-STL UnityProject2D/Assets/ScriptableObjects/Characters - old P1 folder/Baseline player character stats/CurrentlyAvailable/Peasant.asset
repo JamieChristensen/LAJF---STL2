@@ -18,13 +18,13 @@ MonoBehaviour:
   characterSprite: {fileID: 21300000, guid: c414fb3ea8fa1a54ab355916e62972b8, type: 3}
   colliderSize: {x: 4, y: 7}
   colliderOffset: {x: 0, y: 0}
-  moveSpeed: 20
-  jumpForce: 16
-  baseAttackDamage: 5
+  moveSpeed: 16
+  jumpForce: 22
+  baseAttackDamage: 10
   attackRate: 0.4
   rangedAttacks: 1
   meleeAttacks: 0
-  maxHitPoints: 60
-  startingHitPoints: 60
+  maxHitPoints: 90
+  startingHitPoints: 90
   baseDamageReduction: 1
   startItem: {fileID: 11400000, guid: 3517c50eeea57b54880e316331a20839, type: 2}

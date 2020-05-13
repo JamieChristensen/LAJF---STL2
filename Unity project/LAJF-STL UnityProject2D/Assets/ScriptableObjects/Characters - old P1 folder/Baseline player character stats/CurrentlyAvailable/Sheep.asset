@@ -19,9 +19,9 @@ MonoBehaviour:
   colliderSize: {x: 5.3, y: 4.6}
   colliderOffset: {x: 0, y: -0.5}
   moveSpeed: 16
-  jumpForce: 20
+  jumpForce: 22
   baseAttackDamage: 10
-  attackRate: 0.25
+  attackRate: 0.4
   rangedAttacks: 1
   meleeAttacks: 0
   maxHitPoints: 80

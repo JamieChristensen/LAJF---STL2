@@ -6758,6 +6758,7 @@ GameObject:
   - component: {fileID: 2080098328}
   - component: {fileID: 2080098329}
   - component: {fileID: 2080098327}
+  - component: {fileID: 2080098330}
   m_Layer: 12
   m_Name: OnEnterSceneTrigger
   m_TagString: Untagged
@@ -6792,7 +6793,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 7.8959217}
+  m_Offset: {x: 0, y: 8.167229}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6803,7 +6804,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.12, y: 18.958221}
+  m_Size: {x: 5.12, y: 18.415607}
   m_EdgeRadius: 0
 --- !u!212 &2080098328
 SpriteRenderer:
@@ -6867,6 +6868,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9ab1504e7b6a04abb0f9fdd28835d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2080098330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080098325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 8dfe41fd063cf55448be65b51a0b9a45, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2080098329}
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2114617311 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9005650612711449379, guid: 4c8b91af623fccc449d8351369779d7f,
