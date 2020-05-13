@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using STL2.Events;
 
 public class Spawner : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class Spawner : MonoBehaviour
 
     public Vector3 chestPosition;
 
-
+    public VoidEvent monsterSpawnedEvent;
     public void Start()
     {
         greatChest = FindObjectOfType<GreatChest>();
@@ -107,6 +108,7 @@ public class Spawner : MonoBehaviour
         EnemyModifier[] modifiers = new EnemyModifier[] { runtimeChoices.enemyModifiers[runTimeLoopCount - 1] };
         enemyBehaviour.InitalizeEnemy(enemy, modifiers);        //take account for boss-amount of modifiers
 
+        monsterSpawnedEvent.Raise();
 
     }
 }

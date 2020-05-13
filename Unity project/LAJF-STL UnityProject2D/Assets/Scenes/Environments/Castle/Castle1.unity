@@ -199,6 +199,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cc2c9b2cb856aa542a0e9cf7ed1404b7, type: 2}
+    - target: {fileID: 7128726495597490685, guid: 20087ae3c9d60d04baf036293db75867,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205684207853156651, guid: 20087ae3c9d60d04baf036293db75867,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7410636199154860311, guid: 20087ae3c9d60d04baf036293db75867,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -244,5 +254,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4.0345
       objectReference: {fileID: 0}
+    - target: {fileID: 7893814439299409743, guid: 20087ae3c9d60d04baf036293db75867,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aa5a9cec318fc474e96ab2e55dc0601d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20087ae3c9d60d04baf036293db75867, type: 3}

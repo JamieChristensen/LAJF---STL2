@@ -10,6 +10,14 @@ public class EnemyEntranceEffects : MonoBehaviour
     public Volume volume;
     public VolumeProfile volumeProfile;
 
+    private bool monsterJustSpawned;
+    private float monsterLightTimer;
+
+    [SerializeField]
+    private float monsterLightMaxTime;
+    public Transform lightTransform;
+
+    private Transform monsterTransform;
 
     public void Update()
     {
@@ -17,7 +25,30 @@ public class EnemyEntranceEffects : MonoBehaviour
         {
             //StartChromaticAberration(0.5f, 0.8f);
         }
+
+        if (monsterJustSpawned)
+        {
+            if (monsterTransform == null)
+            {
+                monsterTransform = FindObjectOfType<EnemyBehaviour>().transform;
+            }
+            monsterLightTimer -= Time.deltaTime;
+            lightTransform.position = new Vector3(monsterTransform.position.x, lightTransform.position.y, lightTransform.position.z);
+            lightTransform.gameObject.SetActive(true);
+
+            if (monsterLightTimer < 0)
+            {
+                monsterJustSpawned = false;
+                lightTransform.gameObject.SetActive(false);
+            }
+        }
     }
+    public void MonsterSpawnedEventResponse()
+    {
+        monsterJustSpawned = true;
+        monsterLightTimer = monsterLightMaxTime;
+    }
+
 
     public void StartChromaticAberration(float duration, float biasTowardEnd)
     {
@@ -85,4 +116,6 @@ public class EnemyEntranceEffects : MonoBehaviour
 
         yield return null;
     }
+
+
 }
