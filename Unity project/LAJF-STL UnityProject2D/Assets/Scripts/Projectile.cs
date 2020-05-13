@@ -19,6 +19,10 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private GameObject particleExplosion;
 
+    [SerializeField]
+    private Transform spriteTransform;
+    private Rigidbody2D rb;
+
 
 
 
@@ -139,9 +143,14 @@ public class Projectile : MonoBehaviour
     {
         particles.Stop();
         particles.Clear();
+        rb = GetComponent<Rigidbody2D>();
     }
     public void Update()
     {
+        if (rb.velocity.x < 0)
+        {
+            spriteTransform.rotation = Quaternion.Euler(0,180,0);
+        }
         if (timer >= maxTime)
         {
             return;
