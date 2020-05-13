@@ -8,6 +8,8 @@ public class GreatChest : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
 
+    public float magnitudeOfScreenshakeOnWallMultiplier;
+
     [SerializeField]
     private Sprite[] sprites = new Sprite[3];
     private SpriteRenderer spriteRenderer;
@@ -24,6 +26,7 @@ public class GreatChest : MonoBehaviour
     public ParticleSystem wealthGlow;
     private ParticleSystem instanceWealthGlow;
     private CameraShake cameraShake;
+    private bool shakedGround;
 
     void Start()
     {
@@ -70,7 +73,21 @@ public class GreatChest : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Ground"))
         {
-            cameraShake.StartShake(cameraShake.shakePropertyOnMinionDie);
+            if (!shakedGround)
+            {
+                cameraShake.StartShake(cameraShake.shakePropertyOnChestHit);
+                shakedGround = true;
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            float angle = Mathf.Sign(transform.position.x - collision.transform.position.x) == 1 ? 0 : 180;
+            float magnitude = rb.velocity.magnitude;
+
+            //0.3f worked fine as a "strength" value for properties.
+            cameraShake.StartShake(new CameraShake.Properties(angle, magnitudeOfScreenshakeOnWallMultiplier*magnitude, 3*magnitude, 0.3f, 0, 0.6f, 0));
+
         }
     }
 
@@ -82,6 +99,7 @@ public class GreatChest : MonoBehaviour
     public void ReInitialize()
     {
         //Reset physics, position.
+        shakedGround = false;
         rb.gravityScale = 0;
         rb.velocity = Vector2.zero;
         Vector3 deltaVector = new Vector3(Random.Range(0, 40), 0, 0);
