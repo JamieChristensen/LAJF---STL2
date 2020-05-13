@@ -71,6 +71,14 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public void CombatEndedExplode()
+    {
+        GameObject instance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
+        Destroy(instance, 1f);
+
+        GameObject.Destroy(gameObject);
+    }
+
     public void Explode()
     {
         if (!isExplodingProjectile)

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2089293797313625056}
   - component: {fileID: 5323168398494037125}
   - component: {fileID: 8930122413102664762}
+  - component: {fileID: 1528995962070521975}
   m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
@@ -4904,3 +4905,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1528995962070521975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295350159965844522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 16e0900343a1b614891ebeb509469c81, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls: []
