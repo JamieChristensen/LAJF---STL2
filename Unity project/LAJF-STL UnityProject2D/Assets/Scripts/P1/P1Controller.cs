@@ -99,6 +99,8 @@ public class P1Controller : MonoBehaviour
     [SerializeField]
     private VoidEvent explosionEvent;
 
+    float gunKnockBackAmount = 0, gunKnockBackTargetAmount = 0;
+
 
     #endregion INSPECTOR
 
@@ -184,7 +186,17 @@ public class P1Controller : MonoBehaviour
         #region UpdateSprites
         bool isMovingRight = moveDirection.x > 0;
         spriteRenderer.flipX = !isMovingRight;
-        shotgunImage.rectTransform.rotation = isMovingRight ? Quaternion.Euler(new Vector3(0, 0, 0)) : Quaternion.Euler(new Vector3(180, 0, 180));
+        shotgunImage.rectTransform.rotation = isMovingRight ? Quaternion.Euler(new Vector3(0, 0, gunKnockBackAmount)) : Quaternion.Euler(new Vector3(0, -180, gunKnockBackAmount));
+        gunKnockBackAmount = Mathf.Lerp(gunKnockBackAmount, gunKnockBackTargetAmount, Time.deltaTime * 20f);
+
+        if (gunKnockBackTargetAmount>0 && gunKnockBackTargetAmount < 20)
+        {
+            gunKnockBackTargetAmount -= 0.4f;
+        }
+        else if (gunKnockBackTargetAmount > 0)
+        {
+            gunKnockBackTargetAmount -= 2f;
+        }
 
         #endregion UpdateSprites
     }
@@ -197,6 +209,17 @@ public class P1Controller : MonoBehaviour
 
     public void RangedAttack()
     {
+
+        if (gunKnockBackTargetAmount < 30)
+        {
+            gunKnockBackTargetAmount += 30-gunKnockBackTargetAmount;
+        }
+        else
+        {
+            gunKnockBackTargetAmount += 5;
+        }
+        
+        
         List<Projectile> projectiles = new List<Projectile>();
 
         #region BaseLineAttack

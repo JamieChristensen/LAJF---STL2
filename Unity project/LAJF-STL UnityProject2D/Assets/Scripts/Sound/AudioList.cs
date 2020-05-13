@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AudioList : MonoBehaviour
 {
+    public ChoiceCategory runtimeChoices;
     public int voiceLineIndex;
 
     // SFX 
@@ -25,6 +26,7 @@ public class AudioList : MonoBehaviour
          narratorHit,
          narratorVoiceLines,
          select,
+         selectionPicked,
          textToSpeechSource,
          winFx;
 
@@ -72,6 +74,12 @@ public class AudioList : MonoBehaviour
         }
     }
 
+    public void OnHeroPicked()
+    {
+        Debug.Log("GOAT");
+        selectionPicked.clip = runtimeChoices.chosenHero.picked;
+        selectionPicked.Play();
+    }
 
     #endregion NarratorVoiceLines
 

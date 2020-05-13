@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
   m_Name: Spartan
   m_EditorClassIdentifier: 
+  picked: {fileID: 8300000, guid: 35c345ae02288a140a1ce32896eb03cc, type: 3}
+  death: {fileID: 0}
+  hurt: {fileID: 0}
+  jump: {fileID: 0}
   myName: Spartan War Hero
   description: Ruthless warrior in possession of exploding projectiles
   trait: 'No hat: can jump very high without a hat pulling him down'
