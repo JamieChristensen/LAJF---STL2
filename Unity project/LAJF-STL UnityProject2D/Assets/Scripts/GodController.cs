@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.Experimental.Rendering.Universal;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class GodController : MonoBehaviour
@@ -53,24 +54,27 @@ public class GodController : MonoBehaviour
     // general for attacks
     public bool inCombatMode = true; // the god can only attack if this is true 
     private GodInformation.AttackTypes attackType;
+    public float minIntensity;
+    public float maxIntensity;
     
     public TextMeshProUGUI readyForFire;
 
     // Lightning v2
     public GameObject lightningStrikePrefab;
     private bool canAttack = true;
-    public float ChargeTime = 2;
+    public float chargeTime = 2;
     //Laser beam
     public GameObject laserBeamPrefab;
     public float laserCooldown;
     private float laserCooldownTimer = 0;
+    public int laserAmmo;
     public float laserBeamSpeed;
     private bool isRecharging = false;
     //Fire ball
     public GameObject fireBallPrefab;
     public float fireballCooldown;
     private float fireballCooldownTimer = 0;
-    public int maxBounceCount; 
+    public int maxBounceCount;
 
     public void Start()
     {
@@ -115,7 +119,7 @@ public class GodController : MonoBehaviour
         #endregion
 
         // inCombatMode is from legacy code - don't know if its to be used
-        if (Input.GetKey(shoot))
+        if (Input.GetKeyDown(shoot) && canAttack)
         #region Attack
             switch (attackType)
             {
@@ -128,6 +132,7 @@ public class GodController : MonoBehaviour
                     break;
                 case GodInformation.AttackTypes.Laserbeam:
                     LaserBeamAttack();
+                    Debug.Log("this many " + LaserProjectile.projectileCount);
                     break;
                 default:
                     Debug.Log(gameObject.name + "'s attacktype hasn't been set - head to the inspector to do that");
@@ -227,27 +232,26 @@ public class GodController : MonoBehaviour
         canAttack = false;
         GameObject LightningStrikeClone = Instantiate(lightningStrikePrefab, transform);
         LightningProjectile lightningScript = LightningStrikeClone.GetComponent<LightningProjectile>();
-        GameObject telegraph = lightningScript.telegraph;
+        Light2D telegraph = lightningScript.telegraph.GetComponent<Light2D>();
         GameObject Lightning = lightningScript.Lightning;
 
-
+        
         // telegraph attack
         moveSpeed = moveSpeed / 2;
-        Vector3 originalScale = telegraph.transform.localScale;
-        Vector3 originalPosition = telegraph.transform.position;
-        Vector3 destinationScale = new Vector3(1, 25f, 0);
-
+    
         float timer = 0f;
-        while (timer < ChargeTime)
+
+        while (timer < chargeTime && chargeTime != 0)
         {
-            lightningScript.telegraph.transform.localScale = Vector3.Lerp(originalScale, destinationScale, timer / ChargeTime);
+            telegraph.intensity = Map(timer,0,chargeTime, minIntensity, maxIntensity);
+            // Debug.Log(timer + " intensity: " + telegraph.intensity);
             timer += Time.deltaTime;
             yield return null;
         }
 
         // actual attack
+        telegraph.gameObject.SetActive(false);
         Lightning.SetActive(true);
-        telegraph.SetActive(false);
         moveSpeed = 0;
         yield return new WaitForSeconds(0.5f);
         Destroy(LightningStrikeClone);
@@ -263,12 +267,12 @@ public class GodController : MonoBehaviour
         fireballCooldownTimer = fireballCooldown;
         GameObject fireballClone = Instantiate(fireBallPrefab, transform.position, Quaternion.identity, null);
         if (maxBounceCount > 0)
-            fireballClone.GetComponent<FireballProjectile>().bounceLimit = maxBounceCount;
+            fireballClone.GetComponentInChildren<FireballProjectile>().bounceLimit = maxBounceCount;
         fireballClone.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
     }
     private void LaserBeamAttack()
     {
-        if (LaserProjectile.projectileCount >= 3)
+        if (LaserProjectile.projectileCount >= laserAmmo)
             return;
         GameObject laserClone = Instantiate(laserBeamPrefab, transform.position, Quaternion.Euler(0, 0, 90), null);
         laserClone.GetComponent<Rigidbody2D>().velocity = Vector2.down * laserBeamSpeed * 2;
@@ -311,4 +315,8 @@ public class GodController : MonoBehaviour
         isRecharging = true;
     }
 
+    float Map(float s, float a1, float a2, float b1, float b2)
+    {
+        return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
+    }
 }
