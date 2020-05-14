@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9061498156827747958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite light thunder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,8 +298,8 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0.5
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.5729848, y: -20.000355, z: 0}
-  - {x: 0.5422962, y: -19.994625, z: 0}
+  - {x: -0.5729848, y: -21.887634, z: 0}
+  - {x: 0.63216686, y: -21.92684, z: 0}
   - {x: 0.60707873, y: 2.0171838, z: 0}
   - {x: -0.5618684, y: 2.014925, z: 0}
 --- !u!1 &6567968191840997926
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 4643010967834715347}
   - component: {fileID: 8535126549842498249}
   - component: {fileID: 8296797515120568546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: outerLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5152,7 +5152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3327375639037905285}
   - component: {fileID: 5960209783211582222}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: innerLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

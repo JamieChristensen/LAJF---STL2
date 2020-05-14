@@ -77,11 +77,17 @@ public class GodController : MonoBehaviour
     private float fireballCooldownTimer = 0;
     public int maxBounceCount;
 
+    private CameraShake cameraShake;
+    private EnemyEntranceEffects entranceEffects;
+
     public void Start()
     {
         emoteDuration = 0;
         emoteMaxTime = 1f;
         isEmoting = false;
+
+        cameraShake = FindObjectOfType<CameraShake>();
+        entranceEffects = FindObjectOfType<EnemyEntranceEffects>();
 
         if (spriteRenderer == null)
         {
@@ -126,7 +132,7 @@ public class GodController : MonoBehaviour
             {
                 case GodInformation.AttackTypes.Lightning:
                     if (canAttack)
-                        StartCoroutine("LightningStrikeAttack");
+                        StartCoroutine(LightningStrikeAttack());
                     break;
                 case GodInformation.AttackTypes.Fireball:
                     FireballAttack();
@@ -253,6 +259,8 @@ public class GodController : MonoBehaviour
         // actual attack
         telegraph.gameObject.SetActive(false);
         Lightning.SetActive(true);
+        entranceEffects.StartChromaticAberration(0.5f, 1f);
+        cameraShake.StartShake(cameraShake.shakePropertyOnMinionEnter);
         moveSpeed = 0;
         yield return new WaitForSeconds(0.5f);
         Destroy(LightningStrikeClone);
