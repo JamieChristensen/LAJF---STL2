@@ -7,7 +7,7 @@ using TMPro;
 public class EndSceneVisuals : MonoBehaviour
 {
     public Image[] playerImages;
-    public Image enemyImage;
+    public SpriteRenderer tombstoneSpriteRenderer;
     public Image itemImage;
     public Image environment;
     public Image chest;

@@ -1651,12 +1651,12 @@ PrefabInstance:
     - target: {fileID: 4134797265137611428, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
       propertyPath: selectAlt
-      value: 351
+      value: 370
       objectReference: {fileID: 0}
     - target: {fileID: 4134797265137611428, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
       propertyPath: returnAlt
-      value: 352
+      value: 372
       objectReference: {fileID: 0}
     - target: {fileID: 7480467531589095838, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
@@ -1702,12 +1702,12 @@ PrefabInstance:
     - target: {fileID: 7480467531589095838, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
       propertyPath: selectAlt
-      value: 371
+      value: 390
       objectReference: {fileID: 0}
     - target: {fileID: 7480467531589095838, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
       propertyPath: returnAlt
-      value: 372
+      value: 392
       objectReference: {fileID: 0}
     - target: {fileID: 9189168039957213517, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
@@ -1753,12 +1753,12 @@ PrefabInstance:
     - target: {fileID: 9189168039957213517, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
       propertyPath: selectAlt
-      value: 391
+      value: 410
       objectReference: {fileID: 0}
     - target: {fileID: 9189168039957213517, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
       propertyPath: returnAlt
-      value: 392
+      value: 412
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b8049b9349802348942e4759c3bba33, type: 3}
