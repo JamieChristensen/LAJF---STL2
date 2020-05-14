@@ -41,6 +41,8 @@ public class EndSceneDisplay : MonoBehaviour
         "got tired of life while battling", "got a heart-attack while fighting"
     };
 
+    public GameObject victoriousVisuals;
+
     private void Start()
     {
 
@@ -71,7 +73,7 @@ public class EndSceneDisplay : MonoBehaviour
                     lossInstance.playerImages[0].rectTransform.Rotate(new Vector3(0, 180, 180)); //Flips it around X-axis. 
 
                     lossInstance.environment.sprite = runtimeChoices.chosenEnvironments[i - 1].environmentSprite;
-                    lossInstance.tombstoneSpriteRenderer.material.SetTexture("_Texture2D" , runtimeChoices.enemies[i - 1].sprite.texture); 
+                    lossInstance.tombstoneSpriteRenderer.material.SetTexture("_Texture2D", runtimeChoices.enemies[i - 1].sprite.texture);
 
 
                     Destroy(lossInstance.itemImage.gameObject);
@@ -98,13 +100,25 @@ public class EndSceneDisplay : MonoBehaviour
 
 
                     victoryInstance.environment.sprite = runtimeChoices.chosenEnvironments[i - 1].environmentSprite;
-                    victoryInstance.tombstoneSpriteRenderer.material.SetTexture("_Texture2D" , runtimeChoices.enemies[i - 1].sprite.texture); 
+                    victoryInstance.tombstoneSpriteRenderer.material.SetTexture("_Texture2D", runtimeChoices.enemies[i - 1].sprite.texture);
                     victoryInstance.itemImage.sprite = runtimeChoices.playerItems[i - 1].itemSprite;
                 }
 
             }
 
-            Instantiate(creditsText, transform); //Credits text..
+            VictoriousVisuals vicVis2 = Instantiate(victoriousVisuals, transform).GetComponent<VictoriousVisuals>();
+            vicVis2.hero.sprite = playerSpr;
+            vicVis2.hero.gameObject.SetActive(false);
+            string baseDeityText = "Deities were victorious! \n";
+            for (int j = 0; j < gameSettings.GetAmountOfPlayers() - 1; j++)
+            {
+                baseDeityText += "AVE \n" + runtimeChoices.chosenGods[j].name;
+                Image img = vicVis2.deities[j];
+                img.gameObject.SetActive(true);
+                img.sprite = runtimeChoices.chosenGods[j].topBarIcon;
+            }
+            vicVis2.textVictorious.text = baseDeityText;
+            //Instantiate(creditsText, transform); //Credits text..
             Debug.Log("player lost");
             return;
         }
@@ -137,14 +151,24 @@ public class EndSceneDisplay : MonoBehaviour
 
 
             instance.environment.sprite = runtimeChoices.chosenEnvironments[i - 1].environmentSprite;
-            instance.tombstoneSpriteRenderer.material.SetTexture("_Texture2D" , runtimeChoices.enemies[i - 1].sprite.texture); 
+            instance.tombstoneSpriteRenderer.material.SetTexture("_Texture2D", runtimeChoices.enemies[i - 1].sprite.texture);
             instance.itemImage.sprite = runtimeChoices.playerItems[i - 1].itemSprite;
 
 
 
 
         }
-        Instantiate(creditsText, transform); //Credits text..   
+
+        VictoriousVisuals vicVis = Instantiate(victoriousVisuals,transform).GetComponent<VictoriousVisuals>();
+        vicVis.hero.sprite = playerSpr;
+        vicVis.hero.gameObject.SetActive(true);
+        vicVis.textVictorious.text = "The hero won! \n AVE \n" + runtimeChoices.chosenHero.myName;
+        foreach (Image img in vicVis.deities)
+        {
+            img.gameObject.SetActive(false);
+        }
+
+        //Instantiate(creditsText, transform); //Credits text..   
 
     }
 
