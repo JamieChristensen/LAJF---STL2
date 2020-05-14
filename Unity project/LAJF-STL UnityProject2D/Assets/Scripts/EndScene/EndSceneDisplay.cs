@@ -109,11 +109,11 @@ public class EndSceneDisplay : MonoBehaviour
             VictoriousVisuals vicVis2 = Instantiate(victoriousVisuals, transform).GetComponent<VictoriousVisuals>();
             vicVis2.hero.sprite = playerSpr;
             vicVis2.hero.gameObject.SetActive(false);
-            string baseDeityText = "Deities were victorious! \n";
+            string baseDeityText = "Deities were victorious!";
             for (int j = 0; j < gameSettings.GetAmountOfPlayers() - 1; j++)
             {
-                baseDeityText += "AVE \n" + runtimeChoices.chosenGods[j].name;
                 Image img = vicVis2.deities[j];
+                vicVis2.aveText[j].text = "AVE \n" + runtimeChoices.chosenGods[j].godName;
                 img.gameObject.SetActive(true);
                 img.sprite = runtimeChoices.chosenGods[j].topBarIcon;
             }

@@ -7,11 +7,12 @@ using TMPro;
 public class VictoriousVisuals : MonoBehaviour
 {
     public Image[] deities;
+    public TextMeshProUGUI[] aveText;
     public Image hero;
     public TextMeshProUGUI textVictorious;
 
     void Start()
     {
-        
+
     }
 }

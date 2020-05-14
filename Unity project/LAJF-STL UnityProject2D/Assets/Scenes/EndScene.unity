@@ -775,8 +775,7 @@ MonoBehaviour:
   scrollSpeed: 55
   extraSpeedForScroll: 55
   baseText: {fileID: 106807074}
-  creditsText: {fileID: 9160693856537786406, guid: e2db89d99d0e4054f8f036bcd2a37d14,
-    type: 3}
+  creditsText: {fileID: 0}
   keysThatCanSpeedUpScene: 1201000011010000770000004c01000060010000880100007401000073000000
   coolDescriptors:
   - gloriously
