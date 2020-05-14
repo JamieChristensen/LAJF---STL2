@@ -125,6 +125,7 @@ MonoBehaviour:
   laserBeamPrefab: {fileID: 1231446402521952693, guid: f843cdbba98c44a4982f7aaca83e5dc4,
     type: 3}
   laserCooldown: 0
+  laserAmmo: 0
   laserBeamSpeed: 25
   fireBallPrefab: {fileID: 202277264708886569, guid: 2441155da98336f4ba9d60433d37ef20,
     type: 3}
@@ -328,7 +329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -3}
+  m_AnchoredPosition: {x: 0, y: 5.67}
   m_SizeDelta: {x: 17.25, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5079817381557160922
@@ -432,7 +433,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 21.3
+  m_fontSize: 28.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -470,7 +471,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 5.973071, y: 0, z: 5.5299726, w: 1.1758957}
+  m_margin: {x: 0.9578972, y: 0.6374693, z: 1.4892282, w: 1.1758957}
   m_textInfo:
     textComponent: {fileID: 5463579200723361152}
     characterCount: 4

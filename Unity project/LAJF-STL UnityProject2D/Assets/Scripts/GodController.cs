@@ -42,6 +42,7 @@ public class GodController : MonoBehaviour
     public float moveSpeed;
     public string horizontalAxis;
     public KeyCode shoot;
+    public KeyCode altShoot;
 
     /*
     public GameObject lightningPrefab;
@@ -119,7 +120,7 @@ public class GodController : MonoBehaviour
         #endregion
 
         // inCombatMode is from legacy code - don't know if its to be used
-        if (Input.GetKeyDown(shoot) && canAttack)
+        if ((Input.GetKeyDown(shoot) || Input.GetKeyDown(altShoot)) && canAttack)
         #region Attack
             switch (attackType)
             {
