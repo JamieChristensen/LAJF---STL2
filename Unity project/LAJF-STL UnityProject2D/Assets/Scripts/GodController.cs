@@ -39,8 +39,7 @@ public class GodController : MonoBehaviour
 
     // movement
     public float moveSpeed;
-    public KeyCode moveLeft;
-    public KeyCode moveRight;
+    public string horizontalAxis;
     public KeyCode shoot;
 
     /*
@@ -53,13 +52,8 @@ public class GodController : MonoBehaviour
 
     // general for attacks
     public bool inCombatMode = true; // the god can only attack if this is true 
-    public AttackType attackType;
-    public enum AttackType
-    {
-        Lightning,
-        Fireball,
-        Laser
-    }
+    private GodInformation.AttackTypes attackType;
+    
     public TextMeshProUGUI readyForFire;
 
     // Lightning v2
@@ -93,6 +87,7 @@ public class GodController : MonoBehaviour
         {
             godInfo = runtimeChoices.chosenGods[godNumber - 1];
             sprite = godInfo.topBarIcon;
+            attackType = godInfo.attackType;
             spriteRenderer.sprite = sprite;
             isEnabled = true;
             tmproName.text = godInfo.godName;
@@ -115,10 +110,8 @@ public class GodController : MonoBehaviour
     void Update()
     {
         #region Movement
-        if (Input.GetKey(moveLeft))
-            MoveLeft();
-        if (Input.GetKey(moveRight))
-            MoveRight();
+        float direction = Input.GetAxis(horizontalAxis);
+        transform.position = transform.position + new Vector3(direction * moveSpeed* Time.deltaTime, 0,0);
         #endregion
 
         // inCombatMode is from legacy code - don't know if its to be used
@@ -126,14 +119,14 @@ public class GodController : MonoBehaviour
         #region Attack
             switch (attackType)
             {
-                case AttackType.Lightning:
+                case GodInformation.AttackTypes.Lightning:
                     if (canAttack)
                         StartCoroutine("LightningStrikeAttack");
                     break;
-                case AttackType.Fireball:
+                case GodInformation.AttackTypes.Fireball:
                     FireballAttack();
                     break;
-                case AttackType.Laser:
+                case GodInformation.AttackTypes.Laserbeam:
                     LaserBeamAttack();
                     break;
                 default:
@@ -225,17 +218,6 @@ public class GodController : MonoBehaviour
     {
         inCombatMode = true;
         readyForFire.text = "Press ↓ to Fire!";
-    }
-
-
-    private void MoveRight()
-    {
-        transform.position = transform.position + new Vector3(1f, 0f) * moveSpeed * Time.deltaTime;
-    }
-
-    private void MoveLeft()
-    {
-        transform.position = transform.position + new Vector3(-1f, 0f) * moveSpeed * Time.deltaTime;
     }
 
     IEnumerator LightningStrikeAttack()
