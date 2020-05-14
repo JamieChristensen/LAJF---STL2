@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using STL2.Events;
 using UnityEngine.UI;
-
+using UnityEditor;
 
 public class ChooseGods : MonoBehaviour
 {
@@ -22,6 +22,10 @@ public class ChooseGods : MonoBehaviour
     public const int amountOfChoices = 5;
 
     public IntEvent nextTransition;
+
+    public Image[] highLight;
+    public GameObject[] playerHoverID;
+    public Transform[] p2LocationTransforms, p3LocationTransforms, p4LocationTransforms;
 
     [SerializeField]
     private int[] choices = new int[3]; //player2 choice in 0, player3 choice in 1, player4 choice in 2. Range 1-5. 0 if nothing has been chosen.
@@ -58,6 +62,7 @@ public class ChooseGods : MonoBehaviour
     [SerializeField]
     bool lockedIn = false;
 
+
     public void Start()
     {
         choices = new int[3];
@@ -72,10 +77,12 @@ public class ChooseGods : MonoBehaviour
         if (gamesettings.GetAmountOfPlayers() < 4)
         {
             p4LockedIn = true;
+            playerHoverID[2].SetActive(false);
         }
         if (gamesettings.GetAmountOfPlayers() < 3)
         {
             p3LockedIn = true;
+            playerHoverID[1].SetActive(false);
         }
         
         for (int i = 0; i < choices.Length; i++)
@@ -84,7 +91,7 @@ public class ChooseGods : MonoBehaviour
             {
                 return;
             }
-            choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
+            //choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
 
 
@@ -142,6 +149,7 @@ public class ChooseGods : MonoBehaviour
             {
                 Debug.Log("P2 chose hero");
                 p2LockedIn = true;
+                UpdateHoverVisuals(0);
 
                 if (gamesettings.GetAmountOfPlayers() == 2)
                 {
@@ -182,6 +190,7 @@ public class ChooseGods : MonoBehaviour
             if (Input.GetKeyDown(p3select) || Input.GetKeyDown(p3SelectAlt))
             {
                 p3LockedIn = true;
+                UpdateHoverVisuals(1);
             }
         }
 
@@ -215,6 +224,7 @@ public class ChooseGods : MonoBehaviour
             if (Input.GetKeyDown(p4select) || Input.GetKeyDown(p4SelectAlt))
             {
                 p4LockedIn = true;
+                UpdateHoverVisuals(2);
             }
         }
         #endregion Inputs
@@ -240,6 +250,10 @@ public class ChooseGods : MonoBehaviour
             return;
         }
         choices[godNumber] = newSelection;
+        UpdateHoverVisuals(godNumber);
+
+        /*
+
         for (int i = 0; i < backgrounds.Length; i++)
         {
             if (i == newSelection)
@@ -256,6 +270,7 @@ public class ChooseGods : MonoBehaviour
             }
 
         }
+        */
 
         //Reset text on each element:
         foreach (TextMeshProUGUI choiceText in choiceTMProText)
@@ -264,15 +279,16 @@ public class ChooseGods : MonoBehaviour
         }
         for (int i = 0; i < gamesettings.GetAmountOfPlayers() - 1; i++)
         {
-            choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
+            //choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
     }
 
     //When there's only one god
     public void ChangeAndDisplaySelection(int newSelection)
     {
+        
         choices[0] = newSelection;
-        choiceTMProText[newSelection].text = "Player2";
+        //choiceTMProText[newSelection].text = "Player2";
 
         foreach (TextMeshProUGUI choiceText in choiceTMProText)
         {
@@ -280,8 +296,34 @@ public class ChooseGods : MonoBehaviour
         }
         for (int i = 0; i < gamesettings.GetAmountOfPlayers() - 1; i++)
         {
-            choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
+            //choiceTMProText[choices[i]].text += "Player " + (i + 2) + "\n";
         }
+        UpdateHoverVisuals(0);
     }
+
+     void UpdateHoverVisuals(int godNumber)
+    {
+        switch (godNumber)
+        {
+            case 0:
+                highLight[godNumber].enabled = p2LockedIn;
+                playerHoverID[godNumber].transform.position = p2LocationTransforms[choices[godNumber]].position;
+                break;
+
+            case 1:
+                highLight[godNumber].enabled = p3LockedIn;
+                playerHoverID[godNumber].transform.position = p3LocationTransforms[choices[godNumber]].position;
+                break;
+
+            case 2:
+                highLight[godNumber].enabled = p4LockedIn;
+                playerHoverID[godNumber].transform.position = p4LocationTransforms[choices[godNumber]].position;
+                break;
+        }
+        
+        
+
+    }
+
 
 }
