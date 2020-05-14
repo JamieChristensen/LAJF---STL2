@@ -116,7 +116,8 @@ public class ChooseGods : MonoBehaviour
             bool p2leftPressed = false;
             bool p2rightPressed = false;
             float p2HoriInput = Input.GetAxis(p2HorizontalAxisName);
-            if (p2HoriInput != 0 && p2WaitForNextClick)
+            Debug.Log(p2HoriInput);
+            if (p2HoriInput != 0 && !p2WaitForNextClick)
             {
                 p2leftPressed = p2HoriInput < 0 ? true : false;
                 p2rightPressed = !p2leftPressed;

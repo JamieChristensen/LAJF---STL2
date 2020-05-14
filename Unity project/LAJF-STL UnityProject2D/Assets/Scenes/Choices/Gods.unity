@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1794,6 +1794,11 @@ PrefabInstance:
       propertyPath: audioList
       value: 
       objectReference: {fileID: 127051646}
+    - target: {fileID: 1036585721769149430, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -357.97498
+      objectReference: {fileID: 0}
     - target: {fileID: 3990294995383061128, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3839,17 +3844,17 @@ MonoBehaviour:
   p2left: 276
   p2right: 275
   p2select: 13
-  p2SelectAlt: 371
+  p2SelectAlt: 370
   p2HorizontalAxisName: P2Horizontal
   p3left: 106
   p3right: 107
   p3select: 0
-  p3SelectAlt: 391
+  p3SelectAlt: 390
   p3HorizontalAxisName: P3Horizontal
   p4left: 0
   p4right: 0
   p4select: 0
-  p4SelectAlt: 411
+  p4SelectAlt: 410
   p4HorizontalAxisName: P4Horizontal
   lockedIn: 0
 --- !u!114 &2867410946190812736

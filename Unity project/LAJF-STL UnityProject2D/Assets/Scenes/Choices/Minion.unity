@@ -473,21 +473,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af,
         type: 2}
-    - target: {fileID: 4134797265137611428, guid: 2b8049b9349802348942e4759c3bba33,
-        type: 3}
-      propertyPath: playerHorizontalAxis
-      value: P2Horizontal
-      objectReference: {fileID: 0}
-    - target: {fileID: 4134797265137611428, guid: 2b8049b9349802348942e4759c3bba33,
-        type: 3}
-      propertyPath: selectAlt
-      value: 351
-      objectReference: {fileID: 0}
-    - target: {fileID: 4134797265137611428, guid: 2b8049b9349802348942e4759c3bba33,
-        type: 3}
-      propertyPath: returnAlt
-      value: 352
-      objectReference: {fileID: 0}
     - target: {fileID: 7480467531589095838, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
       propertyPath: voteLocationTransforms.Array.data[0]
@@ -524,21 +509,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af,
         type: 2}
-    - target: {fileID: 7480467531589095838, guid: 2b8049b9349802348942e4759c3bba33,
-        type: 3}
-      propertyPath: playerHorizontalAxis
-      value: P3Horizontal
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480467531589095838, guid: 2b8049b9349802348942e4759c3bba33,
-        type: 3}
-      propertyPath: selectAlt
-      value: 371
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480467531589095838, guid: 2b8049b9349802348942e4759c3bba33,
-        type: 3}
-      propertyPath: returnAlt
-      value: 372
-      objectReference: {fileID: 0}
     - target: {fileID: 9189168039957213517, guid: 2b8049b9349802348942e4759c3bba33,
         type: 3}
       propertyPath: voteLocationTransforms.Array.data[0]
@@ -575,21 +545,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af,
         type: 2}
-    - target: {fileID: 9189168039957213517, guid: 2b8049b9349802348942e4759c3bba33,
-        type: 3}
-      propertyPath: playerHorizontalAxis
-      value: P4Horizontal
-      objectReference: {fileID: 0}
-    - target: {fileID: 9189168039957213517, guid: 2b8049b9349802348942e4759c3bba33,
-        type: 3}
-      propertyPath: selectAlt
-      value: 391
-      objectReference: {fileID: 0}
-    - target: {fileID: 9189168039957213517, guid: 2b8049b9349802348942e4759c3bba33,
-        type: 3}
-      propertyPath: returnAlt
-      value: 392
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b8049b9349802348942e4759c3bba33, type: 3}
 --- !u!4 &563495270 stripped
@@ -2062,6 +2017,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 939.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3577078072023779386, guid: f7ae8cfc95e46024ca55ca8f44e70e6c,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3577078072023779386, guid: f7ae8cfc95e46024ca55ca8f44e70e6c,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3577078072130160841, guid: f7ae8cfc95e46024ca55ca8f44e70e6c,
         type: 3}
@@ -3575,6 +3540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f84dcc52e430544b54820c7a56d82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioList: {fileID: 0}
   runtimeChoiceManager: {fileID: 0}
   godsHaveChosenMinion: {fileID: 11400000, guid: db3d5cc5b0e40b043a77d5cc4a0c2d14,
     type: 2}
