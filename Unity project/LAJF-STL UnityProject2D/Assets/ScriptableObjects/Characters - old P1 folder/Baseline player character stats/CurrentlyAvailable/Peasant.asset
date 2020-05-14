@@ -12,19 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
   m_Name: Peasant
   m_EditorClassIdentifier: 
+  picked: {fileID: 8300000, guid: 28f10405d8e3e444dbb2529405fa4ea7, type: 3}
+  death: {fileID: 0}
+  hurt: {fileID: 0}
+  jump: {fileID: 0}
   myName: Peasant with a shotgun
   description: Get off his lawn or face his triple-barreled shotgun
   trait: 'Chinese: He must be a ninja then'
   characterSprite: {fileID: 21300000, guid: c414fb3ea8fa1a54ab355916e62972b8, type: 3}
   colliderSize: {x: 4, y: 7}
   colliderOffset: {x: 0, y: 0}
-  moveSpeed: 20
-  jumpForce: 16
-  baseAttackDamage: 5
+  moveSpeed: 16
+  jumpForce: 22
+  baseAttackDamage: 10
   attackRate: 0.4
   rangedAttacks: 1
   meleeAttacks: 0
-  maxHitPoints: 60
-  startingHitPoints: 60
+  maxHitPoints: 90
+  startingHitPoints: 90
   baseDamageReduction: 1
   startItem: {fileID: 11400000, guid: 3517c50eeea57b54880e316331a20839, type: 2}

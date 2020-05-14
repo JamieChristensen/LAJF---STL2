@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "P1Stats", menuName = "ScriptableObject/Stats/P1Stats")]
 public class P1Stats : ScriptableObject
 {
+    public AudioClip picked, death, hurt, jump;
+
     [Header("General")]
     public string myName; // name of the character
     public string description; // description of character
@@ -30,9 +32,9 @@ public class P1Stats : ScriptableObject
     public int startingHitPoints; // the amount of HP in the beginining of the run
     public float baseDamageReduction; // the starting damage reduction of the character
 
-
     [Header("Baseline items")]
     public PlayerItems startItem;
+
 
 
 }

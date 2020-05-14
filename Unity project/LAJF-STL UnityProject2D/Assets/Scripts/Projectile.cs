@@ -19,6 +19,10 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private GameObject particleExplosion;
 
+    [SerializeField]
+    private Transform spriteTransform;
+    private Rigidbody2D rb;
+
 
 
 
@@ -65,6 +69,26 @@ public class Projectile : MonoBehaviour
 
 
             GameObject instance = Instantiate(particleExplosion, coll.GetContact(0).point, Quaternion.identity);
+            Destroy(instance, 1f);
+
+            GameObject.Destroy(gameObject);
+        }
+    }
+
+    public void CombatEndedExplode()
+    {
+        GameObject instance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
+        Destroy(instance, 1f);
+
+        GameObject.Destroy(gameObject);
+    }
+
+
+    public void CombatEndedExplode(int hp)
+    {
+        if (hp <= 0)
+        {
+            GameObject instance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
             Destroy(instance, 1f);
 
             GameObject.Destroy(gameObject);
@@ -119,9 +143,14 @@ public class Projectile : MonoBehaviour
     {
         particles.Stop();
         particles.Clear();
+        rb = GetComponent<Rigidbody2D>();
     }
     public void Update()
     {
+        if (rb.velocity.x < 0)
+        {
+            spriteTransform.rotation = Quaternion.Euler(0,180,0);
+        }
         if (timer >= maxTime)
         {
             return;

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4145219679262336936}
+  magnitudeOfScreenshakeOnWallMultiplier: 0.07
   sprites:
   - {fileID: 21300000, guid: 4c70c8734df0cac478826de1972d39e1, type: 3}
   - {fileID: 21300000, guid: 2d983e34d5c345043896e6d014205f7d, type: 3}

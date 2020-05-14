@@ -880,8 +880,8 @@ MonoBehaviour:
   dashMaxTime: 0.3
   dashSpeed: 50
   hasGatlingGun: 0
-  gatlingSpeedMultiplier: 0.298
-  gatlingMovespeedMultiplier: 0.38
+  gatlingSpeedMultiplier: 0.5
+  gatlingMovespeedMultiplier: 0.276
   hasExplodingShots: 0
   shotgunImage: {fileID: 304472617576270937}
   explosionEvent: {fileID: 11400000, guid: ba259034f5adc28458c5f96fd00dd823, type: 2}

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
   m_Name: Sheep
   m_EditorClassIdentifier: 
+  picked: {fileID: 8300000, guid: f55ff947a6d340042adadd6857a97e4e, type: 3}
+  death: {fileID: 8300000, guid: 9573aa20be70c314f9f15a2c26e1af60, type: 3}
+  hurt: {fileID: 8300000, guid: f5e91fb02a0bfbf419c6768138c33727, type: 3}
+  jump: {fileID: 8300000, guid: d7d03a14076e1c1449ba23308d1b7b57, type: 3}
   myName: Baahhd Sheep
   description: A sheep with a thirst for blood... And a gatling gun
   trait: 'Green hat: He is almost invissible in green terrain'
@@ -19,9 +23,9 @@ MonoBehaviour:
   colliderSize: {x: 5.3, y: 4.6}
   colliderOffset: {x: 0, y: -0.5}
   moveSpeed: 16
-  jumpForce: 20
+  jumpForce: 22
   baseAttackDamage: 10
-  attackRate: 0.25
+  attackRate: 0.4
   rangedAttacks: 1
   meleeAttacks: 0
   maxHitPoints: 80

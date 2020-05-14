@@ -12,19 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
   m_Name: Spartan
   m_EditorClassIdentifier: 
+  picked: {fileID: 8300000, guid: 35c345ae02288a140a1ce32896eb03cc, type: 3}
+  death: {fileID: 0}
+  hurt: {fileID: 0}
+  jump: {fileID: 0}
   myName: Spartan War Hero
   description: Ruthless warrior in possession of exploding projectiles
   trait: 'No hat: can jump very high without a hat pulling him down'
   characterSprite: {fileID: 21300000, guid: 7061cf790df43234e92d6942bde3a8f4, type: 3}
   colliderSize: {x: 2, y: 7}
   colliderOffset: {x: 0, y: 0}
-  moveSpeed: 10
-  jumpForce: 25
+  moveSpeed: 16
+  jumpForce: 22
   baseAttackDamage: 10
   attackRate: 0.4
   rangedAttacks: 1
   meleeAttacks: 0
   maxHitPoints: 150
-  startingHitPoints: 90
+  startingHitPoints: 150
   baseDamageReduction: 1
   startItem: {fileID: 11400000, guid: c1c0983851958c34e8b4d3a9d9b3e3d5, type: 2}
