@@ -13,6 +13,8 @@ public class P1Controller : MonoBehaviour
         Horizontal,
         Jump,
         Attack,
+        UseForceField,
+        StopForceField,
         JumpHold,
         DoubleTapLeft,
         DoubleTapRight,
@@ -27,7 +29,7 @@ public class P1Controller : MonoBehaviour
 
     [Header("Controls")]
     /* controls */
-    public KeyCode left, right, jump, attackRanged, attackMelee;
+    //public KeyCode left, right, jump, attackRanged, attackMelee, forceField;
 
 
     [Header("Visuals and misc.:")]
@@ -82,6 +84,7 @@ public class P1Controller : MonoBehaviour
     private bool dashOnCooldown;
     private bool hasShotgun = false;
     public bool hasGatlingGun = false;
+
     [SerializeField]
     [Range(0.1f, 0.9f)]
     private float gatlingSpeedMultiplier = 0.75f;
@@ -101,12 +104,16 @@ public class P1Controller : MonoBehaviour
 
     float gunKnockBackAmount = 0, gunKnockBackTargetAmount = 0;
 
+    [SerializeField]
+    private bool forceFieldIsUp = false;
+    [SerializeField]
+    private float timeUntilForceFieldIsReady = 0, forceFieldCooldown;
 
     #endregion INSPECTOR
 
     void Awake()
     {
-       
+
         moveDirection = Vector2.right;
         InitializePlayerStats(runtimeChoices.chosenHero); //Use the chosen stats to set baseline of this run.
     }
@@ -117,6 +124,7 @@ public class P1Controller : MonoBehaviour
         _audioList = FindObjectOfType<AudioList>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         matDefault = spriteRenderer.material;
+
     }
 
 
@@ -141,6 +149,7 @@ public class P1Controller : MonoBehaviour
 
             shotgunImage.gameObject.SetActive(true);
         }
+
 
         #region UpdateCooldowns
         if (justUsedRangedAttack)
@@ -170,6 +179,12 @@ public class P1Controller : MonoBehaviour
                 dashOnCooldown = false;
             }
         }
+
+        if (!forceFieldIsUp && timeUntilForceFieldIsReady > 0)
+        {
+            timeUntilForceFieldIsReady -= Time.deltaTime;
+        }
+
         #endregion UpdateCooldowns
 
 
@@ -189,7 +204,7 @@ public class P1Controller : MonoBehaviour
         shotgunImage.rectTransform.rotation = isMovingRight ? Quaternion.Euler(new Vector3(0, 0, gunKnockBackAmount)) : Quaternion.Euler(new Vector3(0, -180, gunKnockBackAmount));
         gunKnockBackAmount = Mathf.Lerp(gunKnockBackAmount, gunKnockBackTargetAmount, Time.deltaTime * 20f);
 
-        if (gunKnockBackTargetAmount>0 && gunKnockBackTargetAmount < 20)
+        if (gunKnockBackTargetAmount > 0 && gunKnockBackTargetAmount < 20)
         {
             gunKnockBackTargetAmount -= 0.4f;
         }
@@ -207,19 +222,40 @@ public class P1Controller : MonoBehaviour
 
     }
 
+    public void ToggleForceField(bool active)
+    {
+        switch (active)
+        {
+            case true:
+                forceFieldIsUp = true;
+                Debug.Log("ForceField Is Up!");
+                audioList.forceFieldBegin.Play();
+                audioList.OnForcefieldToggle(true);
+                break;
+
+            case false:
+                timeUntilForceFieldIsReady = forceFieldCooldown;
+                forceFieldIsUp = false;
+                Debug.Log("ForceField Is down!");
+                audioList.OnForcefieldToggle(false);
+                break;
+        }
+        
+    }
+
     public void RangedAttack()
     {
 
         if (gunKnockBackTargetAmount < 30)
         {
-            gunKnockBackTargetAmount += 30-gunKnockBackTargetAmount;
+            gunKnockBackTargetAmount += 30 - gunKnockBackTargetAmount;
         }
         else
         {
             gunKnockBackTargetAmount += 5;
         }
-        
-        
+
+
         List<Projectile> projectiles = new List<Projectile>();
 
         #region BaseLineAttack
@@ -303,7 +339,11 @@ public class P1Controller : MonoBehaviour
     private bool CanPlayerAttack()
     {
         //Can have many more conditionals changing this in the future:
-        return !justUsedRangedAttack;
+        if (!forceFieldIsUp)
+        {
+            return !justUsedRangedAttack;
+        }
+        return !forceFieldIsUp;
     }
 
     public void ReceiveInput(Player1Input input, float value)
@@ -312,31 +352,33 @@ public class P1Controller : MonoBehaviour
         {
             case Player1Input.Horizontal:
 
-
-                rb.velocity = new Vector2(runtimePlayerStats.moveSpeed * value, rb.velocity.y); //if we press the key that corresponds with KeyCode left, then we want the rigidbody to move to the left
-                moveDirection = (value > 0.1f) ? Vector2.right :
-                    (value < -0.1f) ? Vector2.left : moveDirection;
-
-
-
-                if (dashingLeft || dashingRight)
+                if (!forceFieldIsUp)
                 {
-                    float leftD, rightD;
-                    leftD = dashingLeft ? 1 : 0;
-                    rightD = dashingRight ? 1 : 0;
-                    float dashDirection = rightD - leftD;
-                    Debug.Log("DASH DIRECTION: " + dashDirection);
-                    rb.velocity = new Vector2(dashDirection * dashSpeed, 0);
-                }
-                if (IsPlayerCloseToObstacle((GetComponent<BoxCollider2D>().size.x / 2) + 1.4f))
-                {
+                    rb.velocity = new Vector2(runtimePlayerStats.moveSpeed * value, rb.velocity.y); //if we press the key that corresponds with KeyCode left, then we want the rigidbody to move to the left
+                    moveDirection = (value > 0.1f) ? Vector2.right :
+                        (value < -0.1f) ? Vector2.left : moveDirection;
 
-                    rb.velocity = new Vector2(0, rb.velocity.y);
-                }
 
-                if (hasGatlingGun && justUsedRangedAttack)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x * gatlingMovespeedMultiplier, rb.velocity.y);
+                    if (dashingLeft || dashingRight)
+                    {
+                        float leftD, rightD;
+                        leftD = dashingLeft ? 1 : 0;
+                        rightD = dashingRight ? 1 : 0;
+                        float dashDirection = rightD - leftD;
+                        Debug.Log("DASH DIRECTION: " + dashDirection);
+                        rb.velocity = new Vector2(dashDirection * dashSpeed, 0);
+                    }
+                    if (IsPlayerCloseToObstacle((GetComponent<BoxCollider2D>().size.x / 2) + 1.4f))
+                    {
+
+                        rb.velocity = new Vector2(0, rb.velocity.y);
+                    }
+
+                    if (hasGatlingGun && justUsedRangedAttack)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x * gatlingMovespeedMultiplier, rb.velocity.y);
+                    }
+
                 }
 
                 break;
@@ -362,7 +404,7 @@ public class P1Controller : MonoBehaviour
                 break;
             case Player1Input.Jump:
 
-                if (isGrounded)
+                if (isGrounded && !forceFieldIsUp)
                 {
                     audioList.PlayWithVariablePitch(audioList.jump);
                     rb.AddForce(runtimePlayerStats.jumpForce * Vector2.up, ForceMode2D.Impulse);
@@ -399,6 +441,22 @@ public class P1Controller : MonoBehaviour
                 break;
             case Player1Input.Explosion:
                 explosionEvent.Raise();
+                break;
+
+            case Player1Input.StopForceField:
+                if (forceFieldIsUp && timeUntilForceFieldIsReady <= 0)
+                {
+                    ToggleForceField(false);
+                }
+                break;
+
+            case Player1Input.UseForceField:
+                if (isGrounded && timeUntilForceFieldIsReady <= 0)
+                {
+                    rb.velocity = Vector2.zero;
+                    ToggleForceField(true);
+                }
+
                 break;
         }
 

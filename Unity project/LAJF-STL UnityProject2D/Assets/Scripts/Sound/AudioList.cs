@@ -16,6 +16,9 @@ public class AudioList : MonoBehaviour
          deathEnemy,
          deathHero,
          explosion,
+         forceFieldBegin,
+         forceFieldEnd,
+         forceFieldWhileUp,
          hurt,
          jump,
          land,
@@ -62,6 +65,30 @@ public class AudioList : MonoBehaviour
             textToSpeechSource.Stop();
         }
     }
+
+    public void OnForcefieldToggle(bool active)
+    {
+        switch (active)
+        {
+            case true:
+                forceFieldBegin.Play();
+                forceFieldWhileUp.Play();
+                break;
+
+            case false:
+                PlayWithVariablePitch(forceFieldEnd);
+                if (forceFieldBegin.isPlaying)
+                {
+                    forceFieldBegin.Stop();
+                }
+                if (forceFieldWhileUp.isPlaying)
+                {
+                    forceFieldWhileUp.Stop();
+                }
+                break;
+        }
+    }
+
 
 
     #region NarratorVoiceLines
