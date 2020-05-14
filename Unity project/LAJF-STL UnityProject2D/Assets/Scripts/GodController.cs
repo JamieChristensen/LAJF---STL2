@@ -37,15 +37,46 @@ public class GodController : MonoBehaviour
     [SerializeField]
     private SettingsScrObj gamesettings;
 
-    //Lightning
+    // movement
+    public float moveSpeed;
+    public KeyCode moveLeft;
+    public KeyCode moveRight;
     public KeyCode shoot;
+
+    /*
     public GameObject lightningPrefab;
-    public float lightningSpeed;
     public Transform firePoint;
-    public TextMeshProUGUI readyForFire;
     private bool OnCooldown = false;
     private float timer = 0, cooldownTime = 15;
+    */
+
+
+    // general for attacks
     public bool inCombatMode = true; // the god can only attack if this is true 
+    public AttackType attackType;
+    public enum AttackType
+    {
+        Lightning,
+        Fireball,
+        Laser
+    }
+    public TextMeshProUGUI readyForFire;
+
+    // Lightning v2
+    public GameObject lightningStrikePrefab;
+    private bool canAttack = true;
+    public float ChargeTime = 2;
+    //Laser beam
+    public GameObject laserBeamPrefab;
+    public float laserCooldown;
+    private float laserCooldownTimer = 0;
+    public float laserBeamSpeed;
+    private bool isRecharging = false;
+    //Fire ball
+    public GameObject fireBallPrefab;
+    public float fireballCooldown;
+    private float fireballCooldownTimer = 0;
+    public int maxBounceCount; 
 
     public void Start()
     {
@@ -83,14 +114,46 @@ public class GodController : MonoBehaviour
 
     void Update()
     {
+        #region Movement
+        if (Input.GetKey(moveLeft))
+            MoveLeft();
+        if (Input.GetKey(moveRight))
+            MoveRight();
+        #endregion
 
-        if (Input.GetKeyDown(shoot) && OnCooldown == false && inCombatMode == true)
-        {
-            Shoot();
-            timer = 0;
-            readyForFire.text = "Cooling off!";
-            OnCooldown = true;
-        }
+        // inCombatMode is from legacy code - don't know if its to be used
+        if (Input.GetKey(shoot))
+        #region Attack
+            switch (attackType)
+            {
+                case AttackType.Lightning:
+                    if (canAttack)
+                        StartCoroutine("LightningStrikeAttack");
+                    break;
+                case AttackType.Fireball:
+                    FireballAttack();
+                    break;
+                case AttackType.Laser:
+                    LaserBeamAttack();
+                    break;
+                default:
+                    Debug.Log(gameObject.name + "'s attacktype hasn't been set - head to the inspector to do that");
+                    break;
+            }
+                    FireballUpdate();
+                    LaserUpdate();
+        #endregion
+
+
+        #region Legacy Attack (outcommented)
+        /*
+            if (Input.GetKeyDown(shoot) && OnCooldown == false && inCombatMode == true)
+            {
+                Shoot();
+                timer = 0;
+                readyForFire.text = "Cooling off!";
+                OnCooldown = true;
+            }
         if (OnCooldown)
         {
             timer += Time.deltaTime;
@@ -104,9 +167,10 @@ public class GodController : MonoBehaviour
                 return;
             }
             readyForFire.text = "Press ↓ to Fire!";
-            
-        }
 
+        }
+        */
+        #endregion
         if (!isEmoting)
         {
             return;
@@ -126,6 +190,8 @@ public class GodController : MonoBehaviour
         return godNumber;
     }
 
+    #region Legacy shoot function (outcommented)
+    /*
     public void Shoot()
     {
         Debug.Log("Lightning");
@@ -133,6 +199,8 @@ public class GodController : MonoBehaviour
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
         rb.AddForce(Vector2.down * lightningSpeed, ForceMode2D.Impulse);
     }
+    */
+    #endregion
 
     public void Emote()
     {
@@ -156,12 +224,109 @@ public class GodController : MonoBehaviour
     public void OnHeroReleasedFromCage()
     {
         inCombatMode = true;
-        if (OnCooldown)
+        readyForFire.text = "Press ↓ to Fire!";
+    }
+
+
+    private void MoveRight()
+    {
+        transform.position = transform.position + new Vector3(1f, 0f) * moveSpeed * Time.deltaTime;
+    }
+
+    private void MoveLeft()
+    {
+        transform.position = transform.position + new Vector3(-1f, 0f) * moveSpeed * Time.deltaTime;
+    }
+
+    IEnumerator LightningStrikeAttack()
+    {
+        float normalMovespeed = moveSpeed;
+        Debug.Log("Lightning");
+        canAttack = false;
+        GameObject LightningStrikeClone = Instantiate(lightningStrikePrefab, transform);
+        LightningProjectile lightningScript = LightningStrikeClone.GetComponent<LightningProjectile>();
+        GameObject telegraph = lightningScript.telegraph;
+        GameObject Lightning = lightningScript.Lightning;
+
+
+        // telegraph attack
+        moveSpeed = moveSpeed / 2;
+        Vector3 originalScale = telegraph.transform.localScale;
+        Vector3 originalPosition = telegraph.transform.position;
+        Vector3 destinationScale = new Vector3(1, 25f, 0);
+
+        float timer = 0f;
+        while (timer < ChargeTime)
         {
-            readyForFire.text = "Cooling off!";
+            lightningScript.telegraph.transform.localScale = Vector3.Lerp(originalScale, destinationScale, timer / ChargeTime);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        // actual attack
+        Lightning.SetActive(true);
+        telegraph.SetActive(false);
+        moveSpeed = 0;
+        yield return new WaitForSeconds(0.5f);
+        Destroy(LightningStrikeClone);
+        canAttack = true;
+        moveSpeed = normalMovespeed;
+    }
+
+    private void FireballAttack()
+    {
+        if (fireballCooldownTimer > 0)
+            return;
+
+        fireballCooldownTimer = fireballCooldown;
+        GameObject fireballClone = Instantiate(fireBallPrefab, transform.position, Quaternion.identity, null);
+        if (maxBounceCount > 0)
+            fireballClone.GetComponent<FireballProjectile>().bounceLimit = maxBounceCount;
+        fireballClone.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
+    }
+    private void LaserBeamAttack()
+    {
+        if (LaserProjectile.projectileCount >= 3)
+            return;
+        GameObject laserClone = Instantiate(laserBeamPrefab, transform.position, Quaternion.Euler(0, 0, 90), null);
+        laserClone.GetComponent<Rigidbody2D>().velocity = Vector2.down * laserBeamSpeed * 2;
+    }
+
+    // necessary to control cooldown and the likes
+    private void LaserUpdate()
+    {
+
+        if (LaserProjectile.projectileCount > 0 && !isRecharging)
+        {
+            StartCooldown();
             return;
         }
-        readyForFire.text = "Press ↓ to Fire!";
+        if (isRecharging)
+        {
+            laserCooldownTimer = UpdateCooldown(laserCooldownTimer);
+            if (laserCooldownTimer > 0)
+                return;
+            Debug.Log("got one ammo back");
+            LaserProjectile.projectileCount--;
+            laserCooldownTimer = laserCooldown;
+            if (LaserProjectile.projectileCount == 0)
+                isRecharging = false;
+        }
+    }
+    private void FireballUpdate()
+    {
+        fireballCooldownTimer = UpdateCooldown(fireballCooldownTimer);
+    }
+
+    private float UpdateCooldown(float cooldown)
+    {
+        return Mathf.Max(cooldown-Time.deltaTime , 0f);
+    }
+
+    private void StartCooldown()
+    {
+        laserCooldownTimer = laserCooldown;
+        isRecharging = true;
     }
 
 }

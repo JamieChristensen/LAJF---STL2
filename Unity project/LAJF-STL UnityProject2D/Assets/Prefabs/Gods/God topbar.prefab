@@ -112,13 +112,23 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c9e742465ee97624faf9cd3f3ed8759c, type: 3}
   emoteRenderer: {fileID: 5830300498710507500}
   gamesettings: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af, type: 2}
-  shoot: 0
-  lightningPrefab: {fileID: 6043162701559719940, guid: 8d103ad9c76fee74a9fc4930f5661771,
-    type: 3}
-  lightningSpeed: 25
-  firePoint: {fileID: 7840291326655741840}
-  readyForFire: {fileID: 0}
+  moveLeft: 0
+  moveRight: 0
+  moveSpeed: 10
   inCombatMode: 1
+  attackType: 0
+  shoot: 0
+  readyForFire: {fileID: 0}
+  lightningStrikePrefab: {fileID: 5941709987112808375, guid: d37ae75fb63e85343844b63374f9652c,
+    type: 3}
+  ChargeTime: 2
+  laserBeamPrefab: {fileID: 1231446402521952693, guid: f843cdbba98c44a4982f7aaca83e5dc4,
+    type: 3}
+  laserBeamSpeed: 25
+  fireBallPrefab: {fileID: 202277264708886569, guid: 2441155da98336f4ba9d60433d37ef20,
+    type: 3}
+  fireballCooldown: 360
+  maxBounceCount: 3
 --- !u!114 &2961752108973264672
 MonoBehaviour:
   m_ObjectHideFlags: 0
