@@ -38,6 +38,7 @@ public class Enemy : ScriptableObject
     public int range;
     public float attackSpeed;
     // just for testing
+    public string aOrAn;
 
     [Header("EnemyType")]
     public EnemyType enemyType;

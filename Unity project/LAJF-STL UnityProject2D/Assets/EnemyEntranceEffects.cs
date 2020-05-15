@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering.LookDev;
+using UnityEngine.Experimental.Rendering.Universal;
+using STL2;
 
 public class EnemyEntranceEffects : MonoBehaviour
 {
@@ -60,7 +62,7 @@ public class EnemyEntranceEffects : MonoBehaviour
     {
         float timer = 0;
         biasTowardEnd = Mathf.Clamp01(biasTowardEnd);
-
+        Debug.Log("Bias: " + biasTowardEnd);
         float rampUpDuration = duration * (1 - biasTowardEnd);
         float rampDownDuration = duration * biasTowardEnd;
 
@@ -77,7 +79,7 @@ public class EnemyEntranceEffects : MonoBehaviour
             }
         }
 
-        while (timer < duration)
+        while (timer < rampUpDuration)
         {
             timer += Time.deltaTime;
 
@@ -87,7 +89,7 @@ public class EnemyEntranceEffects : MonoBehaviour
                 yield return null;
             }
 
-            float lerpT = Mathf.InverseLerp(0, duration, timer);
+            float lerpT = Mathf.InverseLerp(0, rampUpDuration, timer);
 
             chromComp.intensity.Override(lerpT);
 
@@ -96,7 +98,7 @@ public class EnemyEntranceEffects : MonoBehaviour
         }
 
         timer = 0;
-        while (timer < duration)
+        while (timer < rampDownDuration)
         {
             timer += Time.deltaTime;
 
@@ -106,7 +108,7 @@ public class EnemyEntranceEffects : MonoBehaviour
                 yield return null;
             }
 
-            float lerpT = Mathf.InverseLerp(duration, 0, timer);
+            float lerpT = Mathf.InverseLerp(rampDownDuration, 0, timer);
 
             chromComp.intensity.Override(lerpT);
 

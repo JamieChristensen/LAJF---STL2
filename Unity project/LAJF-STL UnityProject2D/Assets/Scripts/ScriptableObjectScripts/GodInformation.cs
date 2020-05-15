@@ -10,6 +10,13 @@ public class GodInformation : ScriptableObject
     public Sprite topBarIcon;
 
     //TODO: Add attack-sprites/effects?
+    public enum AttackTypes
+    {
+        Lightning,
+        Fireball,
+        Laserbeam
+    }
+    public AttackTypes attackType;
     //TODO: Add emotes?
     //TODO: 
 }

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 2
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  settingsScirptableObject: {fileID: 0}
   playerVotesForChoiceIndex: {fileID: 11400000, guid: 849a5be841e0017428ed3bae6b86ded2,
     type: 2}
   choice: 1
@@ -60,6 +61,9 @@ MonoBehaviour:
   Left: 276
   Right: 275
   Return: 8
+  playerHorizontalAxis: P2Horizontal
+  selectAlt: 370
+  returnAlt: 372
 --- !u!1 &380906876807319127
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 3
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  settingsScirptableObject: {fileID: 0}
   playerVotesForChoiceIndex: {fileID: 11400000, guid: f2bc27642f2a9e1448a88e7a3c76d310,
     type: 2}
   choice: 1
@@ -120,6 +125,9 @@ MonoBehaviour:
   Left: 257
   Right: 259
   Return: 256
+  playerHorizontalAxis: P3Horizontal
+  selectAlt: 390
+  returnAlt: 392
 --- !u!1 &1675714936137165013
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 4
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
+  settingsScirptableObject: {fileID: 0}
   playerVotesForChoiceIndex: {fileID: 11400000, guid: be2dd5adbbe4be04181a22f9282eeed3,
     type: 2}
   choice: 1
@@ -352,3 +361,6 @@ MonoBehaviour:
   Left: 263
   Right: 265
   Return: 261
+  playerHorizontalAxis: P4Horizontal
+  selectAlt: 410
+  returnAlt: 412

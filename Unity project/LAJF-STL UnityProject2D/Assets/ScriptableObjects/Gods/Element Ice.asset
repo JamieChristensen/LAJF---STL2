@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0097102ce57ee1478707665900d640d, type: 3}
   m_Name: Element Ice
   m_EditorClassIdentifier: 
-  godName: Blizz
+  godName: Chillin'
   selectionIcon: {fileID: 21300000, guid: 04e040662b9de67469ce7de11c6561fd, type: 3}
   topBarIcon: {fileID: 21300000, guid: 61379f922cbd5f849a852db6d75fcea5, type: 3}
+  attackType: 1
