@@ -7,13 +7,19 @@ public class LaserProjectile : MonoBehaviour
     public int damage;
     public LayerMask layer;
 
+    public SpriteRenderer spriteRenderer;
 
-
+    public float outlineThiccness;
+    [ColorUsage(true, true)]
+    public Color outline;
 
     // Start is called before the first frame update
     void Start()
     {
         projectileCount++;
+        spriteRenderer.material.SetTexture("_MainTex", spriteRenderer.sprite.texture);
+        spriteRenderer.material.SetFloat("_Thickness", outlineThiccness);
+        spriteRenderer.material.SetColor("_Color", outline);
     }
 
     // Update is called once per frame

@@ -54,6 +54,7 @@ public class P1Controller : MonoBehaviour
     public GameObject projectile;
     public GameObject muzzlePrefab;
     public Transform firePoint;
+    private float firePointoffset; //used to offset 
 
     public float rangedAttackCooldownTimer = 0;
     public float rangedCooldownMaxTime = 0.2f;
@@ -111,6 +112,7 @@ public class P1Controller : MonoBehaviour
        
         moveDirection = Vector2.right;
         InitializePlayerStats(runtimeChoices.chosenHero); //Use the chosen stats to set baseline of this run.
+        firePointoffset = firePoint.localPosition.x; // stored to be used to flip
     }
 
     private void Start()
@@ -188,6 +190,8 @@ public class P1Controller : MonoBehaviour
         #region UpdateSprites
         bool isMovingRight = moveDirection.x > 0;
         spriteRenderer.flipX = !isMovingRight;
+        float fireDirection = Mathf.Sign(moveDirection.x);      
+        firePoint.transform.localPosition = new Vector3 (firePointoffset * fireDirection, firePoint.localPosition.y, firePoint.localPosition.z);
         shotgunImage.rectTransform.rotation = isMovingRight ? Quaternion.Euler(new Vector3(0, 0, gunKnockBackAmount)) : Quaternion.Euler(new Vector3(0, -180, gunKnockBackAmount));
         gunKnockBackAmount = Mathf.Lerp(gunKnockBackAmount, gunKnockBackTargetAmount, Time.deltaTime * 20f);
 
@@ -225,7 +229,7 @@ public class P1Controller : MonoBehaviour
         List<Projectile> projectiles = new List<Projectile>();
 
         #region BaseLineAttack
-        GameObject instance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f), Quaternion.identity);
+        GameObject instance = Instantiate(projectile, firePoint.transform.position, Quaternion.identity);
         GameObject muzzle = Instantiate(muzzlePrefab, firePoint);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
         rb.AddForce(moveDirection * projectileSpeed, ForceMode2D.Impulse);
@@ -252,7 +256,7 @@ public class P1Controller : MonoBehaviour
                 float yPositionOfShot = sign * offsetMagicNumber;
                 Vector3 shotPosition = new Vector3(0, yPositionOfShot, 0);
 
-                GameObject shotgunInstance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f) + shotPosition, Quaternion.identity);
+                GameObject shotgunInstance = Instantiate(projectile, firePoint.transform.position + (((Vector3)moveDirection) * -1) + shotPosition, Quaternion.identity);
                 Rigidbody2D rbShotgun = shotgunInstance.GetComponent<Rigidbody2D>();
                 rbShotgun.AddForce(moveDirection * projectileSpeed, ForceMode2D.Impulse);
 
