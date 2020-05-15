@@ -52,6 +52,8 @@ public class P1Controller : MonoBehaviour
     private Vector2 moveDirection;
 
     public GameObject projectile;
+    public GameObject muzzlePrefab;
+    public Transform firePoint;
 
     public float rangedAttackCooldownTimer = 0;
     public float rangedCooldownMaxTime = 0.2f;
@@ -224,12 +226,15 @@ public class P1Controller : MonoBehaviour
 
         #region BaseLineAttack
         GameObject instance = Instantiate(projectile, transform.position + (((Vector3)moveDirection) * 0.2f), Quaternion.identity);
+        GameObject muzzle = Instantiate(muzzlePrefab, firePoint);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
         rb.AddForce(moveDirection * projectileSpeed, ForceMode2D.Impulse);
 
         Projectile projInstance = instance.GetComponent<Projectile>();
         projectiles.Add(projInstance);
         projInstance.damage = (int)runtimePlayerStats.baseAttackDamage;
+        Destroy(muzzle, 0.15f);
+
         #endregion BaseLineAttack
 
         audioList.PlayWithVariablePitch(audioList.attack1);
