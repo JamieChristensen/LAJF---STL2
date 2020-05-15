@@ -46,6 +46,7 @@ MonoBehaviour:
   musicAudioMixer: {fileID: 24100000, guid: ffd7c0d863f82f4488d97658d88f5ec8, type: 2}
   masterAudioMixer: {fileID: 24100000, guid: cd1c7f898172da1478c2f8059b4934d3, type: 2}
   sfxAudioMixer: {fileID: 24100000, guid: b6ff014256744c241b6fdb931439c483, type: 2}
+  mainMenuAudioMixer: {fileID: 24100000, guid: 2d738ffd04a39d24f9e29eb33742c518, type: 2}
   musicThemes:
   - name: MainMenu
     clip: {fileID: 8300000, guid: de0de06714b26624d9592d42bfe0cd58, type: 3}

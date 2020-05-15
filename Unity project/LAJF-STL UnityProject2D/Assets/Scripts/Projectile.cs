@@ -24,8 +24,18 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;
 
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ForceField"))
+        {
+            GameObject instance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
+            Destroy(instance, 1f);
 
-
+            GameObject.Destroy(gameObject);
+        }
+        
+    }
+    
 
     public void OnCollisionEnter2D(Collision2D coll)
     {

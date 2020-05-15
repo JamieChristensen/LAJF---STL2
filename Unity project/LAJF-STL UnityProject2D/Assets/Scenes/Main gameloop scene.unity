@@ -7732,6 +7732,16 @@ PrefabInstance:
       propertyPath: gods.Array.data[2]
       value: 
       objectReference: {fileID: 1944620984}
+    - target: {fileID: 4723526808058741398, guid: fd688c84911281a4395823b11e3069e5,
+        type: 3}
+      propertyPath: player1ForceField
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723526808058741398, guid: fd688c84911281a4395823b11e3069e5,
+        type: 3}
+      propertyPath: player1ForceFieldAlt
+      value: 333
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd688c84911281a4395823b11e3069e5, type: 3}
 --- !u!4 &1245511636365716050
@@ -11843,6 +11853,22 @@ PrefabInstance:
       propertyPath: hasShotgun
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
+        type: 3}
+      propertyPath: forceField
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
+        type: 3}
+      propertyPath: forceFieldCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
+        type: 3}
+      propertyPath: forceFieldPrefab
+      value: 
+      objectReference: {fileID: 9214379539701561082, guid: a6dd56961027a6d41a07996514b2b947,
+        type: 3}
     - target: {fileID: 5892630455597672941, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
         type: 3}
       propertyPath: m_Name
@@ -12273,6 +12299,17 @@ PrefabInstance:
       propertyPath: uiText
       value: 
       objectReference: {fileID: 145831735467705808}
+    - target: {fileID: 6724332915006774443, guid: 6fbb98cd3a684ce41b1022b56e45a74a,
+        type: 3}
+      propertyPath: audioList
+      value: 
+      objectReference: {fileID: 635765123}
+    - target: {fileID: 6724332915256823283, guid: 6fbb98cd3a684ce41b1022b56e45a74a,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: b6ff014256744c241b6fdb931439c483,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fbb98cd3a684ce41b1022b56e45a74a, type: 3}
 --- !u!224 &9081438541463944544

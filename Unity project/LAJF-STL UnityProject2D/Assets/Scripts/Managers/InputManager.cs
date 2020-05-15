@@ -28,9 +28,17 @@ public class InputManager : MonoBehaviour
     public KeyCode player1AttackKey;
     private float player1Hori;
     public KeyCode player1Left, player1Right;
-    [Header("Player 1 controller controls")]
+    public KeyCode player1ForceField;
+    [Header("Player 1 conroller controls")]
     public KeyCode player1JumpAlt, player1AttackAlt;
     public KeyCode player1DashLeft, player1DashRight;
+
+
+    /* THIS IS NOT IMPLEMENTED*/
+    public KeyCode player1ForceFieldAlt;
+    /* THIS IS NOT IMPLEMENTED*/
+
+
     public string player1HoriAxisName;
 
     private bool player1Jump;
@@ -205,6 +213,15 @@ public class InputManager : MonoBehaviour
                     tapCoolingDown = true;
                     player1.ReceiveInput(P1Controller.Player1Input.DoubleTapRight, 0);
                 }
+                if (Input.GetKeyDown(player1ForceField))
+                {
+                    player1.ReceiveInput(P1Controller.Player1Input.UseForceField, 0);
+                }
+                if (Input.GetKeyUp(player1ForceField))
+                {
+                    player1.ReceiveInput(P1Controller.Player1Input.StopForceField, 0);
+                }
+
             }
         }
 
