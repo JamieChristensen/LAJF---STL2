@@ -15,7 +15,7 @@ MonoBehaviour:
   CategoryName: Runtime Choices
   Options: []
   chosenGods:
-  - {fileID: 11400000, guid: 517b2ecde8cfef14ba0b67d4f2fbc910, type: 2}
+  - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
   playerItems:
