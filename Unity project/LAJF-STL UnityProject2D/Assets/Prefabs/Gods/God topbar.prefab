@@ -115,6 +115,7 @@ MonoBehaviour:
   moveSpeed: 10
   horizontalAxis: 
   shoot: 0
+  altShoot: 0
   inCombatMode: 1
   minIntensity: 1
   maxIntensity: 4
@@ -124,12 +125,12 @@ MonoBehaviour:
   chargeTime: 2
   laserBeamPrefab: {fileID: 1231446402521952693, guid: f843cdbba98c44a4982f7aaca83e5dc4,
     type: 3}
-  laserCooldown: 0
-  laserAmmo: 0
+  laserCooldown: 4
+  laserAmmo: 3
   laserBeamSpeed: 25
-  fireBallPrefab: {fileID: 202277264708886569, guid: 2441155da98336f4ba9d60433d37ef20,
+  fireBallPrefab: {fileID: 2294092493229928026, guid: 310dd227e23d67b488f047f00012c808,
     type: 3}
-  fireballCooldown: 360
+  fireballCooldown: 6
   maxBounceCount: 3
 --- !u!114 &2961752108973264672
 MonoBehaviour:

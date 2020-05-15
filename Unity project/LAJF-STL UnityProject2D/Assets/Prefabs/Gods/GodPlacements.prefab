@@ -577,6 +577,21 @@ PrefabInstance:
       propertyPath: altShoot
       value: 107
       objectReference: {fileID: 0}
+    - target: {fileID: 5531318744926372242, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: laserCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531318744926372242, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: laserAmmo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531318744926372242, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: fireballCooldown
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5743991128405102087, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
         type: 3}
       propertyPath: m_Sprite
@@ -720,6 +735,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2294092493229928026, guid: 310dd227e23d67b488f047f00012c808,
         type: 3}
+    - target: {fileID: 5531318744926372242, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
+        type: 3}
+      propertyPath: fireballCooldown
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5743991128405102087, guid: 125fc5d3e4568c246bd6c3fa1ac6b513,
         type: 3}
       propertyPath: m_Sprite

@@ -16,13 +16,15 @@ public class AudioList : MonoBehaviour
          deathEnemy,
          deathHero,
          explosion,
+         forceFieldBegin,
+         forceFieldEnd,
+         forceFieldWhileUp,
          hurt,
          jump,
          land,
          lightningStrike,
          lightningZap,
          loseFx,
-         narratorRead,
          narratorHit,
          narratorVoiceLines,
          select,
@@ -30,7 +32,7 @@ public class AudioList : MonoBehaviour
          textToSpeechSource,
          winFx;
 
-    public AudioSource[] narratorVoiceFillers;
+    public AudioSource[] narratorVoiceFillers, narratorEnter;
 
     public void PlayWithVariablePitch(AudioSource audioSource)
     {
@@ -62,6 +64,30 @@ public class AudioList : MonoBehaviour
             textToSpeechSource.Stop();
         }
     }
+
+    public void OnForcefieldToggle(bool active)
+    {
+        switch (active)
+        {
+            case true:
+                forceFieldBegin.Play();
+                forceFieldWhileUp.Play();
+                break;
+
+            case false:
+                PlayWithVariablePitch(forceFieldEnd);
+                if (forceFieldBegin.isPlaying)
+                {
+                    forceFieldBegin.Stop();
+                }
+                if (forceFieldWhileUp.isPlaying)
+                {
+                    forceFieldWhileUp.Stop();
+                }
+                break;
+        }
+    }
+
 
 
     #region NarratorVoiceLines

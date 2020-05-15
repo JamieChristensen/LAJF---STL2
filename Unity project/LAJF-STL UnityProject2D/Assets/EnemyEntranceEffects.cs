@@ -68,7 +68,7 @@ public class EnemyEntranceEffects : MonoBehaviour
 
 
         ChromaticAberration chromComp = null;
-
+        Debug.Log(volumeProfile.ToString());
         foreach (VolumeComponent component in volumeProfile.components)
         {
             if (component.GetType() == typeof(ChromaticAberration))
