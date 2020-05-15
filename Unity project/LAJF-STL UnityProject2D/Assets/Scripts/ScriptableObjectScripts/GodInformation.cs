@@ -9,6 +9,8 @@ public class GodInformation : ScriptableObject
     public string description;
     public Sprite selectionIcon;
     public Sprite topBarIcon;
+    public Sprite whenShooting;
+    public Sprite whenCharging;
 
     //TODO: Add attack-sprites/effects?
     public enum AttackTypes

@@ -250,6 +250,7 @@ public class GodController : MonoBehaviour
 
         while (timer < chargeTime && chargeTime != 0)
         {
+            spriteRenderer.sprite = godInfo.whenCharging;
             telegraph.intensity = Map(timer,0,chargeTime, minIntensity, maxIntensity);
             // Debug.Log(timer + " intensity: " + telegraph.intensity);
             timer += Time.deltaTime;
@@ -258,12 +259,14 @@ public class GodController : MonoBehaviour
 
         // actual attack
         telegraph.gameObject.SetActive(false);
+        spriteRenderer.sprite = godInfo.whenShooting;
         Lightning.SetActive(true);
         entranceEffects.StartChromaticAberration(0.5f, 1f);
         cameraShake.StartShake(cameraShake.shakePropertyOnMinionEnter);
         moveSpeed = 0;
         yield return new WaitForSeconds(0.5f);
         Destroy(LightningStrikeClone);
+        spriteRenderer.sprite = godInfo.topBarIcon;
         canAttack = true;
         moveSpeed = normalMovespeed;
     }
