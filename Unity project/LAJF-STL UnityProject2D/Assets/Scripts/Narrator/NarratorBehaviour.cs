@@ -111,16 +111,15 @@ public class NarratorBehaviour : MonoBehaviour
         yield return StartCoroutine(textToSpeech.SynthesizeText(text, this));
         
         RandomizePosition();
-
-        audioList.textToSpeechSource.clip = clearThroat;
-        audioList.textToSpeechSource.Play();
+        int randomSource = UnityEngine.Random.Range(0, 3);
+        audioList.narratorEnter[randomSource].Play();
 
         isEnteringScene = true;
         isExitingScene = false;
 
         // wait for narrator to clear his throat 
-        yield return new WaitForSeconds(audioList.textToSpeechSource.clip.length);
-
+        yield return new WaitForSeconds(audioList.narratorEnter[randomSource].clip.length);
+        
         // show text on screen 
         if (textToSpeechClip != null)
         {

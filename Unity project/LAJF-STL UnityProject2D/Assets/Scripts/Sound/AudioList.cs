@@ -25,7 +25,6 @@ public class AudioList : MonoBehaviour
          lightningStrike,
          lightningZap,
          loseFx,
-         narratorRead,
          narratorHit,
          narratorVoiceLines,
          select,
@@ -33,7 +32,7 @@ public class AudioList : MonoBehaviour
          textToSpeechSource,
          winFx;
 
-    public AudioSource[] narratorVoiceFillers;
+    public AudioSource[] narratorVoiceFillers, narratorEnter;
 
     public void PlayWithVariablePitch(AudioSource audioSource)
     {

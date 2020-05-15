@@ -74,6 +74,7 @@ public class P1Controller : MonoBehaviour
     private float dropGravityModifier, baseGravity;
     [SerializeField]
     private bool isHoldingJump;
+    bool isMovingRight;
 
     private bool dashingLeft, dashingRight;
     private float dashTimer;
@@ -108,6 +109,7 @@ public class P1Controller : MonoBehaviour
     private bool forceFieldIsUp = false;
     [SerializeField]
     private float timeUntilForceFieldIsReady = 0, forceFieldCooldown;
+    public GameObject forceFieldPrefab, forcefieldInstance;
 
     #endregion INSPECTOR
 
@@ -199,7 +201,7 @@ public class P1Controller : MonoBehaviour
 
 
         #region UpdateSprites
-        bool isMovingRight = moveDirection.x > 0;
+        isMovingRight = moveDirection.x > 0;
         spriteRenderer.flipX = !isMovingRight;
         shotgunImage.rectTransform.rotation = isMovingRight ? Quaternion.Euler(new Vector3(0, 0, gunKnockBackAmount)) : Quaternion.Euler(new Vector3(0, -180, gunKnockBackAmount));
         gunKnockBackAmount = Mathf.Lerp(gunKnockBackAmount, gunKnockBackTargetAmount, Time.deltaTime * 20f);
@@ -231,6 +233,7 @@ public class P1Controller : MonoBehaviour
                 Debug.Log("ForceField Is Up!");
                 audioList.forceFieldBegin.Play();
                 audioList.OnForcefieldToggle(true);
+                StartCoroutine(ToggleForceFieldAnimation(true));
                 break;
 
             case false:
@@ -238,9 +241,31 @@ public class P1Controller : MonoBehaviour
                 forceFieldIsUp = false;
                 Debug.Log("ForceField Is down!");
                 audioList.OnForcefieldToggle(false);
+                StartCoroutine(ToggleForceFieldAnimation(false));
                 break;
+        }   
+    }
+
+    IEnumerator ToggleForceFieldAnimation(bool active)
+    {
+        switch (active)
+        {
+            case true:
+              forcefieldInstance = Instantiate(forceFieldPrefab, transform.position + (((Vector3)moveDirection) * 5f), Quaternion.identity);
+                if (!isMovingRight)
+                {
+                    Quaternion flipped = new Quaternion(-1*forcefieldInstance.transform.rotation.x, forcefieldInstance.transform.rotation.y, forcefieldInstance.transform.rotation.z,1);
+                    forcefieldInstance.transform.rotation = flipped;
+                }
+                break;
+            case false:
+                Destroy(forcefieldInstance);
+                break;
+
+
         }
         
+        yield return null;
     }
 
     public void RangedAttack()
