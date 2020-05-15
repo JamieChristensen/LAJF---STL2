@@ -11832,43 +11832,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
-        type: 3}
-      propertyPath: matWhite
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
-        type: 3}
-      propertyPath: playerSprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
-        type: 3}
-      propertyPath: defaultSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 599710dad8f166e4fa7b9dbfa14a1454,
-        type: 3}
-    - target: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
-        type: 3}
-      propertyPath: hasShotgun
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
-        type: 3}
-      propertyPath: forceField
-      value: 101
-      objectReference: {fileID: 0}
-    - target: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
-        type: 3}
-      propertyPath: forceFieldCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5892630455597672939, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
-        type: 3}
-      propertyPath: forceFieldPrefab
-      value: 
-      objectReference: {fileID: 9214379539701561082, guid: a6dd56961027a6d41a07996514b2b947,
-        type: 3}
     - target: {fileID: 5892630455597672941, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
         type: 3}
       propertyPath: m_Name

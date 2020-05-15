@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TwoForOne
   m_EditorClassIdentifier: 
   name: Two For One
-  description: 
+  description: 'Their personality is not the only split to worry about! '
   health: 500
   speed: 6
   sprite: {fileID: 21300000, guid: e5cce4d986f4c7240894f4a27414e697, type: 3}
@@ -26,4 +26,5 @@ MonoBehaviour:
   attackType: range
   range: 40
   attackSpeed: 1.25
+  aOrAn: 
   enemyType: 3

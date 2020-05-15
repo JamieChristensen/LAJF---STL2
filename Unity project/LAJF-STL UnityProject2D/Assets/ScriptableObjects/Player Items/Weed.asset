@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Weed
   m_EditorClassIdentifier: 
   itemName: Weed
-  description: 
+  description: Healthy? Perhaps not... But it will grant more health!
   itemSprite: {fileID: 21300000, guid: 9abe691fbb217234fbc9a30e23db043b, type: 3}
   healthModifier: 50
   speedModifier: 0
   damageModifier: 0
+  weaponType: 0

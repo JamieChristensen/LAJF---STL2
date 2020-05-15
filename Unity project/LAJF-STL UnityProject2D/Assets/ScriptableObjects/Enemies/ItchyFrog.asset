@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ItchyFrog
   m_EditorClassIdentifier: 
   name: Itchy Frog
-  description: 
+  description: Just a mad scratching dance or crazy ass reflexes? No one knows!
   health: 500
   speed: 6
   sprite: {fileID: 21300000, guid: f5053905e24192d40b1860615113c38a, type: 3}

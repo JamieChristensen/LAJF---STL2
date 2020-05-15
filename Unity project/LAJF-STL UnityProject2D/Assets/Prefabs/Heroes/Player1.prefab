@@ -847,11 +847,6 @@ MonoBehaviour:
   runtimePlayerStats: {fileID: 11400000, guid: 761871b870a16774fafc7fbe839f1f10, type: 2}
   playerHPEvent: {fileID: 11400000, guid: 68ceaca7cb81c1246a5d78560f4295cb, type: 2}
   rb: {fileID: 5892630455597672942}
-  left: 97
-  right: 100
-  jump: 32
-  attackRanged: 106
-  attackMelee: 104
   defaultSprite: {fileID: 21300000, guid: 599710dad8f166e4fa7b9dbfa14a1454, type: 3}
   playerSprite: {fileID: 0}
   matWhite: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -885,6 +880,12 @@ MonoBehaviour:
   hasExplodingShots: 0
   shotgunImage: {fileID: 304472617576270937}
   explosionEvent: {fileID: 11400000, guid: ba259034f5adc28458c5f96fd00dd823, type: 2}
+  forceFieldIsUp: 0
+  timeUntilForceFieldIsReady: 0
+  forceFieldCooldown: 1
+  forceFieldPrefab: {fileID: 9214379539701561082, guid: a6dd56961027a6d41a07996514b2b947,
+    type: 3}
+  forcefieldInstance: {fileID: 0}
 --- !u!50 &5892630455597672942
 Rigidbody2D:
   serializedVersion: 4

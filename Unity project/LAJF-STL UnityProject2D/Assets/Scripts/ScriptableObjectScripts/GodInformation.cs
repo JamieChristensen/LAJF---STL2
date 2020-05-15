@@ -6,6 +6,7 @@ using UnityEngine;
 public class GodInformation : ScriptableObject
 {
     public string godName;
+    public string description;
     public Sprite selectionIcon;
     public Sprite topBarIcon;
 

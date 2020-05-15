@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Glasses
   m_EditorClassIdentifier: 
   itemName: Glasses
-  description: 
+  description: Your bullets will seem more ostentatious - oh, and they also deal
+    more damage!
   itemSprite: {fileID: 21300000, guid: 807b1182a6cc3874cbb4ccf44fc92280, type: 3}
   healthModifier: 0
   speedModifier: 0
   damageModifier: 10
+  weaponType: 0
