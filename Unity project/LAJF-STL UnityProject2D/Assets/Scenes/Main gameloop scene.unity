@@ -7807,7 +7807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39607844}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8256,6 +8256,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084571441664583385, guid: d36c49ed10fe60c4db762c1dd971e38e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084571441664583385, guid: d36c49ed10fe60c4db762c1dd971e38e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -21.5
       objectReference: {fileID: 0}
     - target: {fileID: 6398260786174689637, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}

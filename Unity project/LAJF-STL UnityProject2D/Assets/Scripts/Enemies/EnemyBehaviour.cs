@@ -263,7 +263,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
                     {
                         foreach (EnemyModifier modifier in modifiers)
                         {
-                            Vector2 velocity = new Vector2(14 * Mathf.Sign(target.transform.position.x - transform.position.x), 14);
+                            Vector2 velocity = new Vector2(12 * Mathf.Sign(target.transform.position.x - transform.position.x), 14);
                             if (modifier.modifierType == EnemyModifier.ModifierType.ShoulderCannon)
                             {
                                 modifiers[0].FireShoulderCannon(velocity, transform.position, 10);
