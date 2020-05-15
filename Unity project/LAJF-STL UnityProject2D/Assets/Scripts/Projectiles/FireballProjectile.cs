@@ -8,7 +8,7 @@ public class FireballProjectile : MonoBehaviour
     public LayerMask layer;
     public int damage;
     public Rigidbody2D rb2;
-    public GameObject fireballParent; 
+    public GameObject fireballParent;
 
     private float initalBounce = 10f;
     private float minBounce = 10f;
@@ -16,10 +16,14 @@ public class FireballProjectile : MonoBehaviour
     public int bounceLimit = 3;
     public Vector3 rotate;
 
+    private CameraShake cameraShake;
+
+    private float magnitudeOfScreenshakeOnWallMultiplier = 0.07f;
 
     // Start is called before the first frame update
     void Start()
     {
+        cameraShake = FindObjectOfType<CameraShake>();
         rotate = new Vector3(0, 0, Random.Range(1, 3));
     }
 
@@ -50,7 +54,14 @@ public class FireballProjectile : MonoBehaviour
         {
             collided.GetComponent<P1Controller>().TakeDamage(damage);
         }
-        //if (collided.CompareTag("Ground"))
+        if (collided.CompareTag("Ground") || collided.CompareTag("Wall"))
+        {
+            float angle = Mathf.Atan2(rb2.velocity.y, rb2.velocity.x);
+            float magnitude = Mathf.Clamp(rb2.velocity.magnitude, 1, 10);
+
+            //0.3f worked fine as a "strength" value for properties.
+            cameraShake.StartShake(new CameraShake.Properties(angle, magnitudeOfScreenshakeOnWallMultiplier*magnitude, 20, 0.3f, 0, 0.6f, 0));
+        }
 
         // needs to be moved
     }

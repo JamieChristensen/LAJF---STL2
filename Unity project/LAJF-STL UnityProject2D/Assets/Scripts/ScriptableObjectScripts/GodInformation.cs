@@ -8,6 +8,8 @@ public class GodInformation : ScriptableObject
     public string godName;
     public Sprite selectionIcon;
     public Sprite topBarIcon;
+    public Sprite whenShooting;
+    public Sprite whenCharging;
 
     //TODO: Add attack-sprites/effects?
     public enum AttackTypes
