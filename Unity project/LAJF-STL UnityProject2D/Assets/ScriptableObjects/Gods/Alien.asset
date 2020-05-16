@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Alien
   m_EditorClassIdentifier: 
   godName: Definitely a God
+  description: Obey and mankind may live!
   selectionIcon: {fileID: 21300000, guid: 5670220451130ac4c9172ff5045d1342, type: 3}
   topBarIcon: {fileID: 21300000, guid: 5670220451130ac4c9172ff5045d1342, type: 3}
   whenShooting: {fileID: 21300000, guid: 0468afe2b1c179642bb7ab95c3e6ef6e, type: 3}

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Booster
   m_EditorClassIdentifier: 
   itemName: Booster
-  description: 
+  description: Ignore its content... One will become faster simply by carrying this!
   itemSprite: {fileID: 21300000, guid: 3d4e807092d8cab4796f858eaafb4b9b, type: 3}
   healthModifier: 0
   speedModifier: 3
   damageModifier: 0
+  weaponType: 0
