@@ -23,11 +23,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3517c50eeea57b54880e316331a20839, type: 2}
   baselineItem: {fileID: 11400000, guid: 3517c50eeea57b54880e316331a20839, type: 2}
   enemies:
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
   - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
   - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
   enemyModifiers:
-  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
-  - {fileID: 11400000, guid: b13a26218995e63468b9a96c3a57c10b, type: 2}
+  - {fileID: 11400000, guid: d7346273714b6d142b7f5a47ef8f9b3a, type: 2}
+  - {fileID: 11400000, guid: d7346273714b6d142b7f5a47ef8f9b3a, type: 2}
+  - {fileID: 11400000, guid: d7346273714b6d142b7f5a47ef8f9b3a, type: 2}
+  - {fileID: 11400000, guid: d7346273714b6d142b7f5a47ef8f9b3a, type: 2}
+  - {fileID: 11400000, guid: d7346273714b6d142b7f5a47ef8f9b3a, type: 2}
+  - {fileID: 11400000, guid: d7346273714b6d142b7f5a47ef8f9b3a, type: 2}
+  - {fileID: 11400000, guid: d7346273714b6d142b7f5a47ef8f9b3a, type: 2}
   chosenEnvironments:
   - environmentName: Empire3
     theme: Empire
@@ -60,7 +70,7 @@ MonoBehaviour:
   firstItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
     type: 3}
   secondOpponent:
-    minion: {fileID: 6271494558876136031, guid: ad41a8d43eab452448bc40561b6bfae5,
+    minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
       type: 3}
     modifier: {fileID: 0}
   secondItem: {fileID: 4805518738470751890, guid: 19819d60ef550904487d9640c79f4884,
