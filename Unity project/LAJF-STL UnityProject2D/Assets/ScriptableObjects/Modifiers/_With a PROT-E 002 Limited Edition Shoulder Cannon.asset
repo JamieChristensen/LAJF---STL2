@@ -19,7 +19,7 @@ MonoBehaviour:
   shoulderCannonVisual: {fileID: 21300000, guid: 56c13ad966874a14c83d19d69ae18d00,
     type: 3}
   damage: 10
-  projectilePrefab: {fileID: 2868581623662483876, guid: 006aa99be2ec48d43976ba91e9ce04c1,
+  projectilePrefab: {fileID: 8401468421686923098, guid: ca2a1245b31cf8a469f4d5b94be9267f,
     type: 3}
   holyOutline: {r: 0, g: 0, b: 0, a: 0}
   holyHightlight: {fileID: 0}
