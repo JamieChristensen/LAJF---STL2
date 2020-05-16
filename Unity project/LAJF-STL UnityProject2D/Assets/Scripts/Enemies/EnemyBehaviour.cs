@@ -5,9 +5,15 @@ using System.Linq;
 using UnityEngine;
 using STL2.Events;
 using TMPro;
+using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour, IPausable
 {
+    // Floating Text
+    public GameObject floatingTextPrefab, floatingCanvasPrefab;
+    public GameObject floatingCanvasInstance;
+    public List<GameObject> floatingTextInstances;
+
     private CameraShake cameraShaker;
     private GameManager gameManager;
     public Rigidbody2D rb2;
@@ -309,7 +315,71 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         {
             audioList.PlayWithVariablePitch(audioList.hurt);
         }
+
+        if (floatingTextPrefab != null)
+        {
+            ShowFloatingText(damage); // Trigger floating text
+            Debug.Log("Should trigger text");
+        }
     }
+    #region FloatingText
+
+    public void ShowFloatingText(int damage)
+    {
+
+        if (floatingCanvasInstance == null && floatingCanvasPrefab != null) // if the canvas is not yet instantiated
+        {
+            floatingCanvasInstance = Instantiate(floatingCanvasPrefab, transform.position, Quaternion.identity, transform); // Instantiate the canvas (parent) for text
+            floatingCanvasInstance.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace; // It's a worldspace canvas
+            floatingCanvasInstance.GetComponent<Canvas>().worldCamera = FindObjectOfType<Camera>(); // find the camera
+            floatingCanvasInstance.GetComponent<RectTransform>().localScale = new Vector3(0.05f, 0.05f, 0.05f); // scale the canvas down
+        }
+        if (floatingTextInstances == null)
+        {
+            floatingTextInstances = new List<GameObject>();
+        }
+        float randomX = UnityEngine.Random.Range(-3f, 3f); // Random position.x
+        float randomY = UnityEngine.Random.Range(-1f, 3f); // Random position.y
+        Vector3 randomVector = new Vector3(randomX, randomY, 0); // Random combined position
+        floatingTextInstances.Add(Instantiate(floatingTextPrefab, floatingCanvasInstance.transform.position + randomVector, Quaternion.identity, floatingCanvasInstance.transform)); // instantiate text object and add it to the list of all text objects
+        StartCoroutine(FloatingTextEffects(floatingTextInstances[floatingTextInstances.Count - 1], damage.ToString() /*+ "!"*/)); // do some thing with the text
+    }
+
+    public IEnumerator FloatingTextEffects(GameObject floatingTextInstance, string text) // text effects - which text object does it concern and what should it contain? 
+    {
+        floatingTextInstance.GetComponent<Text>().text = text; // the back text (orange) is set
+        floatingTextInstance.GetComponentInChildren<Text>().text = text; // the front text (red) is set
+        Vector3 currentSize = Vector3.zero; // start the text size at 0
+        float randomSizeScale = UnityEngine.Random.Range(0.5f, 1.1f); // random sizes!
+        Vector3 targetSize = new Vector3(randomSizeScale, randomSizeScale, 1); // set the target size to the random one from above
+        RectTransform textRectTransform = floatingTextInstances[floatingTextInstances.Count - 1].GetComponent<RectTransform>();
+        float timer = 0;
+        float timeToLerp = 0.3f;
+        //scaling up
+        while (timer < timeToLerp)
+        {
+            timer += Time.deltaTime;
+            currentSize = Vector3.Lerp(currentSize, targetSize, 2*Time.deltaTime/timeToLerp);
+            textRectTransform.localScale = currentSize;
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.3f); // let it live for a little while
+        currentSize = targetSize;
+        targetSize = Vector3.zero;
+        timer = 0;
+        //scaling down
+        while (timer < timeToLerp)
+        {
+            timer += Time.deltaTime;
+            currentSize = Vector3.Lerp(currentSize, targetSize, 2*Time.deltaTime / timeToLerp);
+            textRectTransform.localScale = currentSize;
+            yield return null;
+        }
+
+        Destroy(floatingTextInstance); // destroy the text object
+    }
+
+    #endregion FloatingText
 
     public void OnPlayerDamaged(int PlayerHealth)
     {
