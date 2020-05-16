@@ -29,7 +29,16 @@ public class Projectile : MonoBehaviour
     private Transform spriteTransform;
     private Rigidbody2D rb;
 
+    [ColorUsage(true, true)]
+    public Color borderColor;
 
+    void Start()
+    {
+        spriteTransform.GetComponent<SpriteRenderer>().material.SetColor("_Color", borderColor);
+        particles.Stop();
+        particles.Clear();
+        rb = GetComponent<Rigidbody2D>();
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("ForceField"))
@@ -38,7 +47,7 @@ public class Projectile : MonoBehaviour
             Destroy(instance, 1f);
 
             ShowFloatingText(); // Trigger floating text
-            
+
             GameObject blockInstance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
             Destroy(blockInstance, 1f);
             GameObject.Destroy(gameObject);
@@ -180,17 +189,11 @@ public class Projectile : MonoBehaviour
         GameObject.Destroy(gameObject);
     }
 
-    public void Start()
-    {
-        particles.Stop();
-        particles.Clear();
-        rb = GetComponent<Rigidbody2D>();
-    }
     public void Update()
     {
         if (rb.velocity.x < 0)
         {
-            spriteTransform.rotation = Quaternion.Euler(0,180,0);
+            spriteTransform.rotation = Quaternion.Euler(0, 180, 0);
         }
         if (timer >= maxTime)
         {
