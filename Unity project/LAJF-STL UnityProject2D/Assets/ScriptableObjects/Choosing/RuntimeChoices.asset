@@ -18,34 +18,45 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 517b2ecde8cfef14ba0b67d4f2fbc910, type: 2}
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
   - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
-  playerItems: []
+  playerItems:
+  - {fileID: 11400000, guid: 5966a2f15e04c4a4997eec965b58ecc2, type: 2}
+  - {fileID: 11400000, guid: c1c0983851958c34e8b4d3a9d9b3e3d5, type: 2}
+  - {fileID: 11400000, guid: e908707d1505a324085395952b68f7c3, type: 2}
   baselineItem: {fileID: 11400000, guid: 970a9a44848f5a64e8345d352a5f9052, type: 2}
   enemies:
+  - {fileID: 11400000, guid: 986eb46723121814da9c91572d6d4703, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
   - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
   enemyModifiers:
+  - {fileID: 11400000, guid: b13a26218995e63468b9a96c3a57c10b, type: 2}
+  - {fileID: 11400000, guid: b13a26218995e63468b9a96c3a57c10b, type: 2}
+  - {fileID: 11400000, guid: d7346273714b6d142b7f5a47ef8f9b3a, type: 2}
+  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
   - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
   chosenEnvironments:
-  - environmentName: Empire4
-    theme: Empire
-    environmentSprite: {fileID: 21300000, guid: 0f8cbc00539308040a221e3e1343b8b7,
-      type: 3}
-    environmentIndex: 26
-  - environmentName: Empire3
-    theme: Empire
-    environmentSprite: {fileID: 21300000, guid: 5039d6b154cff8749b736f3a298e42fd,
-      type: 3}
-    environmentIndex: 25
   - environmentName: Empire1
     theme: Empire
     environmentSprite: {fileID: 21300000, guid: 55199327877ddb34fa852ea79427257f,
       type: 3}
     environmentIndex: 23
+  - environmentName: Empire3
+    theme: Empire
+    environmentSprite: {fileID: 21300000, guid: 5039d6b154cff8749b736f3a298e42fd,
+      type: 3}
+    environmentIndex: 25
+  - environmentName: Empire4
+    theme: Empire
+    environmentSprite: {fileID: 21300000, guid: 0f8cbc00539308040a221e3e1343b8b7,
+      type: 3}
+    environmentIndex: 26
   - environmentName: Empire2
     theme: Empire
     environmentSprite: {fileID: 21300000, guid: c82d65ce1f0533a4db527eb69516ba32,
       type: 3}
     environmentIndex: 24
-  runTimeLoopCount: 1
+  runTimeLoopCount: 4
   chosenHero: {fileID: 11400000, guid: a22363f69a855974e9844ae770f88311, type: 2}
   character: {fileID: 0}
   theme: {fileID: 0}
@@ -53,21 +64,21 @@ MonoBehaviour:
     minion: {fileID: 1234957342701670930, guid: 370fc784448474943b53bb2504194280,
       type: 3}
     modifier: {fileID: 0}
-  firstItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
+  firstItem: {fileID: 4805518738470751890, guid: 19819d60ef550904487d9640c79f4884,
     type: 3}
   secondOpponent:
-    minion: {fileID: 1234957342701670930, guid: 370fc784448474943b53bb2504194280,
+    minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
       type: 3}
     modifier: {fileID: 0}
   secondItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
     type: 3}
   thirdOpponent:
-    minion: {fileID: 6271494558876136031, guid: ad41a8d43eab452448bc40561b6bfae5,
+    minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
       type: 3}
     modifier: {fileID: 0}
   thirdItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
     type: 3}
   fourthOpponent:
-    minion: {fileID: 1234957342701670930, guid: 370fc784448474943b53bb2504194280,
+    minion: {fileID: 3270702178665441689, guid: 49212da560df253439ab8327457860b3,
       type: 3}
     modifier: {fileID: 0}

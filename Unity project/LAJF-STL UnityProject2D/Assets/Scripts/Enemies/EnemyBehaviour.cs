@@ -67,6 +67,9 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
     public float desiredDistance = 30f;
 
+    [NonSerialized]
+    public bool isSplitted = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -178,6 +181,11 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
         bullet.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed, ForceMode2D.Impulse);
         bullet.GetComponent<Projectile>().damage = agent.damage;
+        if (isSplitted)
+        {
+            bullet.GetComponent<Projectile>().damage = agent.damage / 2;
+        }
+
     }
 
     protected virtual void Die()
@@ -359,7 +367,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         while (timer < timeToLerp)
         {
             timer += Time.deltaTime;
-            currentSize = Vector3.Lerp(currentSize, targetSize, 2*Time.deltaTime/timeToLerp);
+            currentSize = Vector3.Lerp(currentSize, targetSize, 2 * Time.deltaTime / timeToLerp);
             textRectTransform.localScale = currentSize;
             yield return null;
         }
@@ -371,7 +379,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         while (timer < timeToLerp)
         {
             timer += Time.deltaTime;
-            currentSize = Vector3.Lerp(currentSize, targetSize, 2*Time.deltaTime / timeToLerp);
+            currentSize = Vector3.Lerp(currentSize, targetSize, 2 * Time.deltaTime / timeToLerp);
             textRectTransform.localScale = currentSize;
             yield return null;
         }

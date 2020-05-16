@@ -272,6 +272,7 @@ public class GodController : MonoBehaviour
         GameObject go = Instantiate(lightningImpactParticles, transformToInstantiateParticlesAt.position, Quaternion.identity);
         Destroy(go, 4f);
         projectileAudio.clip = lightningThrash; 
+        projectileAudio.time = 0.2f;
         projectileAudio.Play();
 
         moveSpeed = 0;
