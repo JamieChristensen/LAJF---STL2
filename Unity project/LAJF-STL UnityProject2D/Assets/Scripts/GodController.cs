@@ -128,6 +128,7 @@ public class GodController : MonoBehaviour
     {
         #region Movement
         float direction = Input.GetAxis(horizontalAxis);
+        Debug.Log("Direction Input: " + direction);
         transform.position = transform.position + new Vector3(direction * moveSpeed * Time.deltaTime, 0, 0);
         #endregion
 
