@@ -656,7 +656,7 @@ MonoBehaviour:
     type: 3}
   desiredDistance: 30
   jumpFrequency: 0.02
-  jumpHeight: 10
+  jumpHeight: 800
   moveCap: 8
   dodgeCooldown: 100
   dodgeTimer: 0
@@ -666,6 +666,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 256
+  jumping: 0
+  jumpTimer: 0
+  upwardsJumpTime: 1
 --- !u!1 &2409340943155953353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,6 +1397,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DissolveParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019131307137578159, guid: f3a2f64a8a4aded4f8f6856ef535542d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8121289797832009173, guid: f3a2f64a8a4aded4f8f6856ef535542d,
         type: 3}
