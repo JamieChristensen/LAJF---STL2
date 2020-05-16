@@ -22,6 +22,11 @@ public class P1Controller : MonoBehaviour
     };
 
     #region INSPECTOR
+    // Floating Text
+    public GameObject floatingTextPrefab; //, floatingCanvasPrefab;
+    public GameObject floatingCanvasParent;
+    public GameObject floatingTextInstance;
+
     public P1Stats runtimePlayerStats;
     public IntEvent playerHPEvent;
 
@@ -207,8 +212,8 @@ public class P1Controller : MonoBehaviour
         #region UpdateSprites
         isMovingRight = moveDirection.x > 0;
         spriteRenderer.flipX = !isMovingRight;
-        float fireDirection = Mathf.Sign(moveDirection.x);      
-        firePoint.transform.localPosition = new Vector3 (firePointoffset * fireDirection, firePoint.localPosition.y, firePoint.localPosition.z);
+        float fireDirection = Mathf.Sign(moveDirection.x);
+        firePoint.transform.localPosition = new Vector3(firePointoffset * fireDirection, firePoint.localPosition.y, firePoint.localPosition.z);
         shotgunImage.rectTransform.rotation = isMovingRight ? Quaternion.Euler(new Vector3(0, 0, gunKnockBackAmount)) : Quaternion.Euler(new Vector3(0, -180, gunKnockBackAmount));
         gunKnockBackAmount = Mathf.Lerp(gunKnockBackAmount, gunKnockBackTargetAmount, Time.deltaTime * 20f);
 
@@ -249,7 +254,7 @@ public class P1Controller : MonoBehaviour
                 audioList.OnForcefieldToggle(false);
                 StartCoroutine(ToggleForceFieldAnimation(false));
                 break;
-        }   
+        }
     }
 
     IEnumerator ToggleForceFieldAnimation(bool active)
@@ -257,10 +262,10 @@ public class P1Controller : MonoBehaviour
         switch (active)
         {
             case true:
-              forcefieldInstance = Instantiate(forceFieldPrefab, transform.position + (((Vector3)moveDirection) * 5f), Quaternion.identity);
+                forcefieldInstance = Instantiate(forceFieldPrefab, transform.position + (((Vector3)moveDirection) * 5f), Quaternion.identity);
                 if (!isMovingRight)
                 {
-                    Quaternion flipped = new Quaternion(-1*forcefieldInstance.transform.rotation.x, forcefieldInstance.transform.rotation.y, forcefieldInstance.transform.rotation.z,1);
+                    Quaternion flipped = new Quaternion(-1 * forcefieldInstance.transform.rotation.x, forcefieldInstance.transform.rotation.y, forcefieldInstance.transform.rotation.z, 1);
                     forcefieldInstance.transform.rotation = flipped;
                 }
                 break;
@@ -271,7 +276,7 @@ public class P1Controller : MonoBehaviour
 
 
         }
-        
+
         yield return null;
     }
 
@@ -369,7 +374,33 @@ public class P1Controller : MonoBehaviour
             DeathAnimation();
             audioList.PlayWithVariablePitch(audioList.deathHero);
         }
+
+        if (floatingTextPrefab != null)
+        {
+            ShowFloatingText(damage); // Trigger floating text
+            Debug.Log("Should trigger text");
+        }
+
     }
+
+    #region FloatingText
+
+    public void ShowFloatingText(int damage)
+    {
+        if (floatingCanvasParent == null) // if the canvas is not yet instantiated
+        {
+            floatingCanvasParent = GameObject.Find("FloatingCanvas"); // find the canvas (parent) for text
+        }
+
+        float randomX = UnityEngine.Random.Range(-4.5f, 4.5f); // Random position.x
+        float randomY = UnityEngine.Random.Range(-1.5f, 4.5f); // Random position.y
+        Vector3 randomVector = new Vector3(randomX, randomY, 0); // Random combined position
+        floatingTextInstance = Instantiate(floatingTextPrefab, transform.position + randomVector, Quaternion.identity, floatingCanvasParent.transform); // instantiate text object
+        
+        floatingTextInstance.GetComponent<FloatingTextEffects>().setText(damage.ToString()); //Sets the text of the text object - the rest will happen in the instance (FloatingTextEffects.cs)
+    }
+
+    #endregion FloationText
 
     private bool CanPlayerAttack()
     {
@@ -647,6 +678,7 @@ public class P1Controller : MonoBehaviour
         Destroy(rb);
         ParticleSystem instance = Instantiate(deathLeadUp, particlePoint.position, particlePoint.rotation);
         healthBar.transform.parent = null;
+
         Destroy(instance.gameObject, instance.duration);
         Invoke("DeathExplode", 1);
     }
@@ -654,7 +686,7 @@ public class P1Controller : MonoBehaviour
     public void DeathExplode() // Add Particle Burst
     {
         audioList.explosion.Play();
-
+        shotgunImage.gameObject.SetActive(false);
         ParticleSystem instance = Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
         CameraShake camshake = FindObjectOfType<CameraShake>();
         camshake.StartShake(camshake.shakePropertyOnMinionDie);

@@ -349,9 +349,9 @@ MonoBehaviour:
   m_LightType: 2
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.99636734, g: 1, b: 0, a: 1}
-  m_Intensity: 9.5
-  m_LightVolumeOpacity: 0.277
+  m_Color: {r: 0.9960785, g: 1, b: 0, a: 1}
+  m_Intensity: 18
+  m_LightVolumeOpacity: 0.804
   m_ApplyToSortingLayers: 00000000ad95cf5cb7429ab4ed4809391b2f142a8d81c7cab97a7ea3c1db5630
   m_LightCookieSprite: {fileID: 21300000, guid: aa780e58225635c45be4329414ac9317,
     type: 3}
@@ -5189,8 +5189,8 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.10471741, g: 0.08018869, b: 1, a: 1}
-  m_Intensity: 11.32
-  m_LightVolumeOpacity: 0.237
+  m_Intensity: 22
+  m_LightVolumeOpacity: 0.804
   m_ApplyToSortingLayers: 00000000ad95cf5cb7429ab4ed4809391b2f142a8d81c7cab97a7ea3c1db5630
   m_LightCookieSprite: {fileID: 21300000, guid: aa780e58225635c45be4329414ac9317,
     type: 3}

@@ -23,8 +23,9 @@ public class AgileEnemy : EnemyBehaviour
 
     public LayerMask layerMask;
 
-
-
+    public bool jumping;
+    public float jumpTimer;
+    public float upwardsJumpTime;
 
     protected override void MoveToTarget()
     {
@@ -33,17 +34,10 @@ public class AgileEnemy : EnemyBehaviour
         {
             dodgeRemaining -= Time.fixedDeltaTime;
             if (dodgeRemaining <= 0)
-            rb2.velocity = Vector2.zero;
+                rb2.velocity = Vector2.zero;
         }
         // go towards player
-        if (target.gameObject != null)
-        {
-            Vector2 direction = (target.transform.position - transform.position).normalized;
-            Vector2 force = new Vector2(direction.x * agent.speed, 0);
-            rb2.AddForce(force);
-            float xVelocity = Mathf.Clamp(rb2.velocity.x,-moveCap ,moveCap);
-            rb2.velocity = new Vector2(xVelocity,rb2.velocity.y);
-        }
+        base.MoveToTarget();
 
         dodgeTimer = UpdateCooldown(dodgeTimer);
 
@@ -51,8 +45,37 @@ public class AgileEnemy : EnemyBehaviour
         // jump
         if (Random.value < jumpFrequency && grounded)
         {
-            rb2.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+            if (!jumping)
+            {
+                jumping = true;
+                jumpTimer = 0;
+            }
+
+
             grounded = false;
+        }
+
+        if (jumping)
+        {
+
+            jumpTimer += Time.deltaTime;
+
+            if (jumpTimer > upwardsJumpTime)
+            {
+                rb2.velocity = new Vector2(rb.velocity.x, rb2.velocity.y); //Allow gravity to have effect.
+            }
+            else
+            {
+                float jumpForce = Mathf.InverseLerp(upwardsJumpTime, 0, jumpTimer) * Time.deltaTime;
+                rb2.velocity = new Vector2(rb.velocity.x, jumpForce*jumpHeight);
+                Debug.Log("Effective Y-velocity: " +  jumpForce*jumpHeight);
+            }
+        }
+        if (grounded)
+        {
+            jumping = false;
+            jumpTimer = 0;
+            
         }
     }
 

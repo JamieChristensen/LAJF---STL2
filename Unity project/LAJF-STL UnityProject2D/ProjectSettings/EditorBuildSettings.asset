@@ -98,4 +98,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Environments/Mythical/Mythical4.unity
     guid: dba47edd4c31f5247a428a071cf96bc5
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 3c773dabc4ef6dd469c61cae902e92d3
   m_configObjects: {}

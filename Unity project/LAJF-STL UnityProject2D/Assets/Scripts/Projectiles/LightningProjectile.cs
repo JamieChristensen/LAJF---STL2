@@ -9,6 +9,8 @@ public class LightningProjectile : MonoBehaviour
     public LayerMask layer;
     public int damage;
 
+
+
     // Start is called before the first frame update
     void Start()
     {

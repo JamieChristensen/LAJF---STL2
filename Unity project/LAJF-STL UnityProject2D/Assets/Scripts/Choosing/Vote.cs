@@ -42,7 +42,7 @@ public class Vote : MonoBehaviour
 
         
 
-        if (playerHorizontalAxisValue != 0 && waitForNextClick)
+        if (playerHorizontalAxisValue != 0 && !waitForNextClick)
         {
             clickedLeft = playerHorizontalAxisValue < 0 ? true : false;
             clickedRight = !clickedLeft;

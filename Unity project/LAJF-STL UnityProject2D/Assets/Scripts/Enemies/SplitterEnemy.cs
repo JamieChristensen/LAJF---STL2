@@ -27,6 +27,7 @@ public class SplitterEnemy : EnemyBehaviour
     private float spawnForceModifier;
 
 
+
     protected override void MoveToTarget()
     {
         if (canMoveTimer >= canMoveMaxTime)
@@ -80,12 +81,14 @@ public class SplitterEnemy : EnemyBehaviour
         {
             float horizontalForceModifier = Random.Range(0.5f, 1f) * spawnForceModifier;
             float verticalForceModifier = Random.Range(1f, 2f) * spawnForceModifier;
+
+            float distanceModifier = 3;
+
             //Instantiate smaller clones.
             for (int i = 0; i < amountOfSplits; i++)
             {
                 SplitterEnemy instance = Instantiate(splittedEnemy, transform.position + (Vector3.right * (Random.Range(0, 1) * 2 - 1)), Quaternion.identity).GetComponent<SplitterEnemy>();
                 instance.isSplitted = true;
-
                 instance.canMove = false;
                 Rigidbody2D instanceRigidbody = instance.GetComponent<Rigidbody2D>();
                 instanceRigidbody.AddForce(Vector2.up * horizontalForceModifier, ForceMode2D.Impulse);
@@ -93,9 +96,12 @@ public class SplitterEnemy : EnemyBehaviour
 
                 instance.InitalizeEnemy();
 
+                instance.desiredDistance = desiredDistance + distanceModifier;
+
                 instance.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
                 instance.currentHealth = agent.health / 2;
                 verticalForceModifier *= -1; //ensure they fly in separate directions
+                distanceModifier *= -1; //Really makes this script only work for two clones, but we only ever need that anyway.
             }
             isSplitted = true;
         }

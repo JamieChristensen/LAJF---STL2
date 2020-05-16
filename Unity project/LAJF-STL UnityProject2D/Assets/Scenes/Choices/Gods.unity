@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -228,7 +228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2, y: -20.125488}
+  m_AnchoredPosition: {x: -2, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &57021086
@@ -432,7 +432,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -319.59888, y: -20.125488}
+  m_AnchoredPosition: {x: -319.59888, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &112190896
@@ -975,7 +975,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 157.20026, y: -20.125488}
+  m_AnchoredPosition: {x: 157.20026, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461216124
@@ -1328,7 +1328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -319.59888, y: -20.125488}
+  m_AnchoredPosition: {x: -319.59888, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &748499598
@@ -1611,7 +1611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -161.20007, y: -20.125488}
+  m_AnchoredPosition: {x: -161.20007, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &799275450
@@ -1705,7 +1705,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: P1
+  m_text: P2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -2006,7 +2006,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 157.20026, y: -20.125488}
+  m_AnchoredPosition: {x: 157.20026, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963206122
@@ -2426,7 +2426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 316.40045, y: -20.125488}
+  m_AnchoredPosition: {x: 316.40045, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1159193180
@@ -2715,7 +2715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: P3
+  m_text: P4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -2849,7 +2849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -161.20007, y: -20.125488}
+  m_AnchoredPosition: {x: -161.20007, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1341885350
@@ -3026,7 +3026,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2, y: -20.125488}
+  m_AnchoredPosition: {x: -2, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504347203
@@ -3099,7 +3099,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 316.40045, y: -20.125488}
+  m_AnchoredPosition: {x: 316.40045, y: -20.125458}
   m_SizeDelta: {x: -699.9999, y: -300.08945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1649885609
@@ -4038,7 +4038,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: P2
+  m_text: P3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}

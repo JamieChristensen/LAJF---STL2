@@ -41,6 +41,7 @@ public class GodController : MonoBehaviour
     // movement
     public float moveSpeed;
     public string horizontalAxis;
+    public KeyCode horiRightKeyboardTestKey, horiLeftKeyboardTestKey;
     public KeyCode shoot;
     public KeyCode altShoot;
 
@@ -57,7 +58,7 @@ public class GodController : MonoBehaviour
     private GodInformation.AttackTypes attackType;
     public float minIntensity;
     public float maxIntensity;
-    
+
     public TextMeshProUGUI readyForFire;
 
     // Lightning v2
@@ -84,6 +85,8 @@ public class GodController : MonoBehaviour
     public Transform transformToInstantiateParticlesAt;
     public AudioSource projectileAudio;
     public AudioClip lightningThrash;
+
+    private bool areGodsAllowedToAttack;
 
 
     public void Start()
@@ -128,12 +131,23 @@ public class GodController : MonoBehaviour
     {
         #region Movement
         float direction = Input.GetAxis(horizontalAxis);
-        transform.position = transform.position + new Vector3(direction * moveSpeed* Time.deltaTime, 0,0);
+        if (Input.GetKey(horiRightKeyboardTestKey))
+        {
+            direction = 1;
+        }
+        if (Input.GetKey(horiLeftKeyboardTestKey))
+        {
+            direction = -1;
+        }
+
+
+        Debug.Log("Direction Input: " + direction);
+        transform.position = transform.position + new Vector3(direction * moveSpeed * Time.deltaTime, 0, 0);
         #endregion
 
         // inCombatMode is from legacy code - don't know if its to be used
-        if ((Input.GetKeyDown(shoot) || Input.GetKeyDown(altShoot)) && canAttack)
-        #region Attack
+        if ((Input.GetKeyDown(shoot) || Input.GetKeyDown(altShoot)) && canAttack && inCombatMode)
+            #region Attack
             switch (attackType)
             {
                 case GodInformation.AttackTypes.Lightning:
@@ -151,8 +165,8 @@ public class GodController : MonoBehaviour
                     Debug.Log(gameObject.name + "'s attacktype hasn't been set - head to the inspector to do that");
                     break;
             }
-                    FireballUpdate();
-                    LaserUpdate();
+        FireballUpdate();
+        LaserUpdate();
         #endregion
 
 
@@ -248,16 +262,16 @@ public class GodController : MonoBehaviour
         Light2D telegraph = lightningScript.telegraph.GetComponent<Light2D>();
         GameObject Lightning = lightningScript.Lightning;
 
-        
+
         // telegraph attack
         moveSpeed = moveSpeed / 2;
-    
+
         float timer = 0f;
 
         while (timer < chargeTime && chargeTime != 0)
         {
             spriteRenderer.sprite = godInfo.whenCharging;
-            telegraph.intensity = Map(timer,0,chargeTime, minIntensity, maxIntensity);
+            telegraph.intensity = Map(timer, 0, chargeTime, minIntensity, maxIntensity);
             // Debug.Log(timer + " intensity: " + telegraph.intensity);
             timer += Time.deltaTime;
             yield return null;
@@ -271,15 +285,35 @@ public class GodController : MonoBehaviour
         cameraShake.StartShake(cameraShake.shakePropertyOnMinionEnter);
         GameObject go = Instantiate(lightningImpactParticles, transformToInstantiateParticlesAt.position, Quaternion.identity);
         Destroy(go, 4f);
-        projectileAudio.clip = lightningThrash; 
+        projectileAudio.clip = lightningThrash;
+        projectileAudio.time = 0.2f;
         projectileAudio.Play();
 
         moveSpeed = 0;
+        Light2D[] lights = transform.GetComponentsInChildren<Light2D>();
+        Debug.Log("Lights: " + lights);
+        foreach (Light2D light in lights)
+        {
+            StartCoroutine(RampDownLight(light, 0.5f));
+        }
         yield return new WaitForSeconds(0.5f);
         Destroy(LightningStrikeClone);
         spriteRenderer.sprite = godInfo.topBarIcon;
         canAttack = true;
         moveSpeed = normalMovespeed;
+    }
+
+    IEnumerator RampDownLight(Light2D impactLight, float duration)
+    {
+        float timer = duration;
+        float originalIntensity = impactLight.intensity;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            impactLight.intensity = Map(timer, duration, 0, originalIntensity, 5);
+            yield return new WaitForSeconds(0);
+        }
+        yield return null;
     }
 
     private void FireballAttack()
@@ -329,7 +363,7 @@ public class GodController : MonoBehaviour
 
     private float UpdateCooldown(float cooldown)
     {
-        return Mathf.Max(cooldown-Time.deltaTime , 0f);
+        return Mathf.Max(cooldown - Time.deltaTime, 0f);
     }
 
     private void StartCooldown()
@@ -341,5 +375,10 @@ public class GodController : MonoBehaviour
     float Map(float s, float a1, float a2, float b1, float b2)
     {
         return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
+    }
+
+    public void SetGodsAllowedToAttack(bool areGodsAllowed)
+    {
+        areGodsAllowedToAttack = areGodsAllowed;
     }
 }
