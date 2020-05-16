@@ -85,6 +85,7 @@ public class GodController : MonoBehaviour
     public AudioSource projectileAudio;
     public AudioClip lightningThrash;
 
+
     public void Start()
     {
         emoteDuration = 0;

@@ -5001,3 +5001,6 @@ MonoBehaviour:
   fireballParent: {fileID: 2294092493229928026}
   bounceLimit: 3
   rotate: {x: 0, y: 0, z: 0}
+  fireImpactParticles: {fileID: 7399462825393001163, guid: 9fb81fd11fd66e749a8a4f698ff8a0e2,
+    type: 3}
+  lightDuration: 2
