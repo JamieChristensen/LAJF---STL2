@@ -49,6 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7fb61185fa4f94194021e0f893db1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextPrefab: {fileID: 3606956731539374200, guid: 8aa7902130283a041872d794991a688a,
+    type: 3}
+  floatingCanvasParent: {fileID: 0}
+  floatingTextInstance: {fileID: 0}
   damage: 10
   layerMask:
     serializedVersion: 2
