@@ -636,6 +636,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215f8c7cd6717aa408a11a7a5c40be13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextPrefab: {fileID: 3606956731539374200, guid: 8aa7902130283a041872d794991a688a,
+    type: 3}
+  floatingCanvasPrefab: {fileID: 2202782412652167821, guid: 9379076ce901ae340ba5498146cdb81e,
+    type: 3}
+  floatingCanvasInstance: {fileID: 0}
+  floatingTextInstances: []
   rb2: {fileID: 7197962424530652539}
   target: {fileID: 0}
   bulletObj: {fileID: 8532673322242369149, guid: b4a27070d39fa044c8a306c37054eba6,

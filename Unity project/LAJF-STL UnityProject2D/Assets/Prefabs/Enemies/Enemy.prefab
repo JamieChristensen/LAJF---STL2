@@ -238,6 +238,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77d7f75287d5de4793b00f20dd03c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextPrefab: {fileID: 3606956731539374200, guid: 8aa7902130283a041872d794991a688a,
+    type: 3}
+  floatingCanvasPrefab: {fileID: 2202782412652167821, guid: 9379076ce901ae340ba5498146cdb81e,
+    type: 3}
+  floatingCanvasInstance: {fileID: 0}
+  floatingTextInstances: []
   rb2: {fileID: 2409340943091751095}
   target: {fileID: 0}
   bulletObj: {fileID: 3604006451443815256, guid: 781e18538fd716748ab0e6afc2f43f66,
@@ -268,6 +274,11 @@ MonoBehaviour:
   outlineThiccness: 0
   angrySpriteRenderer: {fileID: 0}
   shoulderCannonRenderer: {fileID: 0}
+  hasCannon: 0
+  isBlessed: 0
+  isAngry: 0
+  tombstone: {fileID: 0}
+  desiredDistance: 30
 --- !u!50 &2409340943091751095
 Rigidbody2D:
   serializedVersion: 4
