@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0097102ce57ee1478707665900d640d, type: 3}
   m_Name: GreekStyleNigger
   m_EditorClassIdentifier: 
-  godName: NiggaZeus
-  selectionIcon: {fileID: 21300000, guid: 965d4377c2b7bd74aaf6791437f4b229, type: 3}
-  topBarIcon: {fileID: 21300000, guid: b33ff53513360ad448977f3aaac3ecb4, type: 3}
+  godName: N
+  description: Nagger
+  selectionIcon: {fileID: 21300000, guid: ca2eac0f72c11ae45a4ef9d9442945cd, type: 3}
+  topBarIcon: {fileID: 21300000, guid: ca2eac0f72c11ae45a4ef9d9442945cd, type: 3}
   whenShooting: {fileID: 21300000, guid: a820b5e351094c447a02aba92bf08619, type: 3}
   whenCharging: {fileID: 21300000, guid: 7829d9f7b8419b344a05696831ad0202, type: 3}
   attackType: 0

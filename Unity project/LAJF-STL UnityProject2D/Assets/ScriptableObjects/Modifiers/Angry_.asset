@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Angry_
   m_EditorClassIdentifier: 
   name: Angry_
-  description: 'Scientists and designers both agree that these angry brows are all
-    the rage!  '
+  description: A rage that grows through pain!
   modifierType: 1
   sprite: {fileID: 21300000, guid: 916dc8a7bc32166409a833b932bbdbce, type: 3}
   shoulderCannonVisual: {fileID: 21300000, guid: 56c13ad966874a14c83d19d69ae18d00,

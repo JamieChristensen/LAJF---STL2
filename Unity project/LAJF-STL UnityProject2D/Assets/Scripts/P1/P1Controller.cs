@@ -265,6 +265,7 @@ public class P1Controller : MonoBehaviour
                 }
                 break;
             case false:
+                yield return new WaitForSeconds(0.5f);
                 Destroy(forcefieldInstance);
                 break;
 

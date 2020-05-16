@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: _With a PROT-E 002 Limited Edition Shoulder Cannon
   m_EditorClassIdentifier: 
   name: _With a PROT-E 002 Limited Edition Shoulder Cannon
-  description: It has never been more Plug'n'Play
+  description: Where can I order one?!
   modifierType: 2
   sprite: {fileID: 21300000, guid: e36777cffaaf6ab4eb12ef35cadc237c, type: 3}
   shoulderCannonVisual: {fileID: 21300000, guid: 56c13ad966874a14c83d19d69ae18d00,

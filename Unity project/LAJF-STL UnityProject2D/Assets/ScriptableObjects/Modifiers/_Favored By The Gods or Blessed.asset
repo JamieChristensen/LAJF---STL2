@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: _Favored By The Gods or Blessed
   m_EditorClassIdentifier: 
   name: _Favored By The Gods
-  description: Is this the chosen one?
+  description: A second chance for the chosen one!
   modifierType: 3
   sprite: {fileID: 21300000, guid: cc8001befab5fc14f8b141cfcf32aeaa, type: 3}
   shoulderCannonVisual: {fileID: 0}

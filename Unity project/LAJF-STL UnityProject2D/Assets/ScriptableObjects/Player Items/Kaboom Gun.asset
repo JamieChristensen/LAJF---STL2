@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Kaboom Gun
   m_EditorClassIdentifier: 
   itemName: Kaboom Gun
-  description: Pow
+  description: The trigger now also works as a detonator - Michael Bay would love
+    this one! (combines with your current weapon)
   itemSprite: {fileID: 21300000, guid: 56c13ad966874a14c83d19d69ae18d00, type: 3}
   healthModifier: 0
   speedModifier: 0

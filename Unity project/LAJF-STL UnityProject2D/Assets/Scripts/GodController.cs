@@ -80,6 +80,12 @@ public class GodController : MonoBehaviour
     private CameraShake cameraShake;
     private EnemyEntranceEffects entranceEffects;
 
+    public GameObject lightningImpactParticles;
+    public Transform transformToInstantiateParticlesAt;
+    public AudioSource projectileAudio;
+    public AudioClip lightningThrash;
+
+
     public void Start()
     {
         emoteDuration = 0;
@@ -263,6 +269,11 @@ public class GodController : MonoBehaviour
         Lightning.SetActive(true);
         entranceEffects.StartChromaticAberration(0.5f, 1f);
         cameraShake.StartShake(cameraShake.shakePropertyOnMinionEnter);
+        GameObject go = Instantiate(lightningImpactParticles, transformToInstantiateParticlesAt.position, Quaternion.identity);
+        Destroy(go, 4f);
+        projectileAudio.clip = lightningThrash; 
+        projectileAudio.Play();
+
         moveSpeed = 0;
         yield return new WaitForSeconds(0.5f);
         Destroy(LightningStrikeClone);
