@@ -11787,6 +11787,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2914547461683830031, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
+        type: 3}
+      propertyPath: thingsToDissolve.Array.data[1].fadeDuration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914547461683830031, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
+        type: 3}
+      propertyPath: thingsToDissolve.Array.data[2].fadeDuration
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5892630455597672938, guid: dfe933cbbf24e674ba6e231dcb3d50c6,
         type: 3}
       propertyPath: m_LocalPosition.x
