@@ -116,4 +116,8 @@ public class MainMenu : MonoBehaviour
         musicManager.PlayMusic("Choosing", 0.8f);
     }
 
+    public void LoadCredits()
+    {
+        SceneManager.LoadSceneAsync(31);
+    }
 }
