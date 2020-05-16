@@ -41,6 +41,7 @@ public class GodController : MonoBehaviour
     // movement
     public float moveSpeed;
     public string horizontalAxis;
+    public KeyCode horiRightKeyboardTestKey, horiLeftKeyboardTestKey;
     public KeyCode shoot;
     public KeyCode altShoot;
 
@@ -85,6 +86,8 @@ public class GodController : MonoBehaviour
     public AudioSource projectileAudio;
     public AudioClip lightningThrash;
 
+    private bool areGodsAllowedToAttack;
+
 
     public void Start()
     {
@@ -128,12 +131,22 @@ public class GodController : MonoBehaviour
     {
         #region Movement
         float direction = Input.GetAxis(horizontalAxis);
+        if (Input.GetKey(horiRightKeyboardTestKey))
+        {
+            direction = 1;
+        }
+        if (Input.GetKey(horiLeftKeyboardTestKey))
+        {
+            direction = -1;
+        }
+
+
         Debug.Log("Direction Input: " + direction);
         transform.position = transform.position + new Vector3(direction * moveSpeed * Time.deltaTime, 0, 0);
         #endregion
 
         // inCombatMode is from legacy code - don't know if its to be used
-        if ((Input.GetKeyDown(shoot) || Input.GetKeyDown(altShoot)) && canAttack)
+        if ((Input.GetKeyDown(shoot) || Input.GetKeyDown(altShoot)) && canAttack && inCombatMode)
             #region Attack
             switch (attackType)
             {
@@ -297,7 +310,7 @@ public class GodController : MonoBehaviour
         while (timer > 0)
         {
             timer -= Time.deltaTime;
-            impactLight.intensity =  Map(timer, duration, 0, originalIntensity, 5);
+            impactLight.intensity = Map(timer, duration, 0, originalIntensity, 5);
             yield return new WaitForSeconds(0);
         }
         yield return null;
@@ -362,5 +375,10 @@ public class GodController : MonoBehaviour
     float Map(float s, float a1, float a2, float b1, float b2)
     {
         return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
+    }
+
+    public void SetGodsAllowedToAttack(bool areGodsAllowed)
+    {
+        areGodsAllowedToAttack = areGodsAllowed;
     }
 }

@@ -13,6 +13,11 @@ public class DestroySelf : MonoBehaviour
         //Do nothing for now
     }
 
+    public void TombStoneDestroy()
+    {
+        Destroy(gameObject);
+    }
+
     public void StartReduceIntensity(float time)
     {
         StartCoroutine(ReduceIntensity(time));
