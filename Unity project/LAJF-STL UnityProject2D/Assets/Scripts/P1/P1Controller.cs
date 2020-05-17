@@ -396,7 +396,7 @@ public class P1Controller : MonoBehaviour
         float randomY = UnityEngine.Random.Range(-1.5f, 4.5f); // Random position.y
         Vector3 randomVector = new Vector3(randomX, randomY, 0); // Random combined position
         floatingTextInstance = Instantiate(floatingTextPrefab, transform.position + randomVector, Quaternion.identity, floatingCanvasParent.transform); // instantiate text object
-        
+
         floatingTextInstance.GetComponent<FloatingTextEffects>().setText(damage.ToString()); //Sets the text of the text object - the rest will happen in the instance (FloatingTextEffects.cs)
     }
 
@@ -694,5 +694,9 @@ public class P1Controller : MonoBehaviour
         Destroy(instance.gameObject, instance.duration);
     }
 
-
+    public void RestoreToFullHealth()
+    {
+        currentHitPoints = runtimePlayerStats.maxHitPoints;
+        playerHPEvent.Raise(currentHitPoints);
+    }
 }
