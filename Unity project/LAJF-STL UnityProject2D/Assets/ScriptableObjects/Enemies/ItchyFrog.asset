@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1f0de924389ac4bbd7807bee9dc1e6, type: 3}
   m_Name: ItchyFrog
   m_EditorClassIdentifier: 
+  combinedNameAudioClip: []
+  nameClip: {fileID: 8300000, guid: 11e31195db5c9da4a9565aad3a55f97e, type: 3}
+  representationClip: {fileID: 8300000, guid: 1859b6001621f7e4cb755977458b450e, type: 3}
+  runTimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   name: Itchy Frog
   description: Just a mad scratching dance or crazy ass reflexes? No one knows!
   health: 500

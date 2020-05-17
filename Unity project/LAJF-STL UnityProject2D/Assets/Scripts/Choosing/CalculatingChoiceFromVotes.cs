@@ -23,7 +23,7 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
     public enum ChoiceType { Theme, Minion, Modifier }
     public ChoiceType choiceType;
 
-
+    bool triggeredOnce = false;
 
 
     private void Start()
@@ -37,15 +37,15 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
         {
             CheckForPlayerVotes();
         }
-        
+
     }
 
     public void CheckForPlayerVotes()
     {
-        if (amountOfPlayers-1 == amountOfVotes)
+        if (amountOfPlayers - 1 == amountOfVotes)
         {
-            CalculateVotes();
             openForVotes = false;
+            CalculateVotes();
             return;
         }
     }
@@ -141,33 +141,37 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
         }
     }
 
-   public void ChooseAnOption(int choice)
+    public void ChooseAnOption(int choice)
     {
+        Debug.Log("ChooseAnOption(int choice)");
+
         string choiceTypeString = choiceType.ToString();
 
-            if (choiceType == ChoiceType.Theme)
-            {
+        if (choiceType == ChoiceType.Theme)
+        {
             chooseBetweenOptionsGiven.ChooseTheme(choice);
-            }
+        }
 
-            else if (choiceType == ChoiceType.Minion)
-            {
+        else if (choiceType == ChoiceType.Minion)
+        {
             chooseBetweenOptionsGiven.ChooseMinion(choice);
-            }
+        }
 
-            else if (choiceType == ChoiceType.Modifier)
-            {
+        else if (choiceType == ChoiceType.Modifier)
+        {
             chooseBetweenOptionsGiven.ChooseModifier(choice);
-            }
+        }
 
-            chooseBetweenOptionsGiven.LockSelectedChoice(choiceTypeString);
+        if (triggeredOnce)
+            return;
 
-            buttonSounds.OnChoiceMade();
-
+        chooseBetweenOptionsGiven.LockSelectedChoice(choiceTypeString);
+        buttonSounds.OnChoiceMade();
+        triggeredOnce = true;
         //Debug.Log(p2HasVoted.ToString() + " " + p3HasVoted.ToString() + " " + p4HasVoted.ToString());
         //Debug.Log("2: " + playerVotes[0] + " - 3: " + playerVotes[1] + " - 4: " + playerVotes[2]);
-            return;
-   }
+        return;
+    }
 
     public void CountVotes()
     {
@@ -181,21 +185,21 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
         votesFor2.number = 2;
         votesFor3.number = 3;
 
-        for (int i = 0; i < amountOfPlayers-1;i++)
+        for (int i = 0; i < amountOfPlayers - 1; i++)
         {
             switch (playerVotes[i])
             {
                 case 1:
                     votesFor1.votes++;
-                break;
+                    break;
 
                 case 2:
                     votesFor2.votes++;
-                break;
+                    break;
 
                 case 3:
                     votesFor3.votes++;
-                break;
+                    break;
 
                 default:
                     playerVotes[i] = RandomizePlayerVote();
@@ -208,7 +212,7 @@ public class CalculatingChoiceFromVotes : MonoBehaviour
                     break;
             }
         }
-        List<VotesForNumber> votesForNumber = new List<VotesForNumber>(); 
+        List<VotesForNumber> votesForNumber = new List<VotesForNumber>();
         votesForNumber.Add(votesFor1);
         votesForNumber.Add(votesFor2);
         votesForNumber.Add(votesFor3);

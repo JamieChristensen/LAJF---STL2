@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1f0de924389ac4bbd7807bee9dc1e6, type: 3}
   m_Name: TwoForOne
   m_EditorClassIdentifier: 
+  combinedNameAudioClip: []
+  nameClip: {fileID: 8300000, guid: 3fbc7c0911d9ecb428fe9b14390fd2b9, type: 3}
+  representationClip: {fileID: 8300000, guid: 65e8aa686ae2aa045b166083f8904cd6, type: 3}
+  runTimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   name: Two For One
   description: 'Their personality is not the only split to worry about! '
   health: 500

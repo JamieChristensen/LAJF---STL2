@@ -9,6 +9,7 @@ using UnityEditor;
 
 public class ChooseGods : MonoBehaviour
 {
+    public AudioList audioList;
     public ButtonSounds buttonSounds;
     public TransitionNarrator transitionNarrator;
 
@@ -101,14 +102,24 @@ public class ChooseGods : MonoBehaviour
     {
         if (p2LockedIn && p3LockedIn && p4LockedIn && lockedIn == false)
         {
+            /*
             for (int i = 0; i < choices.Length; i++)
             {
                 Debug.Log("Heyeyeyayayayyayaaa");
                 runTimeChoices.chosenGods[i] = chooseableGods[choices[i]];
             }
+            */
 
-            buttonSounds.OnChoiceMade();
             //transitionNarrator.DoNarration();
+
+            if (runTimeChoices.chosenGods[2] == null)
+            {
+                runTimeChoices.chosenGods[2] = runTimeChoices.chosenGods[0];
+            }
+            if (runTimeChoices.chosenGods[1] == null)
+            {
+                runTimeChoices.chosenGods[1] = runTimeChoices.chosenGods[0];
+            }
 
             Invoke("LoadTransition", 1.5f);
             lockedIn = true;
@@ -123,7 +134,7 @@ public class ChooseGods : MonoBehaviour
             bool p2leftPressed = false;
             bool p2rightPressed = false;
             float p2HoriInput = Input.GetAxis(p2HorizontalAxisName);
-            Debug.Log(p2HoriInput);
+            //Debug.Log(p2HoriInput);
             if (p2HoriInput != 0 && !p2WaitForNextClick)
             {
                 p2leftPressed = p2HoriInput < 0 ? true : false;
@@ -147,9 +158,13 @@ public class ChooseGods : MonoBehaviour
             }
             if (Input.GetKeyDown(p2select) || Input.GetKeyDown(p2SelectAlt))
             {
-                Debug.Log("P2 chose hero");
+                //Debug.Log("P2 chose hero");
                 p2LockedIn = true;
                 UpdateHoverVisuals(0);
+
+                runTimeChoices.chosenGods[0] = chooseableGods[choices[0]];
+                audioList.OnGodPicked(2);
+                buttonSounds.OnChoiceMade();
 
                 if (gamesettings.GetAmountOfPlayers() == 2)
                 {
@@ -191,6 +206,9 @@ public class ChooseGods : MonoBehaviour
             {
                 p3LockedIn = true;
                 UpdateHoverVisuals(1);
+                runTimeChoices.chosenGods[1] = chooseableGods[choices[1]];
+                FindObjectOfType<AudioList>().OnGodPicked(3);
+                buttonSounds.OnChoiceMade();
             }
         }
 
@@ -225,6 +243,9 @@ public class ChooseGods : MonoBehaviour
             {
                 p4LockedIn = true;
                 UpdateHoverVisuals(2);
+                runTimeChoices.chosenGods[2] = chooseableGods[choices[2]];
+                FindObjectOfType<AudioList>().OnGodPicked(4);
+                buttonSounds.OnChoiceMade();
             }
         }
         #endregion Inputs
@@ -232,6 +253,25 @@ public class ChooseGods : MonoBehaviour
 
     public void LoadTransition()
     {
+        StartCoroutine(WaitForGodsToShutUp());
+    }
+
+    IEnumerator WaitForGodsToShutUp()
+    {
+        bool confirmedSilence = false;
+        while (!confirmedSilence)
+        {
+            foreach (AudioSource AS in audioList.godSources)
+            {
+                if (AS.isPlaying)
+                {
+                    confirmedSilence = false;
+                    break;
+                }
+                    confirmedSilence = true;
+            }
+            yield return new WaitForSeconds(0.2f);
+        }
         nextTransition.Raise(4);
     }
 

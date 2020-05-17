@@ -431,6 +431,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         preGameTransitionIndex.Raise(6);
     }
 
+    
     void GodsHaveChosenMinion()
     {
         switch (runtimeChoices.runTimeLoopCount)
@@ -451,8 +452,25 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         // Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". minion! It is: " + finalChoice.name);
 
         runtimeChoices.enemies.Add(enemyChoices[choice - 1]); // adds the chosen minion to the array
-        SwitchToModifierSelection(); // switching from minion select to modifier select
+        audioList.selectionPicked.clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].representationClip;
+        audioList.selectionPicked.Play();
+        StartCoroutine(WaitForMinionToShutUp());
 
+    }
+
+    IEnumerator WaitForMinionToShutUp()
+    {
+        bool confirmedSilence = false;
+        while (!confirmedSilence)
+        {
+            if (audioList.selectionPicked.isPlaying)
+                confirmedSilence = false;
+            else
+                confirmedSilence = true;
+
+            yield return new WaitForSeconds(0.2f);
+        }
+            SwitchToModifierSelection(); // switching from minion select to modifier select 
     }
 
 
@@ -479,8 +497,26 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             _musicManager.PlayMusic("Battle",1);
         }
         runtimeChoices.enemyModifiers.Add(enemyModifierChoices[choice - 1]); // adds the chosen modifier to the array
+        audioList.selectionPicked.clip = runtimeChoices.enemyModifiers[runtimeChoices.runTimeLoopCount - 1].representationClip;
+        audioList.selectionPicked.Play();
+        StartCoroutine(WaitForModifierToShutUp());
+    }
+
+    IEnumerator WaitForModifierToShutUp()
+    {
+        bool confirmedSilence = false;
+        while (!confirmedSilence)
+        {
+            if (audioList.selectionPicked.isPlaying)
+                confirmedSilence = false;
+            else
+                confirmedSilence = true;
+
+            yield return new WaitForSeconds(0.2f);
+        }
         godsHaveChosenOpponent.Raise(); // Raising event for opponent chosen
     }
+
 
     void HeroHasChosenItem()
     {
@@ -648,10 +684,13 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
     {
         Debug.Log("Ran out of time");
         int ItemIndex = Random.Range(0, 2);
+       /*
         if (runtimeChoices.runTimeLoopCount == 4)
-            ItemIndex = 0;
-
+            runtimeChoices.playerItems.Add(victoryShades);
+        else
         runtimeChoices.playerItems.Add(playerItemChoices[ItemIndex]);
-        heroHasChosenItem.Raise();
+    */    
+        GetComponent<p1Choose>().OverRuleRandomSelect("Item");
+        //heroHasChosenItem.Raise();
     }
 }

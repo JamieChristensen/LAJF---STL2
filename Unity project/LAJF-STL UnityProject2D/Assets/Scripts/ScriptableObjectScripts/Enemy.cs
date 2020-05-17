@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemy")]
 public class Enemy : ScriptableObject
 {
-
+    public List <AudioClip> combinedNameAudioClip;
+    public AudioClip nameClip, representationClip;
+    public ChoiceCategory runTimeChoices;
     public enum EnemyType
     {
         None, Agile, Orb, Splitter
@@ -54,10 +56,17 @@ public class Enemy : ScriptableObject
                 string extraText = m.name.Trim();
 
                 if (extraText.IndexOf('_') == 0)
+                {
+                    //combinedNameAudioClip.Add(runTimeChoices.enemyModifiers[runTimeChoices.runTimeLoopCount - 1].nameClip);
+                    //combinedNameAudioClip.Add(runTimeChoices.enemies[runTimeChoices.runTimeLoopCount - 1].nameClip);
                     modifiedName += " " + extraText.Split('_')[1];
+                }
                 else
                 {
+                    //combinedNameAudioClip.Add(runTimeChoices.enemies[runTimeChoices.runTimeLoopCount - 1].nameClip);
+                    //combinedNameAudioClip.Add(runTimeChoices.enemyModifiers[runTimeChoices.runTimeLoopCount - 1].nameClip);
                     modifiedName = extraText.Split('_')[0] + " " + modifiedName;
+
                 }
 
             }

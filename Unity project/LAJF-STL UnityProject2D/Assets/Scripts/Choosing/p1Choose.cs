@@ -117,6 +117,13 @@ public class p1Choose : MonoBehaviour
         }
 
     }
+
+    public void OverRuleRandomSelect(string choiceType)
+    {
+        selected = true;
+        this.choiceType = choiceType;
+    }
+
     public void ChangeAndDisplaySelection(int newSelection)
     {
         if (amountOfChoices != 1)

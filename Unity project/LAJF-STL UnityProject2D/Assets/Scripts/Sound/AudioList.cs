@@ -18,6 +18,7 @@ public class AudioList : MonoBehaviour
          explosion,
          forceFieldBegin,
          forceFieldEnd,
+         forceFieldHit,
          forceFieldWhileUp,
          hurt,
          jump,
@@ -32,7 +33,7 @@ public class AudioList : MonoBehaviour
          textToSpeechSource,
          winFx;
 
-    public AudioSource[] narratorVoiceFillers, narratorEnter;
+    public AudioSource[] narratorVoiceFillers, narratorEnter, godSources;
 
     public void PlayWithVariablePitch(AudioSource audioSource)
     {
@@ -102,9 +103,14 @@ public class AudioList : MonoBehaviour
 
     public void OnHeroPicked()
     {
-        Debug.Log("GOAT");
         selectionPicked.clip = runtimeChoices.chosenHero.picked;
         selectionPicked.Play();
+    }
+
+    public void OnGodPicked(int PlayerNumber)
+    {
+        godSources[PlayerNumber-2].clip = runtimeChoices.chosenGods[PlayerNumber - 2].representationClip;
+        godSources[PlayerNumber - 2].Play();
     }
 
     #endregion NarratorVoiceLines

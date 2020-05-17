@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f84dcc52e430544b54820c7a56d82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioList: {fileID: 0}
+  audioList: {fileID: 1755333542}
   runtimeChoiceManager: {fileID: 0}
   godsHaveChosenMinion: {fileID: 11400000, guid: db3d5cc5b0e40b043a77d5cc4a0c2d14,
     type: 2}

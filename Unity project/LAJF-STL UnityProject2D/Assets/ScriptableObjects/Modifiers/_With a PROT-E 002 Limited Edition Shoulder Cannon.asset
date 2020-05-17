@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033f754c40819854ab98e7640afd6e79, type: 3}
   m_Name: _With a PROT-E 002 Limited Edition Shoulder Cannon
   m_EditorClassIdentifier: 
+  nameClip: {fileID: 8300000, guid: 80ac07dc1861f6e46b1aa95a6d02db2f, type: 3}
+  representationClip: {fileID: 8300000, guid: e95db415209e0b04fa8eddab8b0ffd01, type: 3}
   name: _With a PROT-E 002 Limited Edition Shoulder Cannon
   description: Where can I order one?!
   modifierType: 2

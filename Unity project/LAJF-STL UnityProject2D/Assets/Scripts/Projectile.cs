@@ -45,9 +45,9 @@ public class Projectile : MonoBehaviour
         {
             GameObject instance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
             Destroy(instance, 1f);
-
+            
             ShowFloatingText(); // Trigger floating text
-
+            FindObjectOfType<AudioList>().PlayWithVariablePitch(FindObjectOfType<AudioList>().forceFieldHit);
             GameObject blockInstance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
             Destroy(blockInstance, 1f);
             GameObject.Destroy(gameObject);

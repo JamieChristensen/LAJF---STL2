@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu (fileName = "GodInformation", menuName = "ScriptableObject/GodInformation")]
 public class GodInformation : ScriptableObject
 {
+    public AudioClip representationClip;
     public string godName;
     public string description;
     public Sprite selectionIcon;

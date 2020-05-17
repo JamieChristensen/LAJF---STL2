@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033f754c40819854ab98e7640afd6e79, type: 3}
   m_Name: Angry_
   m_EditorClassIdentifier: 
+  nameClip: {fileID: 8300000, guid: 93bae2db2a9e1dc4f881656f9afd9362, type: 3}
+  representationClip: {fileID: 8300000, guid: 6a29ad4de8c67504da31f198318a9ed5, type: 3}
   name: Angry_
   description: A rage that grows through pain!
   modifierType: 1

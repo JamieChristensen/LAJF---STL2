@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Modifier", menuName = "ScriptableObject/Modifier for enemy")]
 public class EnemyModifier : ScriptableObject
 {
+    public AudioClip nameClip, representationClip;
     [Tooltip("Remember to use _ before or after the text")]
     public new string name;
     public string description;

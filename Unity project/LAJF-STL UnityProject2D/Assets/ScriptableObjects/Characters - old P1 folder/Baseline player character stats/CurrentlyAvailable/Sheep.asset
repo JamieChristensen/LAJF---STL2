@@ -17,8 +17,7 @@ MonoBehaviour:
   hurt: {fileID: 8300000, guid: f5e91fb02a0bfbf419c6768138c33727, type: 3}
   jump: {fileID: 8300000, guid: d7d03a14076e1c1449ba23308d1b7b57, type: 3}
   myName: Baahhd Sheep
-  description: A dreadful sheep with a thirst for blood! Oh, and it also comes with
-    gatling gun...
+  description: A dreadful sheep with a thirst for blood... And a gatling gun!
   trait: 'Green hat: He is almost invissible in green terrain'
   characterSprite: {fileID: 21300000, guid: 6252c6e232801894b9427ad5a41225ad, type: 3}
   colliderSize: {x: 5.3, y: 4.6}

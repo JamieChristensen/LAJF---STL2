@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033f754c40819854ab98e7640afd6e79, type: 3}
   m_Name: _Favored By The Gods or Blessed
   m_EditorClassIdentifier: 
+  nameClip: {fileID: 8300000, guid: eab798659fb8c934784b6468144ba20c, type: 3}
+  representationClip: {fileID: 8300000, guid: 304b5d5a36a0aea498f103af1a820780, type: 3}
   name: _Favored By The Gods
   description: A second chance for the chosen one!
   modifierType: 3
