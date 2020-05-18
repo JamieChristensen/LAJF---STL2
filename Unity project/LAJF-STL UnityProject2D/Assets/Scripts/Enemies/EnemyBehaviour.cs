@@ -475,7 +475,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
         healthBar.UpdateHPValues(currentHealth, maxHealth);
 
-        StartCoroutine(UINameFadeOut(5));
+        StartCoroutine(UINameFadeOut(3));
 
     }
 
@@ -484,6 +484,8 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         Vector3 currentSize = Vector3.zero; // start the text size at 0
         Vector3 targetSize = new Vector3(1, 1, 1); // set the target size to 1
         RectTransform textRectTransform = null;
+
+        nameUI = transform.Find("Canvas").transform.Find("EnemyName").GetComponent<TextMeshProUGUI>();
         try
         {
             textRectTransform = nameUI.GetComponent<RectTransform>();

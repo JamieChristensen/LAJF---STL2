@@ -67,6 +67,8 @@ public class SplitterEnemy : EnemyBehaviour
         nameUI.SetText(name);
         currentHealth = agent.health;
         maxHealth = currentHealth;
+        healthBar.UpdateHPValues(currentHealth, maxHealth);
+        StartCoroutine(UINameFadeOut(3));
     }
 
     protected override void Die()
