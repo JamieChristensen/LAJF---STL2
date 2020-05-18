@@ -54,10 +54,12 @@ MonoBehaviour:
   player1AttackKey: 304
   player1Left: 97
   player1Right: 100
+  player1ForceField: 0
   player1JumpAlt: 351
   player1AttackAlt: 350
   player1DashLeft: 354
   player1DashRight: 355
+  player1ForceFieldAlt: 353
   player1HoriAxisName: P1Horizontal
   godLeftInput: 000000000000000000000000
   godRightInput: 000000000000000000000000

@@ -32,12 +32,7 @@ public class InputManager : MonoBehaviour
     [Header("Player 1 conroller controls")]
     public KeyCode player1JumpAlt, player1AttackAlt;
     public KeyCode player1DashLeft, player1DashRight;
-
-
-    /* THIS IS NOT IMPLEMENTED*/
     public KeyCode player1ForceFieldAlt;
-    /* THIS IS NOT IMPLEMENTED*/
-
 
     public string player1HoriAxisName;
 
@@ -213,21 +208,15 @@ public class InputManager : MonoBehaviour
                     tapCoolingDown = true;
                     player1.ReceiveInput(P1Controller.Player1Input.DoubleTapRight, 0);
                 }
-                if (Input.GetKeyDown(player1ForceField))
+                if (Input.GetKey(player1ForceField) || Input.GetKey(player1ForceFieldAlt))
                 {
                     player1.ReceiveInput(P1Controller.Player1Input.UseForceField, 0);
+                    return;
                 }
-                if (Input.GetKeyUp(player1ForceField))
-                {
                     player1.ReceiveInput(P1Controller.Player1Input.StopForceField, 0);
-                }
 
             }
         }
-
-
-
-
 
 
         for (int i = 0; i < amountOfGods; i++)

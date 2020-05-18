@@ -244,7 +244,13 @@ public class P1Controller : MonoBehaviour
                 Debug.Log("ForceField Is Up!");
                 audioList.forceFieldBegin.Play();
                 audioList.OnForcefieldToggle(true);
-                StartCoroutine(ToggleForceFieldAnimation(true));
+                forcefieldInstance = Instantiate(forceFieldPrefab, transform.position + (((Vector3)moveDirection) * 5f), Quaternion.identity);
+                if (!isMovingRight)
+                {
+                    Quaternion rotation = new Quaternion(transform.rotation.x, -55, transform.rotation.z, 1);
+                    forcefieldInstance.transform.rotation = rotation;
+                }
+                forcefieldInstance.GetComponent<ForceField>().ForceFieldToggle(true);
                 break;
 
             case false:
@@ -252,33 +258,11 @@ public class P1Controller : MonoBehaviour
                 forceFieldIsUp = false;
                 Debug.Log("ForceField Is down!");
                 audioList.OnForcefieldToggle(false);
-                StartCoroutine(ToggleForceFieldAnimation(false));
+                forcefieldInstance.GetComponent<ForceField>().ForceFieldToggle(false);
                 break;
         }
     }
 
-    IEnumerator ToggleForceFieldAnimation(bool active)
-    {
-        switch (active)
-        {
-            case true:
-                forcefieldInstance = Instantiate(forceFieldPrefab, transform.position + (((Vector3)moveDirection) * 5f), Quaternion.identity);
-                if (!isMovingRight)
-                {
-                    Quaternion flipped = new Quaternion(-1 * forcefieldInstance.transform.rotation.x, forcefieldInstance.transform.rotation.y, forcefieldInstance.transform.rotation.z, 1);
-                    forcefieldInstance.transform.rotation = flipped;
-                }
-                break;
-            case false:
-                yield return new WaitForSeconds(0.5f);
-                Destroy(forcefieldInstance);
-                break;
-
-
-        }
-
-        yield return null;
-    }
 
     public void RangedAttack()
     {
@@ -519,8 +503,11 @@ public class P1Controller : MonoBehaviour
             case Player1Input.UseForceField:
                 if (isGrounded && timeUntilForceFieldIsReady <= 0)
                 {
-                    rb.velocity = Vector2.zero;
-                    ToggleForceField(true);
+                    if (forcefieldInstance == null)
+                    {
+                        rb.velocity = Vector2.zero;
+                        ToggleForceField(true);
+                    }
                 }
 
                 break;
