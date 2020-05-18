@@ -140,14 +140,12 @@ public class CustomSceneManager : MonoBehaviour
             isLoadingScene.setBool(false);
             loadProgress = 0;
             UpdateLoadProgress(1);
-            // Debug.Log("Checking how many times this is called");
         };
 
 
         while (!asyncLoad.isDone)
         {
             UpdateLoadProgress(asyncLoad.progress);
-            //   Debug.Log("Loading progress: " + asyncLoad.progress);
             loadProgress = asyncLoad.progress;
             yield return null;
         }

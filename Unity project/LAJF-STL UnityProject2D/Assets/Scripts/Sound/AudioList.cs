@@ -28,6 +28,7 @@ public class AudioList : MonoBehaviour
          loseFx,
          narratorHit,
          narratorVoiceLines,
+         resurrection,
          select,
          selectionPicked,
          textToSpeechSource,

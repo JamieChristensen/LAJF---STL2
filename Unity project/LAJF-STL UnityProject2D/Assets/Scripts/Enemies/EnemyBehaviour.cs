@@ -327,7 +327,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         if (floatingTextPrefab != null)
         {
             ShowFloatingText(damage); // Trigger floating text
-            Debug.Log("Should trigger text");
+            //Debug.Log("Should trigger text");
         }
     }
     #region FloatingText
@@ -475,6 +475,54 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
         healthBar.UpdateHPValues(currentHealth, maxHealth);
 
+        StartCoroutine(UINameFadeOut(5));
+
+    }
+
+    public IEnumerator UINameFadeOut(float delay)
+    {
+        Vector3 currentSize = Vector3.zero; // start the text size at 0
+        Vector3 targetSize = new Vector3(1, 1, 1); // set the target size to 1
+        RectTransform textRectTransform = null;
+        try
+        {
+            textRectTransform = nameUI.GetComponent<RectTransform>();
+        }
+        catch
+        {
+            Debug.Log("textRectTransform could not be set");
+        }
+
+        float timer = 0;
+        float timeToLerp = 1f;
+        //scaling up
+        while (timer < timeToLerp)
+        {
+            timer += Time.deltaTime;
+            currentSize = Vector3.Lerp(currentSize, targetSize, 2 * Time.deltaTime / timeToLerp);
+            if (textRectTransform != null)
+            {
+                textRectTransform.localScale = currentSize;
+            }
+            
+            yield return null;
+        }
+        yield return new WaitForSeconds(delay);
+        currentSize = targetSize;
+        targetSize = Vector3.zero; // set the target size to Vector3.zero
+        timer = 0;
+        while (timer < timeToLerp)
+        {
+            timer += Time.deltaTime;
+            currentSize = Vector3.Lerp(currentSize, targetSize, 2 * Time.deltaTime / timeToLerp);
+            if (textRectTransform != null)
+            {
+                textRectTransform.localScale = currentSize;
+            }
+            yield return null;
+        }
+        currentSize = targetSize;
+        textRectTransform.localScale = currentSize;
     }
 
     IEnumerator DelayDeathAnnouncement(float delay)

@@ -163,7 +163,7 @@ public class HealthBar : MonoBehaviour
             timer -= Time.deltaTime;
 
             float fade = map(timer, duration, 0, 1, 0);
-            Debug.Log("Fade: " + fade + "\n Time: " + timer);
+            //Debug.Log("Fade: " + fade + "\n Time: " + timer);
             mat.SetFloat("_Scale", scaleOfFadeNoise);
 
 

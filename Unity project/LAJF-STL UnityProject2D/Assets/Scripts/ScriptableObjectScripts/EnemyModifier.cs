@@ -65,6 +65,7 @@ public class EnemyModifier : ScriptableObject
 
     public void Revive(EnemyBehaviour enemyToApplyTo)
     {
+        FindObjectOfType<AudioList>().resurrection.Play();
         Enemy agent = enemyToApplyTo.agent;
         Enemy.EnemyType enemyType = agent.enemyType;
         Spawner spawner = FindObjectOfType<Spawner>();

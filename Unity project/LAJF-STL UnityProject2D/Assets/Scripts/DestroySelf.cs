@@ -33,7 +33,7 @@ public class DestroySelf : MonoBehaviour
             float mappedIntensity = map(time, maxTime, 0, intensityOfLight, 0);
 
             light2d.intensity = mappedIntensity;
-            Debug.Log("time: " + time);
+            //Debug.Log("time: " + time);
             yield return new WaitForSeconds(0);
         }
         Destroy(gameObject);

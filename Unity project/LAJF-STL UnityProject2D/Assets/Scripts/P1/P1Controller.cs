@@ -241,7 +241,6 @@ public class P1Controller : MonoBehaviour
         {
             case true:
                 forceFieldIsUp = true;
-                Debug.Log("ForceField Is Up!");
                 audioList.forceFieldBegin.Play();
                 audioList.OnForcefieldToggle(true);
                 forcefieldInstance = Instantiate(forceFieldPrefab, transform.position + (((Vector3)moveDirection) * 5f), Quaternion.identity);
@@ -256,7 +255,6 @@ public class P1Controller : MonoBehaviour
             case false:
                 timeUntilForceFieldIsReady = forceFieldCooldown;
                 forceFieldIsUp = false;
-                Debug.Log("ForceField Is down!");
                 audioList.OnForcefieldToggle(false);
                 forcefieldInstance.GetComponent<ForceField>().ForceFieldToggle(false);
                 break;
