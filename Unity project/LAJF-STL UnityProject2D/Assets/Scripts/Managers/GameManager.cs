@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         // Debug.Log("Index to Load: " + runTimeChoises.chosenEnvironments[0].environmentIndex.ToString());
 
 
-
+        FindObjectOfType<InputManager>().ToggleInputAllow(true);
         canPlayerMove = true;
 
         gameState = initialGamestate;
@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour
     {
         //Need to figure out which gamestate to go to - rather than none
 
+        FindObjectOfType<InputManager>().ToggleInputAllow(false);
         RequestGameStateChange(GameStates.None);
         sceneManager.ChooseChoiceSceneToLoad(indexOfMinionChoiceScene); // get the minion scene ready
     }
@@ -178,6 +179,7 @@ public class GameManager : MonoBehaviour
         sceneManager.ChooseChoiceSceneToLoad(indexOfGameLoopScene);
         nextTransition.Raise(12);
         Time.timeScale = 1f;
+        FindObjectOfType<InputManager>().ToggleInputAllow(true);
         canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
         Invoke("SpawnTheMonster", 8);
     }
@@ -239,7 +241,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("there is no music manager");
         }
-
+        FindObjectOfType<InputManager>().ToggleInputAllow(false);
         canPlayerMove = false;
         // Time.timeScale = 0f;
         sceneManager.ChooseChoiceSceneToLoad(indexOfItemChoiceScene);
@@ -263,7 +265,8 @@ public class GameManager : MonoBehaviour
         
         // RequestGameStateChange(GameStates.InitializingNextScene);
         Time.timeScale = 1f;
-        canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
+        //FindObjectOfType<InputManager>().ToggleInputAllow(true);
+        //canPlayerMove = true; //probably shouldn't be here, but just for testing it is for now.
                               // StartCoroutine(sceneManager.AUnloadEnvironment(indexOfItemChoiceScene));
     }
 
@@ -310,6 +313,7 @@ public class GameManager : MonoBehaviour
         {
             canMonsterMove[i] = false;
         }
+
         canPlayerMove = false;
         bool dying = true;
         float timer = 0;

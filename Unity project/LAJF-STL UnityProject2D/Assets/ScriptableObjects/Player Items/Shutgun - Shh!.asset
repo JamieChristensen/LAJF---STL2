@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Shutgun - Shh!
   m_EditorClassIdentifier: 
   itemName: Shotgun
-  description: Tripple the amount of bullets - and tripple the fun! (combines with
-    your current weapon)
+  description: Tripple the amount of bullets - and tripple the fun!
   itemSprite: {fileID: 21300000, guid: c57e7709f5709534982c403d0c9d9b82, type: 3}
   healthModifier: 0
   speedModifier: 0

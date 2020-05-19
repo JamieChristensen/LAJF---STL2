@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Gatling Gun
   description: Don't even bother to lift a finger. This gun takes care of that in
-    a speedy manner! (combines with your current weapon)
+    a speedy manner!
   itemSprite: {fileID: 21300000, guid: 34f27a81547dd77429754b647c7522c5, type: 3}
   healthModifier: 0
   speedModifier: 0

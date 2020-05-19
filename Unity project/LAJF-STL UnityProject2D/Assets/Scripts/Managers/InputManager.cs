@@ -36,6 +36,7 @@ public class InputManager : MonoBehaviour
 
     public string player1HoriAxisName;
 
+    private bool allowInput = true;
     private bool player1Jump;
     private bool player1JumpHold;
     private bool player1Attack;
@@ -100,10 +101,13 @@ public class InputManager : MonoBehaviour
             }
         }
 
-
-        GetInputs();
-        SendHeroInputs();
-
+        
+        if (allowInput)
+        {
+            GetInputs();
+            SendHeroInputs();
+        }
+        
 
         tapTimerLeft = tapTimingLeft ? tapTimerLeft + Time.deltaTime : 0;
         tapTimerRight = tapTimingRight ? tapTimerRight + Time.deltaTime : 0;
@@ -124,6 +128,11 @@ public class InputManager : MonoBehaviour
             tapCoolingDown = false;
             tapCooldownTimer = 0;
         }
+    }
+
+    public void ToggleInputAllow(bool allowInput)
+    {
+        this.allowInput = allowInput;
     }
 
     private void GetInputs()

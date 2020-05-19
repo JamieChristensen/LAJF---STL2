@@ -109,16 +109,20 @@ public class TooltipManager : MonoBehaviour
         {
             case "Character":
                 //use description in P1Stats scriptableObject to update tooltip text
-                tooltipText = p1Stats[choiceIndex].description;
+                //tooltipText = p1Stats[choiceIndex].description;
+                tooltipTexts[0] = p1Stats[0].description;
+                tooltipTexts[1] = p1Stats[1].description;
+                tooltipTexts[2] = p1Stats[2].description;
                 break;
 
             case "Item":
                 if (playerItemChoices[0] != null)
                 {
-                    tooltipText = playerItemChoices[choiceIndex].description;
+                    tooltipTexts[0] = playerItemChoices[0].description;
+                    tooltipTexts[1] = playerItemChoices[1].description;
                     break;
                 }
-                tooltipText = choiceManager.victoryShades.description;
+                tooltipTexts[2] = choiceManager.victoryShades.description;
                 break;
 
             case "Minion":

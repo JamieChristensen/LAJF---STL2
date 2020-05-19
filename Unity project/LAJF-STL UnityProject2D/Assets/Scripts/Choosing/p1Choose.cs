@@ -50,7 +50,7 @@ public class p1Choose : MonoBehaviour
         {
             choiceText.text = "";
         }
-        choiceTMProText[0].text += "Player 1" + "\n";
+        choiceTMProText[0].text += "P1" + "\n";
 
         if (choiceType == "Item" && runtimeChoices.runTimeLoopCount == 4)
         {
@@ -150,7 +150,7 @@ public class p1Choose : MonoBehaviour
             {
                 choiceText.text = "";
             }
-            choiceTMProText[choice].text += "Player 1" + "\n";
+            choiceTMProText[choice].text += "P1" + "\n";
         }
 
         else
@@ -159,7 +159,7 @@ public class p1Choose : MonoBehaviour
             victoryItemHighlight.gameObject.SetActive(true);
             victoryItemOverlay.gameObject.SetActive(false);
             victoryChoiceTMProText.text = "";
-            victoryChoiceTMProText.text += "Player 1" + "\n";
+            victoryChoiceTMProText.text += "P1" + "\n";
         }
 
     }
