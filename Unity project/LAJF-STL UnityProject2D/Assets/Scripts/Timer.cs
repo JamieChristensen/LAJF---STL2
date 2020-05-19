@@ -6,7 +6,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour, IPausable
 {
     public TextMeshProUGUI timerText;
-    public const int COUNT_DOWN_TIME = 30;
+    public const int COUNT_DOWN_TIME = 45;
     public bool isPaused;
     public STL2.Events.VoidEvent timesOut;
     

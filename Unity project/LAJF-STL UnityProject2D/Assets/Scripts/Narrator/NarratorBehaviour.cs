@@ -132,10 +132,12 @@ public class NarratorBehaviour : MonoBehaviour
             
         }
 
-        audioList.AnnounceEnemyDeath();
+        
 
         uiText.text = text;
         // play audio file 
+
+        audioList.AnnounceEnemyDeath();
 
         yield return new WaitForSeconds(4 * readSpeed);
         isEnteringScene = false;

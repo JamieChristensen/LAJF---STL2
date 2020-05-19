@@ -1001,27 +1001,32 @@ PrefabInstance:
     - target: {fileID: 4849888594462695413, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4849888594462695413, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4849888594462695413, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4849888594462695413, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4849888594462695415, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
         type: 3}
       propertyPath: m_Name
       value: 'Tooltips Text '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849888595706549338, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42afcf9b9d9e81b4aa17a4057c784dee, type: 3}

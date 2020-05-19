@@ -19,7 +19,7 @@ MonoBehaviour:
   myName: Baahhd Sheep
   description: A dreadful sheep with a thirst for blood... Add a gatling gun - dangerous!
   trait: 
-  characterSprite: {fileID: 21300000, guid: 6252c6e232801894b9427ad5a41225ad, type: 3}
+  characterSprite: {fileID: 21300000, guid: 692812f2ee2c6a4489e6ab8c8f38cc3e, type: 3}
   colliderSize: {x: 5.3, y: 4.6}
   colliderOffset: {x: 0, y: -0.5}
   moveSpeed: 16

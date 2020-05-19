@@ -64,6 +64,8 @@ public class OrbEnemy : EnemyBehaviour
         Orb orbInstance = Instantiate(orbPrefab, transform.position, Quaternion.identity, transform).GetComponent<Orb>();
 
 
+        name = agent.GenerateName(modifiers);
+
         currentOrbTransform = orbPositions[0];
         currentTargetTransformIndex = 1;
         currentOrbTargetTransform = orbPositions[currentTargetTransformIndex];

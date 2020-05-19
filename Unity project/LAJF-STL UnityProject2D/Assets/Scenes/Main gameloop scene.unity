@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8061,7 +8061,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 63.5
+  m_fontSize: 71.3
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11557,8 +11557,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 142.2, y: 15.599976}
-  m_SizeDelta: {x: 461.96, y: 69.29}
+  m_AnchoredPosition: {x: 142.2, y: 12.200012}
+  m_SizeDelta: {x: 461.96, y: 77.8}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6729996267513730326
 CanvasRenderer:

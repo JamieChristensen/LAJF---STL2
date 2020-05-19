@@ -475,7 +475,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
 
         healthBar.UpdateHPValues(currentHealth, maxHealth);
 
-        StartCoroutine(UINameFadeOut(3));
+        StartCoroutine(UINameFadeOut(4));
 
     }
 
