@@ -93,6 +93,11 @@ public class GreatChest : MonoBehaviour
 
     public void OnPlayerFinishChallenge()
     {
+        Invoke("LetTheChestFall",2);
+    }
+
+    void LetTheChestFall()
+    {
         rb.gravityScale = 1;
     }
 

@@ -6661,6 +6661,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransitionCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 9049779018472308988, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9049779018472308989, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: audioList

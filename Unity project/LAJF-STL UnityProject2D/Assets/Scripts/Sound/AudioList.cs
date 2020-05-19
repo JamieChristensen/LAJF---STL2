@@ -34,7 +34,7 @@ public class AudioList : MonoBehaviour
          textToSpeechSource,
          winFx;
 
-    public AudioSource[] narratorVoiceFillers, narratorEnter, godSources;
+    public AudioSource[] narratorVoiceFillers, narratorEnter, godSources, enemyDeathAnnouncement;
 
     public void PlayWithVariablePitch(AudioSource audioSource)
     {
@@ -113,6 +113,37 @@ public class AudioList : MonoBehaviour
         godSources[PlayerNumber-2].clip = runtimeChoices.chosenGods[PlayerNumber - 2].representationClip;
         godSources[PlayerNumber - 2].Play();
     }
+
+    public void AnnounceEnemyDeath()
+    {
+        StartCoroutine(EnemyDeathSequence());
+    }
+
+    IEnumerator EnemyDeathSequence()
+    {
+        enemyDeathAnnouncement[0].Play();
+        while (enemyDeathAnnouncement[0].isPlaying)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        if (runtimeChoices.enemyModifiers[runtimeChoices.runTimeLoopCount-1].name == "Angry_")
+        {
+            enemyDeathAnnouncement[1].clip = runtimeChoices.enemyModifiers[runtimeChoices.runTimeLoopCount - 1].nameClip; // modifier first
+            enemyDeathAnnouncement[2].clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].nameClip; // enemy second
+        }
+        else
+        {
+            enemyDeathAnnouncement[1].clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].nameClip; // enemy first
+            enemyDeathAnnouncement[2].clip = runtimeChoices.enemyModifiers[runtimeChoices.runTimeLoopCount - 1].nameClip; // modifier second
+        }
+        enemyDeathAnnouncement[1].Play();
+        while (enemyDeathAnnouncement[1].isPlaying)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        enemyDeathAnnouncement[2].Play();
+    }
+
 
     #endregion NarratorVoiceLines
 

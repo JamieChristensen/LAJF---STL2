@@ -19,10 +19,14 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInputs:
-    - The hero was surprised and in denial, from heaven came its first trial!
-    - They took the battle to a different place, yet another enemy to face!
-    - '"Is this a joke?" The hero asked, as the third foe was unmasked!'
-    - A final test to end the journey.  Now comes the question. Was the hero worthy?
+    - The hero was surprised and in denial.                                    From
+      heaven came its first trial!
+    - They took the battle to a different place.                            Yet another
+      enemy to face!
+    - '"Is this a joke?" The hero asked,                                                    
+      as the third foe was unmasked!'
+    - 'A final test to end the journey.                                           
+      Now comes the question: Was the hero worthy?'
     timeOfTextDisplayed: 2
   transitionBackgrounds:
   - {fileID: 21300000, guid: 2069bdb83d155ec49b712a6f4250240e, type: 3}

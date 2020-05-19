@@ -106,7 +106,7 @@ public class NarratorBehaviour : MonoBehaviour
 
     IEnumerator ReadText(string text)
     {
-        
+        yield return new WaitForSeconds(2);
         // execute TTS service with text param and wait for respons 
         yield return StartCoroutine(textToSpeech.SynthesizeText(text, this));
         
@@ -120,6 +120,7 @@ public class NarratorBehaviour : MonoBehaviour
         // wait for narrator to clear his throat 
         yield return new WaitForSeconds(audioList.narratorEnter[randomSource].clip.length);
         
+        
         // show text on screen 
         if (textToSpeechClip != null)
         {
@@ -130,6 +131,9 @@ public class NarratorBehaviour : MonoBehaviour
             }
             
         }
+
+        audioList.AnnounceEnemyDeath();
+
         uiText.text = text;
         // play audio file 
 

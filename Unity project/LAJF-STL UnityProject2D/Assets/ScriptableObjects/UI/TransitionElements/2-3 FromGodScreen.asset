@@ -19,10 +19,14 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInputs:
-    - 'was said with great frustration. They stole the relic in a secret Location! '
-    - 'was said with great frustration. They stole the relic in a secret Location! '
-    - 'was said with great frustration. They stole the relic in a secret Location! '
-    - 'was said with great frustration. They stole the relic in a secret Location! '
+    - '...was said with great frustration.                                           
+      They stole the relic in a secret Location! '
+    - '...was said with great frustration.                                           
+      They stole the relic in a secret Location! '
+    - '...was said with great frustration.                                           
+      They stole the relic in a secret Location! '
+    - '...was said with great frustration.                                           
+      They stole the relic in a secret Location! '
     timeOfTextDisplayed: 2
   transitionBackgrounds:
   - {fileID: 21300000, guid: ec3a890a3ce7ccd41b7df928d14747b4, type: 3}

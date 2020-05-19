@@ -18,7 +18,7 @@ MonoBehaviour:
   jump: {fileID: 0}
   myName: Spartan War Hero
   description: Ruthless warrior in possession of exploding projectiles!
-  trait: 'No hat: can jump very high without a hat pulling him down'
+  trait: 
   characterSprite: {fileID: 21300000, guid: 7061cf790df43234e92d6942bde3a8f4, type: 3}
   colliderSize: {x: 2, y: 7}
   colliderOffset: {x: 0, y: 0}

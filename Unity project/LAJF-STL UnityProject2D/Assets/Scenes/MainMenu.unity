@@ -5564,6 +5564,36 @@ PrefabInstance:
       propertyPath: m_margin.w
       value: 36.00998
       objectReference: {fileID: 0}
+    - target: {fileID: 9049779017664538650, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_text
+      value: There was a hero...
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049779017664538650, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049779017664538650, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049779017664538650, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049779017664538650, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049779017664538650, guid: dbbb37c9bb70bee488540616023c104d,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9049779017664538651, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -5572,7 +5602,7 @@ PrefabInstance:
     - target: {fileID: 9049779017664538651, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 471
+      value: 652
       objectReference: {fileID: 0}
     - target: {fileID: 9049779018443527343, guid: dbbb37c9bb70bee488540616023c104d,
         type: 3}

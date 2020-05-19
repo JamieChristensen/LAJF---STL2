@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fef92dc9b6611b549a3ae698fae95357, type: 3}
-  m_Name: Peasant
+  m_Name: GreatSausmage
   m_EditorClassIdentifier: 
   picked: {fileID: 8300000, guid: 28f10405d8e3e444dbb2529405fa4ea7, type: 3}
   death: {fileID: 0}
   hurt: {fileID: 0}
   jump: {fileID: 0}
-  myName: Peasant with a shotgun
-  description: Get off his lawn or face his triple-barreled shotgun!
-  trait: 'Chinese: He must be a ninja then'
-  characterSprite: {fileID: 21300000, guid: c414fb3ea8fa1a54ab355916e62972b8, type: 3}
+  myName: Great Sausmage
+  description: A powerful wiener wizard... With a tripple barreled shotgun!
+  trait: 
+  characterSprite: {fileID: 21300000, guid: 4a07c505bd5bf364a9a49143753781b6, type: 3}
   colliderSize: {x: 4, y: 7}
   colliderOffset: {x: 0, y: 0}
   moveSpeed: 16

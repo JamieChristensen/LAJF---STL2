@@ -23,14 +23,14 @@ MonoBehaviour:
   startTransparent: 1
   textElement:
   - textInputs:
-    - a relic too powerful to even imagine was forged in glory. I would tell you
-      much more, but now the Hero enters the story!
-    - a relic too powerful to even imagine was forged in glory. I would tell you
-      much more, but now the Hero enters the story!
-    - a relic too powerful to even imagine was forged in glory. I would tell you
-      much more, but now the Hero enters the story!
-    - a relic too powerful to even imagine was forged in glory. I would tell you
-      much more, but now the Hero enters the story!
+    - a relic too powerful to even imagine was forged in glory.                                                                                                                                                                                    
+      I would tell you much more, but now the hero enters the story!
+    - a relic too powerful to even imagine was forged in glory.                                                                                                                                                                                    
+      I would tell you much more, but now the hero enters the story!
+    - a relic too powerful to even imagine was forged in glory.                                                                                                                                                                                    
+      I would tell you much more, but now the hero enters the story!
+    - a relic too powerful to even imagine was forged in glory.                                                                                                                                                                                    
+      I would tell you much more, but now the hero enters the story!
     timeOfTextDisplayed: 6
   transitionBackgrounds:
   - {fileID: 21300000, guid: 16809b492b730434e91aa00b16ee1939, type: 3}
