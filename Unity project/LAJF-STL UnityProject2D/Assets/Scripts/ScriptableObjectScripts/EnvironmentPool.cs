@@ -17,6 +17,7 @@ public class Environment
 {
     public string environmentName;
     public string theme;
+    public string themeDescription;
     public Sprite environmentSprite;
     public int environmentIndex;
 }

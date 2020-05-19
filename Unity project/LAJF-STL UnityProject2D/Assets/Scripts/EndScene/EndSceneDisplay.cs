@@ -73,8 +73,8 @@ public class EndSceneDisplay : MonoBehaviour
                     lossInstance.playerImages[0].rectTransform.Rotate(new Vector3(0, 180, 180)); //Flips it around X-axis. 
 
                     lossInstance.environment.sprite = runtimeChoices.chosenEnvironments[i - 1].environmentSprite;
-                    lossInstance.tombstoneSpriteRenderer.material.SetTexture("_Texture2D", runtimeChoices.enemies[i - 1].sprite.texture);
-
+                    lossInstance.tombstoneSpriteRenderer.gameObject.SetActive(false);
+                    lossInstance.enemyImage.sprite = runtimeChoices.enemies[i - 1].sprite;
 
                     Destroy(lossInstance.itemImage.gameObject);
                     Destroy(lossInstance.chest.gameObject);
@@ -101,6 +101,7 @@ public class EndSceneDisplay : MonoBehaviour
 
                     victoryInstance.environment.sprite = runtimeChoices.chosenEnvironments[i - 1].environmentSprite;
                     victoryInstance.tombstoneSpriteRenderer.material.SetTexture("_Texture2D", runtimeChoices.enemies[i - 1].sprite.texture);
+                    victoryInstance.enemyImage.gameObject.SetActive(false);
                     victoryInstance.itemImage.sprite = runtimeChoices.playerItems[i - 1].itemSprite;
                 }
 

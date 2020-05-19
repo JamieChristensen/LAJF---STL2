@@ -1915,12 +1915,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 785652477461804414, guid: d841c53573435014890e63ee23fa195a,
         type: 3}
+      propertyPath: textMeshPro.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 785652477461804414, guid: d841c53573435014890e63ee23fa195a,
+        type: 3}
+      propertyPath: tooltipTexts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 785652477461804414, guid: d841c53573435014890e63ee23fa195a,
+        type: 3}
       propertyPath: choiceManager
       value: 
       objectReference: {fileID: 2867410946190812735}
     - target: {fileID: 785652477461804414, guid: d841c53573435014890e63ee23fa195a,
         type: 3}
       propertyPath: textMeshPro
+      value: 
+      objectReference: {fileID: 295681766}
+    - target: {fileID: 785652477461804414, guid: d841c53573435014890e63ee23fa195a,
+        type: 3}
+      propertyPath: textMeshPro.Array.data[0]
       value: 
       objectReference: {fileID: 295681766}
     - target: {fileID: 7880977790444208797, guid: d841c53573435014890e63ee23fa195a,
@@ -3290,6 +3305,47 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8557288258971868195}
     m_Modifications:
+    - target: {fileID: 4849888594118764208, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849888594118764208, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.0627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849888594118764208, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.0627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849888594118764208, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279242949
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849888594118764208, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849888594118764208, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 514
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849888594118764208, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
+    - target: {fileID: 4849888594118764208, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4849888594462695412, guid: 42afcf9b9d9e81b4aa17a4057c784dee,
         type: 3}
       propertyPath: m_LocalPosition.x

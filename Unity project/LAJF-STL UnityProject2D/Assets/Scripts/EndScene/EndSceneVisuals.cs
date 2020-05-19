@@ -8,6 +8,7 @@ public class EndSceneVisuals : MonoBehaviour
 {
     public Image[] playerImages;
     public SpriteRenderer tombstoneSpriteRenderer;
+    public Image enemyImage;
     public Image itemImage;
     public Image environment;
     public Image chest;

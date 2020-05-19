@@ -14,16 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CategoryName: Runtime Choices
   Options: []
-  chosenGods:
-  - {fileID: 11400000, guid: 517b2ecde8cfef14ba0b67d4f2fbc910, type: 2}
-  - {fileID: 11400000, guid: 517b2ecde8cfef14ba0b67d4f2fbc910, type: 2}
-  - {fileID: 11400000, guid: 517b2ecde8cfef14ba0b67d4f2fbc910, type: 2}
+  chosenGods: []
   playerItems: []
   baselineItem: {fileID: 11400000, guid: 970a9a44848f5a64e8345d352a5f9052, type: 2}
-  enemies:
-  - {fileID: 11400000, guid: 986eb46723121814da9c91572d6d4703, type: 2}
-  enemyModifiers:
-  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
+  enemies: []
+  enemyModifiers: []
   chosenEnvironments:
   - environmentName: Space4
     theme: Space

@@ -11,6 +11,8 @@ public class TooltipManager : MonoBehaviour
 
     public string tooltipText = "";
 
+    public string[] tooltipTexts;
+
     private string choiceType;
     private int choiceIndex;
 
@@ -18,14 +20,14 @@ public class TooltipManager : MonoBehaviour
     private P1Stats[] p1Stats;
     private PlayerItems[] playerItemChoices;
     private EnemyModifier[] enemyModifierChoices;
+    private Environment[] environmentThemeChoices;
+    private Enemy[] enemyChoices;
 
-    [SerializeField]
-    private TextMeshProUGUI textMeshPro;
+    public TextMeshProUGUI[] textMeshPro;
 
     // Start is called before the first frame update
     void Start()
     {
-        textMeshPro = GameObject.Find("DescriptionText").GetComponent<TextMeshProUGUI>();
         choiceIndex = -1; //Initial none-chosen.
         if (choiceManager == null)
         {
@@ -53,12 +55,18 @@ public class TooltipManager : MonoBehaviour
                 break;
 
             case "Minion":
-                //Could add this if wanted.
+                enemyChoices = choiceManager.enemyChoices;
                 break;
 
             case "Modifier":
                 enemyModifierChoices = choiceManager.enemyModifierChoices;
                 break;
+
+            case "Theme":
+                environmentThemeChoices = choiceManager.environmentThemeChoices;
+                break;
+
+
         }
     }
 
@@ -114,15 +122,32 @@ public class TooltipManager : MonoBehaviour
                 break;
 
             case "Minion":
-                //Could add tooltips for minion/monster/enemy types, if necessary/wanted.
+                tooltipTexts[0] = enemyChoices[0].description;
+                tooltipTexts[1] = enemyChoices[1].description;
+                tooltipTexts[2] = enemyChoices[2].description;
                 break;
 
             case "Modifier":
-                tooltipText = enemyModifierChoices[choiceIndex].description;
+                tooltipTexts[0] = enemyModifierChoices[0].description;
+                tooltipTexts[1] = enemyModifierChoices[1].description;
+                tooltipTexts[2] = enemyModifierChoices[2].description;
+                break;
+
+            case "Theme":
+                tooltipTexts[0] = environmentThemeChoices[0].themeDescription;
+                tooltipTexts[1] = environmentThemeChoices[1].themeDescription;
+                tooltipTexts[2] = environmentThemeChoices[2].themeDescription;
                 break;
         }
 
         //TODO: Set tooltip objects text equal to tooltipText
-        textMeshPro.text = tooltipText;
+        if (tooltipText != "")
+        textMeshPro[0].text = tooltipText;
+        else
+        {
+            textMeshPro[0].text = tooltipTexts[0];
+            textMeshPro[1].text = tooltipTexts[1];
+            textMeshPro[2].text = tooltipTexts[2];
+        }
     }
 }
