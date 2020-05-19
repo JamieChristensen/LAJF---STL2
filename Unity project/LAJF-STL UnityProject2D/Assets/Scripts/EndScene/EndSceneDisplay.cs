@@ -153,6 +153,7 @@ public class EndSceneDisplay : MonoBehaviour
 
             instance.environment.sprite = runtimeChoices.chosenEnvironments[i - 1].environmentSprite;
             instance.tombstoneSpriteRenderer.material.SetTexture("_Texture2D", runtimeChoices.enemies[i - 1].sprite.texture);
+            instance.enemyImage.gameObject.SetActive(false);
             instance.itemImage.sprite = runtimeChoices.playerItems[i - 1].itemSprite;
 
 

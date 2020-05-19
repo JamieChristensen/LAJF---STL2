@@ -107,6 +107,10 @@ public class InputManager : MonoBehaviour
             GetInputs();
             SendHeroInputs();
         }
+        else
+        {
+            player1.ReceiveInput(P1Controller.Player1Input.StopForceField, 0);
+        }
         
 
         tapTimerLeft = tapTimingLeft ? tapTimerLeft + Time.deltaTime : 0;
