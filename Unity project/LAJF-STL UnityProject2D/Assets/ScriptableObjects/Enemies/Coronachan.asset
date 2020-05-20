@@ -15,6 +15,8 @@ MonoBehaviour:
   combinedNameAudioClip: []
   nameClip: {fileID: 8300000, guid: 2eef9ab43b7801147b7251e7e2d3cd97, type: 3}
   representationClip: {fileID: 8300000, guid: 44adc30e60ac1fb43a3ee7e52cab5df8, type: 3}
+  deathClip: {fileID: 8300000, guid: c62a2d030f12e4d4abd9444e658f0ed8, type: 3}
+  HurtClip: {fileID: 8300000, guid: c52b1b14cd0c20447ab7ec51662df13d, type: 3}
   runTimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   name: Corona Chan
   description: The dark lady is here to conquer... She brought an old friend!

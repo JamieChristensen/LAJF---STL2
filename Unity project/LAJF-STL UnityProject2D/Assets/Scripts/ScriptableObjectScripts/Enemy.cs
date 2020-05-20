@@ -7,6 +7,7 @@ public class Enemy : ScriptableObject
 {
     public List <AudioClip> combinedNameAudioClip;
     public AudioClip nameClip, representationClip;
+    public AudioClip deathClip, HurtClip;
     public ChoiceCategory runTimeChoices;
     public enum EnemyType
     {

@@ -15,6 +15,8 @@ MonoBehaviour:
   combinedNameAudioClip: []
   nameClip: {fileID: 8300000, guid: 11e31195db5c9da4a9565aad3a55f97e, type: 3}
   representationClip: {fileID: 8300000, guid: 1859b6001621f7e4cb755977458b450e, type: 3}
+  deathClip: {fileID: 8300000, guid: 650292441d3a8f741ada0e7a148ba583, type: 3}
+  HurtClip: {fileID: 8300000, guid: b5cad89cfdc3643449b510cebd18c48b, type: 3}
   runTimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   name: Itchy Frog
   description: Just a mad scratching dance or crazy ass reflexes? No one knows!

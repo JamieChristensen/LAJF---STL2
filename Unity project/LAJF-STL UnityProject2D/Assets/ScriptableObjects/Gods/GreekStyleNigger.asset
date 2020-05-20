@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0097102ce57ee1478707665900d640d, type: 3}
   m_Name: GreekStyleNigger
   m_EditorClassIdentifier: 
-  representationClip: {fileID: 8300000, guid: e10e1c39ae554624598b8b5822b83c73, type: 3}
+  representationClip: {fileID: 8300000, guid: 9760dfa0b81d57e498b0d8c927deca98, type: 3}
   godName: 'Neus '
   description: Zeus, but rich in melanin pigments!
   selectionIcon: {fileID: 21300000, guid: ca2eac0f72c11ae45a4ef9d9442945cd, type: 3}

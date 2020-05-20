@@ -20,7 +20,9 @@ public class AudioList : MonoBehaviour
          forceFieldEnd,
          forceFieldHit,
          forceFieldWhileUp,
-         hurt,
+         hurtEnemy,
+         hurtHero,
+         invulnerable,
          jump,
          land,
          lightningStrike,
@@ -106,6 +108,24 @@ public class AudioList : MonoBehaviour
     {
         selectionPicked.clip = runtimeChoices.chosenHero.picked;
         selectionPicked.Play();
+        deathHero.clip = runtimeChoices.chosenHero.death;
+        hurtHero.clip = runtimeChoices.chosenHero.hurt;
+        jump.clip = runtimeChoices.chosenHero.jump;
+    }
+
+    public void OnEnemyPicked()
+    {
+        selectionPicked.clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].representationClip;
+        selectionPicked.Play();
+        deathEnemy.clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].deathClip;
+        hurtEnemy.clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].HurtClip;
+    }
+
+    public void OnModifierPicked()
+    {
+        selectionPicked.clip = runtimeChoices.enemyModifiers[runtimeChoices.runTimeLoopCount - 1].representationClip;
+        selectionPicked.Play();
+
     }
 
     public void OnGodPicked(int PlayerNumber)

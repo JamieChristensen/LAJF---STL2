@@ -81,6 +81,7 @@ public class OrbEnemy : EnemyBehaviour
         if (!isOrbDead)
         {
             ShowFloatingText();
+            audioList.PlayWithVariablePitch(audioList.invulnerable);
             return;
         }
 

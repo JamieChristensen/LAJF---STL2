@@ -15,6 +15,8 @@ MonoBehaviour:
   combinedNameAudioClip: []
   nameClip: {fileID: 8300000, guid: 3fbc7c0911d9ecb428fe9b14390fd2b9, type: 3}
   representationClip: {fileID: 8300000, guid: 65e8aa686ae2aa045b166083f8904cd6, type: 3}
+  deathClip: {fileID: 8300000, guid: e24ce4f802a2e8b4f8128609ca774eaf, type: 3}
+  HurtClip: {fileID: 8300000, guid: ecb3a8a575643314c9025ece5e7564cb, type: 3}
   runTimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   name: Two For One
   description: 'Their personality is not the only split to worry about! '

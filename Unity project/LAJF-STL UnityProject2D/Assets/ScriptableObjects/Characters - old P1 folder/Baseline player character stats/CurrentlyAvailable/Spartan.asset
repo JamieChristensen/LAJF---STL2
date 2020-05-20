@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Spartan
   m_EditorClassIdentifier: 
   picked: {fileID: 8300000, guid: 35c345ae02288a140a1ce32896eb03cc, type: 3}
-  death: {fileID: 0}
-  hurt: {fileID: 0}
-  jump: {fileID: 0}
+  death: {fileID: 8300000, guid: 111f451ab4a425e41a4d64330a3c1069, type: 3}
+  hurt: {fileID: 8300000, guid: 93deb65d86ed15d4db062d820af06fc3, type: 3}
+  jump: {fileID: 8300000, guid: d87fac7b473a03d4ea4c8db0718d93b5, type: 3}
   myName: Spartan War Hero
   description: Ruthless warrior in possession of exploding projectiles!
   trait: 

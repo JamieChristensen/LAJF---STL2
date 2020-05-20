@@ -452,8 +452,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         // Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". minion! It is: " + finalChoice.name);
 
         runtimeChoices.enemies.Add(enemyChoices[choice - 1]); // adds the chosen minion to the array
-        audioList.selectionPicked.clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].representationClip;
-        audioList.selectionPicked.Play();
+        audioList.OnEnemyPicked();
         StartCoroutine(WaitForMinionToShutUp());
 
     }
@@ -497,8 +496,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             _musicManager.PlayMusic("Battle",1);
         }
         runtimeChoices.enemyModifiers.Add(enemyModifierChoices[choice - 1]); // adds the chosen modifier to the array
-        audioList.selectionPicked.clip = runtimeChoices.enemyModifiers[runtimeChoices.runTimeLoopCount - 1].representationClip;
-        audioList.selectionPicked.Play();
+        audioList.OnModifierPicked();
         StartCoroutine(WaitForModifierToShutUp());
     }
 

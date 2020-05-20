@@ -349,7 +349,7 @@ public class P1Controller : MonoBehaviour
         if (currentHitPoints > 0) // Show damage effect
         {
             DamageAnimation();
-            audioList.PlayWithVariablePitch(audioList.hurt);
+            audioList.PlayWithVariablePitch(audioList.hurtHero);
         }
         else // Trigger death effect
         {
@@ -671,6 +671,7 @@ public class P1Controller : MonoBehaviour
     public void DeathExplode() // Add Particle Burst
     {
         audioList.explosion.Play();
+        audioList.deathHero.Play();
         shotgunImage.gameObject.SetActive(false);
         ParticleSystem instance = Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
         CameraShake camshake = FindObjectOfType<CameraShake>();

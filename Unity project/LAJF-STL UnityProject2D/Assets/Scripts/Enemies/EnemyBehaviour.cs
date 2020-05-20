@@ -321,7 +321,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         DamageAnimation();
         if (audioList != null)
         {
-            audioList.PlayWithVariablePitch(audioList.hurt);
+            audioList.PlayWithVariablePitch(audioList.hurtEnemy);
         }
 
         if (floatingTextPrefab != null)
