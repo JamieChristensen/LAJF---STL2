@@ -100,6 +100,23 @@ public class MainMenu : MonoBehaviour
         settingsMenu.SetActive(false);
     }
 
+
+
+    public void TutorialPressed()
+    {
+        StartCoroutine(LoadTutorial());
+    }
+
+    IEnumerator LoadTutorial()
+    {
+        FindObjectOfType<MainMenuFade>().StartFade();
+        musicManager = FindObjectOfType<MusicManager>();
+        musicManager.PlayMusic("Tutorial", 0.8f);
+        yield return new WaitForSeconds(6);
+        SceneManager.LoadSceneAsync("Tutorial");
+    }
+
+
     public void ExitGame()
     {
         Application.Quit();
@@ -113,6 +130,7 @@ public class MainMenu : MonoBehaviour
 
     public void ChangeMusic()
     {
+        musicManager = FindObjectOfType<MusicManager>();
         musicManager.PlayMusic("Choosing", 0.8f);
     }
 

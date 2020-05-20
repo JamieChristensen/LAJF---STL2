@@ -60,6 +60,10 @@ public class MusicManager : MonoBehaviour
             {
                 mt.source.Play();
             }
+            else if (mt.name == "Tutorial" && SceneManager.GetActiveScene().name == "Tutorial")
+            {
+                mt.source.Play();
+            }
             else if (mt.name == "Choosing" && SceneManager.GetActiveScene().buildIndex != 0)
             {
                 mt.source.Play();
@@ -129,6 +133,9 @@ public class MusicManager : MonoBehaviour
             {
                 if (name == "Battle")
                 {
+                    if (SceneManager.GetActiveScene().name == "Tutorial")
+                    musicThemes[2].source.clip = battle[4]; // tutorial battle music
+                    else
                     musicThemes[2].source.clip = battle[runTimeChoices.runTimeLoopCount - 1];
                 }
                 else if (name == "Peace")
