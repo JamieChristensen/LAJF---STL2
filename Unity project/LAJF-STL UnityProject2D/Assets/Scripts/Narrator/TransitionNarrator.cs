@@ -55,6 +55,7 @@ public class TransitionNarrator : MonoBehaviour
 
     public void DoVoiceFiller(int fillerIndex)
     {
+        audioList = FindObjectOfType<AudioList>();
         audioList.narratorVoiceFillers[fillerIndex].Play();
     }
 

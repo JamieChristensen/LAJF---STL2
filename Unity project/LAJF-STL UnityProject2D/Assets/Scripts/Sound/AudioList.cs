@@ -10,6 +10,7 @@ public class AudioList : MonoBehaviour
     public ChoiceCategory runtimeChoices;
     public int voiceLineIndex;
     public SettingsScrObj gameSettings;
+    Coroutine co;
 
     // SFX 
     public AudioSource
@@ -33,6 +34,8 @@ public class AudioList : MonoBehaviour
          loseFx,
          narratorHit,
          narratorVoiceLines,
+         projectileExplode,
+         projectileImpact,
          resurrection,
          select,
          selectionPicked,
@@ -56,16 +59,20 @@ public class AudioList : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-        if (SceneManager.GetActiveScene().buildIndex != 1 || SceneManager.GetActiveScene().buildIndex != 2)
-        {
-            SetHeroSounds();
-            if (runtimeChoices.chosenGods[0] != null)
-            SetGodSounds();
-        }
 
     }
 
-        public void PlayWithVariablePitch(AudioSource audioSource)
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0 || SceneManager.GetActiveScene().buildIndex != 1 || SceneManager.GetActiveScene().buildIndex != 2)
+        {
+            SetHeroSounds();
+            if (runtimeChoices.chosenGods[0] != null)
+                SetGodSounds();
+        }
+    }
+
+    public void PlayWithVariablePitch(AudioSource audioSource)
     {
         audioSource.pitch = Random.Range(0.92f, 1.08f);
         audioSource.Play();
@@ -90,6 +97,15 @@ public class AudioList : MonoBehaviour
     public void OnNarratorHit()
     {
         narratorHit.Play();
+        if (co != null)
+        StopCoroutine(co);
+        foreach (AudioSource AS in enemyDeathAnnouncement)
+        {
+            if (AS.isPlaying)
+            {
+                AS.Stop();
+            }
+        }
         if (textToSpeechSource.isPlaying)
         {
             textToSpeechSource.Stop();
@@ -186,7 +202,7 @@ public class AudioList : MonoBehaviour
 
     public void AnnounceEnemyDeath()
     {
-        StartCoroutine(EnemyDeathSequence());
+       co = StartCoroutine(EnemyDeathSequence());
     }
 
     IEnumerator EnemyDeathSequence()
@@ -212,6 +228,7 @@ public class AudioList : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         enemyDeathAnnouncement[2].Play();
+        co = null;
     }
 
 
