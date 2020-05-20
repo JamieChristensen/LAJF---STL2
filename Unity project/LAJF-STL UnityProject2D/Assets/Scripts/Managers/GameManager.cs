@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         // Debug.Log("Index to Load: " + runTimeChoises.chosenEnvironments[0].environmentIndex.ToString());
 
 
-        FindObjectOfType<InputManager>().ToggleInputAllow(true);
+        //FindObjectOfType<InputManager>().ToggleInputAllow(true);
         canPlayerMove = true;
 
         gameState = initialGamestate;

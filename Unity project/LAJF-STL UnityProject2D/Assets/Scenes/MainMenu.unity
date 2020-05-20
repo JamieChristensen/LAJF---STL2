@@ -734,16 +734,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6c23d12a6a4424d8424a5b1f63ff3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialSpartan: {fileID: 11400000, guid: 7f7febd433328a94a94af68dd70f11b0, type: 2}
+  runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   selectedButton: {fileID: 0}
+  tutorialButton: {fileID: 2137302671}
   startGameButton: {fileID: 932235510}
   settingsButton: {fileID: 435424271}
   creditsButton: {fileID: 1887345758}
-  exitGameButton: {fileID: 2137302671}
+  exitGameButton: {fileID: 158991287}
   primaryMainMenuButtons:
+  - {fileID: 2137302671}
   - {fileID: 932235510}
   - {fileID: 435424271}
+  - {fileID: 158991287}
   - {fileID: 1887345758}
-  - {fileID: 2137302671}
   settingsMenu: {fileID: 964106341}
   creditsMenu: {fileID: 2002994815}
   introTransition: {fileID: 2065776010}
@@ -3916,8 +3920,8 @@ RectTransform:
   - {fileID: 420324143}
   - {fileID: 1133636922}
   - {fileID: 201879118}
-  - {fileID: 964106342}
   - {fileID: 2002994816}
+  - {fileID: 964106342}
   - {fileID: 1866652349}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -5101,7 +5105,7 @@ RectTransform:
   - {fileID: 251633543}
   - {fileID: 751561581}
   m_Father: {fileID: 1261264324}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5259,6 +5263,28 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1866652348}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 179123605}
+        m_MethodName: DisablePrimaryButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &2137302672
 MonoBehaviour:

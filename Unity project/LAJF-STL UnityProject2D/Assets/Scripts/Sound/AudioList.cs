@@ -59,6 +59,7 @@ public class AudioList : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex != 1 || SceneManager.GetActiveScene().buildIndex != 2)
         {
             SetHeroSounds();
+            if (runtimeChoices.chosenGods[0] != null)
             SetGodSounds();
         }
 
