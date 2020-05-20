@@ -14,33 +14,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CategoryName: Runtime Choices
   Options: []
-  chosenGods: []
-  playerItems: []
+  chosenGods:
+  - {fileID: 11400000, guid: 517b2ecde8cfef14ba0b67d4f2fbc910, type: 2}
+  - {fileID: 11400000, guid: ca9744e18ae804945b42937f56406872, type: 2}
+  - {fileID: 11400000, guid: ca9744e18ae804945b42937f56406872, type: 2}
+  playerItems:
+  - {fileID: 11400000, guid: 3517c50eeea57b54880e316331a20839, type: 2}
+  - {fileID: 11400000, guid: 0449e37f5ac35744bb01ef93d8177982, type: 2}
+  - {fileID: 11400000, guid: 5966a2f15e04c4a4997eec965b58ecc2, type: 2}
   baselineItem: {fileID: 11400000, guid: 970a9a44848f5a64e8345d352a5f9052, type: 2}
-  enemies: []
-  enemyModifiers: []
+  enemies:
+  - {fileID: 11400000, guid: 986eb46723121814da9c91572d6d4703, type: 2}
+  - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
+  - {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
+  - {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
+  enemyModifiers:
+  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
+  - {fileID: 11400000, guid: b13a26218995e63468b9a96c3a57c10b, type: 2}
+  - {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
+  - {fileID: 11400000, guid: b13a26218995e63468b9a96c3a57c10b, type: 2}
   chosenEnvironments:
-  - environmentName: Space4
-    theme: Space
-    environmentSprite: {fileID: 21300000, guid: a3a887465523a624ab1b513352af0268,
+  - environmentName: Nature4
+    theme: Nature
+    themeDescription: 
+    environmentSprite: {fileID: 21300000, guid: 97a4fe7853800c54f910c155192fe9a7,
       type: 3}
-    environmentIndex: 16
-  - environmentName: Space2
-    theme: Space
-    environmentSprite: {fileID: 21300000, guid: 913f61ef3af3b4142859694fe8212e66,
+    environmentIndex: 12
+  - environmentName: Nature1
+    theme: Nature
+    themeDescription: 
+    environmentSprite: {fileID: 21300000, guid: 9ec33a4534e11a643adb62b5a910ebae,
       type: 3}
-    environmentIndex: 14
-  - environmentName: Space1
-    theme: Space
-    environmentSprite: {fileID: 21300000, guid: 08696e9d0877dbb4db4890d9a88ed615,
+    environmentIndex: 9
+  - environmentName: Nature3
+    theme: Nature
+    themeDescription: 
+    environmentSprite: {fileID: 21300000, guid: e5f5554a5e8b3ef40b06f2f5510ddb43,
       type: 3}
-    environmentIndex: 13
-  - environmentName: Space5
-    theme: Space
-    environmentSprite: {fileID: 21300000, guid: e36777cffaaf6ab4eb12ef35cadc237c,
+    environmentIndex: 11
+  - environmentName: Nature2
+    theme: Nature
+    themeDescription: 
+    environmentSprite: {fileID: 21300000, guid: cbb8023ec84d25043a87147fb503e622,
       type: 3}
-    environmentIndex: 17
-  runTimeLoopCount: 1
+    environmentIndex: 10
+  runTimeLoopCount: 4
   chosenHero: {fileID: 11400000, guid: a22363f69a855974e9844ae770f88311, type: 2}
   character: {fileID: 0}
   theme: {fileID: 0}
@@ -54,7 +72,7 @@ MonoBehaviour:
     minion: {fileID: 6271494558876136031, guid: ad41a8d43eab452448bc40561b6bfae5,
       type: 3}
     modifier: {fileID: 0}
-  secondItem: {fileID: 4805518738470751890, guid: 19819d60ef550904487d9640c79f4884,
+  secondItem: {fileID: 110769594931480867, guid: 78de649f0544278478a41265f2b03819,
     type: 3}
   thirdOpponent:
     minion: {fileID: 6271494558876136031, guid: ad41a8d43eab452448bc40561b6bfae5,

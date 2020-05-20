@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Element Ice
   m_EditorClassIdentifier: 
   representationClip: {fileID: 8300000, guid: 8c4f7fbbd4e48554d9ada4555c3412e4, type: 3}
+  projectileShootClip: {fileID: 8300000, guid: 93f15e435740c0042aada60b04743e83, type: 3}
+  projectileCollideClip: {fileID: 8300000, guid: 7c8d9bb7e6650394db6db220b6ee9c9c,
+    type: 3}
   godName: Chillin'
   description: Winter is still coming!
   selectionIcon: {fileID: 21300000, guid: 04e040662b9de67469ce7de11c6561fd, type: 3}

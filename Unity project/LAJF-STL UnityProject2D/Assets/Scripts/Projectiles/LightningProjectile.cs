@@ -8,7 +8,7 @@ public class LightningProjectile : MonoBehaviour
     public GameObject telegraph;
     public LayerMask layer;
     public int damage;
-
+    public int godNumber;
 
 
     // Start is called before the first frame update
@@ -31,6 +31,7 @@ public class LightningProjectile : MonoBehaviour
         //    Debug.Log("Fireball hit!");
         if (collided.CompareTag("Player"))
         {
+            FindObjectOfType<AudioList>().godSources[godNumber + 2].Play();
             collided.GetComponent<P1Controller>().TakeDamage(damage);
         }
     }

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Element Fire
   m_EditorClassIdentifier: 
   representationClip: {fileID: 8300000, guid: 6df2f9030aa9c2b47b16e49c2318748a, type: 3}
+  projectileShootClip: {fileID: 8300000, guid: 93f15e435740c0042aada60b04743e83, type: 3}
+  projectileCollideClip: {fileID: 8300000, guid: 7c8d9bb7e6650394db6db220b6ee9c9c,
+    type: 3}
   godName: Belias
   description: It's getting hot in here, so take off...
   selectionIcon: {fileID: 21300000, guid: 2074f38839dd073408208c121731cdd1, type: 3}

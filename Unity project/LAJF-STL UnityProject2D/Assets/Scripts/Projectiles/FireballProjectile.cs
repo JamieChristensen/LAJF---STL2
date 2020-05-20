@@ -10,7 +10,8 @@ public class FireballProjectile : MonoBehaviour
     public int damage;
     public Rigidbody2D rb2;
     public GameObject fireballParent;
-
+    public int godNumber;
+    
     private float initalBounce = 10f;
     private float minBounce = 10f;
     private int bounceCount;
@@ -50,9 +51,12 @@ public class FireballProjectile : MonoBehaviour
     {
         GameObject collided = collision.gameObject;
         bounceCount++;
-
+        FindObjectOfType<AudioList>().godSources[godNumber + 2].Play();
         if (bounceCount > bounceLimit)
+        {
             Destroy(fireballParent);
+        }
+            
 
 
 
@@ -103,6 +107,16 @@ public class FireballProjectile : MonoBehaviour
             cameraShake.StartShake(cameraShake.shakePropertyOnMinionEnter);
         }
 
+        if (collided.CompareTag("Cage"))
+        {
+            Vector3 point = collision.GetContact(0).point;
+            spawnedObj = Instantiate(fireImpactParticles, point, Quaternion.Euler(transform.rotation.eulerAngles));
+            lightOfSpawn = spawnedObj.GetComponentInChildren<Light2D>();
+            spawnedObj.GetComponent<DestroySelf>().StartReduceIntensity(lightDuration);
+            cameraShake.StartShake(cameraShake.shakePropertyOnMinionEnter);
+            Destroy(fireballParent);
+        }
+
         Vector2 direction = rb2.velocity.normalized;
         // this adds a random direction to the bounce so that it doesnt bounces straight up! 
         Vector2 random = new Vector2(Random.Range(-1f, 1f), 1).normalized;
@@ -110,6 +124,7 @@ public class FireballProjectile : MonoBehaviour
         rb2.AddForce((random + Vector2.up) * bounceEffect * rb2.mass, ForceMode2D.Impulse);
         // needs to be moved
     }
+
 
     float map(float s, float a1, float a2, float b1, float b2)
     {

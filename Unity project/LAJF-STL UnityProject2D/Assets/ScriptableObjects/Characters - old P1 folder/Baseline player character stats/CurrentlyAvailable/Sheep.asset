@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   picked: {fileID: 8300000, guid: f55ff947a6d340042adadd6857a97e4e, type: 3}
   death: {fileID: 8300000, guid: 9573aa20be70c314f9f15a2c26e1af60, type: 3}
-  hurt: {fileID: 8300000, guid: f5e91fb02a0bfbf419c6768138c33727, type: 3}
+  hurt: {fileID: 8300000, guid: 61342f5758baff44d92442fd1a9afba5, type: 3}
   jump: {fileID: 8300000, guid: d7d03a14076e1c1449ba23308d1b7b57, type: 3}
   myName: Baahhd Sheep
   description: A dreadful sheep with a thirst for blood... Add a gatling gun - dangerous!

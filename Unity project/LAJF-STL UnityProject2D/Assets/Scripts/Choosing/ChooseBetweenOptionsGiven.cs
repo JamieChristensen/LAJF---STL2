@@ -239,9 +239,6 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             preGameTransitionIndex.Raise(2 * buildIndex - 1);
         }
 
-
-
-
     }
 
 
@@ -395,6 +392,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         // runtimeChoices.character = finalChoice;
         runtimeChoices.chosenHero = characterChoices[choice - 1];
         Debug.Log("Hero has chosen a character! It is: " + characterChoices[choice - 1].myName);
+        audioList = FindObjectOfType<AudioList>();
         audioList.OnHeroPicked();
         if (runtimeChoices.chosenHero.myName != "Baahhd Sheep")
         {
@@ -452,6 +450,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
         // Debug.Log("Gods have chosen the " + runtimeChoices.runTimeLoopCount + ". minion! It is: " + finalChoice.name);
 
         runtimeChoices.enemies.Add(enemyChoices[choice - 1]); // adds the chosen minion to the array
+        audioList = FindObjectOfType<AudioList>();
         audioList.OnEnemyPicked();
         StartCoroutine(WaitForMinionToShutUp());
 
@@ -496,6 +495,7 @@ public class ChooseBetweenOptionsGiven : MonoBehaviour
             _musicManager.PlayMusic("Battle",1);
         }
         runtimeChoices.enemyModifiers.Add(enemyModifierChoices[choice - 1]); // adds the chosen modifier to the array
+        audioList = FindObjectOfType<AudioList>();
         audioList.OnModifierPicked();
         StartCoroutine(WaitForModifierToShutUp());
     }

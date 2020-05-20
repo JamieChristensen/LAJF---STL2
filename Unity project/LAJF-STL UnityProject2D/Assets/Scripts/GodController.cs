@@ -148,6 +148,7 @@ public class GodController : MonoBehaviour
         // inCombatMode is from legacy code - don't know if its to be used
         if ((Input.GetKeyDown(shoot) || Input.GetKeyDown(altShoot)) && canAttack && inCombatMode)
             #region Attack
+
             switch (attackType)
             {
                 case GodInformation.AttackTypes.Lightning:
@@ -261,7 +262,7 @@ public class GodController : MonoBehaviour
         LightningProjectile lightningScript = LightningStrikeClone.GetComponent<LightningProjectile>();
         Light2D telegraph = lightningScript.telegraph.GetComponent<Light2D>();
         GameObject Lightning = lightningScript.Lightning;
-
+        lightningScript.godNumber = GetGodNumber();
 
         // telegraph attack
         moveSpeed = moveSpeed / 2;
@@ -318,21 +319,27 @@ public class GodController : MonoBehaviour
 
     private void FireballAttack()
     {
+        
         if (fireballCooldownTimer > 0)
             return;
 
+        FindObjectOfType<AudioList>().godSources[GetGodNumber() - 1].Play();
         fireballCooldownTimer = fireballCooldown;
         GameObject fireballClone = Instantiate(fireBallPrefab, transform.position, Quaternion.identity, null);
         if (maxBounceCount > 0)
             fireballClone.GetComponentInChildren<FireballProjectile>().bounceLimit = maxBounceCount;
         fireballClone.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
+        fireballClone.GetComponentInChildren<FireballProjectile>().godNumber = GetGodNumber();
     }
     private void LaserBeamAttack()
     {
+
         if (LaserProjectile.projectileCount >= laserAmmo)
             return;
+        FindObjectOfType<AudioList>().godSources[GetGodNumber() - 1].Play();
         GameObject laserClone = Instantiate(laserBeamPrefab, transform.position, Quaternion.Euler(0, 0, 90), null);
         laserClone.GetComponent<Rigidbody2D>().velocity = Vector2.down * laserBeamSpeed * 2;
+        laserClone.GetComponentInChildren<LaserProjectile>().godNumber = GetGodNumber();
     }
 
     // necessary to control cooldown and the likes

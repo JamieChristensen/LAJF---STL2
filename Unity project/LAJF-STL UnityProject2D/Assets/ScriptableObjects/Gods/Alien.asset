@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0097102ce57ee1478707665900d640d, type: 3}
   m_Name: Alien
   m_EditorClassIdentifier: 
-  representationClip: {fileID: 8300000, guid: d258a8308cc180346aab595b800163d6, type: 3}
+  representationClip: {fileID: 8300000, guid: 45bb0388deaf7984f9298e642d088301, type: 3}
+  projectileShootClip: {fileID: 8300000, guid: 62cd4006c945e9942b108a3db1765020, type: 3}
+  projectileCollideClip: {fileID: 8300000, guid: 40502578e137adb4cb0709db2a1c37ba,
+    type: 3}
   godName: Definitely a God
   description: Obey and mankind may live!
   selectionIcon: {fileID: 21300000, guid: 5670220451130ac4c9172ff5045d1342, type: 3}

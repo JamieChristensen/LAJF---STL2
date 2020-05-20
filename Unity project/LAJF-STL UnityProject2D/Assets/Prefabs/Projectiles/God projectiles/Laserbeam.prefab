@@ -87,8 +87,8 @@ GameObject:
   - component: {fileID: 1231446402521952697}
   - component: {fileID: 1231446402521952696}
   - component: {fileID: 1231446402521952699}
-  - component: {fileID: 5240950846614549309}
   - component: {fileID: 8879759730631961138}
+  - component: {fileID: 3882553570880728365}
   m_Layer: 10
   m_Name: Laserbeam
   m_TagString: Untagged
@@ -183,32 +183,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &5240950846614549309
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231446402521952693}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 1.6453772, y: 0.057795018}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.41, y: 5.41}
-    newSize: {x: 9.6, y: 9.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.31598, y: 1.5971651}
-  m_EdgeRadius: 0
 --- !u!114 &8879759730631961138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,9 +199,26 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 4608
+  godNumber: 0
   spriteRenderer: {fileID: 1231446402521952696}
   outlineThiccness: 0.02
   outline: {r: 0.22950146, g: 0, b: 0.71719205, a: 1}
+--- !u!70 &3882553570880728365
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231446402521952693}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.06997512, y: 0.101075396}
+  m_Size: {x: 5.270051, y: 1.1026399}
+  m_Direction: 1
 --- !u!1 &6530209971434285568
 GameObject:
   m_ObjectHideFlags: 0

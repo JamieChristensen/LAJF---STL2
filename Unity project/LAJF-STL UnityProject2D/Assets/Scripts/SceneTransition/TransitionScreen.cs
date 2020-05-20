@@ -76,6 +76,7 @@ public class TransitionScreen : MonoBehaviour
 
     private void Start()
     {
+
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             DoNextTransition(3);
@@ -149,6 +150,8 @@ public class TransitionScreen : MonoBehaviour
     #region Transition
     IEnumerator Transition(int transitionIndex)
     {
+        yield return new WaitForSeconds(0.05f);
+        audioList = FindObjectOfType<AudioList>();
         yield return new WaitForSeconds(introductionDelay);
         int fillerIndex = 0;
         transitioning = true;

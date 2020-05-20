@@ -314,11 +314,20 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         return distance;
     }
 
+    public void GetNewAudioList()
+    {
+        _audioList = FindObjectOfType<AudioList>();
+    }
+
     public virtual void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.GetCurrentHP(currentHealth);
         DamageAnimation();
+        if (_audioList == null)
+        {
+            _audioList = FindObjectOfType<AudioList>();
+        }
         if (audioList != null)
         {
             audioList.PlayWithVariablePitch(audioList.hurtEnemy);

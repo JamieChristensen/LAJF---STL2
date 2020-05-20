@@ -163,6 +163,7 @@ public class ChooseGods : MonoBehaviour
                 UpdateHoverVisuals(0);
 
                 runTimeChoices.chosenGods[0] = chooseableGods[choices[0]];
+                audioList = FindObjectOfType<AudioList>();
                 audioList.OnGodPicked(2);
                 buttonSounds.OnChoiceMade();
 
@@ -258,6 +259,7 @@ public class ChooseGods : MonoBehaviour
 
     IEnumerator WaitForGodsToShutUp()
     {
+        audioList = FindObjectOfType<AudioList>();
         bool confirmedSilence = false;
         while (!confirmedSilence)
         {

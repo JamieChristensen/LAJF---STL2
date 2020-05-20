@@ -60,6 +60,7 @@ public class TransitionNarrator : MonoBehaviour
 
     public void DoVoiceLine()
     {
+        audioList = FindObjectOfType<AudioList>();
         bool fillerIsPlaying = false;
         AudioSource fillerSource = new AudioSource();
        foreach (AudioSource AS in audioList.narratorVoiceFillers)

@@ -6,7 +6,7 @@ public class LaserProjectile : MonoBehaviour
     public static int projectileCount = 0;
     public int damage;
     public LayerMask layer;
-
+    public int godNumber;
     public SpriteRenderer spriteRenderer;
 
     public float outlineThiccness;
@@ -30,6 +30,8 @@ public class LaserProjectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject collided = collision.gameObject;
+        FindObjectOfType<AudioList>().godSources[godNumber + 2].Play();
+
         Destroy(gameObject);
 
         //if (Projectile.IsInLayerMask(collision.gameObject.layer, layer))

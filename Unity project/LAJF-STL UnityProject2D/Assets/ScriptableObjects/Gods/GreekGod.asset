@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: GreekGod
   m_EditorClassIdentifier: 
   representationClip: {fileID: 8300000, guid: 0b4433704cea7d541ae548341b31675c, type: 3}
+  projectileShootClip: {fileID: 8300000, guid: 111c269789cc9ea47b037bc9264b8df7, type: 3}
+  projectileCollideClip: {fileID: 8300000, guid: 78ec5f397aec8d14bbd4ee806a82547a,
+    type: 3}
   godName: Zeus
   description: Hercules' dad or whatever!
   selectionIcon: {fileID: 21300000, guid: 0f5da9aa43ca8854c922d4ecc3d01b72, type: 3}

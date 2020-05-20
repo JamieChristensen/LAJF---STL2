@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class AudioList : MonoBehaviour
 {
+    public static AudioList instance;
+
     public ChoiceCategory runtimeChoices;
     public int voiceLineIndex;
+    public SettingsScrObj gameSettings;
 
     // SFX 
     public AudioSource
@@ -38,7 +41,30 @@ public class AudioList : MonoBehaviour
 
     public AudioSource[] narratorVoiceFillers, narratorEnter, godSources, enemyDeathAnnouncement;
 
-    public void PlayWithVariablePitch(AudioSource audioSource)
+
+    private void Awake()
+    {
+        /* Singleton pattern*/
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+        if (SceneManager.GetActiveScene().buildIndex != 1 || SceneManager.GetActiveScene().buildIndex != 2)
+        {
+            SetHeroSounds();
+            SetGodSounds();
+        }
+
+    }
+
+        public void PlayWithVariablePitch(AudioSource audioSource)
     {
         audioSource.pitch = Random.Range(0.92f, 1.08f);
         audioSource.Play();
@@ -108,6 +134,11 @@ public class AudioList : MonoBehaviour
     {
         selectionPicked.clip = runtimeChoices.chosenHero.picked;
         selectionPicked.Play();
+        SetHeroSounds();
+    }
+
+    public void SetHeroSounds()
+    {
         deathHero.clip = runtimeChoices.chosenHero.death;
         hurtHero.clip = runtimeChoices.chosenHero.hurt;
         jump.clip = runtimeChoices.chosenHero.jump;
@@ -130,8 +161,26 @@ public class AudioList : MonoBehaviour
 
     public void OnGodPicked(int PlayerNumber)
     {
-        godSources[PlayerNumber-2].clip = runtimeChoices.chosenGods[PlayerNumber - 2].representationClip;
-        godSources[PlayerNumber - 2].Play();
+        godSources[PlayerNumber + 4].clip = runtimeChoices.chosenGods[PlayerNumber - 2].representationClip;
+        godSources[PlayerNumber + 4].Play();
+        SetGodSounds();
+    }
+
+    public void SetGodSounds()
+    {
+        godSources[0].clip = runtimeChoices.chosenGods[0].projectileShootClip;
+        godSources[3].clip = runtimeChoices.chosenGods[0].projectileCollideClip;
+        if (gameSettings.GetAmountOfPlayers() > 2)
+        {
+            godSources[1].clip = runtimeChoices.chosenGods[1].projectileShootClip;
+            godSources[4].clip = runtimeChoices.chosenGods[1].projectileCollideClip;
+        }
+        if (gameSettings.GetAmountOfPlayers() > 3)
+        {
+            godSources[2].clip = runtimeChoices.chosenGods[2].projectileShootClip;
+            godSources[5].clip = runtimeChoices.chosenGods[2].projectileCollideClip;
+        }
+        
     }
 
     public void AnnounceEnemyDeath()
