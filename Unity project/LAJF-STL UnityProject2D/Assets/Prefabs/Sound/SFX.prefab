@@ -1577,6 +1577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   voiceLineIndex: 0
+  gameSettings: {fileID: 11400000, guid: 9906e8416be50d54c9a12e28eae6c5af, type: 2}
   attack1: {fileID: 635765125}
   attack2: {fileID: 635765124}
   choiceHasBeenMade: {fileID: 5056255465331498297}

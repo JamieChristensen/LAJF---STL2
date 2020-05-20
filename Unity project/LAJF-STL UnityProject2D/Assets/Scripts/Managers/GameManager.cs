@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using STL2.Events;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -104,6 +105,7 @@ public class GameManager : MonoBehaviour
 
     public void NextEnvironment()
     {
+        if (SceneManager.GetActiveScene().name != "Tutorial")
         sceneManager.RequestEnvironmentChange(runTimeChoises.chosenEnvironments[runTimeChoises.runTimeLoopCount - 1].environmentIndex); // Changing environment to the requested environment in the array (depending on runtime loop count)
     }
 

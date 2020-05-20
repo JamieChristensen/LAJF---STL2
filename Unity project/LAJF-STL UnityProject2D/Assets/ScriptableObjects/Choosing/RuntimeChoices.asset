@@ -17,7 +17,7 @@ MonoBehaviour:
   chosenGods:
   - {fileID: 11400000, guid: 517b2ecde8cfef14ba0b67d4f2fbc910, type: 2}
   - {fileID: 11400000, guid: ca9744e18ae804945b42937f56406872, type: 2}
-  - {fileID: 11400000, guid: ca9744e18ae804945b42937f56406872, type: 2}
+  - {fileID: 11400000, guid: 23838d81cf887994ba96512835093920, type: 2}
   playerItems:
   - {fileID: 11400000, guid: 3517c50eeea57b54880e316331a20839, type: 2}
   - {fileID: 11400000, guid: 0449e37f5ac35744bb01ef93d8177982, type: 2}

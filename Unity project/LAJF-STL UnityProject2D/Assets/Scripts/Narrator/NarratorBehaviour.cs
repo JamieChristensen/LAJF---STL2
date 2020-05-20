@@ -34,7 +34,7 @@ public class NarratorBehaviour : MonoBehaviour
     {
         audioList = FindObjectOfType<AudioList>();
         textToSpeech = FindObjectOfType<TTS>();
-        StartCoroutine(textToSpeech.InitalizeService());
+        //StartCoroutine(textToSpeech.InitalizeService());
         uiText.text = "";
     }
     private void Update()
