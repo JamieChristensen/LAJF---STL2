@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
             canMonsterMove[i] = true; //This should be depending on gamestate, but for now it isn't.
         }
         */
+        if (SceneManager.GetActiveScene().name != "Tutorial")
         _canMonsterMove[0] = false;
 
         // Debug.Log("Index to Load: " + runTimeChoises.chosenEnvironments[0].environmentIndex.ToString());

@@ -8923,6 +8923,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3533239637080075378, guid: 2d82e934a2c9b5641b8ac1dffb955a81,
         type: 3}
+    - target: {fileID: 2538111601857523256, guid: 21520e1c83698d4488117d89451521b6,
+        type: 3}
+      propertyPath: _canMonsterMove.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5702686960598596083, guid: 21520e1c83698d4488117d89451521b6,
         type: 3}
       propertyPath: m_Name

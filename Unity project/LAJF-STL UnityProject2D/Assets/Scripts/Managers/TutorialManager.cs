@@ -100,7 +100,6 @@ public class TutorialManager : MonoBehaviour
 
     void GetAmountOfButtons(int direction)
     {
-        Debug.LogWarning("Yaas");
         amountOfChoices = 0;
         int selected = 0;
         switch (panelIndex)
