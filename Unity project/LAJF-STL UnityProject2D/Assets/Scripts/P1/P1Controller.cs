@@ -357,6 +357,7 @@ public class P1Controller : MonoBehaviour
         else // Trigger death effect
         {
             DeathAnimation();
+            if (!audioList.deathHero.isPlaying)
             audioList.PlayWithVariablePitch(audioList.deathHero);
         }
 

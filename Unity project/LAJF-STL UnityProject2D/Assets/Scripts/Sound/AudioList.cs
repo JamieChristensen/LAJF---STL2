@@ -153,6 +153,12 @@ public class AudioList : MonoBehaviour
     {
         selectionPicked.clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].representationClip;
         selectionPicked.Play();
+        SetEnemySounds();
+
+    }
+
+    public void SetEnemySounds()
+    {
         deathEnemy.clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].deathClip;
         hurtEnemy.clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].HurtClip;
     }
@@ -168,7 +174,8 @@ public class AudioList : MonoBehaviour
     {
         godSources[PlayerNumber + 4].clip = runtimeChoices.chosenGods[PlayerNumber - 2].representationClip;
         godSources[PlayerNumber + 4].Play();
-        SetGodSounds();
+        
+        //Invoke("SetGodSounds", 0.5f);
     }
 
     public void SetGodSounds()

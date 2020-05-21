@@ -208,7 +208,7 @@ public class EnemyBehaviour : MonoBehaviour, IPausable
         }
         if (audioList != null)
         {
-            audioList.PlayWithVariablePitch(audioList.deathEnemy);
+                audioList.PlayWithVariablePitch(audioList.deathEnemy);
         }
 
         StartCoroutine(DelayDeathAnnouncement(1.1f));

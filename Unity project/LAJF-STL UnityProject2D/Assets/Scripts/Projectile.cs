@@ -86,6 +86,7 @@ public class Projectile : MonoBehaviour
         {
             if (isExplodingProjectile)
             {
+                
                 Explode();
                 return;
                 //If the projectile explodes, it will always do damage to the object it collided with too when it explodes.
@@ -150,11 +151,13 @@ public class Projectile : MonoBehaviour
 
     public void Explode()
     {
-        FindObjectOfType<AudioList>().PlayWithVariablePitch(FindObjectOfType<AudioList>().projectileExplode);
+
         if (!isExplodingProjectile)
         {
+            
             return;
         }
+        FindObjectOfType<AudioList>().PlayWithVariablePitch(FindObjectOfType<AudioList>().projectileExplode);
 
         List<RaycastHit2D> explosionHits = new List<RaycastHit2D>();
         ContactFilter2D contactFilter = new ContactFilter2D();

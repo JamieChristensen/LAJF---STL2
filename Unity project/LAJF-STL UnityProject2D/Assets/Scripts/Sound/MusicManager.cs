@@ -138,14 +138,21 @@ public class MusicManager : MonoBehaviour
                 if (name == "Battle")
                 {
                     if (SceneManager.GetActiveScene().name == "Tutorial")
-                    musicThemes[2].source.clip = battle[4]; // tutorial battle music
+                    {
+                        musicThemes[2].source.clip = battle[4]; // tutorial battle music
+                        FadeMixerGroup.SetVolume(musicThemes[5].source.outputAudioMixerGroup.audioMixer, musicThemes[5].name + "Vol", targetVolume); // turn down the volume 
+                        musicThemes[5].source.Stop(); // stop instructions music
+                        FadeMixerGroup.SetVolume(musicThemes[2].source.outputAudioMixerGroup.audioMixer, musicThemes[2].name + "Vol", targetVolume); // turn up the volume 
+                        musicThemes[2].source.Play(); // play battle music
+                        return;
+                    }
                     else
-                    musicThemes[2].source.clip = battle[runTimeChoices.runTimeLoopCount - 1];
-                    FadeMixerGroup.SetVolume(musicThemes[5].source.outputAudioMixerGroup.audioMixer, musicThemes[5].name + "Vol", targetVolume); // turn down the volume 
-                    musicThemes[5].source.Stop(); // stop instructions music
-                    FadeMixerGroup.SetVolume(musicThemes[2].source.outputAudioMixerGroup.audioMixer, musicThemes[2].name + "Vol", targetVolume); // turn up the volume 
-                    musicThemes[2].source.Play(); // play battle music
-                    return;
+                    {
+                        musicThemes[2].source.clip = battle[runTimeChoices.runTimeLoopCount - 1];
+                    }
+                    StopCurrentPlaying();
+                    StartCoroutine(FadeMixerGroup.StartFade(musicThemes[i].source.outputAudioMixerGroup.audioMixer, musicThemes[i].name + "Vol", 5, targetVolume)); // turn up the volume in a fade
+
                 }
                 else if (name == "Peace")
                 {

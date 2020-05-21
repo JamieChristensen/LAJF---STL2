@@ -2657,6 +2657,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24100000, guid: 2d738ffd04a39d24f9e29eb33742c518,
         type: 2}
+    - target: {fileID: 3533239637080075381, guid: 2d82e934a2c9b5641b8ac1dffb955a81,
+        type: 3}
+      propertyPath: musicThemes.Array.data[5].audioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 9021d5c1873a656498d2ca556885ccdf,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d82e934a2c9b5641b8ac1dffb955a81, type: 3}
 --- !u!114 &842741386 stripped

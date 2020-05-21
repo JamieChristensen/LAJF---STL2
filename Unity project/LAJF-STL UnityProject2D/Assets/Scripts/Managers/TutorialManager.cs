@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -22,7 +23,10 @@ public class TutorialManager : MonoBehaviour
     bool pressedDownHorizontalAxis;
     [Tooltip("Must match an Input-Axis")]
     public string p1SelectAltAxisName;
-    float horizontalAxisValue;
+    public float horizontalAxisValue;
+
+    int newSelection;
+    public Image[] highlights;
 
     [SerializeField]
     private bool[] heardNarrator;
@@ -64,14 +68,19 @@ public class TutorialManager : MonoBehaviour
         }
 
         if (heardNarrator[panelIndex])
+        {
+            GetAmountOfButtons(addition);
             return;
+        }
 
         if (addition == 1)
             StartCoroutine(StopInputWhileNarratorIsSpeaking());
+            
     }
 
     IEnumerator StopInputWhileNarratorIsSpeaking()
     {
+        ToggleInputAllow(false);
         AudioList audioList = FindObjectOfType<AudioList>();
         audioList.tutorialNarrator[panelIndex].Play();
         heardNarrator[panelIndex] = true;
@@ -84,8 +93,54 @@ public class TutorialManager : MonoBehaviour
 
     void AllowPanelInteraction()
     {
-        
         buttons[panelIndex].SetActive(true);
+        GetAmountOfButtons(1);
+        ToggleInputAllow(true);
+    }
+
+    void GetAmountOfButtons(int direction)
+    {
+        Debug.LogWarning("Yaas");
+        amountOfChoices = 0;
+        int selected = 0;
+        switch (panelIndex)
+        {
+            case 0:
+                selected = 0;
+                break;
+
+            case 1:
+                if (direction == 1)
+                {
+                    selected = 1;
+                    break;
+                }
+                selected = 0;
+                break;
+
+            case 2:
+                if (direction == 1)
+                {
+                    selected = 1;
+                    break;
+                }
+                selected = 0;
+                break;
+
+            case 3:
+                selected = 0;
+                break;
+
+        }
+
+        foreach (Button butt in buttons[panelIndex].GetComponentsInChildren<Button>())
+        {
+
+            if (amountOfChoices == selected)
+                butt.Select();
+            amountOfChoices++;
+
+        }
     }
 
     public void ToggleInputAllow(bool allowInput)
@@ -95,6 +150,7 @@ public class TutorialManager : MonoBehaviour
 
     public void SkipInstructions()
     {
+        SelectAButton();
         tutorialInstructions.SetActive(false);
         inputManager.ToggleInputAllow(true);
         godcontrollers[0].ToggleCombatMode(true);
@@ -102,6 +158,7 @@ public class TutorialManager : MonoBehaviour
         godcontrollers[2].ToggleCombatMode(true);
         FindObjectOfType<MusicManager>().PlayMusic("Battle", 0.8f);
         FindObjectOfType<Spawner>().SpawnRandomEnemy();
+        FindObjectOfType<AudioList>().SetEnemySounds();
     }
 
     public void EndCombat()
@@ -111,16 +168,19 @@ public class TutorialManager : MonoBehaviour
         panelIndex = 2;
         SwitchPanel(1);
         ToggleInputAllow(false);
+        inputManager.ToggleInputAllow(false);
     }
 
     public void PlayAgain()
     {
+
         Destroy(FindObjectOfType<MusicManager>().gameObject);
         SceneManager.LoadScene("Tutorial");
     }
 
     public void BackToMenu()
     {
+
         Destroy(FindObjectOfType<MusicManager>().gameObject);
         SceneManager.LoadScene(0);
     }
@@ -146,13 +206,13 @@ public class TutorialManager : MonoBehaviour
             if (Input.GetKeyDown(p1Left) || horizontalAxisValue < 0)
             {
                 int selection = (choice + (amountOfChoices - 1)) % amountOfChoices; //Move leftwards in choices.
-                ChangeAndDisplaySelection(selection);
+                //ChangeAndDisplaySelection(selection);
                 horizontalAxisValue = 0;
             }
             if (Input.GetKeyDown(p1Right) || horizontalAxisValue > 0)
             {
                 int selection = (choice + (amountOfChoices + 1)) % amountOfChoices; //Move right in choices.
-                ChangeAndDisplaySelection(selection);
+                //ChangeAndDisplaySelection(selection);
                 horizontalAxisValue = 0;
             }
             if (Input.GetKeyDown(p1Select) || Input.GetKeyDown(p1SelectAlt))
@@ -164,10 +224,7 @@ public class TutorialManager : MonoBehaviour
 
     }
 
-    void ChangeAndDisplaySelection(int selection)
-    {
-
-    }
+    
 
     public void SelectAButton()
     {
