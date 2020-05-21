@@ -66,32 +66,40 @@ public class Spawner : MonoBehaviour
 
     public void SpawnRandomEnemy()
     {
+
+        runtimeChoices.runTimeLoopCount = 1;
+        runtimeChoices.enemies = new List<Enemy>();
+        runtimeChoices.enemyModifiers = new List<EnemyModifier>();
+
         int random1 = Random.Range(1, 4);
         int random2 = Random.Range(1, 4);
+
+        switch (random1)
+        {
+            case 1:
+                runtimeChoices.enemies.Add(agileEnemy);
+                break;
+
+            case 2:
+                runtimeChoices.enemies.Add(orbEnemy);
+                break;
+
+            case 3:
+                runtimeChoices.enemies.Add(splitterEnemy);
+                break;
+        }
         
-        runtimeChoices.runTimeLoopCount = random1;
-        runtimeChoices.enemies = new List<Enemy>();
-        runtimeChoices.enemies.Add(agileEnemy);
-        runtimeChoices.enemies.Add(orbEnemy);
-        runtimeChoices.enemies.Add(splitterEnemy);
-        runtimeChoices.enemyModifiers = new List<EnemyModifier>();
         switch (random2)
         {
             case 1:
-                runtimeChoices.enemyModifiers.Add(blessed);
-                runtimeChoices.enemyModifiers.Add(blessed);
                 runtimeChoices.enemyModifiers.Add(blessed);
                 break;
 
             case 2:
                 runtimeChoices.enemyModifiers.Add(shoulderConnon);
-                runtimeChoices.enemyModifiers.Add(shoulderConnon);
-                runtimeChoices.enemyModifiers.Add(shoulderConnon);
                 break;
 
             case 3:
-                runtimeChoices.enemyModifiers.Add(angry);
-                runtimeChoices.enemyModifiers.Add(angry);
                 runtimeChoices.enemyModifiers.Add(angry);
                 break;
         }
