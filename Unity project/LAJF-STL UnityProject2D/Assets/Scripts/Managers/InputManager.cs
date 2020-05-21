@@ -25,12 +25,13 @@ public class InputManager : MonoBehaviour
     public string pauseAxisName;
     [Header("Player 1 keyboard controls")]
     public KeyCode player1JumpKey;
-    public KeyCode player1AttackKey;
+    public KeyCode player1AttackKey, player1ExplodeKey;
     private float player1Hori;
     public KeyCode player1Left, player1Right;
     public KeyCode player1ForceField;
-    [Header("Player 1 conroller controls")]
-    public KeyCode player1JumpAlt, player1AttackAlt;
+    [Header("Player 1 controller controls")]
+    public KeyCode player1JumpAlt;
+    public KeyCode player1AttackAlt, player1ExplodeAlt;
     public KeyCode player1DashLeft, player1DashRight;
     public KeyCode player1ForceFieldAlt;
 
@@ -163,12 +164,14 @@ public class InputManager : MonoBehaviour
 
 
             //explosion is only true for one frame, during this frame, SendInputs() tells the P1Controller that this is the case.
+            /*
             player1AttackExplosion = player1AttackLifted && player1Attack;
             if (player1AttackExplosion)
             {
                 player1AttackLifted = false;
             }
-
+            */
+            player1AttackExplosion = Input.GetKeyDown(player1ExplodeKey) || Input.GetKeyDown(player1ExplodeAlt);
 
 
             if (player1.hasGatlingGun)
@@ -255,6 +258,8 @@ public class InputManager : MonoBehaviour
             {
                 //Send input to player that explosion is true.
                 player1.ReceiveInput(P1Controller.Player1Input.Explosion, 0);
+
+                //Legacy: This was for when we used the same key to trigger explosions.
                 player1AttackExplosion = false;
                 player1AttackLifted = false;
             }
