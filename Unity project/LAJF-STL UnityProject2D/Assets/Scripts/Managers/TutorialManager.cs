@@ -162,6 +162,12 @@ public class TutorialManager : MonoBehaviour
 
     public void EndCombat()
     {
+        StartCoroutine(EndCombatRoutine());
+    }
+
+    IEnumerator EndCombatRoutine()
+    {
+        yield return new WaitForSeconds(4f);
         Debug.Log("Ending Combat");
         tutorialInstructions.SetActive(true);
         panelIndex = 2;
@@ -169,6 +175,7 @@ public class TutorialManager : MonoBehaviour
         ToggleInputAllow(false);
         inputManager.ToggleInputAllow(false);
     }
+
 
     public void PlayAgain()
     {

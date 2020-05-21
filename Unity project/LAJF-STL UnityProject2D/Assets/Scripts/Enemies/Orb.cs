@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Orb : MonoBehaviour
 {
+    // Floating Text
+    public GameObject floatingTextPrefab; //, floatingCanvasPrefab;
+    public GameObject floatingCanvasParent;
+    public GameObject floatingTextInstance;
+
     public int health;
 
     public LayerMask layerMask; //Layers this object should interact with and damage.
@@ -38,8 +43,34 @@ public class Orb : MonoBehaviour
             transform.parent.GetComponent<OrbEnemy>().isOrbDead = true;
             Destroy(gameObject);
             //TODO: Add death explosion, sounds and particles and stuff.
+
+            ShowFloatingText(dmg);
+
+
         }
     }
+
+    #region FloatingText
+
+    public void ShowFloatingText(int damage)
+    {
+
+        if (floatingCanvasParent == null) // if the canvas is not yet instantiated
+        {
+            floatingCanvasParent = GameObject.Find("FloatingCanvas"); // find the canvas (parent) for text
+        }
+
+        float randomX = UnityEngine.Random.Range(-4.5f, 4.5f); // Random position.x
+        float randomY = UnityEngine.Random.Range(-1.5f, 4.5f); // Random position.y
+        Vector3 randomVector = new Vector3(randomX, randomY, 0); // Random combined position
+        floatingTextInstance = Instantiate(floatingTextPrefab, transform.position + randomVector, Quaternion.identity, floatingCanvasParent.transform); // instantiate text object
+
+        floatingTextInstance.GetComponent<FloatingTextEffects>().setText(damage.ToString()); //Sets the text of the text object - the rest will happen in the instance (FloatingTextEffects.cs)
+    }
+
+
+    #endregion FloatingText
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

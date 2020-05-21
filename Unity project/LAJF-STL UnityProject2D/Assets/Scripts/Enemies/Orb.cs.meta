@@ -3,7 +3,12 @@ guid: c608cc16a53d36c44a115b2aa0a5f448
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - floatingTextPrefab: {fileID: 3606956731539374200, guid: 8aa7902130283a041872d794991a688a,
+      type: 3}
+  - floatingCanvasParent: {instanceID: 0}
+  - floatingTextInstance: {instanceID: 0}
+  - particleExplosionObj: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

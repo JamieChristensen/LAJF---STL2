@@ -127,14 +127,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c608cc16a53d36c44a115b2aa0a5f448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 45
   layerMask:
     serializedVersion: 2
     m_Bits: 0
   particleExplosionObj: {fileID: 2364717285391735988, guid: 98c81f08eace3574bb15275b8ffe8d48,
     type: 3}
-  damage: 9
-  projectileSpeed: 35
+  damage: 8
+  projectileSpeed: 15
 --- !u!58 &7502020673589203604
 CircleCollider2D:
   m_ObjectHideFlags: 0

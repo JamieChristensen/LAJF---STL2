@@ -3,7 +3,29 @@ guid: e77d7f75287d5de4793b00f20dd03c2a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - floatingTextPrefab: {fileID: 3606956731539374200, guid: 8aa7902130283a041872d794991a688a,
+      type: 3}
+  - floatingCanvasParent: {instanceID: 0}
+  - floatingTextInstance: {instanceID: 0}
+  - rb2: {instanceID: 0}
+  - target: {instanceID: 0}
+  - bulletObj: {instanceID: 0}
+  - healthBar: {instanceID: 0}
+  - nameUI: {instanceID: 0}
+  - monsterDied: {instanceID: 0}
+  - particlePoint: {instanceID: 0}
+  - deathLeadUp: {instanceID: 0}
+  - deathExplosion: {instanceID: 0}
+  - spriteRenderer: {instanceID: 0}
+  - runtimeChoices: {instanceID: 0}
+  - rb: {instanceID: 0}
+  - matDefault: {instanceID: 0}
+  - matWhite: {instanceID: 0}
+  - agent: {instanceID: 0}
+  - angrySpriteRenderer: {instanceID: 0}
+  - shoulderCannonRenderer: {instanceID: 0}
+  - tombstone: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

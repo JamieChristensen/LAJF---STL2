@@ -10953,7 +10953,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Placeholder text
+  m_text: Tutorial
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f408b068ea2fa604b8c316b3209e6cf1, type: 2}
   m_sharedMaterial: {fileID: -4323149294760741636, guid: f408b068ea2fa604b8c316b3209e6cf1,
@@ -11023,10 +11023,10 @@ MonoBehaviour:
   m_margin: {x: 0.60780513, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 912677077}
-    characterCount: 16
+    characterCount: 8
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -35895,9 +35895,7 @@ MonoBehaviour:
   agileEnemy: {fileID: 11400000, guid: bc5ef265c4402cf408359bd2c6e0874d, type: 2}
   orbEnemy: {fileID: 11400000, guid: 986eb46723121814da9c91572d6d4703, type: 2}
   splitterEnemy: {fileID: 11400000, guid: e5364cd1e7003764fb56c3322c241588, type: 2}
-  blessed: {fileID: 11400000, guid: c65941ff221bcd846b5e33eabb4cb084, type: 2}
-  shoulderConnon: {fileID: 11400000, guid: d7346273714b6d142b7f5a47ef8f9b3a, type: 2}
-  angry: {fileID: 11400000, guid: b13a26218995e63468b9a96c3a57c10b, type: 2}
+  thePuzzledOne: {fileID: 11400000, guid: 82d84c797c4bb9949b13a7b7b0526361, type: 2}
   greatChest: {fileID: 0}
   runtimeChoices: {fileID: 11400000, guid: c78acc2e9db81ec43aaecdd741459391, type: 2}
   enemySpawnPos: {x: 26, y: 22, z: 0}

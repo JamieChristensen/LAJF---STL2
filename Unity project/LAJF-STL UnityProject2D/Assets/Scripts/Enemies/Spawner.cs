@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     public GameObject splitterEnemyPrefab;
 
     public Enemy agileEnemy, orbEnemy, splitterEnemy;
-    public EnemyModifier blessed, shoulderConnon, angry;
+    public EnemyModifier thePuzzledOne;
 
     [Header("Other")]
     public GreatChest greatChest;
@@ -72,7 +72,7 @@ public class Spawner : MonoBehaviour
         runtimeChoices.enemyModifiers = new List<EnemyModifier>();
 
         int random1 = Random.Range(1, 4);
-        int random2 = Random.Range(1, 4);
+
 
         switch (random1)
         {
@@ -88,21 +88,8 @@ public class Spawner : MonoBehaviour
                 runtimeChoices.enemies.Add(splitterEnemy);
                 break;
         }
-        
-        switch (random2)
-        {
-            case 1:
-                runtimeChoices.enemyModifiers.Add(blessed);
-                break;
 
-            case 2:
-                runtimeChoices.enemyModifiers.Add(shoulderConnon);
-                break;
-
-            case 3:
-                runtimeChoices.enemyModifiers.Add(angry);
-                break;
-        }
+        runtimeChoices.enemyModifiers.Add(thePuzzledOne); 
 
         SpawnEnemy();
     }
