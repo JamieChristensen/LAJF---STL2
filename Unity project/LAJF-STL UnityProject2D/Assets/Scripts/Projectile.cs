@@ -24,6 +24,8 @@ public class Projectile : MonoBehaviour
 
     [SerializeField]
     private GameObject particleExplosion;
+    [SerializeField]
+    private GameObject explosionForKaboomGun;
 
     [SerializeField]
     private Transform spriteTransform;
@@ -45,7 +47,7 @@ public class Projectile : MonoBehaviour
         {
             GameObject instance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
             Destroy(instance, 1f);
-            
+
             ShowFloatingText(); // Trigger floating text
             FindObjectOfType<AudioList>().PlayWithVariablePitch(FindObjectOfType<AudioList>().forceFieldHit);
             GameObject blockInstance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
@@ -183,8 +185,10 @@ public class Projectile : MonoBehaviour
         }
 
 
-        GameObject instance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
-        Destroy(instance, 1f);
+        //GameObject instance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
+        GameObject instance2 = Instantiate(explosionForKaboomGun, transform.position, Quaternion.identity);
+        //Destroy(instance, 1f);
+        Destroy(instance2, 1f);
 
         GameObject.Destroy(gameObject);
     }
