@@ -24,7 +24,7 @@ MonoBehaviour:
   colliderOffset: {x: 0, y: 0}
   moveSpeed: 16
   jumpForce: 22
-  baseAttackDamage: 10
+  baseAttackDamage: 15
   attackRate: 0.4
   rangedAttacks: 1
   meleeAttacks: 0

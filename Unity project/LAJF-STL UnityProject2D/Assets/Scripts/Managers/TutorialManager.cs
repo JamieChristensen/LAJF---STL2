@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
-
     public GodController[] godcontrollers;
 
     public GameObject tutorialInstructions;
-    public GameObject[] tutorialPanels;
+    public GameObject[] tutorialPanels, buttons;
     public int panelIndex, choice, amountOfChoices;
     public ButtonSounds buttonSounds;
 
@@ -24,7 +24,9 @@ public class TutorialManager : MonoBehaviour
     public string p1SelectAltAxisName;
     float horizontalAxisValue;
 
-    bool allowInput;
+    [SerializeField]
+    private bool[] heardNarrator;
+    private bool allowInput;
 
     private void Start()
     {
@@ -35,6 +37,8 @@ public class TutorialManager : MonoBehaviour
         godcontrollers[0].AssignRandomGod();
         godcontrollers[1].AssignRandomGod();
         godcontrollers[2].AssignRandomGod();
+        panelIndex = -1;
+        SwitchPanel(1);
     }
 
 
@@ -59,6 +63,29 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
+        if (heardNarrator[panelIndex])
+            return;
+
+        if (addition == 1)
+            StartCoroutine(StopInputWhileNarratorIsSpeaking());
+    }
+
+    IEnumerator StopInputWhileNarratorIsSpeaking()
+    {
+        AudioList audioList = FindObjectOfType<AudioList>();
+        audioList.tutorialNarrator[panelIndex].Play();
+        heardNarrator[panelIndex] = true;
+        while (audioList.tutorialNarrator[panelIndex].isPlaying)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        AllowPanelInteraction();
+    }
+
+    void AllowPanelInteraction()
+    {
+        
+        buttons[panelIndex].SetActive(true);
     }
 
     public void ToggleInputAllow(bool allowInput)
@@ -73,16 +100,29 @@ public class TutorialManager : MonoBehaviour
         godcontrollers[0].ToggleCombatMode(true);
         godcontrollers[1].ToggleCombatMode(true);
         godcontrollers[2].ToggleCombatMode(true);
+        FindObjectOfType<MusicManager>().PlayMusic("Battle", 0.8f);
+        FindObjectOfType<Spawner>().SpawnRandomEnemy();
+    }
+
+    public void EndCombat()
+    {
+        Debug.Log("Ending Combat");
+        tutorialInstructions.SetActive(true);
+        panelIndex = 2;
+        SwitchPanel(1);
+        ToggleInputAllow(false);
     }
 
     public void PlayAgain()
     {
-
+        Destroy(FindObjectOfType<MusicManager>().gameObject);
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void BackToMenu()
     {
-
+        Destroy(FindObjectOfType<MusicManager>().gameObject);
+        SceneManager.LoadScene(0);
     }
 
     private void Update()

@@ -100,19 +100,23 @@ public class MusicManager : MonoBehaviour
         SetMasterVolume(gameSettings.gameMasterVolume);
         SetMusicVolume(gameSettings.gameMusicVolume);
         SetSFXVolume(gameSettings.gameSFXVolume);
-        bool musicIsPlaying = false;
-        foreach (MusicTheme mt in musicThemes)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            if (mt.source.isPlaying)
+            bool musicIsPlaying = false;
+            foreach (MusicTheme mt in musicThemes)
             {
-                musicIsPlaying = true;
+                if (mt.source.isPlaying)
+                {
+                    musicIsPlaying = true;
+                }
             }
+            if (musicIsPlaying)
+            {
+                return;
+            }
+            PlayMusic("MainMenu", 1);
         }
-        if (musicIsPlaying)
-        {
-            return;
-        }
-        PlayMusic("MainMenu", 1);
+
     }
     
 
@@ -137,6 +141,11 @@ public class MusicManager : MonoBehaviour
                     musicThemes[2].source.clip = battle[4]; // tutorial battle music
                     else
                     musicThemes[2].source.clip = battle[runTimeChoices.runTimeLoopCount - 1];
+                    FadeMixerGroup.SetVolume(musicThemes[5].source.outputAudioMixerGroup.audioMixer, musicThemes[5].name + "Vol", targetVolume); // turn down the volume 
+                    musicThemes[5].source.Stop(); // stop instructions music
+                    FadeMixerGroup.SetVolume(musicThemes[2].source.outputAudioMixerGroup.audioMixer, musicThemes[2].name + "Vol", targetVolume); // turn up the volume 
+                    musicThemes[2].source.Play(); // play battle music
+                    return;
                 }
                 else if (name == "Peace")
                 {
@@ -229,6 +238,7 @@ public class MusicManager : MonoBehaviour
     {
         mainMenuAudioMixer.SetFloat("MainMenuVol", Mathf.Log10(volume) * 20);
     }
+
 }
 
 

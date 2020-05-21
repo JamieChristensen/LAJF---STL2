@@ -85,7 +85,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Tutorial
     clip: {fileID: 8300000, guid: d53edf8cad598cf44a970f941250e350, type: 3}
-    volume: 0.8
+    volume: 0.5
     pitch: 1
     loop: 1
     audioMixerGroup: {fileID: 24300002, guid: 0a1a1b5c65fd0ae448bd3fa9db38a37b, type: 2}

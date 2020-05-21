@@ -35,13 +35,13 @@ public class EnemyEntranceEffects : MonoBehaviour
                 monsterTransform = FindObjectOfType<EnemyBehaviour>().transform;
             }
             monsterLightTimer -= Time.deltaTime;
-            lightTransform.position = new Vector3(monsterTransform.position.x, lightTransform.position.y, lightTransform.position.z);
-            lightTransform.gameObject.SetActive(true);
+           // lightTransform.position = new Vector3(monsterTransform.position.x, lightTransform.position.y, lightTransform.position.z);
+           // lightTransform.gameObject.SetActive(true);
 
             if (monsterLightTimer < 0)
             {
                 monsterJustSpawned = false;
-                lightTransform.gameObject.SetActive(false);
+              //  lightTransform.gameObject.SetActive(false);
             }
         }
     }

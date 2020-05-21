@@ -12,6 +12,8 @@ public class Spawner : MonoBehaviour
     public GameObject orbEnemyPrefab;
     public GameObject splitterEnemyPrefab;
 
+    public Enemy agileEnemy, orbEnemy, splitterEnemy;
+
     [Header("Other")]
     public GreatChest greatChest;
     public ChoiceCategory runtimeChoices;
@@ -60,6 +62,18 @@ public class Spawner : MonoBehaviour
 
 
     }
+
+    public void SpawnRandomEnemy()
+    {
+        int random = Random.Range(1, 4);
+        runtimeChoices.runTimeLoopCount = random;
+        runtimeChoices.enemies = new List<Enemy>();
+        runtimeChoices.enemies.Add(agileEnemy);
+        runtimeChoices.enemies.Add(orbEnemy);
+        runtimeChoices.enemies.Add(splitterEnemy);
+        SpawnEnemy();
+    }
+
 
     IEnumerator SpawnEnemyAfterDelay(float delay)
     {

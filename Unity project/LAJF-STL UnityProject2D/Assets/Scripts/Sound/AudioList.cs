@@ -42,7 +42,7 @@ public class AudioList : MonoBehaviour
          textToSpeechSource,
          winFx;
 
-    public AudioSource[] narratorVoiceFillers, narratorEnter, godSources, enemyDeathAnnouncement;
+    public AudioSource[] narratorVoiceFillers, narratorEnter, godSources, enemyDeathAnnouncement, tutorialNarrator;
 
 
     private void Awake()
@@ -135,18 +135,6 @@ public class AudioList : MonoBehaviour
         }
     }
 
-
-
-    #region NarratorVoiceLines
-
-    public void OnHeroLose(int heroHP)
-    {
-        if (heroHP <= 0)
-        {
-            StartCoroutine(PlayOnDelay(loseFx, 1.5f));
-        }
-    }
-
     public void OnHeroPicked()
     {
         selectionPicked.clip = runtimeChoices.chosenHero.picked;
@@ -197,9 +185,21 @@ public class AudioList : MonoBehaviour
             godSources[2].clip = runtimeChoices.chosenGods[2].projectileShootClip;
             godSources[5].clip = runtimeChoices.chosenGods[2].projectileCollideClip;
         }
-        
+
     }
 
+
+    #region NarratorVoiceLines
+
+    public void OnHeroLose(int heroHP)
+    {
+        if (heroHP <= 0)
+        {
+            StartCoroutine(PlayOnDelay(loseFx, 1.5f));
+        }
+    }
+
+   
     public void AnnounceEnemyDeath()
     {
        co = StartCoroutine(EnemyDeathSequence());
