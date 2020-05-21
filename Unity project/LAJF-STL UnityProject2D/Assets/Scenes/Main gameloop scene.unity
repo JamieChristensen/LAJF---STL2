@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8899,6 +8899,11 @@ PrefabInstance:
       propertyPath: readyForFire
       value: 
       objectReference: {fileID: 1385552876}
+    - target: {fileID: 968574184372043922, guid: d36c49ed10fe60c4db762c1dd971e38e,
+        type: 3}
+      propertyPath: controllerEmoteKey
+      value: 412
+      objectReference: {fileID: 0}
     - target: {fileID: 1027693943835851162, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
       propertyPath: m_Mesh
@@ -8914,6 +8919,11 @@ PrefabInstance:
       propertyPath: readyForFire
       value: 
       objectReference: {fileID: 868429652}
+    - target: {fileID: 1515916720333487623, guid: d36c49ed10fe60c4db762c1dd971e38e,
+        type: 3}
+      propertyPath: controllerEmoteKey
+      value: 392
+      objectReference: {fileID: 0}
     - target: {fileID: 1602038044560885519, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
       propertyPath: m_Mesh
@@ -8938,6 +8948,11 @@ PrefabInstance:
         type: 3}
       propertyPath: horiLeftKeyboardTestKey
       value: 276
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097950839168532979, guid: d36c49ed10fe60c4db762c1dd971e38e,
+        type: 3}
+      propertyPath: controllerEmoteKey
+      value: 372
       objectReference: {fileID: 0}
     - target: {fileID: 2848400668708890353, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
