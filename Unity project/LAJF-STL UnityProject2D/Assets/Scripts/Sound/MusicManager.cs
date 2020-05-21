@@ -64,7 +64,7 @@ public class MusicManager : MonoBehaviour
             {
                 mt.source.Play();
             }
-            else if (mt.name == "Choosing" && SceneManager.GetActiveScene().buildIndex != 0)
+            else if (mt.name == "Choosing" && SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().name != "Tutorial")
             {
                 mt.source.Play();
             }
