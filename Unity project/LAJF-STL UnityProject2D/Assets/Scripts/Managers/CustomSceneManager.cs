@@ -44,15 +44,19 @@ public class CustomSceneManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        try
+        if (SceneManager.GetActiveScene().name != "Credits")
         {
-            Destroy(FindObjectOfType<MusicManager>().gameObject);
+            try
+            {
+                Destroy(FindObjectOfType<MusicManager>().gameObject);
+            }
+            catch
+            {
+                Debug.Log("there is no music manager");
+            }
+            Time.timeScale = 1;
         }
-        catch
-        {
-            Debug.Log("there is no music manager");
-        }
-        Time.timeScale = 1;
+        
         SceneManager.LoadScene(0); //Index of main-menu. 
     }
 
