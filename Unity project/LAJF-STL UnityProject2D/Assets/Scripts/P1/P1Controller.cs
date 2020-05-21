@@ -357,7 +357,7 @@ public class P1Controller : MonoBehaviour
         else // Trigger death effect
         {
             DeathAnimation();
-
+            ToggleForceField(false);
         }
 
         if (floatingTextPrefab != null)
