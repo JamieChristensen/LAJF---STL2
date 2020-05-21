@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4390,14 +4390,17 @@ MonoBehaviour:
   environmentThemeChoices:
   - environmentName: 
     theme: 
+    themeDescription: 
     environmentSprite: {fileID: 0}
     environmentIndex: 0
   - environmentName: 
     theme: 
+    themeDescription: 
     environmentSprite: {fileID: 0}
     environmentIndex: 0
   - environmentName: 
     theme: 
+    themeDescription: 
     environmentSprite: {fileID: 0}
     environmentIndex: 0
   EnvironmentsChosen: []
@@ -5490,7 +5493,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Deities, Choose a Minion!
+  m_text: Deities, Choose an Enemy!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f408b068ea2fa604b8c316b3209e6cf1, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 306478a93c9975a4cb3d3cc0d816d14d, type: 2}

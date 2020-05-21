@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         // Debug.Log("Index to Load: " + runTimeChoises.chosenEnvironments[0].environmentIndex.ToString());
 
 
-        FindObjectOfType<InputManager>().ToggleInputAllow(true);
+        //FindObjectOfType<InputManager>().ToggleInputAllow(true);
         canPlayerMove = true;
 
         gameState = initialGamestate;
@@ -115,9 +115,10 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-
+        if (SceneManager.GetActiveScene().name != "Tutorial")
         StartCoroutine(PlayerDeath()); // if Hero dies
-
+        else
+        FindObjectOfType<TutorialManager>().EndCombat();
     }
 
     public void RequestGameStateChange(GameStates requestedState)
@@ -195,27 +196,34 @@ public class GameManager : MonoBehaviour
 
     public void OnMonsterDied()
     {
-        try
+        if (SceneManager.GetActiveScene().name != "Tutorial")
         {
-            if (musicManager != null)
+            try
             {
-                musicManager.adjustCurrentPlayingVolume(0.4f);
+                if (musicManager != null)
+                {
+                    musicManager.adjustCurrentPlayingVolume(0.4f);
+                }
+                else
+                {
+                    musicManager = FindObjectOfType<MusicManager>();
+                    musicManager.adjustCurrentPlayingVolume(0.4f);
+                }
+
             }
-            else
+            catch
             {
-                musicManager = FindObjectOfType<MusicManager>();
-                musicManager.adjustCurrentPlayingVolume(0.4f);
+                Debug.Log("there is no music manager");
             }
+            string enemyInfo = FindObjectOfType<EnemyBehaviour>().name;
+
+
+            narrator.Narrate("The Hero has Eliminated " + enemyInfo);
+            RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music
 
         }
-        catch
-        {
-            Debug.Log("there is no music manager");
-        }
-        string enemyInfo = FindObjectOfType<EnemyBehaviour>().name;
-        
-        narrator.Narrate("The Hero has Eliminated " + enemyInfo);
-        RequestGameStateChange(GameStates.EncounterEnd); //Done for potential victory-music
+        else
+            FindObjectOfType<TutorialManager>().EndCombat();
 
     }
 

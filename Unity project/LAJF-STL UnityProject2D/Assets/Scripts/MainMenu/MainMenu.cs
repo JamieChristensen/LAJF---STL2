@@ -8,7 +8,11 @@ using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
+    public P1Stats tutorialSpartan;
+    public ChoiceCategory runtimeChoices;
+
     public Button selectedButton;
+    public Button tutorialButton;
     public Button startGameButton;
     public Button settingsButton;
     public Button creditsButton;
@@ -31,7 +35,7 @@ public class MainMenu : MonoBehaviour
 
         if (EventSystem.current.currentSelectedGameObject == null)
         {
-            startGameButton.Select();
+            tutorialButton.Select();
             print("selected button");
         }
     }
@@ -105,13 +109,15 @@ public class MainMenu : MonoBehaviour
     public void TutorialPressed()
     {
         StartCoroutine(LoadTutorial());
+        runtimeChoices.chosenHero = tutorialSpartan;
+        FindObjectOfType<AudioList>().SetHeroSounds();
     }
 
     IEnumerator LoadTutorial()
     {
         FindObjectOfType<MainMenuFade>().StartFade();
         musicManager = FindObjectOfType<MusicManager>();
-        musicManager.PlayMusic("Tutorial", 0.8f);
+        musicManager.PlayMusic("Tutorial", 0.5f);
         yield return new WaitForSeconds(6);
         SceneManager.LoadSceneAsync("Tutorial");
     }

@@ -10,6 +10,7 @@ public class AudioList : MonoBehaviour
     public ChoiceCategory runtimeChoices;
     public int voiceLineIndex;
     public SettingsScrObj gameSettings;
+    Coroutine co;
 
     // SFX 
     public AudioSource
@@ -33,13 +34,15 @@ public class AudioList : MonoBehaviour
          loseFx,
          narratorHit,
          narratorVoiceLines,
+         projectileExplode,
+         projectileImpact,
          resurrection,
          select,
          selectionPicked,
          textToSpeechSource,
          winFx;
 
-    public AudioSource[] narratorVoiceFillers, narratorEnter, godSources, enemyDeathAnnouncement;
+    public AudioSource[] narratorVoiceFillers, narratorEnter, godSources, enemyDeathAnnouncement, tutorialNarrator;
 
 
     private void Awake()
@@ -56,15 +59,20 @@ public class AudioList : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-        if (SceneManager.GetActiveScene().buildIndex != 1 || SceneManager.GetActiveScene().buildIndex != 2)
-        {
-            SetHeroSounds();
-            SetGodSounds();
-        }
 
     }
 
-        public void PlayWithVariablePitch(AudioSource audioSource)
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0 || SceneManager.GetActiveScene().buildIndex != 1 || SceneManager.GetActiveScene().buildIndex != 2)
+        {
+            SetHeroSounds();
+            if (runtimeChoices.chosenGods[0] != null)
+                SetGodSounds();
+        }
+    }
+
+    public void PlayWithVariablePitch(AudioSource audioSource)
     {
         audioSource.pitch = Random.Range(0.92f, 1.08f);
         audioSource.Play();
@@ -89,6 +97,15 @@ public class AudioList : MonoBehaviour
     public void OnNarratorHit()
     {
         narratorHit.Play();
+        if (co != null)
+        StopCoroutine(co);
+        foreach (AudioSource AS in enemyDeathAnnouncement)
+        {
+            if (AS.isPlaying)
+            {
+                AS.Stop();
+            }
+        }
         if (textToSpeechSource.isPlaying)
         {
             textToSpeechSource.Stop();
@@ -118,18 +135,6 @@ public class AudioList : MonoBehaviour
         }
     }
 
-
-
-    #region NarratorVoiceLines
-
-    public void OnHeroLose(int heroHP)
-    {
-        if (heroHP <= 0)
-        {
-            StartCoroutine(PlayOnDelay(loseFx, 1.5f));
-        }
-    }
-
     public void OnHeroPicked()
     {
         selectionPicked.clip = runtimeChoices.chosenHero.picked;
@@ -148,6 +153,12 @@ public class AudioList : MonoBehaviour
     {
         selectionPicked.clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].representationClip;
         selectionPicked.Play();
+        SetEnemySounds();
+
+    }
+
+    public void SetEnemySounds()
+    {
         deathEnemy.clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].deathClip;
         hurtEnemy.clip = runtimeChoices.enemies[runtimeChoices.runTimeLoopCount - 1].HurtClip;
     }
@@ -163,7 +174,8 @@ public class AudioList : MonoBehaviour
     {
         godSources[PlayerNumber + 4].clip = runtimeChoices.chosenGods[PlayerNumber - 2].representationClip;
         godSources[PlayerNumber + 4].Play();
-        SetGodSounds();
+        
+        //Invoke("SetGodSounds", 0.5f);
     }
 
     public void SetGodSounds()
@@ -180,12 +192,24 @@ public class AudioList : MonoBehaviour
             godSources[2].clip = runtimeChoices.chosenGods[2].projectileShootClip;
             godSources[5].clip = runtimeChoices.chosenGods[2].projectileCollideClip;
         }
-        
+
     }
 
+
+    #region NarratorVoiceLines
+
+    public void OnHeroLose(int heroHP)
+    {
+        if (heroHP <= 0)
+        {
+            StartCoroutine(PlayOnDelay(loseFx, 1.5f));
+        }
+    }
+
+   
     public void AnnounceEnemyDeath()
     {
-        StartCoroutine(EnemyDeathSequence());
+       co = StartCoroutine(EnemyDeathSequence());
     }
 
     IEnumerator EnemyDeathSequence()
@@ -211,6 +235,7 @@ public class AudioList : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         enemyDeathAnnouncement[2].Play();
+        co = null;
     }
 
 

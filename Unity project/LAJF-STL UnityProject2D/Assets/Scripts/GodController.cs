@@ -8,6 +8,8 @@ using UnityEngine.Experimental.Rendering.Universal;
 [RequireComponent(typeof(SpriteRenderer))]
 public class GodController : MonoBehaviour
 {
+    public GodInformation[] availableGods;
+
     [SerializeField]
     private ChoiceCategory runtimeChoices;
     [SerializeField]
@@ -91,9 +93,16 @@ public class GodController : MonoBehaviour
 
     public void Start()
     {
+        
         emoteDuration = 0;
         emoteMaxTime = 1f;
         isEmoting = false;
+
+        if (runtimeChoices.chosenGods[godNumber - 1] == null)
+        {
+            runtimeChoices.chosenGods[godNumber - 1] = availableGods[UnityEngine.Random.Range(0, 3)];
+        }
+        FindObjectOfType<AudioList>().SetGodSounds();
 
         cameraShake = FindObjectOfType<CameraShake>();
         entranceEffects = FindObjectOfType<EnemyEntranceEffects>();
@@ -105,12 +114,15 @@ public class GodController : MonoBehaviour
 
         if (runtimeChoices.chosenGods.Length >= godNumber && gamesettings.GetAmountOfPlayers() > godNumber)
         {
+
             godInfo = runtimeChoices.chosenGods[godNumber - 1];
+
             sprite = godInfo.topBarIcon;
             attackType = godInfo.attackType;
             spriteRenderer.sprite = sprite;
-            isEnabled = true;
             tmproName.text = godInfo.godName;
+
+            isEnabled = true;
             Debug.Log("Finished god-initializing");
         }
         else
@@ -125,6 +137,22 @@ public class GodController : MonoBehaviour
             return;
         }
         readyForFire.text = "Press ↓ to Fire!";
+    }
+
+    public void AssignRandomGod()
+    {
+        runtimeChoices.chosenGods[godNumber - 1] = availableGods[UnityEngine.Random.Range(0, 3)];
+        FindObjectOfType<AudioList>().SetGodSounds();
+        godInfo = runtimeChoices.chosenGods[godNumber - 1];
+        sprite = godInfo.topBarIcon;
+        attackType = godInfo.attackType;
+        spriteRenderer.sprite = sprite;
+        tmproName.text = godInfo.godName;
+    }
+
+    public void ToggleCombatMode(bool active)
+    {
+        inCombatMode = active;
     }
 
     void Update()
@@ -319,7 +347,7 @@ public class GodController : MonoBehaviour
 
     private void FireballAttack()
     {
-        
+
         if (fireballCooldownTimer > 0)
             return;
 

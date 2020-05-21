@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class P1Controller : MonoBehaviour
 {
+    
+
     public enum Player1Input
     {
         Horizontal,
@@ -22,6 +24,7 @@ public class P1Controller : MonoBehaviour
     };
 
     #region INSPECTOR
+
     // Floating Text
     public GameObject floatingTextPrefab; //, floatingCanvasPrefab;
     public GameObject floatingCanvasParent;
@@ -354,6 +357,7 @@ public class P1Controller : MonoBehaviour
         else // Trigger death effect
         {
             DeathAnimation();
+            if (!audioList.deathHero.isPlaying)
             audioList.PlayWithVariablePitch(audioList.deathHero);
         }
 

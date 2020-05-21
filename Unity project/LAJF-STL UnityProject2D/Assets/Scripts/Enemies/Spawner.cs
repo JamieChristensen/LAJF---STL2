@@ -12,6 +12,9 @@ public class Spawner : MonoBehaviour
     public GameObject orbEnemyPrefab;
     public GameObject splitterEnemyPrefab;
 
+    public Enemy agileEnemy, orbEnemy, splitterEnemy;
+    public EnemyModifier blessed, shoulderConnon, angry;
+
     [Header("Other")]
     public GreatChest greatChest;
     public ChoiceCategory runtimeChoices;
@@ -60,6 +63,42 @@ public class Spawner : MonoBehaviour
 
 
     }
+
+    public void SpawnRandomEnemy()
+    {
+        int random1 = Random.Range(1, 4);
+        int random2 = Random.Range(1, 4);
+        
+        runtimeChoices.runTimeLoopCount = random1;
+        runtimeChoices.enemies = new List<Enemy>();
+        runtimeChoices.enemies.Add(agileEnemy);
+        runtimeChoices.enemies.Add(orbEnemy);
+        runtimeChoices.enemies.Add(splitterEnemy);
+        runtimeChoices.enemyModifiers = new List<EnemyModifier>();
+        switch (random2)
+        {
+            case 1:
+                runtimeChoices.enemyModifiers.Add(blessed);
+                runtimeChoices.enemyModifiers.Add(blessed);
+                runtimeChoices.enemyModifiers.Add(blessed);
+                break;
+
+            case 2:
+                runtimeChoices.enemyModifiers.Add(shoulderConnon);
+                runtimeChoices.enemyModifiers.Add(shoulderConnon);
+                runtimeChoices.enemyModifiers.Add(shoulderConnon);
+                break;
+
+            case 3:
+                runtimeChoices.enemyModifiers.Add(angry);
+                runtimeChoices.enemyModifiers.Add(angry);
+                runtimeChoices.enemyModifiers.Add(angry);
+                break;
+        }
+
+        SpawnEnemy();
+    }
+
 
     IEnumerator SpawnEnemyAfterDelay(float delay)
     {

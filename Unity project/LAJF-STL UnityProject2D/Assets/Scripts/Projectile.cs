@@ -45,10 +45,12 @@ public class Projectile : MonoBehaviour
     {
         if (collision.CompareTag("ForceField"))
         {
+            
             GameObject instance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
             Destroy(instance, 1f);
 
             ShowFloatingText(); // Trigger floating text
+            FindObjectOfType<AudioList>().PlayWithVariablePitch(FindObjectOfType<AudioList>().projectileImpact);
             FindObjectOfType<AudioList>().PlayWithVariablePitch(FindObjectOfType<AudioList>().forceFieldHit);
             GameObject blockInstance = Instantiate(particleExplosion, transform.position, Quaternion.identity);
             Destroy(blockInstance, 1f);
@@ -86,11 +88,13 @@ public class Projectile : MonoBehaviour
         {
             if (isExplodingProjectile)
             {
+                
                 Explode();
                 return;
                 //If the projectile explodes, it will always do damage to the object it collided with too when it explodes.
             }
 
+            FindObjectOfType<AudioList>().PlayWithVariablePitch(FindObjectOfType<AudioList>().projectileImpact);
             if (collided.CompareTag("Monster"))
             {
                 Debug.Log(collided.ToString());
@@ -149,10 +153,13 @@ public class Projectile : MonoBehaviour
 
     public void Explode()
     {
+
         if (!isExplodingProjectile)
         {
+            
             return;
         }
+        FindObjectOfType<AudioList>().PlayWithVariablePitch(FindObjectOfType<AudioList>().projectileExplode);
 
         List<RaycastHit2D> explosionHits = new List<RaycastHit2D>();
         ContactFilter2D contactFilter = new ContactFilter2D();
