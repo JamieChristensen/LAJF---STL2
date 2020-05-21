@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -21341,6 +21341,16 @@ PrefabInstance:
       propertyPath: player1ForceFieldAlt
       value: 333
       objectReference: {fileID: 0}
+    - target: {fileID: 4723526808058741398, guid: fd688c84911281a4395823b11e3069e5,
+        type: 3}
+      propertyPath: player1ExplodeKey
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723526808058741398, guid: fd688c84911281a4395823b11e3069e5,
+        type: 3}
+      propertyPath: player1ExplodeAlt
+      value: 352
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd688c84911281a4395823b11e3069e5, type: 3}
 --- !u!4 &1870351981 stripped
@@ -24826,7 +24836,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 57988195a7539e24093661284ac09c4e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -26577,7 +26587,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 0fc4d53dba1c03149b798b37c140c6c9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -33401,6 +33411,7 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0}
   previousPosition: {x: 0, y: 0}
   textToSpeech: {fileID: 0}
+  StartPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &6724332914211809290
 Transform:
   m_ObjectHideFlags: 0

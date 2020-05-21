@@ -30,8 +30,12 @@ public class NarratorBehaviour : MonoBehaviour
     private bool isExitingScene;
     private bool isRunning;
 
+    [SerializeField]
+    private Vector3 StartPosition;
+
     void Start()
     {
+        StartPosition = transform.position;
         audioList = FindObjectOfType<AudioList>();
         textToSpeech = FindObjectOfType<TTS>();
         //StartCoroutine(textToSpeech.InitalizeService());
@@ -48,9 +52,13 @@ public class NarratorBehaviour : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, previousPosition, getInSpeed * Time.deltaTime);
         }
-        
-        
+
     }   
+
+    public void GoBackToStart()
+    {
+        transform.position = StartPosition;
+    }
 
     void RandomizePosition()
     {

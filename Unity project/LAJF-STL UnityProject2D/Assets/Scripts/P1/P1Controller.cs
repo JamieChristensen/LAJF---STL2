@@ -357,6 +357,7 @@ public class P1Controller : MonoBehaviour
         else // Trigger death effect
         {
             DeathAnimation();
+            if(forceFieldIsUp)
             ToggleForceField(false);
         }
 
@@ -668,14 +669,14 @@ public class P1Controller : MonoBehaviour
         healthBar.transform.parent = null;
 
         Destroy(instance.gameObject, instance.duration);
+        if (!audioList.deathHero.isPlaying)
+            audioList.deathHero.Play();
         Invoke("DeathExplode", 1);
     }
 
     public void DeathExplode() // Add Particle Burst
     {
         audioList.explosion.Play();
-        if (!audioList.deathHero.isPlaying)
-            audioList.deathHero.Play();
         shotgunImage.gameObject.SetActive(false);
         ParticleSystem instance = Instantiate(deathExplosion, particlePoint.position, particlePoint.rotation);
         CameraShake camshake = FindObjectOfType<CameraShake>();
