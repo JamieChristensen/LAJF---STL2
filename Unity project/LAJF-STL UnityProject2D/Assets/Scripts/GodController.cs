@@ -137,7 +137,7 @@ public class GodController : MonoBehaviour
         {
             return;
         }
-        readyForFire.text = "Press ↓ to Fire!";
+        readyForFire.text = "Ready to Fire!";
     }
 
     public void AssignRandomGod()
@@ -283,7 +283,7 @@ public class GodController : MonoBehaviour
     public void OnHeroReleasedFromCage()
     {
         inCombatMode = true;
-        readyForFire.text = "Press ↓ to Fire!";
+        readyForFire.text = "Ready to fire!";
     }
 
     IEnumerator LightningStrikeAttack()
