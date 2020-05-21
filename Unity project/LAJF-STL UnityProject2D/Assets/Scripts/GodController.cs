@@ -46,6 +46,7 @@ public class GodController : MonoBehaviour
     public KeyCode horiRightKeyboardTestKey, horiLeftKeyboardTestKey;
     public KeyCode shoot;
     public KeyCode altShoot;
+    public KeyCode controllerEmoteKey;
 
     /*
     public GameObject lightningPrefab;
@@ -224,6 +225,10 @@ public class GodController : MonoBehaviour
 
         }
         */
+
+        if(Input.GetKeyDown(controllerEmoteKey)){
+            Emote();
+        }
         #endregion
         if (!isEmoting)
         {
