@@ -195,8 +195,10 @@ public class GodController : MonoBehaviour
                     Debug.Log(gameObject.name + "'s attacktype hasn't been set - head to the inspector to do that");
                     break;
             }
-        FireballUpdate();
-        LaserUpdate();
+        if (attackType == GodInformation.AttackTypes.Fireball)
+            FireballUpdate();
+        if (attackType == GodInformation.AttackTypes.Laserbeam)
+            LaserUpdate();
         #endregion
 
 
@@ -288,7 +290,8 @@ public class GodController : MonoBehaviour
 
     IEnumerator LightningStrikeAttack()
     {
-        float normalMovespeed = moveSpeed;
+        readyForFire.text = "Firing!";
+            float normalMovespeed = moveSpeed;
         Debug.Log("Lightning");
         canAttack = false;
         GameObject LightningStrikeClone = Instantiate(lightningStrikePrefab, transform);
@@ -330,10 +333,14 @@ public class GodController : MonoBehaviour
         {
             StartCoroutine(RampDownLight(light, 0.5f));
         }
+        readyForFire.text = "Cooling off!";
         yield return new WaitForSeconds(0.5f);
         Destroy(LightningStrikeClone);
         spriteRenderer.sprite = godInfo.topBarIcon;
+        yield return new WaitForSeconds(4.5f);
+        readyForFire.text = "Ready to fire!";
         canAttack = true;
+        
         moveSpeed = normalMovespeed;
     }
 
@@ -378,7 +385,6 @@ public class GodController : MonoBehaviour
     // necessary to control cooldown and the likes
     private void LaserUpdate()
     {
-
         if (LaserProjectile.projectileCount > 0 && !isRecharging)
         {
             StartCooldown();
@@ -387,17 +393,28 @@ public class GodController : MonoBehaviour
         if (isRecharging)
         {
             laserCooldownTimer = UpdateCooldown(laserCooldownTimer);
+            
             if (laserCooldownTimer > 0)
+            {
                 return;
+            }
             Debug.Log("got one ammo back");
             LaserProjectile.projectileCount--;
             laserCooldownTimer = laserCooldown;
             if (LaserProjectile.projectileCount == 0)
+            {
                 isRecharging = false;
+                readyForFire.text = "Cooling off!";
+            }
+
         }
     }
     private void FireballUpdate()
     {
+        readyForFire.text = "Ready to fire!";
+        if (fireballCooldownTimer > 0)
+            readyForFire.text = "Cooling off!";
+
         fireballCooldownTimer = UpdateCooldown(fireballCooldownTimer);
     }
 
@@ -410,6 +427,7 @@ public class GodController : MonoBehaviour
     {
         laserCooldownTimer = laserCooldown;
         isRecharging = true;
+        readyForFire.text = "Cooling off!";
     }
 
     float Map(float s, float a1, float a2, float b1, float b2)
