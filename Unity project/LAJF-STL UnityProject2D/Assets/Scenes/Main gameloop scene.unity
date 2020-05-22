@@ -8929,7 +8929,7 @@ PrefabInstance:
     - target: {fileID: 968574184372043922, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
       propertyPath: controllerEmoteKey
-      value: 412
+      value: 413
       objectReference: {fileID: 0}
     - target: {fileID: 1027693943835851162, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
@@ -8949,7 +8949,7 @@ PrefabInstance:
     - target: {fileID: 1515916720333487623, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
       propertyPath: controllerEmoteKey
-      value: 392
+      value: 393
       objectReference: {fileID: 0}
     - target: {fileID: 1602038044560885519, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
@@ -8979,7 +8979,7 @@ PrefabInstance:
     - target: {fileID: 2097950839168532979, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
       propertyPath: controllerEmoteKey
-      value: 372
+      value: 373
       objectReference: {fileID: 0}
     - target: {fileID: 2848400668708890353, guid: d36c49ed10fe60c4db762c1dd971e38e,
         type: 3}
