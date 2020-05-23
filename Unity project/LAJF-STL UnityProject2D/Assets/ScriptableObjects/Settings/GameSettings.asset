@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   realNarratorVoice: 0
-  fullscreenIsOn: 0
-  amountOfPlayers: 4
+  fullscreenIsOn: 1
+  amountOfPlayers: 2
   gameMasterVolume: 0.79999965
   gameMusicVolume: 0.8
   gameSFXVolume: 1
