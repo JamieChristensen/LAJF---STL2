@@ -1,13 +1,11 @@
 # LucaAlexanderJamieFrederik---SocialTechnologyLab2
+A multiplayer asymmetric 2D-battler game prototype developed for the course Social Technology Lab 2 at SDU.
 
-#### Screenshot of first Prototype:
-![alt text](Screenshot_Prototype1.png "Digital Prototype Nr. 1")
+#### Screenshot of main menu
+![alt text](Screenshot_main_menu.png "Main Menu")
 
-#
-#### BlogPost on BB:
-Click to go [To Post](https://e-learn.sdu.dk/webapps/blogs-journals/execute/viewBlog?course_id=_413531_1&blog_id=_146873_1&blog_course_user_id=_24640272_1&type=blogs&group_id=&gml_reload=&callBackUrl=&allMembers=false)
-#
-#### Survey on Google docs:
-Click to go [To Survey](https://docs.google.com/forms/d/e/1FAIpQLSd624A-XltRnu-C62V_ERgT4sGMmorNkrvL1-sL54vVZ_agXQ/viewform?usp=sf_link)
+#### Screenshot of hero selection:
+![alt text](Screenshot_hero_selection.png "Hero selection")
 
-
+#### Screenshot of encounter:
+![alt text](Screenshot_battle.png "Combat screenshot")
